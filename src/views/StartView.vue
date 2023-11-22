@@ -1,5 +1,6 @@
 <template>
   <header>
+    <p>albin LG</p>
     <div v-bind:class="['hamburger', {'close': !hideNav}]" 
          v-on:click="toggleNav">
     </div>
