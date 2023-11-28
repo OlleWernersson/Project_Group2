@@ -1,17 +1,16 @@
 <template>
-  <header>
-    <p>albin LG</p>
+<!--   <header>
     <div v-bind:class="['hamburger', {'close': !hideNav}]" 
          v-on:click="toggleNav">
     </div>
     <div class="logo">
       Polly polling tool 
-    </div> -->
-  </header>
+    </div>
+  </header> -->
   <main>
     <section class="supportButtons">
       <button class="language-button" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-      <button class="help-button">Help</button>
+      <button class="help-button"> {{ uiLabels.help }}</button>
     </section>
     <section class="mainButtons">
       <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
@@ -104,7 +103,7 @@ export default {
   display: inline-block;
   padding: 1em 2em; /* Adjust padding as needed */
   font-size: 1.2em; /* Adjust font size as needed */
-  background-color: plum; /* Green background color */
+  background-color: plum;
   color: white;
   text-align: center;
   text-decoration: none;
