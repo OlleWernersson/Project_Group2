@@ -1,22 +1,46 @@
 <template >
-    <div id="rescaler "></div>
     <div id="background">
+        <button @click="moveMeForward"> Click me! </button>
         <p>hej</p>
-        <div ></div>
+        <div id = "dots" :style="{ left: dotLeft + 'px', top: dotTop + 'px' }">
+            T
+        </div>
     </div>
 </template>
 <script>
 export default{
+    data(){
+        return{
+            dotTop: 100,
+            dotLeft: 500, 
+
+        }
+    },
+
+    methods: {
+        moveMeForward() {
+            console.log("You clicked me!"),
+            this.dotLeft += 10;
+            this.dotTop += 0
+        }
+    }
 
 }
 </script>
 <style>
 #background{
     background-image: url('polacks.jpg');
-    height: 1000px;
+    width: 50em; 
+    height: 26em; 
     position: absolute;
+    font-size: 2em;
 }
-#rescaler{
-    position: relative;
+
+
+#dots {
+    background-color: blue;
+    border-radius: 15px;
+    position: absolute;
+    font-size: 1em;
 }
 </style>
