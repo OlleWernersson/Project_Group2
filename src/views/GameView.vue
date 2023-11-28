@@ -27,9 +27,9 @@ export default{
 
 }
 </script>
-<style>
+<style scoped>
 #background{
-    background-image: url('polacks.jpg');
+    background-image: url('../../public/img/polacks.jpg');
     width: 50em; 
     height: 26em; 
     position: absolute;

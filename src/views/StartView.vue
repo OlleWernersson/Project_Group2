@@ -73,6 +73,8 @@ export default {
   }
 }
 </script>
+
+
 <style scoped>
 .supportButtons {
   display: flex;
@@ -84,12 +86,12 @@ export default {
 }
 
 .language-button {
-  order: 1; /* Language button on the left */
+  order: 1;
   margin-left: 4%;
 }
 
 .help-button {
-  order: 2; /* Help button on the right */
+  order: 2;
   margin-right: 4%;
 }
 
@@ -97,12 +99,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh; /* Adjust the height as needed */
+  height: 80vh;
 }
 .main-button {
   display: inline-block;
-  padding: 1em 2em; /* Adjust padding as needed */
-  font-size: 1.2em; /* Adjust font size as needed */
+  padding: 1em 2em;
+  font-size: 1.2em;
   background-color: plum;
   color: white;
   text-align: center;
