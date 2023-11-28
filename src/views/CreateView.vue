@@ -5,6 +5,7 @@
     <button v-on:click="createPoll">
       Create poll
     </button>
+    
     <div>
       {{uiLabels.question}}:
       <input type="text" v-model="question">
