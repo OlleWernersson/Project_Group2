@@ -1,46 +1,70 @@
-<template >
-    <div id="background">
-        <button @click="moveMeForward"> Click me! </button>
-        <p>hej</p>
-        <div id = "dots" :style="{ left: dotLeft + 'px', top: dotTop + 'px' }">
-            T
-        </div>
+<template>
+    <div id="wrapper">
+      <div id="background">
+        <div id="dots" :style="{ left: dotLeft + 'px', top: dotTop + 'px' }">T</div>
+      </div>
+  
+      <div id="buttonWrapper">
+        <button @click="moveMeForward">Answer 1</button>
+        <button @click="wrongAnswer">Answer 2</button>
+        <button @click="wrongAnswer">Answer 3</button>
+      </div>
     </div>
-</template>
-<script>
-export default{
-    data(){
-        return{
-            dotTop: 100,
-            dotLeft: 500, 
-
-        }
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        dotTop: 100,
+        dotLeft: 500,
+        displayWrongSign: false,
+      };
     },
-
+  
     methods: {
-        moveMeForward() {
-            console.log("You clicked me!"),
-            this.dotLeft += 10;
-            this.dotTop += 0
-        }
-    }
-
-}
-</script>
-<style scoped>
-#background{
-    background-image: url('../../public/img/polacks.jpg');
-    width: 50em; 
-    height: 26em; 
-    position: absolute;
+      moveMeForward() {
+        console.log("You clicked me!");
+        this.dotLeft += 10;
+        this.dotTop += 0;
+      },
+  
+      wrongAnswer() {
+        
+      },
+    },
+  };
+  </script>
+  
+  <style>
+  #wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 50%;
+  }
+  
+  #buttonWrapper {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr); 
+    margin: 50% 10px 0px 10px;
+    grid-row-gap: 10px;
+    height: 50%;
+  }
+  
+  #background {
+    background-image: url('/Users/majadakad/Documents/Project_Group2/public/img/polacks.jpg');
+    width: 100%;
+    height: 26em;
+    position: relative;
     font-size: 2em;
-}
-
-
-#dots {
+  }
+  
+  #dots {
     background-color: blue;
     border-radius: 15px;
     position: absolute;
     font-size: 1em;
-}
-</style>
+    width: 35px;
+  }
+  </style>
+  
