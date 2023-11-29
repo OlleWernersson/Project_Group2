@@ -10,5 +10,8 @@
 	"joinGame": "Joina Spel",
 	"help": "Hjälp",
 	"lobby": "Lobby",
-	"startGame": "Starta Spelet"
+	"startGame": "Starta Spelet",
+  "joinLobby": "Joina",
+  "yourName": "Ditt Namn",
+  "gameId": "Spel ID"
 }

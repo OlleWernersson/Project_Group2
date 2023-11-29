@@ -1,12 +1,11 @@
 <template>
-  <div class="header-container">
-    <div class="header-content">
-      <h1>{{ uiLabels.lobby }}</h1>
-    </div>
+  <header>
+    <h1>{{ uiLabels.lobby }}</h1>
     <div class="id-box">ID: {{ id }}</div>
-  </div>
+  </header>
+
   <player-list :players="playerList" />
-  <router-link class="main-button" to="/game/" tag="button">{{ uiLabels.startGame }}</router-link>
+  <router-link id="start-game-button" class="main-button" to="/game/" tag="button">{{ uiLabels.startGame }}</router-link>
 </template>
 
 <script>
@@ -46,19 +45,8 @@ export default {
 </script>
 
 <style scoped>
-.header-container {
-  text-align: center;
-  padding-top: 20px;
-  position: relative;
-}
-
-.header-content {
-  display: flex;
-  justify-content: center;
-}
-
 h1 {
-  margin: 0;
+  margin-top: 20px;
 }
 
 .id-box {
@@ -67,21 +55,12 @@ h1 {
   right: 0;
   margin: 10px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
 }
 
-.main-button {
+#start-game-button {
   position: absolute;
   bottom: 0;
   right: 0;
-  margin: 10px;
-  padding: 1em 2em;
-  font-size: 1.2em;
-  background-color: plum;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 8px;
 }
 </style>

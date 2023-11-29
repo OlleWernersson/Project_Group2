@@ -101,19 +101,6 @@ export default {
   align-items: center;
   height: 80vh;
 }
-.main-button {
-  display: inline-block;
-  padding: 1em 2em;
-  font-size: 1.2em;
-  background-color: plum;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 0.5em;
-  cursor: pointer;
-  border-radius: 8px;
-}
 /*   header {
     background-color: gray;
     width: 100%;

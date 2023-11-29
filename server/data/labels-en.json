@@ -10,6 +10,9 @@
 	"joinGame": "Join Game",
 	"help": "Help",
 	"lobby": "Lobby",
-	"startGame": "Start Game"
+	"startGame": "Start Game",
+  "joinLobby": "Join",
+  "yourName": "Your Name",
+  "gameId": "Game ID"
 
 }
