@@ -68,7 +68,7 @@
   }
   
   #background {
-    background-image: url('/Users/majadakad/Documents/Project_Group2/public/img/polacks.jpg');
+    background-image: url('../public/img/polacks.jpg');
     width: 100%;
     height: 26em;
     position: relative;
