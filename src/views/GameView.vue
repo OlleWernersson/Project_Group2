@@ -1,10 +1,17 @@
 <template>
     <div id="wrapper">
       <div id="map">
+        
         <div id="dots" :style="{ left: dotLeft + 'px', top: dotTop + 'px' }">T</div>
+        
         <div id="cities" v-for="city in selectedcities" :style="{left: city.left + 'px',top:city.top  + 'px'}"> {{ city.Bletter }}</div>
+        
+        <button @click="moveMeForward"> move me! </button>
+      
       </div>
-      <div> <Question id = "buttonWrapper" /> </div> 
+     
+      <div> <Question id = "buttonWrapper" :question = "question"/> </div> 
+    
     </div>
   </template>
   
@@ -21,12 +28,12 @@
         cityLeft: 500,
         cityTop: 200,
         selectedcities:[
-            {top:500,left:200, Bletter: 'A'},
-            {top:100,left:200,Bletter: 'B'},
-            {top:200,left:500,Bletter:'C'}
+            {top:500, left:200, Bletter: 'A'},
+            {top:100, left:200, Bletter: 'B'},
+            {top:200, left:500, Bletter: 'C'}
     ],
     currentCity: 0,
-        
+    question: 'This is a question, whats your answer?'
       };
     },
   
