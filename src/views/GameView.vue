@@ -4,17 +4,16 @@
         <div id="dots" :style="{ left: dotLeft + 'px', top: dotTop + 'px' }">T</div>
         <div id="cities" v-for="city in selectedcities" :style="{left: city.left + 'px',top:city.top  + 'px'}"> {{ city.Bletter }}</div>
       </div>
-  
-      <div id="buttonWrapper">
-        <button @click="moveMeForward">Answer 1</button>
-        <button @click="wrongAnswer">Answer 2</button>
-        <button @click="wrongAnswer">Answer 3</button>
-      </div>
+
+      <Question id = "buttonWrapper" />
     </div>
   </template>
   
   <script>
+  import Question from '../components/QuestionComponent.vue';
+
   export default {
+    components: { Question },
     data() {
       return {
         dotTop: 100,
@@ -36,8 +35,6 @@
       moveMeForward() {
 
         console.log("You clicked me!");
-        this.dotLeft += 10;
-        this.dotTop += 0;
         this.dotLeft = this.selectedcities[this.currentCity].left;
         this.dotTop = this.selectedcities[this.currentCity].top -20;
         this.currentCity++;
