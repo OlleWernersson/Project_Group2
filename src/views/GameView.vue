@@ -1,11 +1,10 @@
 <template>
     <div id="wrapper">
-      <div id="background">
+      <div id="map">
         <div id="dots" :style="{ left: dotLeft + 'px', top: dotTop + 'px' }">T</div>
         <div id="cities" v-for="city in selectedcities" :style="{left: city.left + 'px',top:city.top  + 'px'}"> {{ city.Bletter }}</div>
       </div>
-
-      <Question id = "buttonWrapper" />
+      <div> <Question id = "buttonWrapper" /> </div> 
     </div>
   </template>
   
@@ -33,13 +32,9 @@
   
     methods: {
       moveMeForward() {
-
-        console.log("You clicked me!");
         this.dotLeft = this.selectedcities[this.currentCity].left;
         this.dotTop = this.selectedcities[this.currentCity].top -20;
         this.currentCity++;
-
-
       },
   
       wrongAnswer() {
@@ -53,18 +48,9 @@
   #wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 50%;
   }
   
-  #buttonWrapper {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr); 
-    margin: 50% 10px 0px 10px;
-    grid-row-gap: 10px;
-    height: 50%;
-  }
-  
-  #background {
+  #map {
     background-image: url('../public/img/polacks.jpg');
     width: 100%;
     height: 26em;
