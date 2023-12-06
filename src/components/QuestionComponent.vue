@@ -1,6 +1,6 @@
 <template>
   <div id = wrapper>
-  <div id = question>{{ question }} </div>
+  <div id = question> {{ question }} </div>
   <div id = buttonWrapper>
     <button @click="correctAnswerClicked"> Correct Answer!</button>
     <button @click="wrongAnswerClicked"> Wrong Answer</button>
@@ -29,7 +29,7 @@ export default {
 
   methods: {
       correctAnswerClicked() {
-        console.log("You clicked the correct answer!");
+        this.$emit('correctAnswerClick')  //säger att denna komponent emittar ett custom event "correctAnswerClcik"    
       },
   
       wrongAnswerClicked() {
@@ -60,8 +60,6 @@ export default {
   grid-row-gap: 10px;
   height: 500px;
   line-height: 500px;
-  background-color:cornsilk;
-
   font-size: 1.7em;
 }
 

@@ -25,6 +25,6 @@ import { RouterView } from 'vue-router'
 html {
   margin: 0;
   padding: 0;
-  background-color:cornsilk;
+  background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
 }
 </style>

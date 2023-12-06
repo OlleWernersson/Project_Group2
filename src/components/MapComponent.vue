@@ -1,11 +1,7 @@
 <template>
     <div id="map">
         <div id="dots" :style="{ left: dotLeft + 'px', top: dotTop + 'px' }">T</div>
-        
         <div id="cities" v-for="city in selectedcities" :style="{left: city.left + 'px',top:city.top  + 'px'}"> {{ city.Bletter }}</div>
-        
-        <button @click="moveMeForward"> move me! </button>   
-        
       </div>
 </template>
 
@@ -47,7 +43,7 @@
   }
   
   #dots {
-    background-color: blue;
+    background-color: rgba(119, 231, 219, 0.96);
     border-radius: 15px;
     position: absolute;
     font-size: 1em;
