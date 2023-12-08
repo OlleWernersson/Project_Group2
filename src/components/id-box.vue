@@ -18,5 +18,7 @@ export default {
   margin: 10px;
   padding: 10px;
   border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color:white;
 }
 </style>

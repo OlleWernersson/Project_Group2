@@ -5,7 +5,14 @@
   </header>
 
   <player-list :players="playerList" />
-  <router-link id="start-game-button" class="main-button" to="/game/" tag="button">{{ uiLabels.startGame }}</router-link>
+  <router-link
+      id="start-game-button"
+      class="main-button"
+      :to="'/game/' + id"
+      tag="button"
+    >
+      {{ uiLabels.startGame }}
+    </router-link>
 </template>
 
 <script>
@@ -21,6 +28,7 @@ export default {
     PlayerList,
     IdBox,
   },
+  props: ['id'],
   data: function () {
     return {
       uiLabels: {},
@@ -50,16 +58,6 @@ export default {
 h1 {
   margin-top: 20px;
 }
-
-/* .id-box {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
-  padding: 10px;
-  border: 2px solid #ccc;
-} */
-
 #start-game-button {
   position: absolute;
   bottom: 0;

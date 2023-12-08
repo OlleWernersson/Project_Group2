@@ -4,11 +4,18 @@
       {{ uiLabels.createLobby }}
     </h1>
   </header>
-  <Id-box :id="id"></Id-box> 
   <main>
 
 
   </main>
+  <router-link
+      id="create-lobby-button"
+      class="main-button"
+      :to="'/lobby/' + gameID"
+      tag="button"
+    >
+      {{ uiLabels.createLobby }}
+    </router-link>
 </template>
 
 <script>
@@ -20,7 +27,6 @@ const socket = io("localhost:3000");
 export default {
   name: 'CreateLobbyView',
   components: {
-    IdBox,
   },
   data: function () {
     return {
@@ -43,5 +49,9 @@ export default {
 </script>
 
 <style scoped>
-
+#create-lobby-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 </style>

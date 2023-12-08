@@ -17,6 +17,7 @@
 
   export default {
     components: { Question, Map},
+    props: ['id'],
     data() {
       return {
         question: 'This is a question, whats your answer?'

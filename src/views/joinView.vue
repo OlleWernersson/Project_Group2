@@ -8,7 +8,7 @@
       <input type="text" v-model="gameID" :placeholder="uiLabels.gameId" @input="handleGameIDInput" autocomplete="off">
     </label>
   </main>
-  <router-link id="join-lobby-button" class="main-button" to="/lobby/" tag="button">{{ uiLabels.joinLobby}}</router-link>
+  <router-link id="join-lobby-button" class="main-button" :to="'/lobby/' + gameID" tag="button">{{ uiLabels.joinLobby}}</router-link>
 </template>
 
 <script>
