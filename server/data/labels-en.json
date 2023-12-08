@@ -13,6 +13,7 @@
 	"startGame": "Start Game",
   "joinLobby": "Join",
   "yourName": "Your Name",
-  "gameId": "Game ID"
+  "gameId": "Game ID",
+  "createLobby": "Create Lobby"
 
 }

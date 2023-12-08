@@ -14,7 +14,7 @@
     </section>
     <section class="mainButtons">
       <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
-      <router-link class="main-button" to="/create/">{{uiLabels.createGame}}</router-link>
+      <router-link class="main-button" to="/createLobby/">{{uiLabels.createGame}}</router-link>
     </section>
   </main>
 <!--   <ResponsiveNav v-bind:hideNav="hideNav">

@@ -13,5 +13,6 @@
 	"startGame": "Starta Spelet",
   "joinLobby": "Joina",
   "yourName": "Ditt Namn",
-  "gameId": "Spel ID"
+  "gameId": "Spel ID",
+  "createLobby": "Skapa Lobby"
 }

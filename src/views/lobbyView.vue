@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>{{ uiLabels.lobby }}</h1>
-    <div class="id-box">ID: {{ id }}</div>
+    <Id-box :id="id"></Id-box>
   </header>
 
   <player-list :players="playerList" />
@@ -11,6 +11,7 @@
 <script>
 import io from 'socket.io-client';
 import PlayerList from '@/components/PlayerList.vue';
+import IdBox from '@/components/id-box.vue';
 
 const socket = io("localhost:3000");
 
@@ -18,6 +19,7 @@ export default {
   name: 'LobbyView',
   components: {
     PlayerList,
+    IdBox,
   },
   data: function () {
     return {
@@ -49,14 +51,14 @@ h1 {
   margin-top: 20px;
 }
 
-.id-box {
+/* .id-box {
   position: absolute;
   top: 0;
   right: 0;
   margin: 10px;
   padding: 10px;
   border: 2px solid #ccc;
-}
+} */
 
 #start-game-button {
   position: absolute;
