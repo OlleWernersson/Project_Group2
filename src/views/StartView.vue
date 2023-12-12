@@ -10,7 +10,7 @@
   <main>
     <section class="supportButtons">
       <button class="language-button" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-      <button class="help-button"> {{ uiLabels.help }}</button>
+      <button class="help-button" @click="help"> {{ uiLabels.help }}</button>
     </section>
     <section class="mainButtons">
       <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
@@ -93,6 +93,20 @@ export default {
 .help-button {
   order: 2;
   margin-right: 4%;
+  display: inline-block;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  background-color: rgb(138, 211, 233);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0.5em;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid rgb(228, 63, 118);
+
 }
 
 .mainButtons {
