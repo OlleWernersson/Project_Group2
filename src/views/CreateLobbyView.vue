@@ -11,7 +11,7 @@
       </h2>
       <div class="button-grid">
         <button
-          v-for="buttonId in 9"
+          v-for="buttonId in 3"
           :key="buttonId"
           class="route-button"
           @click="selectRoute(buttonId)"
