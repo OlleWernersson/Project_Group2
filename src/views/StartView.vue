@@ -12,6 +12,11 @@
       <button class="language-button" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
       <button class="help-button" @click="help"> {{ uiLabels.help }}</button>
     </section>
+    <div v-if="helpOpen">
+      <div>
+        <p> help open </p>
+      </div>
+    </div>
     <section class="mainButtons">
       <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
       <router-link class="main-button" to="/createLobby/">{{uiLabels.createGame}}</router-link>
@@ -47,7 +52,8 @@ export default {
       uiLabels: {},
       id: "",
       lang: localStorage.getItem("lang") || "en", //Use localstorage sparsly to have it responsive
-      hideNav: true
+      hideNav: true,
+      helpOpen: false
     }
   },
   created: function () { //Created Hook, Before the content of the page is loaded the creaded hook is run
@@ -69,6 +75,9 @@ export default {
     },
     toggleNav: function () {
       this.hideNav = ! this.hideNav;
+    },
+    help: function(){
+      this.helpOpen = ! this.helpOpen
     }
   }
 }
