@@ -39,7 +39,7 @@
 
 <style scoped>
   #map {
-    background-image: url('../public/img/polacks.jpg');
+    background-image: url('../../public/img/polacks.jpg');
     width: 100%;
     height: 26em;
     position: relative;

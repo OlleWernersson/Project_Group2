@@ -5,22 +5,55 @@
     </h1>
   </header>
   <main>
+    <section class="Choose-Route">
+      <h2>
+        {{uiLabels.chooseRoute}}
+      </h2>
+      <div class="button-grid">
+        <button
+          v-for="buttonId in 9"
+          :key="buttonId"
+          class="route-button"
+          @click="selectRoute(buttonId)"
+          :class="{ 'selected': selectedRoute === buttonId }"
+        >
+        <img
+            :src="'../../public/img/polacks.jpg'"
+            alt="Route Image"
+            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
+          />
+        </button>
+      </div>
 
+
+    </section>
+    <section class="Create-Route">
+      <h2>
+        {{uiLabels.createNewRoute}}
+      </h2>
+      <router-link
+        id="create-route-button"
+        class="create-route-button"
+        to='/create/'
+        tag="button"
+      >
+        +
+      </router-link>
+    </section>
 
   </main>
   <router-link
-      id="create-lobby-button"
-      class="main-button"
-      :to="'/lobby/' + gameID"
-      tag="button"
-    >
-      {{ uiLabels.createLobby }}
-    </router-link>
+    id="create-lobby-button"
+    class="main-button"
+    :to="'/lobby/' + gameID"
+    tag="button"
+  >
+    {{ uiLabels.createLobby }}
+  </router-link>
 </template>
 
 <script>
 import io from 'socket.io-client';
-import IdBox from '@/components/id-box.vue';
 
 const socket = io("localhost:3000");
 
@@ -33,6 +66,7 @@ export default {
       uiLabels: {},
       gameID: "",
       lang: localStorage.getItem("lang") || "en",
+      selectedRoute: null,
     };
   },
   created: function () {
@@ -44,6 +78,9 @@ export default {
     this.gameID = randomNumber;
   },
   methods: {
+    selectRoute(routeId) {
+      this.selectedRoute = routeId;
+    },
   },
 };
 </script>
@@ -53,5 +90,44 @@ export default {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+.create-route-button {
+  background-color: #ccc;
+  color: #333;
+  border: 2px solid #666;
+  width: 200px;
+  height: 200px;
+  font-size: 60px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.create-route-button:hover {
+  background-color: #bbb; 
+}
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(3,200px);
+}
+.route-button {
+  background-color: #ccc;
+  border: 2px solid #666;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.route-button:hover {
+  border: 2px solid greenyellow;
+}
+.selected {
+  border: 2px solid greenyellow;
+}
+main {
+  display: flex;
+  justify-content: center;
 }
 </style>

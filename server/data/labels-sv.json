@@ -14,5 +14,7 @@
   "joinLobby": "Joina",
   "yourName": "Ditt Namn",
   "gameId": "Spel ID",
-  "createLobby": "Skapa Lobby"
+  "createLobby": "Skapa Lobby",
+  "chooseRoute": "Välj rutt",
+  "createNewRoute": "Skapa Ny Rutt"
 }
