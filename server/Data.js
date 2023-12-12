@@ -19,6 +19,7 @@ function Data() {
     currentQuestion: 0
   }
 }
+} //Constructor initializes empty object with poll property 
 
 /***********************************************
 For performance reasons, methods are added to the
