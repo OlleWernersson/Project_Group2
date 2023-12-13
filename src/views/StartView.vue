@@ -12,9 +12,9 @@
       <button class="language-button" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
       <button class="help-button" @click="help"> {{ uiLabels.help }}</button>
     </section>
-    <div v-if="helpOpen">
+    <div v-if="helpOpen" class="modal">
       <div>
-        <p> help open </p>
+        <p> spelregler: {{ uiLabels.rules }}</p>
       </div>
     </div>
     <section class="mainButtons">
@@ -123,6 +123,11 @@ export default {
   justify-content: center;
   align-items: center;
   height: 80vh;
+}
+.modal{
+  justify-content: center;
+  margin-top: 80vh;
+  align-content: center;
 }
 /*   header {
     background-color: gray;

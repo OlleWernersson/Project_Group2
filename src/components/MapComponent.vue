@@ -3,6 +3,7 @@
         <div id="dots" :style="{ left: dotLeft + 'px', top: dotTop + 'px' }">T</div>
         <div id="cities" v-for="city in selectedcities" :style="{left: city.left + 'px',top:city.top  + 'px'}"> {{ city.Bletter }}</div>
       </div>
+      <p>hej</p>
 </template>
 
 <script>

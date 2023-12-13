@@ -29,10 +29,16 @@
     {{data}}
     <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
   </div>
+  <div id="cities-map">
+    <MapComponent ref="Mapref">
+      <area shape="rect" coords="0, 0, 100, 100">
+    </MapComponent>
+  </div>
 </template>
 
 <script>
 import io from 'socket.io-client';
+import MapComponent from '../components/MapComponent.vue';
 const socket = io("localhost:3000");
 
 export default {
@@ -45,7 +51,7 @@ export default {
       answers: ["", ""],
       questionNumber: 0,
       data: {},
-      uiLabels: {}
+      uiLabels: {},
     }
   },
   created: function () {
