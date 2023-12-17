@@ -10,7 +10,7 @@ const router = createRouter({
       component: StartView
     },
       {
-      path: '/poll/:id',
+      path: '/poll/',
       name: 'PollView',
       component: () => import('../views/PollView.vue')
     },
@@ -20,7 +20,7 @@ const router = createRouter({
       component: () => import('../views/CreateRouteView.vue')
     },
     {
-      path: '/result/:id',
+      path: '/result/',
       name: 'ResultView',
       component: () => import('../views/ResultView.vue')
     },
@@ -30,13 +30,13 @@ const router = createRouter({
       component: () => import('../views/joinView.vue')
     },
     {
-      path: '/lobby/:id',
+      path: '/lobby/',
       name: 'lobbyView',
       component: () => import('../views/lobbyView.vue'),
       props: true,
     },
     {
-      path: '/game/:id',
+      path: '/game/',
       name: 'GameView',
       component: () => import('../views/GameView.vue'),
       props: true,
