@@ -1,44 +1,29 @@
 <template>
-<!--   <header>
-    <div v-bind:class="['hamburger', {'close': !hideNav}]" 
-         v-on:click="toggleNav">
-    </div>
-    <div class="logo">
-      Polly polling tool 
-    </div>
-  </header> -->
   <main>
     <section class="supportButtons">
       <button class="language-button" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
       <button class="help-button" @click="help"> {{ uiLabels.help }}</button>
     </section>
-    <div v-if="helpOpen" class="modal">
-      <div>
-        <p> spelregler: {{ uiLabels.rules }}</p>
+    
+    <div v-if="helpOpen">
+      <div class="backdrop" @click.self = "help">
+      <div class="rules">
+        <h3> {{uiLabels.ruleheader }}</h3>
+        <div > <p> {{ uiLabels.rules }}</p> 
+        </div>
       </div>
+    </div>
     </div>
     <section class="mainButtons">
       <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
       <router-link class="main-button" to="/createLobby/">{{uiLabels.createGame}}</router-link>
     </section>
   </main>
-<!--   <ResponsiveNav v-bind:hideNav="hideNav">
-    <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-    <router-link to="/create/">{{uiLabels.createPoll}}</router-link>
-    <a href="">{{uiLabels.about}}</a>
-    <a href="">FAQ</a>
-  </ResponsiveNav>
-  <h1>{{ uiLabels["sales-pitch"] }}</h1>
-  <h2>{{ uiLabels.subHeading }}</h2>
-  <label>
-    Write poll id: 
-    <input type="text" v-model="id">
-  </label>
-  <router-link v-bind:to="'/poll/'+id">{{uiLabels.participatePoll}}</router-link> -->
 </template>
 
 <script>
 import ResponsiveNav from '@/components/ResponsiveNav.vue';
+
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
 
@@ -53,7 +38,7 @@ export default {
       id: "",
       lang: localStorage.getItem("lang") || "en", //Use localstorage sparsly to have it responsive
       hideNav: true,
-      helpOpen: false
+      helpOpen: false,
     }
   },
   created: function () { //Created Hook, Before the content of the page is loaded the creaded hook is run
@@ -91,12 +76,23 @@ export default {
   position: absolute;
   top: 0;
   width: 100%;
-  margin-top: 4%;
+  margin-top: 1%;
 }
 
 .language-button {
   order: 1;
   margin-left: 4%;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  background-color: rgb(138, 211, 233);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0.5em;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid rgb(228, 63, 118);
 }
 
 .help-button {
@@ -110,7 +106,6 @@ export default {
   text-align: center;
   text-decoration: none;
   font-weight: bold;
-  display: inline-block;
   margin: 0.5em;
   cursor: pointer;
   border-radius: 8px;
@@ -129,54 +124,20 @@ export default {
   margin-top: 80vh;
   align-content: center;
 }
-/*   header {
-    background-color: gray;
+
+.rules{
+    width: 400px;
+    height: 500px;
+    padding: 20px;
+    margin: 100px auto;
+    background: rgb(244, 195, 195);
+    border-radius: 10px;
+  }
+
+  .backdrop{
+    position: fixed; 
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
     width: 100%;
-    display: grid;
-    grid-template-columns: 2em auto;
   }
-  .logo {
-    text-transform: uppercase;
-    letter-spacing: 0.25em;
-    font-size: 2.5rem;
-    color: white;
-    padding-top:0.2em;
-  }
-  .logo img {
-    height:2.5rem;
-    vertical-align: bottom;
-    margin-right: 0.5rem; 
-  }
-  .hamburger {
-    color:white;
-    width:1em;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding:0.5rem;
-    top:0;
-    left:0;
-    height: 2rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-
-@media screen and (max-width:50em) {
-  .logo {
-    font-size: 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .hamburger::before {
-    content: "☰";
-  }
-  .close::before {
-    content: "✕";
-  }
-  .hide {
-    left:-12em;
-  }
-} */
 </style>
-
