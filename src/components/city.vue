@@ -9,7 +9,7 @@ export default{
         city: Object
     },
     data:{
-        isSelected: false
+        isSelected: true,
     },
     methods: {
         select: function(){

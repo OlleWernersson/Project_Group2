@@ -36,10 +36,8 @@
     {{data}}
     <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
   </div>
+  </div>
   <div id="cities-map">
-    <MapComponent ref="Mapref">
-      <area shape="rect" coords="0, 0, 100, 100">
-    </MapComponent>
     <div v-for="city in cities"> {{city.first_letter}}</div>
     <City v-for="city in cities"
     v-bind:city="city"
@@ -51,62 +49,14 @@
 
 <script>
 import io from 'socket.io-client';
-import MapComponent from '../components/MapComponent.vue';
 import City from '../components/city.vue';
 import Map from '../components/MapComponent.vue';
 
 const socket = io("localhost:3000");
 
 export default {
-    name: 'CreateRouteView',
-    components: {
-      City
-    },
-    data: function () {
-        return {
-            lang: localStorage.getItem("lang") || "en",
-            pollId: "",
-            question: "",
-            answers: ["", ""],
-            questionNumber: 0,
-            data: {},
-            uiLabels: {},
-            cities: {}
-        };
-    },
-    created: function () {
-        this.id = this.$route.params.id;
-        socket.emit("pageLoaded", this.lang);
-        socket.emit("loadcities");
-        console.log("emits funkar")
-        socket.on("citiesLoaded", (cities) => {
-          this.cities = cities;
-          console.log(cities)
-        })
-        socket.on("init", (labels) => {
-            this.uiLabels = labels;
-        })
-        ;
-        socket.on("dataUpdate", (data) => this.data = data);
-        socket.on("pollCreated", (data) => this.data = data);
-    },
-    methods: {
-        createPoll: function () {
-            socket.emit("createPoll", { pollId: this.pollId, lang: this.lang });
-        },
-        addQuestion: function () {
-            socket.emit("addQuestion", { pollId: this.pollId, q: this.question, a: this.answers });
-        },
-        addAnswer: function () {
-            this.answers.push("");
-        },
-        runQuestion: function () {
-            socket.emit("runQuestion", { pollId: this.pollId, questionNumber: this.questionNumber });
-        }
-    },
-    components: { MapComponent, City }
+  components: { Map, City },
   name: 'CreateRouteView',
-  components: {Map},
   data: function () {
     return {
       lang: localStorage.getItem("lang") || "en",
@@ -116,14 +66,20 @@ export default {
       questionNumber: 0,
       data: {},
       uiLabels: {},
+      cities: {}
     }
   },
   created: function () {
     this.id = this.$route.params.id;
     socket.emit("pageLoaded", this.lang);
+    socket.emit("loadcities");
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
+    socket.on("citiesLoaded", (cities) => {
+          this.cities = cities;
+          console.log(cities)
+        })
     socket.on("dataUpdate", (data) =>
       this.data = data
     )
