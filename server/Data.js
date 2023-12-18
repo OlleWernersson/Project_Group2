@@ -100,6 +100,10 @@ Data.prototype.getAnswers = function(pollId) {
   }
   return {}
 }
+Data.prototype.getCities = function(){
+  const cities = readFileSync("./server/data/cities")
+  return JSON.parse(cities)
+}
 export { Data };
 
 

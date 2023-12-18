@@ -33,52 +33,67 @@
     <MapComponent ref="Mapref">
       <area shape="rect" coords="0, 0, 100, 100">
     </MapComponent>
+    <div v-for="city in cities"> {{city.first_letter}}</div>
+    <City v-for="city in cities"
+    v-bind:city="city"
+    v-bind:key="city.name"/>
+    
   </div>
 </template>
 
 <script>
 import io from 'socket.io-client';
 import MapComponent from '../components/MapComponent.vue';
+import City from '../components/city.vue';
 const socket = io("localhost:3000");
 
 export default {
-  name: 'CreateRouteView',
-  data: function () {
-    return {
-      lang: localStorage.getItem("lang") || "en",
-      pollId: "",
-      question: "",
-      answers: ["", ""],
-      questionNumber: 0,
-      data: {},
-      uiLabels: {},
-    }
-  },
-  created: function () {
-    this.id = this.$route.params.id;
-    socket.emit("pageLoaded", this.lang);
-    socket.on("init", (labels) => {
-      this.uiLabels = labels
-    })
-    socket.on("dataUpdate", (data) =>
-      this.data = data
-    )
-    socket.on("pollCreated", (data) =>
-      this.data = data)
-  },
-  methods: {
-    createPoll: function () {
-      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
+    name: 'CreateRouteView',
+    components: {
+      City
     },
-    addQuestion: function () {
-      socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
+    data: function () {
+        return {
+            lang: localStorage.getItem("lang") || "en",
+            pollId: "",
+            question: "",
+            answers: ["", ""],
+            questionNumber: 0,
+            data: {},
+            uiLabels: {},
+            cities: {}
+        };
     },
-    addAnswer: function () {
-      this.answers.push("");
+    created: function () {
+        this.id = this.$route.params.id;
+        socket.emit("pageLoaded", this.lang);
+        socket.emit("loadcities");
+        console.log("emits funkar")
+        socket.on("citiesLoaded", (cities) => {
+          this.cities = cities;
+          console.log(cities)
+        })
+        socket.on("init", (labels) => {
+            this.uiLabels = labels;
+        })
+        ;
+        socket.on("dataUpdate", (data) => this.data = data);
+        socket.on("pollCreated", (data) => this.data = data);
     },
-    runQuestion: function () {
-      socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
-    }
-  }
+    methods: {
+        createPoll: function () {
+            socket.emit("createPoll", { pollId: this.pollId, lang: this.lang });
+        },
+        addQuestion: function () {
+            socket.emit("addQuestion", { pollId: this.pollId, q: this.question, a: this.answers });
+        },
+        addAnswer: function () {
+            this.answers.push("");
+        },
+        runQuestion: function () {
+            socket.emit("runQuestion", { pollId: this.pollId, questionNumber: this.questionNumber });
+        }
+    },
+    components: { MapComponent, City }
 }
 </script>

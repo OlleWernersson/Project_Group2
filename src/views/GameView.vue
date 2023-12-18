@@ -1,9 +1,9 @@
 <template>
     <div id="wrapper">
-        <Map ref = "mapRef">
+        <MapComponent ref = "mapRef">
           <area shape="rect" coords="0, 0, 100, 100">  <!-- obs chat gpt lösning denna rad-->
-        </Map> 
-      <Question @correctAnswerClick = "sendButtonClicktoMap" id = "buttonWrapper" :question = "question"/> 
+        </MapComponent> 
+      <QuestionComponent @correctAnswerClick = "sendButtonClicktoMap" id = "buttonWrapper" :question = "question"/> 
       <!-- När Question  emittar ett correctAnswerClick (custom event) anropas metoden sendButtonClciktoMap
       i GameView -->
 
@@ -12,22 +12,23 @@
   
   <script>
   import QuestionComponent from '@/components/QuestionComponent.vue';
+  import MapComponent from '../components/MapComponent.vue';
   import io from 'socket.io-client';
   const socket = io("localhost:3000");
   export default {
     data() {
-      return {
-        question: 'This is a question, whats your answer?'
+        return {
+            question: 'This is a question, whats your answer?'
         };
     },
-
     methods: {
-      sendButtonClicktoMap() {
-        const myMap = this.$refs.mapRef;
-        myMap.moveMeForward(); 
-      }
-    }
-  };
+        sendButtonClicktoMap() {
+            const myMap = this.$refs.mapRef;
+            myMap.moveMeForward();
+        }
+    },
+    components: { MapComponent, QuestionComponent }
+};
   </script>
   
   <style>

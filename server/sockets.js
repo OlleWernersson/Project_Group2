@@ -42,6 +42,10 @@ function sockets(io, socket, data) {
   socket.on('resetAll', () => {
     data = new Data();
     data.initializeData();
+  });
+  socket.on('loadcities', function() {
+    socket.emit('citiesLoaded',  data.getCities())
+    console.log("citiesLoaded")
   })
  
 }
