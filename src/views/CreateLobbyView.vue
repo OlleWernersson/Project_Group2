@@ -18,7 +18,7 @@
           :class="{ 'selected': selectedRoute === buttonId }"
         >
         <img
-            :src="'../../public/img/polacks.jpg'"
+            :src="images[buttonId - 1]"
             alt="Route Image"
             style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
           />
@@ -67,6 +67,12 @@ export default {
       gameID: "",
       lang: localStorage.getItem("lang") || "en",
       selectedRoute: null,
+      images: [
+      "../../public/img/europakarta.jpg",
+      "../../public/img/afrika.jpg",
+      "../../public/img/sydamerika.jpg",
+  
+      ],
     };
   },
   created: function () {
@@ -78,8 +84,10 @@ export default {
     this.gameID = randomNumber;
   },
   methods: {
+ 
     selectRoute(routeId) {
       this.selectedRoute = routeId;
+
     },
   },
 };
@@ -121,10 +129,10 @@ export default {
   border-radius: 8px;
 }
 .route-button:hover {
-  border: 2px solid greenyellow;
+  border: 2px solid rgb(88, 234, 59);
 }
 .selected {
-  border: 2px solid greenyellow;
+  border: 2px solid rgb(88, 234, 59);
 }
 main {
   display: flex;

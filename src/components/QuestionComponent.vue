@@ -9,12 +9,10 @@
     <!-- Vill väl eventuellt skapa en for loop här, där lika många knappar som det finns svar lagrade 
     i frågan skapas, och ge dem texten av svarsalternativet. Kan man ge svaren true/false 
     för att signalera om dem är rätt eller fel? och välja clickevent baserat på det? Koden finns nedan -->
-
-    <!-- <p> {{ question }}</p>
+    
     <button v-for="a in question.a" v-on:click="answer(a)" v-bind:key="a">
       {{ a }}
     </button>
--->
   </div>
   </div>
 </template>
