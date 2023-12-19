@@ -1,4 +1,5 @@
 <template>
+    <p> HEJJ</p>
     
     <p class="citystyle" v-for="city in cities" :key="city.name">{{ city.name }}</p>
 
