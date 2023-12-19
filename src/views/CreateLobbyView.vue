@@ -18,9 +18,9 @@
           :class="{ 'selected': selectedRoute === buttonId }"
         >
         <img
-            :src="images[buttonId - 1]"
-            alt="Route Image"
-            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
+          :src="images[buttonId - 1]"
+          alt="Route Image"
+          style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
           />
         </button>
       </div>

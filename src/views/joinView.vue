@@ -18,7 +18,16 @@
     </label>
 
   </main>
-  <router-link id="join-lobby-button" class="main-button" :to="'/lobby/' + gameID" tag="button">{{ uiLabels.joinLobby}}</router-link>
+  <router-link
+    id="join-lobby-button"
+    class="main-button"
+    :to="'/lobby/' + gameID"
+    tag="button"
+    @click="joinLobby"
+  >
+    {{ uiLabels.joinLobby }}
+  </router-link>
+
 </template>
 
 <script>
@@ -57,9 +66,12 @@ export default {
     },
     selectPlayerPiece(color) {
     // Hanterar valet av spelpjäs
-    this.selectedPlayerPiece = color; 
+      this.selectedPlayerPiece = color; 
+    },
+    joinLobby() {
+      socket.emit('joinLobby', { lobbyID: this.gameID, playerName: this.playerName });
+    },
   },
-},
 };
 </script>
 

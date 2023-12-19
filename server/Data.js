@@ -18,6 +18,7 @@ function Data() {
     answers: [],
     currentQuestion: 0
   }
+  this.lobbies = {}
 }
  //Constructor initializes empty object with poll property 
 
@@ -104,6 +105,16 @@ Data.prototype.getCities = function(){
   const cities = readFileSync("./server/data/cities")
   return JSON.parse(cities)
 }
+Data.prototype.addPlayerToLobby = function(lobbyID, playerName) {
+  if (!this.lobbies[lobbyID]) {
+    this.lobbies[lobbyID] = [];
+  }
+  this.lobbies[lobbyID].push(playerName);
+}
+Data.prototype.getPlayers = function(lobbyID) {
+  return this.lobbies[lobbyID]
+}
+
 export { Data };
 
 

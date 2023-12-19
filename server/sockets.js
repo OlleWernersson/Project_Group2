@@ -47,6 +47,19 @@ function sockets(io, socket, data) {
     socket.emit('citiesLoaded',  data.getCities())
     console.log("citiesLoaded")
   })
+  socket.on('joinLobby', function (d) {
+    const { lobbyID, playerName } = d;
+  
+    // Add the player to the lobby using your data function
+    data.addPlayerToLobby(lobbyID, playerName);
+  
+    // Emit an update to all clients in the lobby
+    io.to(lobbyID).emit('lobbyUpdate', data.getPlayers(lobbyID));
+  
+    // Emit an update to the client who joined the lobby
+    io.to(socket.id).emit('updatePlayerList', data.getPlayers(lobbyID));
+  });
+  
  
 }
 
