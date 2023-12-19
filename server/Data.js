@@ -108,10 +108,24 @@ Data.prototype.getCities = function(){
 Data.prototype.addPlayerToLobby = function(lobbyID, playerName) {
   if (!this.lobbies[lobbyID]) {
     this.lobbies[lobbyID] = [];
+    let player = {
+      name: playerName,
+      answers: []
+    }
+    this.lobbies[lobbyID].push(player);
+    console.log(playerName + " joined lobby " + lobbyID)
   }
-  this.lobbies[lobbyID].push(playerName);
+  else {
+    let player = {
+      name: playerName,
+      answers: []
+    }
+    this.lobbies[lobbyID].push(player);
+    console.log(playerName + " joined lobby " + lobbyID)
+  }
 }
 Data.prototype.getPlayers = function(lobbyID) {
+  console.log(this.lobbies[lobbyID])
   return this.lobbies[lobbyID]
 }
 

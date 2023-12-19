@@ -1,18 +1,19 @@
 <template>
   <header>
     <h1>{{ uiLabels.lobby }}</h1>
-    <Id-box :id="id"></Id-box>
+    <Id-box :id="lobbyID"></Id-box>
   </header>
 
   <player-list :players="playerList" />
+  {{ playerList }}
   <router-link
-      id="start-game-button"
-      class="main-button"
-      :to="'/game/' + id"
-      tag="button"
-    >
-      {{ uiLabels.startGame }}
-    </router-link>
+    id="start-game-button"
+    class="main-button"
+    :to="'/game/' + lobbyID"
+    tag="button"
+  >
+    {{ uiLabels.startGame }}
+  </router-link>
 </template>
 
 <script>
@@ -23,27 +24,29 @@ import IdBox from '@/components/id-box.vue';
 const socket = io("localhost:3000");
 
 export default {
-  name: 'LobbyView',
+  name: 'lobbyView',
   components: {
     PlayerList,
     IdBox,
   },
-  props: ['id'],
   data: function () {
     return {
       uiLabels: {},
-      lobbyID: "",
       lang: localStorage.getItem("lang") || "en",
       playerList: [],
+      lobbyID:""
     };
   },
   created: function () {
+    this.lobbyID = this.$route.params.id
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
       this.uiLabels = labels;
     });
     socket.on("updatePlayerList", (players) => {
       this.playerList = players;
+      console.log("playerList Updated!")
+      console.log(this.playerList)
     });
   },
   methods: {},

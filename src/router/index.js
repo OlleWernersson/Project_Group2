@@ -33,13 +33,11 @@ const router = createRouter({
       path: '/lobby/:id',
       name: 'lobbyView',
       component: () => import('../views/lobbyView.vue'),
-      props: true,
     },
     {
       path: '/game/:id',
       name: 'GameView',
       component: () => import('../views/GameView.vue'),
-      props: true,
     },
     {
       path: '/createlobby/',

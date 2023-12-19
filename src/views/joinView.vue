@@ -105,36 +105,36 @@ input:focus {
 }
 
 .player-pieces-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    border: 2px solid pink;
-    border-radius: 8px;
-    width: 300px;
-    font-size: 1.5em;
-    margin-top: 10px;
-    background-color:floralwhite;
-    outline: none; 
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 2px solid pink;
+  border-radius: 8px;
+  width: 300px;
+  font-size: 1.5em;
+  margin-top: 10px;
+  background-color:floralwhite;
+  outline: none; 
+}
 
-  .choose-color-text {
-    color: rgb(164, 161, 161);
+.choose-color-text {
+  color: rgb(164, 161, 161);
 }
 .player-pieces {
-    display: flex;
-    margin-top: 2px;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 20px;
+}
 
-  .player-piece {
-    margin-right: 10px;
-    cursor: pointer;
-  }
+.player-piece {
+  margin-right: 10px;
+  cursor: pointer;
+}
 
-  .piece-circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-  }
+.piece-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 </style>
