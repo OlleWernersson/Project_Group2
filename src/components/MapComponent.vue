@@ -1,25 +1,23 @@
 <template>
   <div id="map">
       <div id="dots" :style="{ left: dotLeft + 'px', top: dotTop + 'px' }">T</div>
-      <div id="cities" v-for="city in selectedcities" :style="{left: city.left + 'px',top:city.top  + 'px'}"> {{ city.Bletter }}</div>
+
+      <p id="cities" v-for="city in cities" :key="city.name" :style="{left: city.left + 'px',top:city.top  + 'px'}" >{{ city.name }} </p>
+
     </div>
+
 </template>
 
 <script>
+
+import City from '../components/CityComponent.vue';
   export default {
+    props:{
+        cities: Object
+    },
       data() {
           return {
-          dotTop: 100,
-          dotLeft: 500,
-          displayWrongSign: false,
-          cityLeft: 500,
-          cityTop: 200,
-          selectedcities:[
-              {top:500, left:200, Bletter: 'A'},
-              {top:100, left:200, Bletter: 'B'},
-              {top:200, left:500, Bletter: 'C'}
-          ],
-          currentCity: 0,
+          displayWrongSign: false
           }
       },
 
@@ -52,6 +50,10 @@
   width: 35px;
 }
 #cities{
-  position:absolute;
+  position: absolute;
+}
+
+#myCity {
+  border: 10px;
 }
 </style>

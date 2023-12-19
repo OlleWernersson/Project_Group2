@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-      <Map ref = "mapRef">
+      <Map ref = "mapRef" :cities = "cities">
         <area shape="rect" coords="0, 0, 100, 100">  <!-- obs chat gpt lösning denna rad-->
       </Map> 
     <Question @correctAnswerClick = "sendButtonClicktoMap" id = "buttonWrapper" :question = "question"/> 
