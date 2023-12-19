@@ -18,6 +18,7 @@
   "chooseRoute": "Choose Route",
   "createNewRoute": "Create New Route",
   "rules": "Hello and welcome to MapQuiz! Having trouble getting started with the game? Here are the rules! Scroll down to find common questions from our users. Choose either Join Game or Create Game to get started. If you choose Create Game you get to create your own route for you and your players. Alternatively you can choose a route from our ready-made routes. After that, you'll enter the lobby and be given a Game ID. That way the other players can enter your game using that Game-ID after clicking Join Game. In the lobby, you should be able to see all the players who have joined your game and the game names they've chosen. When everyone who wants to play has joined, press Start Game The goal of the game is to complete the route first. Each journey has different stops, and to proceed to the next stop, the player must answer a question correctly. The player who answers all of the questions quickly and completes the route wins. On the map to the left, you can see which stop your fellow players are on. If a player answers a question incorrectly, they receive a time penalty and then a new question and a chance to continue. Let the race begin!",
-  "ruleheader": "Game rules"
+  "ruleheader": "Game rules",
+  "choosecolor": "Choose your player color!"
 
 }
