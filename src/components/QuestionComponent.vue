@@ -30,10 +30,9 @@ export default {
 
   methods: {
      checkCorrectAnswer(index) {
-       console.log("nu är vi i checkCorrectAnswer")
        if (this.question.c === index) {
-         this.wrongOrRight="RÄTT SVAR"
-        //this.$emit('correctAnswerClick') 
+          this.wrongOrRight="RÄTT SVAR"
+          this.$emit('correctAnswerClick') 
 
        }
        else {this.wrongOrRight="FEL SVAR"}

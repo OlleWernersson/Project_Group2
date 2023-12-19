@@ -25,7 +25,12 @@ function Data() {
      {q: "How many people live in Uppsala?",
      a: ["1", "2", "3", "4"],
      c:3
-      }
+      },
+
+      {q: "Vem är sveriges monark?",
+      a: ["Emma", "Pappa", "Mamma", "Mormor"],
+      c:2
+       }
     ],
     answers: [],
     currentQuestion: 0,

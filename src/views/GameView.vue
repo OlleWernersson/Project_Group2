@@ -3,12 +3,10 @@
       <Map ref = "mapRef" :cities = "cities">
         <area shape="rect" coords="0, 0, 100, 100">  <!-- obs chat gpt lösning denna rad-->
       </Map> 
-    <Question @correctAnswerClick = "sendButtonClicktoMap" id = "buttonWrapper" :question = "question"/> 
+    <Question @correctAnswerClick = "getNextQuestion" id = "buttonWrapper" :question = "question"/> 
+    <!-- <Question @correctAnswerClick = "sendButtonClicktoMap" id = "buttonWrapper" :question = "question"/> -->
     <!-- När Question  emittar ett correctAnswerClick (custom event) anropas metoden sendButtonClciktoMap
     i GameView -->
- <button @click="getNextQuestion(index)">
-   Get next question
- </button>
 
   </div>
 
@@ -66,7 +64,6 @@ export default {
 
     getNextQuestion: function(index) {    
       this.index++
-      console.log("getNextQuestion i GameView med index:", this.index)
       socket.emit("getNextQuestion",{pollId: this.pollId, index: this.index})
     }
   }

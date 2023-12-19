@@ -20,7 +20,6 @@ function sockets(io, socket, data) {
 
   socket.on('getNextQuestion', function(d) {
     let nextIndex=d.index+1;
-    console.log("getNextQuestion i sockets med index: ", d.index)
     socket.emit('sendNextQuestion', data.polls[d.pollId].questions[nextIndex])
       });
 
