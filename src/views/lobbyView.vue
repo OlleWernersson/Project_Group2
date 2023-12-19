@@ -45,11 +45,13 @@ export default {
     socket.on("init", (labels) => {
       this.uiLabels = labels;
     });
+    
     socket.on("updatePlayerList", (players) => {
       this.playerList = players;
       
       console.log(this.playerList)
     });
+    socket.emit("enterlobby",this.gameID)
     console.log("playerList Updated! nu är vi tillbaks i lobbyview")
   },
   methods: {},

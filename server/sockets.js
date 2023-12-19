@@ -47,13 +47,19 @@ function sockets(io, socket, data) {
   socket.on('loadcities', function() {
     socket.emit('citiesLoaded',  data.getCities())
     console.log("citiesLoaded")
-  })
+  });
   socket.on('joinLobby', function (d) {
     data.addPlayerToLobby(d.gameID, d.playerName);
     let players = data.getPlayers(d.gameID)
     console.log(players, "hallå från socket")
     io.to(d.gameID).emit('updatePlayerList', players);
   });
+  socket.on('enterlobby', function(gameID){
+    console.log("hej")
+    let players = data.getPlayers(gameID)
+    io.to(gameID).emit('updatePlayerList', players);
+  })
+
   
  
 }
