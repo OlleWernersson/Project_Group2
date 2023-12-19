@@ -24,6 +24,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('joinPoll', function(pollId) {
+    console.log("nu har vi joinat")
     socket.join(pollId);
     socket.emit('newQuestion', data.getQuestion(pollId))
     socket.emit('dataUpdate', data.getAnswers(pollId));
@@ -50,8 +51,8 @@ function sockets(io, socket, data) {
   socket.on('joinLobby', function (d) {
     data.addPlayerToLobby(d.gameID, d.playerName);
     let players = data.getPlayers(d.gameID)
-    console.log(players)
-    io.to(gameID).emit('updatePlayerList', players);
+    console.log(players, "hallå från socket")
+    io.to(d.gameID).emit('updatePlayerList', players);
   });
   
  

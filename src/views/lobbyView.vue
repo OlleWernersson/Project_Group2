@@ -33,12 +33,13 @@ export default {
     return {
       uiLabels: {},
       lang: localStorage.getItem("lang") || "en",
-      playerList: [],
+      playerList: {},
       gameID:""
     };
   },
   created: function () {
     this.gameID = this.$route.params.id
+    console.log(this.gameID)
     socket.emit("joinPoll", this.gameID)
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
@@ -46,9 +47,10 @@ export default {
     });
     socket.on("updatePlayerList", (players) => {
       this.playerList = players;
-      console.log("playerList Updated!")
+      
       console.log(this.playerList)
     });
+    console.log("playerList Updated! nu är vi tillbaks i lobbyview")
   },
   methods: {},
 };

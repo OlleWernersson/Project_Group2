@@ -42,7 +42,7 @@ Data.prototype.createPoll = function(pollID, lang="en") {
     poll.answers = [];
     poll.currentQuestion = 0;
     poll.participants = [];              
-    this.polls[pollId] = poll;
+    this.polls[pollID] = poll;
     console.log("poll created", pollId, poll);
   }
   return this.polls[pollId];
@@ -107,7 +107,7 @@ Data.prototype.getCities = function(){
   const cities = readFileSync("./server/data/cities")
   return JSON.parse(cities)
 }
-Data.prototype.addPlayerToLobby = function(gameid, playerName) {
+Data.prototype.addPlayerToLobby = function(gameID, playerName) {
   // if (!this.lobbies[lobbyID]) {
   //   this.lobbies[lobbyID] = [];
   //   let player = {
@@ -138,12 +138,12 @@ Data.prototype.addPlayerToLobby = function(gameid, playerName) {
 
   }
 }
-Data.prototype.getPlayers = function(gameID) {
+Data.prototype.getPlayers = function(pollID) {
   // console.log(this.lobbies[lobbyID])
   // return this.lobbies[lobbyID]
 
-  const poll = this.polls[gameID];
-  console.log(poll, "hallå från getplayers",gameID)
+  const poll = this.polls[pollID];
+  console.log(poll, "hallå från getplayers",pollID)
 
   if (typeof poll !== 'undefined') {
     console.log(poll.participants, "hallå")
