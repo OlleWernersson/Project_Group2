@@ -6,6 +6,10 @@
     <Question @correctAnswerClick = "sendButtonClicktoMap" id = "buttonWrapper" :question = "question"/> 
     <!-- När Question  emittar ett correctAnswerClick (custom event) anropas metoden sendButtonClciktoMap
     i GameView -->
+ <button @click="getNextQuestion(index)">
+   Get next question
+ </button>
+
   </div>
 
   <City :cities = "cities" > </City>
@@ -24,18 +28,49 @@ export default {
   components: {Map, Question, City},
   data() {
     return {
-      question: 'This is a question, whats your answer?',
-      cities: cities
+        question: {       
+        q: "",       
+        a: [],       
+        c: null,      
+      },
+      cities: cities,
+      index:null
       };
+
   },
+
+  created: function() {
+    this.pollId = this.$route.params.id
+    socket.emit('joinPoll', this.pollId)
+    socket.on("newQuestion", q =>
+    this.question = q
+    )
+
+   socket.on("dataUpdate", answers =>
+     this.submittedAnswers = answers
+     )
+
+    socket.on("pollCreated", (data) =>
+     this.data = data
+     )
+
+    socket.on("sendNextQuestion", q =>
+     this.question = q)
+ },
 
   methods: {
     sendButtonClicktoMap() {
       const myMap = this.$refs.mapRef;
       myMap.moveMeForward(); 
+    },
+
+    getNextQuestion: function(index) {    
+      this.index++
+      console.log("getNextQuestion i GameView med index:", this.index)
+      socket.emit("getNextQuestion",{pollId: this.pollId, index: this.index})
     }
   }
-};
+  };
 </script>
 
 <style>

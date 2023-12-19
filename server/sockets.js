@@ -18,6 +18,12 @@ function sockets(io, socket, data) {
     socket.emit('dataUpdate', data.getAnswers(d.pollId));
   });
 
+  socket.on('getNextQuestion', function(d) {
+    let nextIndex=d.index+1;
+    console.log("getNextQuestion i sockets med index: ", d.index)
+    socket.emit('sendNextQuestion', data.polls[d.pollId].questions[nextIndex])
+      });
+
   socket.on('editQuestion', function(d) {
     data.editQuestion(d.pollId, d.index, {q: d.q, a: d.a});
     socket.emit('questionEdited', data.getAllQuestions(d.pollId));

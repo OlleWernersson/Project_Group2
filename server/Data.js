@@ -9,15 +9,28 @@ function Data() {
     lang: "en",
     questions: [
       {q: "How old are you?", 
-       a: ["0-13", "14-18", "19-25", "26-35", "36-45","45-"]
+       a: ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+       c:1
       },
       {q: "How much do you enjoy coding?", 
-       a: ["1", "2", "3", "4", "5"]
+       a: ["1", "2", "3", "4", "5"],
+       c: 2
+      }, 
+
+      {q: "How angry are you?",
+      a: ["wrong answer", "right answer", "wrong answer"],
+      c:1,
+      },
+
+     {q: "How many people live in Uppsala?",
+     a: ["1", "2", "3", "4"],
+     c:3
       }
     ],
     answers: [],
     currentQuestion: 0,
     participants:[],
+    c:null
   }
   this.lobbies = {}
 }

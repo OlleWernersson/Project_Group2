@@ -49,7 +49,7 @@
 
 <script>
 import io from 'socket.io-client';
-import City from '../components/city.vue';
+import City from '../components/CityComponent.vue';
 import Map from '../components/MapComponent.vue';
 
 const socket = io("localhost:3000");

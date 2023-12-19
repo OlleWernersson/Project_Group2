@@ -1,23 +1,20 @@
 <template>
   <div id = wrapper>
-  <div id = question> {{ question }} </div>
+  <div id = question> {{question.q}} </div>
+  {{wrongOrRight}}
   <div id = buttonWrapper>
-    <button @click="correctAnswerClicked"> Correct Answer!</button>
-    <button @click="wrongAnswerClicked"> Wrong Answer</button>
-    <button @click="wrongAnswerClicked"> Wrong Answer</button>
-    
+  <button v-for="(a,index) in question.a" v-bind:key="index" @click="checkCorrectAnswer(index)"> 
+   {{a}} </button>
+
     <!-- Vill väl eventuellt skapa en for loop här, där lika många knappar som det finns svar lagrade 
     i frågan skapas, och ge dem texten av svarsalternativet. Kan man ge svaren true/false 
     för att signalera om dem är rätt eller fel? och välja clickevent baserat på det? Koden finns nedan -->
-    
-    <button v-for="a in question.a" v-on:click="answer(a)" v-bind:key="a">
-      {{ a }}
-    </button>
   </div>
   </div>
 </template>
 
 <script>
+import { Socket } from 'socket.io-client'
 export default {
   name: 'QuestionComponent',
   props: {
@@ -25,17 +22,26 @@ export default {
     answers: Object
   }, 
 
+    data: function () {  
+     return {    
+     wrongOrRight:"",
+     }
+  },
+
   methods: {
-      correctAnswerClicked() {
-        this.$emit('correctAnswerClick')  //säger att denna komponent emittar ett custom event "correctAnswerClcik"    
-      },
-  
-      wrongAnswerClicked() {
-        console.log("You clicked the wrong answer!");
-        
-      },
-    },
-  
+     checkCorrectAnswer(index) {
+       console.log("nu är vi i checkCorrectAnswer")
+       if (this.question.c === index) {
+         this.wrongOrRight="RÄTT SVAR"
+        //this.$emit('correctAnswerClick') 
+
+       }
+       else {this.wrongOrRight="FEL SVAR"}
+       }
+     }
+   }
+
+
   /*,
   emits: ["answer"],
   methods: {
@@ -43,7 +49,6 @@ export default {
       this.$emit("answer", answer);
     } 
   }*/
-}
 </script>
 
 <style scoped> 
