@@ -16,7 +16,8 @@ function Data() {
       }
     ],
     answers: [],
-    currentQuestion: 0
+    currentQuestion: 0,
+    participants:[],
   }
   this.lobbies = {}
 }
@@ -33,13 +34,14 @@ Data.prototype.getUILabels = function (lang = "en") {
   return JSON.parse(labels);
 }
 
-Data.prototype.createPoll = function(pollId, lang="en") {
+Data.prototype.createPoll = function(pollID, lang="en") {
   if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
     poll.lang = lang;  
     poll.questions = [];
     poll.answers = [];
-    poll.currentQuestion = 0;              
+    poll.currentQuestion = 0;
+    poll.participants = [];              
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
@@ -105,28 +107,49 @@ Data.prototype.getCities = function(){
   const cities = readFileSync("./server/data/cities")
   return JSON.parse(cities)
 }
-Data.prototype.addPlayerToLobby = function(lobbyID, playerName) {
-  if (!this.lobbies[lobbyID]) {
-    this.lobbies[lobbyID] = [];
-    let player = {
+Data.prototype.addPlayerToLobby = function(gameid, playerName) {
+  // if (!this.lobbies[lobbyID]) {
+  //   this.lobbies[lobbyID] = [];
+  //   let player = {
+  //     name: playerName,
+  //     answers: []
+  //   }
+  //   this.lobbies[lobbyID].push(player);
+  //   console.log(playerName + " joined lobby " + lobbyID)
+  // }
+  // else {
+  //   let player = {
+  //     name: playerName,
+  //     answers: []
+  //   }
+  //   this.lobbies[lobbyID].push(player);
+  //   console.log(playerName + " joined lobby " + lobbyID)
+  // }
+
+  const poll = this.polls[gameID];
+  console.log ("new user added to ", gameID, playerName)
+  if (typeof poll !== 'undefined') {
+    let participant = {
       name: playerName,
-      answers: []
+      //color: playerColor,
     }
-    this.lobbies[lobbyID].push(player);
-    console.log(playerName + " joined lobby " + lobbyID)
-  }
-  else {
-    let player = {
-      name: playerName,
-      answers: []
-    }
-    this.lobbies[lobbyID].push(player);
-    console.log(playerName + " joined lobby " + lobbyID)
+
+  poll.participants.push(participant)
+
   }
 }
-Data.prototype.getPlayers = function(lobbyID) {
-  console.log(this.lobbies[lobbyID])
-  return this.lobbies[lobbyID]
+Data.prototype.getPlayers = function(gameID) {
+  // console.log(this.lobbies[lobbyID])
+  // return this.lobbies[lobbyID]
+
+  const poll = this.polls[gameID];
+  console.log(poll, "hallå från getplayers",gameID)
+
+  if (typeof poll !== 'undefined') {
+    console.log(poll.participants, "hallå")
+    return poll.participants
+  }
+  return []
 }
 
 export { Data };

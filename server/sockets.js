@@ -48,12 +48,10 @@ function sockets(io, socket, data) {
     console.log("citiesLoaded")
   })
   socket.on('joinLobby', function (d) {
-    
-    const { lobbyID, playerName } = d;
-    socket.join(lobbyID)
-    data.addPlayerToLobby(lobbyID, playerName);
-    let players = data.getPlayers(lobbyID)
-    io.to(lobbyID).emit('updatePlayerList', players);
+    data.addPlayerToLobby(d.gameID, d.playerName);
+    let players = data.getPlayers(d.gameID)
+    console.log(players)
+    io.to(gameID).emit('updatePlayerList', players);
   });
   
  

@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>{{ uiLabels.lobby }}</h1>
-    <Id-box :id="lobbyID"></Id-box>
+    <Id-box :id="gameID"></Id-box>
   </header>
 
   <player-list :players="playerList" />
@@ -9,7 +9,7 @@
   <router-link
     id="start-game-button"
     class="main-button"
-    :to="'/game/' + lobbyID"
+    :to="'/game/' + gameID"
     tag="button"
   >
     {{ uiLabels.startGame }}
@@ -34,11 +34,12 @@ export default {
       uiLabels: {},
       lang: localStorage.getItem("lang") || "en",
       playerList: [],
-      lobbyID:""
+      gameID:""
     };
   },
   created: function () {
-    this.lobbyID = this.$route.params.id
+    this.gameID = this.$route.params.id
+    socket.emit("joinPoll", this.gameID)
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
       this.uiLabels = labels;

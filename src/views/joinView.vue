@@ -56,7 +56,7 @@ export default {
   methods: {
     handleGameIDInput() {
       // tar bort icke siffror
-      this.gameID = this.gameID.replace(/\D/g, '');
+      //this.gameID = this.gameID.replace(/\D/g, '');
       // bestämmer hur lång ID är
       this.gameID = this.gameID.slice(0, 4);
     },
@@ -69,7 +69,7 @@ export default {
       this.selectedPlayerPiece = color; 
     },
     joinLobby() {
-      socket.emit('joinLobby', { lobbyID: this.gameID, playerName: this.playerName });
+      socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName });
     },
   },
 };
