@@ -1,9 +1,8 @@
 <template>
-  <div class="player-list">
-    <div v-for="player in players" :key="player.id" class="player-box">
+
+    <div v-for="player in players" :key="player.id" class="playerBox" :style="{ backgroundColor: player.color }" >
       {{ player.name }}
     </div>
-  </div>
 </template>
 
 <script>
@@ -15,13 +14,15 @@ export default {
 </script>
 
 <style scoped>
-.player-list {
-  margin-top: 20px;
+.playerBox {
+  padding: 10px;
+  border: 2px solid pink;
+  border-radius: 30px;
+  width: 300px;
+  font-size: 1.5em;
+  margin-top: 10px;
+  outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
+
 }
 
-.player-box {
-  padding: 10px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
 </style>

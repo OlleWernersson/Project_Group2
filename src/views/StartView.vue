@@ -15,7 +15,7 @@
     </div>
     </div>
     <section class="mainButtons">
-      <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
+      <router-link class="main-button" to="/gameID/">{{uiLabels.joinGame}}</router-link>
       <router-link class="main-button" to="/createLobby/">{{uiLabels.createGame}}</router-link>
     </section>
   </main>

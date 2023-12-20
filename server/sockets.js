@@ -54,7 +54,7 @@ function sockets(io, socket, data) {
     console.log("citiesLoaded")
   });
   socket.on('joinLobby', function (d) {
-    data.addPlayerToLobby(d.gameID, d.playerName);
+    data.addPlayerToLobby(d.gameID, d.playerName, d.playerColor);
     let players = data.getPlayers(d.gameID)
     console.log(players, "hallå från socket")
     io.to(d.gameID).emit('updatePlayerList', players);

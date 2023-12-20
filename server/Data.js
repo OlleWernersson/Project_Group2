@@ -125,7 +125,7 @@ Data.prototype.getCities = function(){
   const cities = readFileSync("server/data/cities.json")
   return JSON.parse(cities)
 }
-Data.prototype.addPlayerToLobby = function(gameID, playerName) {
+Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColor) {
   // if (!this.lobbies[lobbyID]) {
   //   this.lobbies[lobbyID] = [];
   //   let player = {
@@ -149,11 +149,9 @@ Data.prototype.addPlayerToLobby = function(gameID, playerName) {
   if (typeof poll !== 'undefined') {
     let participant = {
       name: playerName,
-      //color: playerColor,
+      color: playerColor,
     }
-
   poll.participants.push(participant)
-
   }
 }
 Data.prototype.getPlayers = function(pollID) {

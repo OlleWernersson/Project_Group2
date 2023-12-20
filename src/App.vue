@@ -7,6 +7,18 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Varela+Round&display=swap');
+
+main, h1, h2, h3 {
+font-family: 'Fredoka', sans-serif;
+font-family: 'Varela Round', sans-serif;
+
+}
+
+main, label {
+font-family: 'Varela Round', sans-serif;
+
+}
 .main-button { /* Alla Veiws kan använda denna knapp style*/
   display: inline-block;
   padding: 1em 2em;
