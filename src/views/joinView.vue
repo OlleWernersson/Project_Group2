@@ -58,7 +58,7 @@ export default {
       // tar bort icke siffror
       //this.gameID = this.gameID.replace(/\D/g, '');
       // bestämmer hur lång ID är
-      this.gameID = this.gameID.slice(0, 4);
+     // this.gameID = this.gameID.slice(0, 4);
     },
     handleNameInput() {
       // Om vi vill ha en limit på spelarnamn
