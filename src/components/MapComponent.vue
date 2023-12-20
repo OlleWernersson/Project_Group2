@@ -33,7 +33,7 @@ import City from '../components/CityComponent.vue';
 
 <style scoped>
 #map {
-  background-image: url('../../public/img/world.png');
+  background-image: url('../../public/img/europakarta.jpg');
   background-position: center center; 
   background-size: cover; 
   width: 800px;

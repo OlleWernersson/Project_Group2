@@ -54,7 +54,6 @@ Data.prototype.getUILabels = function (lang = "en") {
 
 Data.prototype.createPoll = function(pollID, lang="en") {
   if (typeof this.polls[pollID] === "undefined") {
-  if (typeof this.polls[pollID] === "undefined") {
     let poll = {};
     poll.lang = lang;  
     poll.questions = [];
@@ -63,9 +62,7 @@ Data.prototype.createPoll = function(pollID, lang="en") {
     poll.participants = [];              
     this.polls[pollID] = poll;
     console.log("poll created", pollID, poll);
-    console.log("poll created", pollID, poll);
   }
-  return this.polls[pollID];
   return this.polls[pollID];
 }
 
@@ -125,7 +122,7 @@ Data.prototype.getAnswers = function(pollId) {
   return {}
 }
 Data.prototype.getCities = function(){
-  const cities = readFileSync('server/data/cities.json')
+  const cities = readFileSync("server/data/cities.json")
   return JSON.parse(cities)
 }
 Data.prototype.addPlayerToLobby = function(gameID, playerName) {
