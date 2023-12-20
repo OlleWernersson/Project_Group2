@@ -14,7 +14,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('addQuestion', function(d) {
-    data.addQuestion(d.pollId, {q: d.q, a: d.a});
+    data.addQuestion(d.pollId, {q: d.q, a: d.a, c:d.c});
     socket.emit('dataUpdate', data.getAnswers(d.pollId));
   });
 
