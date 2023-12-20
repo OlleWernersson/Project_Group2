@@ -18,12 +18,15 @@
       <input type="text" v-model="question">
       <div>
         Answers:
-        <input v-for="(_, i) in answers" 
-               v-model="answers[i]" 
-               v-bind:key="'answer'+i">
-        <button v-on:click="addAnswer">
-          Add answer alternative
-        </button>
+        selected correct answer index: {{c}}       
+        <input v-for="(_, i) in answers"  v-model="answers[i]"  v-bind:key="'answer'+i">   
+        <input type = "radio" v-for="(_, i) in answers"  v-bind:key="i"  name="check"   @change="selectedAnswerIndex(i)">       
+        <button v-on:click="addAnswer">         
+          Add answer alternative       
+          </button>       
+          <button v-on:click="removeAnswer">  
+            Remove answer alternative  
+          </button>
       </div>
     </div>
     <button v-on:click="addQuestion">
@@ -44,7 +47,6 @@
     v-bind:key="city.name"/>
     
   </div>
-
 </template>
 
 <script>
@@ -66,7 +68,8 @@ export default {
       questionNumber: 0,
       data: {},
       uiLabels: {},
-      cities: {}
+      cities: {},
+      c:null
     }
   },
   created: function () {
@@ -96,8 +99,17 @@ export default {
     addAnswer: function () {
       this.answers.push("");
     },
+
+    removeAnswer: function() {
+      this.answers.pop("")
+    },
+
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
+    }, 
+
+    selectedAnswerIndex: function (i) {
+      this.c=i
     }
   }
 }
