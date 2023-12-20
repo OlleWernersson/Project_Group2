@@ -37,7 +37,11 @@
         to='/create/'
         tag="button"
       >
-        +
+      <img
+          src="../../public/img/world.png"
+          alt="Route Image"
+          style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
+          />
       </router-link>
     </section>
 
@@ -68,9 +72,9 @@ export default {
       lang: localStorage.getItem("lang") || "en",
       selectedRoute: null,
       images: [
-      "../../public/img/europakarta.jpg",
-      "../../public/img/afrika.jpg",
-      "../../public/img/sydamerika.jpg",
+      "../../public/img/europe.jpg",
+      "../../public/img/africa.jpg",
+      "../../public/img/southamerica.png",
   
       ],
     };
