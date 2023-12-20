@@ -1,14 +1,12 @@
-<template>
-    <p> HEJJ</p>
-    
-    <p class="citystyle" v-for="city in cities" :key="city.name">{{ city.name }}</p>
+<template>    
+    <p class="citystyle" :style="{left: city?.left + 'px',top:city?.top  + 'px'}" >{{ city?.name }}</p>
 
 </template>
 
 <script>
 export default{
     props:{
-        cities: Object
+        city: Object
     },
     data() {
         return {
@@ -28,6 +26,7 @@ export default{
     .citystyle{
         background-color: aqua;
         border-radius: 10px;
+        position: absolute;
     }
 </style>
 

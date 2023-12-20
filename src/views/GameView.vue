@@ -1,7 +1,8 @@
 <template>
   <div id="wrapper">
       <Map ref = "mapRef" :cities = "cities">
-        <area shape="rect" coords="0, 0, 100, 100">  <!-- obs chat gpt lösning denna rad-->
+        <City v-for="city in cities" :key="city.name" :city = "city"> 
+         </City> <!-- city läggs i slot i mapcomponent -->
       </Map> 
     <Question @correctAnswerClick = "getNextQuestion" id = "buttonWrapper" :question = "question"/> 
     <!-- <Question @correctAnswerClick = "sendButtonClicktoMap" id = "buttonWrapper" :question = "question"/> -->

@@ -1,8 +1,6 @@
 <template>
   <div id="map">
-      <div id="dots" :style="{ left: dotLeft + 'px', top: dotTop + 'px' }">T</div>
-
-      <p id="cities" v-for="city in cities" :key="city.name" :style="{left: city.left + 'px',top:city.top  + 'px'}" >{{ city.name }} </p>
+      <slot>  </slot>
 
     </div>
 
