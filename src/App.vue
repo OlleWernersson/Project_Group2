@@ -22,14 +22,11 @@ import { RouterView } from 'vue-router'
   border: 2px solid pink;
 }
 
-html, body {
+html {
   margin: 0;
   padding: 0;
   height: 100%;
-}
-
-body {
   background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
-  overflow: hidden; 
+
 }
 </style>
