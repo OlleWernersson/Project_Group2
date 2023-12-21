@@ -1,0 +1,57 @@
+[
+  {
+      "top":500,
+      "left":500,
+      "name":"nairobi",
+      "first_letter": "n",
+      "questions":[{"q": "who lives in nairobi?", 
+                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+                    "c":1
+                  },
+                  {"q": "when did nairobi exist?", 
+                   "a": ["1", "2", "3", "4", "5"],
+                   "c": 2
+                  }, 
+                  {"q": "why is nairobi?",
+                   "a": ["wrong answer", "right answer", "wrong answer"],
+                   "c":1
+                  }]
+
+  },
+  {
+     "top": 500,
+     "left": 200,
+     "name": "kampala",
+     "first_letter": "k",
+     "questions":[{"q": "who lives in kampala?", 
+                   "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+                   "c":1
+                  },
+                  {"q": "when did kampala exist?", 
+                   "a": ["1", "2", "3", "4", "5"],
+                   "c": 2
+                  }, 
+                  {"q": "why is kampala?",
+                   "a": ["wrong answer", "right answer", "wrong answer"],
+                   "c":1
+                  }]
+  },
+  {
+      "top":200,
+      "left": 500,
+      "name": "juba",
+      "first_letter": "j",
+      "questions":[{"q": "who lives in juba?", 
+                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+                    "c":1
+                  },
+                  {"q": "when did juba exist?", 
+                   "a": ["1", "2", "3", "4", "5"],
+                   "c": 2
+                  }, 
+                  {"q": "why is juba?",
+                   "a": ["wrong answer", "right answer", "wrong answer"],
+                   "c":1
+                  }]
+  }
+]

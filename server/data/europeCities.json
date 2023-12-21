@@ -1,0 +1,57 @@
+[
+  {
+      "top":500,
+      "left":500,
+      "name":"lisbon",
+      "first_letter": "l",
+      "questions":[{"q": "who lives in lisbon?", 
+                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+                    "c":1
+                  },
+                  {"q": "when did lisbon exist?", 
+                   "a": ["1", "2", "3", "4", "5"],
+                   "c": 2
+                  }, 
+                  {"q": "why is lisbon?",
+                   "a": ["wrong answer", "right answer", "wrong answer"],
+                   "c":1
+                  }]
+
+  },
+  {
+     "top": 500,
+     "left": 200,
+     "name": "madrid",
+     "first_letter": "m",
+     "questions":[{"q": "who lives in madrid?", 
+                   "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+                   "c":1
+                  },
+                  {"q": "when did madrid exist?", 
+                   "a": ["1", "2", "3", "4", "5"],
+                   "c": 2
+                  }, 
+                  {"q": "why is madrid?",
+                   "a": ["wrong answer", "right answer", "wrong answer"],
+                   "c":1
+                  }]
+  },
+  {
+      "top":200,
+      "left": 500,
+      "name": "paris",
+      "first_letter": "p",
+      "questions":[{"q": "who lives in paris?", 
+                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+                    "c":1
+                  },
+                  {"q": "when did paris exist?", 
+                   "a": ["1", "2", "3", "4", "5"],
+                   "c": 2
+                  }, 
+                  {"q": "why is paris?",
+                   "a": ["wrong answer", "right answer", "wrong answer"],
+                   "c":1
+                  }]
+  }
+]

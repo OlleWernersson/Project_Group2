@@ -1,0 +1,57 @@
+[
+  {
+      "top":500,
+      "left":500,
+      "name":"sao paulo",
+      "first_letter": "s",
+      "questions":[{"q": "who lives in sao paulo?", 
+                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+                    "c":1
+                  },
+                  {"q": "when did sao paulo exist?", 
+                   "a": ["1", "2", "3", "4", "5"],
+                   "c": 2
+                  }, 
+                  {"q": "why is sao paulo?",
+                   "a": ["wrong answer", "right answer", "wrong answer"],
+                   "c":1
+                  }]
+
+  },
+  {
+     "top": 500,
+     "left": 200,
+     "name": "buenos aires",
+     "first_letter": "b",
+     "questions":[{"q": "who lives in buenos aires?", 
+                   "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+                   "c":1
+                  },
+                  {"q": "when did buenos aires exist?", 
+                   "a": ["1", "2", "3", "4", "5"],
+                   "c": 2
+                  }, 
+                  {"q": "why is buenos aires?",
+                   "a": ["wrong answer", "right answer", "wrong answer"],
+                   "c":1
+                  }]
+  },
+  {
+      "top":200,
+      "left": 500,
+      "name": "lima",
+      "first_letter": "l",
+      "questions":[{"q": "who lives in lima?", 
+                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+                    "c":1
+                  },
+                  {"q": "when did lima exist?", 
+                   "a": ["1", "2", "3", "4", "5"],
+                   "c": 2
+                  }, 
+                  {"q": "why is lima?",
+                   "a": ["wrong answer", "right answer", "wrong answer"],
+                   "c":1
+                  }]
+  }
+]

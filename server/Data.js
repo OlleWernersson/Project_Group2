@@ -52,9 +52,11 @@ Data.prototype.getUILabels = function (lang = "en") {
   return JSON.parse(labels);
 }
 
-Data.prototype.createPoll = function(pollID, lang="en") {
+Data.prototype.createPoll = function(pollID, lang="en", route=null) {
   if (typeof this.polls[pollID] === "undefined") {
     let poll = {};
+    poll.cities = this.getRouteCities(route);
+    poll.route = route;
     poll.lang = lang;  
     poll.questions = [];
     poll.answers = [];
@@ -64,6 +66,26 @@ Data.prototype.createPoll = function(pollID, lang="en") {
     console.log("poll created", pollID, poll);
   }
   return this.polls[pollID];
+}
+Data.prototype.getRouteCities = function(route) {
+  if (route === 1) {
+    const cities = readFileSync("server/data/europeCities.json")
+    console.log(cities)
+    return JSON.parse(cities)
+  }
+  if (route === 2) {
+    const cities = readFileSync("server/data/africaCities.json")
+    console.log(cities)
+    return JSON.parse(cities)
+  }
+  if (route === 3) {
+    const cities = readFileSync("server/data/southAmericaCities.json")
+    console.log(cities)
+    return JSON.parse(cities)
+  }
+  else {
+    return null
+  }
 }
 
 Data.prototype.addQuestion = function(pollId, q) {
@@ -166,6 +188,9 @@ Data.prototype.getPlayers = function(pollID) {
     return poll.participants
   }
   return []
+}
+Data.prototype.getPoll = function(pollID){
+  return this.polls[pollID]
 }
 
 export { Data };

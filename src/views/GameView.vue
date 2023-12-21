@@ -12,6 +12,7 @@
   </div>
 
   <City :cities = "cities" > </City>
+  {{ poll }}
 </template>
 
 <script>
@@ -33,7 +34,9 @@ export default {
         c: null,      
       },
       cities: cities,
-      index:null
+      index:null,
+      pollId:"",
+      poll: {}
       };
 
   },
@@ -41,6 +44,11 @@ export default {
   created: function() {
     this.pollId = this.$route.params.id
     socket.emit('joinPoll', this.pollId)
+    socket.emit('getPoll', this.pollId)
+
+    socket.on('thisPoll', poll =>
+    this.poll = poll
+    )
     socket.on("newQuestion", q =>
     this.question = q
     )

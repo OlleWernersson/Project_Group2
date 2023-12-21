@@ -47,6 +47,7 @@
     class="main-button"
     :to="'/lobby/' + gameID"
     tag="button"
+    @click="createPoll()"
   >
     {{ uiLabels.createLobby }}
   </router-link>
@@ -84,10 +85,12 @@ export default {
     this.gameID = randomNumber;
   },
   methods: {
- 
     selectRoute(routeId) {
       this.selectedRoute = routeId;
 
+    },
+    createPoll: function () {
+      socket.emit("createPoll", {pollId: this.gameID, lang: this.lang, route: this.selectedRoute })
     },
   },
 };

@@ -10,7 +10,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('createPoll', function(d) {
-    socket.emit('pollCreated', data.createPoll(d.pollId, d.lang));
+    socket.emit('pollCreated', data.createPoll(d.pollId, d.lang, d.route));
   });
 
   socket.on('addQuestion', function(d) {
@@ -31,8 +31,8 @@ function sockets(io, socket, data) {
   socket.on('joinPoll', function(pollId) {
     console.log("nu har vi joinat")
     socket.join(pollId);
-    socket.emit('newQuestion', data.getQuestion(pollId))
-    socket.emit('dataUpdate', data.getAnswers(pollId));
+/*     socket.emit('newQuestion', data.getQuestion(pollId))
+    socket.emit('dataUpdate', data.getAnswers(pollId)); */
   });
 
   socket.on('runQuestion', function(d) {
@@ -60,9 +60,11 @@ function sockets(io, socket, data) {
     io.to(d.gameID).emit('updatePlayerList', players);
   });
   socket.on('enterlobby', function(gameID){
-    console.log("hej")
     let players = data.getPlayers(gameID)
     io.to(gameID).emit('updatePlayerList', players);
+  })
+  socket.on('getPoll', function(pollId) {
+    io.to(pollId).emit('thisPoll', data.getPoll(pollId))
   })
 
   

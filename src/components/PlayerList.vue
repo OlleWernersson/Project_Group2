@@ -8,7 +8,7 @@
 <script>
 export default {
   props: {
-    players: Array, // Assume players is an array of objects with 'id' and 'name'
+    players: Array,
   },
 };
 </script>
