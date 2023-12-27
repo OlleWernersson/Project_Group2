@@ -12,6 +12,7 @@
   </div>
 
   <City :cities = "cities" > </City>
+  {{ pollId }}
   {{ poll }}
 </template>
 
