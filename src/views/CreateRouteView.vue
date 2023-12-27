@@ -1,12 +1,28 @@
 <template>
+
+
+
   <div id = "bigWrapper">
+
+  
   <div id = "mapWrapper">
   <Map>
   <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
   </Map>
   </div>
   <div id = "questionWrapper">
-  <button id="helpButton">Help</button>
+  <button id="helpButton" @click="help2" >{{ uiLabels.help }} </button> 
+
+  <div v-if="helpOpen">
+      <div class="popup" @click.self = "help2">
+        <div class="helpText">
+          <div > <p> {{ uiLabels.helpText }}</p> 
+        </div>
+        </div>
+      </div>
+    </div>
+    
+
   <h1>Create your questions here </h1>
   Poll link:
   <input type="text" v-model="pollId">
@@ -79,7 +95,8 @@
   },
   questionsreal: [],
   c:null,
-  selectedCity: ""
+  selectedCity: "",
+  helpOpen: false
   }
   },
   created: function () {
@@ -132,7 +149,11 @@
   
   selectedAnswerIndex: function (i) {
   this.c=i
-  }
+  },
+
+    help2: function(){
+      this.helpOpen = ! this.helpOpen
+    }
   }
   }
   </script>
@@ -194,11 +215,30 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   }
+
   #helpButton{
     position:absolute;
-    left: 1400px;
+    left: 82em;
     padding: 0.5em 0em;
     width: 100px;
+  }
+
+  .popup{
+    position: fixed; 
+    background: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    width: 100%;
+  
+  }
+
+  .helpText {
+    width: 370px;
+    height: 470px;
+    padding: 20px;
+    background: rgb(244, 195, 195);
+    border-radius: 10px;
+    margin-left: 7em;
+    margin-top:7em;
   }
   
   
