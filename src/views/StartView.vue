@@ -15,7 +15,7 @@
     </div>
     </div>
     <section class="mainButtons">
-      <router-link class="main-button" to="/gameID/">{{uiLabels.joinGame}}</router-link>
+      <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
       <router-link class="main-button" to="/createLobby/">{{uiLabels.createGame}}</router-link>
     </section>
   </main>
@@ -39,6 +39,7 @@ export default {
       lang: localStorage.getItem("lang") || "en", //Use localstorage sparsly to have it responsive
       hideNav: true,
       helpOpen: false,
+      hejlista: {hej:"hej",hej:"hej",hej:"hej"},
     }
   },
   created: function () { //Created Hook, Before the content of the page is loaded the creaded hook is run

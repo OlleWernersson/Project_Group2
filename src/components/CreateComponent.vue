@@ -1,18 +1,19 @@
 <template>
 
 <div id="citySelector">
+    
 
     <div id="questions">
     <!--{{ uiLabels.question }}-->
 
 
    <input  v-model="question"  placeholder=" Write your question">
-    <div id="froggy">
+   <div id="froggy">
        
-        <input v-for="(_, i) in answers" v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}">
+        <input v-for="(_, i) in answers" v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" placeholder="svar">
         <input class="rightanswerbutton" type = "radio" v-for="(_, i) in answers" v-bind:key="i" name="check" @change="selectedAnswerIndex(i)">
     
-</div>
+    </div>
     
     <button v-on:click="addAnswer">
     Add answer 
@@ -20,6 +21,7 @@
     <button v-on:click="removeAnswer">
     Remove answer 
     </button></div>
+    <button v-on:click="addQuestion">add question</button>
     
    
     
@@ -41,7 +43,7 @@ export default {
     return {
    question: "",
    answers: ["", ""],
-   c: null,
+   c: 0,
   }
 },
 
@@ -54,6 +56,9 @@ methods: {
   },
   selectedAnswerIndex: function (i) {
   this.c=i
+  },
+  addQuestion: function(){
+    this.$emit('addThisQuestion', {question:this.question,answers: this.answers,c: this.c})
   }
 
 }

@@ -6,16 +6,24 @@
   </Map>
   </div>
   <div id = "questionWrapper">
+  <button id="helpButton">Help</button>
   <h1>Create your questions here </h1>
   Poll link:
   <input type="text" v-model="pollId">
   <button v-on:click="createPoll">
   Create poll
   </button>
+  <label for="options"></label>
+    <select name="rcp" id="options" v-model="selectedCity">
+        <option>Sheffield</option>
+        <option>birmingham</option>
+        <option>london</option>
+    </select>
 
-  <CreateComponent v-for="(_, i) in questions" type="text" v-bind:key="'questions'+i" :i="Question">
-
+  <CreateComponent v-for="(_, i) in questions" type="text" v-bind:key="'questions'+i" :i="Question" @addThisQuestion="addcreatechild">
   </CreateComponent>
+  {{ selectedCity }}
+  {{ questionsreal}}
   
   
 
@@ -69,7 +77,9 @@
    question2: {  },
    question3: {  }
   },
-  c:null
+  questionsreal: [],
+  c:null,
+  selectedCity: ""
   }
   },
   created: function () {
@@ -94,13 +104,24 @@
     socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
   },
   addQuestion: function () {
-  socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers, c:this.c} )
+    console.log("nu är du här", this.questionsreal[0])
+  //socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers, c:this.c} )
   },
   addAnswer: function () {
   this.answers.push("");
   },
   removeAnswer: function() {
   this.answers.pop("")
+  },
+  addcreatechild: function(childquestion,childanswers,childc){
+    if (  childc !== 0){
+      console.log("message from child is here", childquestion,childanswers,childc);
+      this.questionsreal.push({question: childquestion,answers:childanswers,correctIndex:childc, city: this.selectedCity});
+    }
+    else{
+      window.alert("add a correct answer");
+    }
+
   },
   
   
@@ -172,6 +193,12 @@
   #bigWrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  }
+  #helpButton{
+    position:absolute;
+    left: 1400px;
+    padding: 0.5em 0em;
+    width: 100px;
   }
   
   
