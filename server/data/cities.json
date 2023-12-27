@@ -1,20 +1,50 @@
 [
     {
-        "top":500,
-        "left":500,
-        "name":"birmingham",
-        "first_letter": "b"
+        "top":520,
+        "left":660,
+        "name":"Sydney",
+        "first_letter": "Sy"
     },
     {
-       "top": 500,
-       "left": 200,
-       "name": "london",
-       "first_letter": "l"
+       "top": 310,
+       "left": 123,
+       "name": "Vancouver",
+       "first_letter": "V"
     },
     {
-        "top":200,
-        "left": 500,
-        "name": "Sheffield",
-        "first_letter": "s"
-    }
+        "top":280,
+        "left": 400,
+        "name": "Stockholm",
+        "first_letter": "St"
+    },
+    {
+        "top": 360,
+        "left": 210,
+        "name": "New York",
+        "first_letter": "NY"
+     },
+     {
+        "top": 490,
+        "left": 285,
+        "name": "Rio de Janeiro",
+        "first_letter": "RJ"
+     },
+     {
+        "top": 525,
+        "left": 405,
+        "name": "Cape Town",
+        "first_letter": "CT"
+     },
+     {
+        "top": 380,
+        "left": 430,
+        "name": "Kairo",
+        "first_letter": "K"
+     },
+     {
+        "top": 330,
+        "left": 370,
+        "name": "Paris",
+        "first_letter": "P"
+     }
 ]
