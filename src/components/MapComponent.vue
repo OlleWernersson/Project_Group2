@@ -1,37 +1,42 @@
 <template>
-  <div id="map">
-      <slot>  </slot>
-
-    </div>
-
+  <div id="map" :style="{ backgroundImage: mapBackground }">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
-
-import City from '../components/CityComponent.vue';
-  export default {
-    props:{
-        cities: Object
+export default {
+  props: {
+    cities: Object,
+    poll: Object,
+  },
+  data() {
+    return {
+      displayWrongSign: false,
+    };
+  },
+  computed: {
+  mapBackground() {
+    if (this.poll && this.poll.route) {
+      return `url('../../public/img/${this.poll.route}.jpg')`;
+    } else {
+      return `url('../../public/img/world.jpg')`;
+    }
+  },
+},
+  methods: {
+    moveMeForward() {
+      this.dotLeft = this.selectedcities[this.currentCity].left;
+      this.dotTop = this.selectedcities[this.currentCity].top - 20;
+      this.currentCity++;
     },
-      data() {
-          return {
-          displayWrongSign: false
-          }
-      },
-
-      methods: {
-      moveMeForward() {
-          this.dotLeft = this.selectedcities[this.currentCity].left;
-          this.dotTop = this.selectedcities[this.currentCity].top -20;
-          this.currentCity++;
-      },
-      },
-  }
+  },
+};
 </script>
 
 <style scoped>
 #map {
-  background-image: url('../../public/img/world.png');
+  /* background-image: url('../../public/img/world.jpg'); */
   background-position: center center; 
   background-size: cover; 
   width: 800px;

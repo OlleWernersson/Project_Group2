@@ -148,23 +148,6 @@ Data.prototype.getCities = function(){
   return JSON.parse(cities)
 }
 Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColor) {
-  // if (!this.lobbies[lobbyID]) {
-  //   this.lobbies[lobbyID] = [];
-  //   let player = {
-  //     name: playerName,
-  //     answers: []
-  //   }
-  //   this.lobbies[lobbyID].push(player);
-  //   console.log(playerName + " joined lobby " + lobbyID)
-  // }
-  // else {
-  //   let player = {
-  //     name: playerName,
-  //     answers: []
-  //   }
-  //   this.lobbies[lobbyID].push(player);
-  //   console.log(playerName + " joined lobby " + lobbyID)
-  // }
 
   const poll = this.polls[gameID];
   console.log ("new user added to ", gameID, playerName)
@@ -177,9 +160,6 @@ Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColor) {
   }
 }
 Data.prototype.getPlayers = function(pollID) {
-  // console.log(this.lobbies[lobbyID])
-  // return this.lobbies[lobbyID]
-
   const poll = this.polls[pollID];
   console.log(poll, "hallå från getplayers",pollID)
 
