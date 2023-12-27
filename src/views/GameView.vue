@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-      <Map ref = "mapRef" :cities = "cities">
+      <Map ref = "mapRef" :cities = "cities" :poll = "poll">
         <City v-for="city in cities" :key="city.name" :city = "city"> 
          </City> <!-- city läggs i slot i mapcomponent -->
       </Map> 
@@ -54,7 +54,7 @@ export default {
     this.question = q
     )
 
-   socket.on("dataUpdate", answers =>
+    socket.on("dataUpdate", answers =>
      this.submittedAnswers = answers
      )
 

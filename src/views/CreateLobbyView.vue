@@ -69,10 +69,9 @@ export default {
       lang: localStorage.getItem("lang") || "en",
       selectedRoute: null,
       images: [
-      "../../public/img/europe.jpg",
-      "../../public/img/africa.jpg",
-      "../../public/img/southamerica.png",
-  
+      "../../public/img/1.jpg",
+      "../../public/img/2.jpg",
+      "../../public/img/3.jpg",
       ],
     };
   },
