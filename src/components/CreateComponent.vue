@@ -7,11 +7,11 @@
     <!--{{ uiLabels.question }}-->
 
 
-   <input  v-model="question"  placeholder=" Write your question">
+   <input  class="write" v-model="question"  placeholder= "Write your question">
    <div class="froggy" v-for="(_, i) in answers">
        
-        <input  v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" placeholder="svar">
-        <input class="rightanswerbutton" type = "radio"  v-bind:key="i" name="check" @change="selectedAnswerIndex(i)">
+        <input class="write" v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" placeholder="svar">
+        <div ><input class="rightanswerbutton" type = "radio"  v-bind:key="i" name="check" @change="selectedAnswerIndex(i)"></div>
     
     </div>
     
@@ -88,7 +88,7 @@ display:flex;
   border: 2px solid pink;
   border-radius: 8px;
   font-size: 0.6em;
-  margin-top: 10px;
+  margin-top: 1px;
   
   
   outline: none;
@@ -108,15 +108,33 @@ display:flex;
 
 .stylish {
     border-color: red;
+    
+
 }
 .froggy{
     display: flex;
     flex-direction: row;
+
 }
 
 #rightanswerbutton {
     display:flex;
     flex-direction: column;
-  
+    
 }
+
+input {
+  padding: 5px;
+  border: 2px solid pink;
+  border-radius: 8px;
+  background-color:floralwhite;
+  outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
+  margin: 0.5em;
+  border: 2px solid pink;
+  font-size: 0.6em;
+  margin-top: 1px;
+  }
+  input:focus {
+  background-color: white;
+  }
 </style>

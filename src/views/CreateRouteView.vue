@@ -260,9 +260,11 @@
 
   #helpButton{
     position:absolute;
-    left: 82em;
+    left: 1em;
+    top: 1em;
     padding: 0.5em 0em;
-    width: 100px;
+    width: 105px;
+    height: 45px;
   }
 
   .popup{
