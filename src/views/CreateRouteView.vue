@@ -22,11 +22,11 @@
     
 
   <h1>Create your questions here </h1>
-  Poll link:
-  <input type="text" v-model="pollId">
-  <button v-on:click="createPoll">
+  <!-- Poll link:
+  <input type="text" v-model="pollId"> -->
+  <!-- <button v-on:click="createPoll">
   Create poll
-  </button>
+  </button> -->
   <label for="options"></label>
     <select name="rcp" id="options" v-model="selectedCity">
         <option v-for="city in cities" v-bind:key="city.name"> {{ city.name }} </option>
