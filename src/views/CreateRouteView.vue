@@ -129,7 +129,6 @@
   },
   addAllQuestions: function () {
     for (let i = 0; i <3 ; i++) { 
-    console.log("referensindex är", i);
     var createRef = this.$refs[`createComponentRef${i}`];
     createRef.addQuestion();}
   },
