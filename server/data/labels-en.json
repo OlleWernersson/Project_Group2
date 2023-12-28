@@ -22,7 +22,6 @@
 	"choosecolor": "Choose your player color!",
 	"enterGameID": "Enter the game ID for the game you wish to join",
 	"helpText": "Description of making the game bla bla bla",
-	"enterPlayer": "Enter player details here: ",
+	"enterPlayer": "Choose your name and color",
 	"waitPlayers": "Waiting for players to join..."
-
 }

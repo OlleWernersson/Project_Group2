@@ -1,10 +1,5 @@
 <template>
-
-
-
   <div id = "bigWrapper">
-
-  
   <div id = "mapWrapper">
   <Map>
   <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
@@ -21,6 +16,9 @@
         </div>
       </div>
     </div>
+
+    <Id-box :id="gameID"></Id-box>
+
     
 
   <h1>Create your questions here </h1>
@@ -34,10 +32,6 @@
         <option v-for="city in cities" v-bind:key="city.name"> {{ city.name }} </option>
     </select> 
 
-
-
-  <!-- <CreateComponent ref="createComponentRef" v-for="(_, i) in questions" type="text" v-bind:key="'questions'+i" :i="Question" @addThisQuestion="addcreatechild">
-  </CreateComponent> --> -->
 
   <CreateComponent ref="createComponentRef0"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
   <CreateComponent ref="createComponentRef1"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
@@ -77,18 +71,20 @@
   import City from '../components/CityComponent.vue';
   import Map from '../components/MapComponent.vue';
   import CreateComponent from '../components/CreateComponent.vue';
+  import IdBox from '@/components/id-box.vue';
+
   
   
   const socket = io("localhost:3000");
   
   
   export default {
-  components: { Map, City, CreateComponent },
+  components: { Map, City, CreateComponent, IdBox },
   name: 'CreateRouteView',
   data: function () {
   return {
   lang: localStorage.getItem("lang") || "en",
-  pollId: "",
+  gameID:"",
   question: "",
   answers: ["", ""],
   questionNumber: 0,
@@ -107,7 +103,7 @@
   }
   },
   created: function () {
-  this.id = this.$route.params.id;
+  this.gameID = this.$route.params.id
   socket.emit("pageLoaded", this.lang);
   socket.emit("loadcities");
   socket.on("init", (labels) => {
@@ -139,6 +135,7 @@
   removeAnswer: function() {
   this.answers.pop("")
   },
+
   addcreatechild: function(childquestion, childanswers, childc){
     console.log(childanswers,childquestion,childc)
     if (childc > -1){

@@ -22,7 +22,7 @@ const router = createRouter({
       component: () => import('../views/GameIDView.vue')
     },
     {
-      path: '/create/',
+      path: '/create/:id',
       name: 'CreateRouteView',
       component: () => import('../views/CreateRouteView.vue')
     },

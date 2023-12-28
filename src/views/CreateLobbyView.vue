@@ -4,6 +4,24 @@
       {{ uiLabels.createLobby }}
     </h1>
   </header>
+
+  <div class = "editPlayerWrapper">
+    <h2> {{ uiLabels.enterPlayer }} </h2>
+      <label>
+        <input type="text" v-model = "playerName" placeholder="Your Name" autocomplete="off">
+      </label>
+
+      <label class="player-pieces-box">
+        <p class="choose-color-text">{{ uiLabels.choosecolor }}</p>
+        <div class="player-pieces">
+          <div class="player-piece" v-for="(color, index) in playerColors" :key="index" @click="selectPlayerColor(color)">
+            <div class="piece-circle" :style="{ backgroundColor: color }"></div>
+          </div>
+        </div>
+      </label>
+      <button class = "main-button" @click = "submitUser()"> Submit </button>
+  </div>
+
   <main>
     <section class="Choose-Route">
       <h2>
@@ -34,31 +52,15 @@
       <router-link
         id="create-route-button"
         class="create-route-button"
-        to='/create/'
+        :to="'/create/' + gameID"
         tag="button"
+        @click="createPoll()"
       >
         +
       </router-link>
     </section>
 
   </main>
-
-  <div class = "editPlayerWrapper">
-    <h2> {{ uiLabels.enterPlayer }} </h2>
-    <label>
-        <input type="text" v-model="playerName" placeholder="Your Name" @input="handleNameInput" autocomplete="off">
-      </label>
-
-      <label class="player-pieces-box">
-        <p class="choose-color-text">{{ uiLabels.choosecolor }}</p>
-        <div class="player-pieces">
-          <div class="player-piece" v-for="(color, index) in playerColors" :key="index" @click="selectPlayerColor(color)">
-            <div class="piece-circle" :style="{ backgroundColor: color }"></div>
-          </div>
-        </div>
-      </label>
-      <button class = "main-button" @click = "joinLobby"> Submit </button>
-  </div>
 
   <router-link
     id="create-lobby-button"
@@ -106,6 +108,11 @@ export default {
   methods: {
     selectRoute(routeId) {
       this.selectedRoute = routeId;
+    },
+
+    submitUser(name, colorObj){
+      this.playerName = name; 
+      this.colorObj = colorObj;
     },
     createPoll: function (playerName, playerColorObj) {
       playerName = this.playerName;
