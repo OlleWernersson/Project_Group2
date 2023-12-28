@@ -34,15 +34,23 @@
         <option v-for="city in cities" v-bind:key="city.name"> {{ city.name }} </option>
     </select> 
 
-  <CreateComponent v-for="(_, i) in questions" type="text" v-bind:key="'questions'+i" :i="Question" @addThisQuestion="addcreatechild">
-  </CreateComponent>
+
+
+  <!-- <CreateComponent ref="createComponentRef" v-for="(_, i) in questions" type="text" v-bind:key="'questions'+i" :i="Question" @addThisQuestion="addcreatechild">
+  </CreateComponent> --> -->
+
+  <CreateComponent ref="createComponentRef0"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
+  <CreateComponent ref="createComponentRef1"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
+  <CreateComponent ref="createComponentRef2"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
+
+
   <button @click="startGame">Start game!</button>
   {{ selectedCity }}
   {{ questionsreal}}
   
   
 
-  <button v-on:click="addQuestion">
+  <button v-on:click="addAllQuestions">
   Add question
   </button>
   <input type="number" v-model="questionNumber">
@@ -119,10 +127,12 @@
   createPoll: function () {
     socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
   },
-  addQuestion: function () {
-    console.log("nu är du här", this.questionsreal[0])
-  socket.emit("addQuestion", {pollId: this.pollId, questionsreal: this.questionsreal} )
+  addAllQuestions: function () {
+    for (let i = 0; i <3 ; i++) { 
+    var createRef = this.$refs[`createComponentRef${i}`];
+    createRef.addQuestion();}
   },
+
   addAnswer: function () {
   this.answers.push("");
   },

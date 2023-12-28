@@ -21,9 +21,7 @@
     <button v-on:click="removeAnswer">
     Remove answer 
     </button></div>
-    <button v-on:click="addQuestion">add question</button>
-    
-   
+  
     
     </div>
   
