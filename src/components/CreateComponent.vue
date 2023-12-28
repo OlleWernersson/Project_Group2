@@ -8,10 +8,10 @@
 
 
    <input  v-model="question"  placeholder=" Write your question">
-   <div id="froggy">
+   <div class="froggy" v-for="(_, i) in answers">
        
-        <input v-for="(_, i) in answers" v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" placeholder="svar">
-        <input class="rightanswerbutton" type = "radio" v-for="(_, i) in answers" v-bind:key="i" name="check" @change="selectedAnswerIndex(i)">
+        <input  v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" placeholder="svar">
+        <input class="rightanswerbutton" type = "radio"  v-bind:key="i" name="check" @change="selectedAnswerIndex(i)">
     
     </div>
     
@@ -43,7 +43,7 @@ export default {
     return {
    question: "",
    answers: ["", ""],
-   c: 0,
+   c: -1,
   }
 },
 
@@ -58,7 +58,8 @@ methods: {
   this.c=i
   },
   addQuestion: function(){
-    this.$emit('addThisQuestion', {question:this.question,answers: this.answers,c: this.c})
+    console.log(this.c)
+    this.$emit('addThisQuestion', this.question,this.answers, this.c)
   }
 
 }
@@ -72,7 +73,7 @@ methods: {
 
 <style>
 #questions  {
-    display:flex;
+display:flex;
   padding: 10px;
   border: 2px solid pink;
   border-radius: 8px;
@@ -110,9 +111,9 @@ methods: {
 .stylish {
     border-color: red;
 }
-#froggy{
+.froggy{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 #rightanswerbutton {

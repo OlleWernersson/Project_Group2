@@ -36,6 +36,7 @@
 
   <CreateComponent v-for="(_, i) in questions" type="text" v-bind:key="'questions'+i" :i="Question" @addThisQuestion="addcreatechild">
   </CreateComponent>
+  <button @click="startGame">Start game!</button>
   {{ selectedCity }}
   {{ questionsreal}}
   
@@ -128,25 +129,26 @@
   removeAnswer: function() {
   this.answers.pop("")
   },
-  addcreatechild: function(childquestion,childanswers,childc){
-    if (  childc !== 0){
+  addcreatechild: function(childquestion, childanswers, childc){
+    console.log(childanswers,childquestion,childc)
+    if (childc > -1){
       console.log("message from child is here", childquestion,childanswers,childc);
       this.questionsreal.push({question: childquestion,answers:childanswers,correctIndex:childc, city: this.selectedCity});
+      
+      socket.emit("addQuestion", {pollId: this.pollId,  questionPart: childquestion,answers:childanswers, c:childc, city: this.selectedCity})
     }
     else{
       window.alert("add a correct answer");
     }
 
   },
+  startGame: function(){
+    socket.emit("beginSetup", {pollId: this.pollId})
+  },  
   
   
   runQuestion: function () {
   socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
-  },
-  
-  
-  selectedAnswerIndex: function (i) {
-  this.c=i
   },
 
     help2: function(){

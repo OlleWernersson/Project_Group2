@@ -10,32 +10,38 @@ function Data() {
     questions: [
       {q: "How old are you?", 
        a: ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
-       c:1
+       c:1,
+       city: "vancouver"
       },
       {q: "How much do you enjoy coding?", 
        a: ["1", "2", "3", "4", "5"],
-       c: 2
+       c: 2,
+       city: "vancouver"
       }, 
 
       {q: "How angry are you?",
       a: ["wrong answer", "right answer", "wrong answer"],
       c:1,
+      city: "vancouver"
       },
 
      {q: "How many people live in Uppsala?",
      a: ["1", "2", "3", "4"],
-     c:3
+     c:3,
+     city: "vancouver"
       },
 
       {q: "Vem är sveriges monark?",
       a: ["Emma", "Pappa", "Mamma", "Mormor"],
-      c:2
+      c:2,
+      city: "vancouver"
        }
     ],
     answers: [],
     currentQuestion: 0,
     participants:[],
-    c:null
+    c:null,
+    city: undefined
   }
   this.lobbies = {}
 }
@@ -88,7 +94,7 @@ Data.prototype.getRouteCities = function(route) {
   }
 }
 
-Data.prototype.addQuestion = function(pollId, q) {
+Data.prototype.addQuestion = function(pollId, q,city) {
   const poll = this.polls[pollId];
   console.log("question added to", pollId, q);
   if (typeof poll !== 'undefined') {
@@ -148,6 +154,23 @@ Data.prototype.getCities = function(){
   return JSON.parse(cities)
 }
 Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColor) {
+  // if (!this.lobbies[lobbyID]) {
+  //   this.lobbies[lobbyID] = [];
+  //   let player = {
+  //     name: playerName,
+  //     answers: []
+  //   }
+  //   this.lobbies[lobbyID].push(player);
+  //   console.log(playerName + " joined lobby " + lobbyID)
+  // }
+  // else {
+  //   let player = {
+  //     name: playerName,
+  //     answers: []
+  //   }
+  //   this.lobbies[lobbyID].push(player);
+  //   console.log(playerName + " joined lobby " + lobbyID)
+  // }
 
   const poll = this.polls[gameID];
   console.log ("new user added to ", gameID, playerName)
@@ -160,6 +183,9 @@ Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColor) {
   }
 }
 Data.prototype.getPlayers = function(pollID) {
+  // console.log(this.lobbies[lobbyID])
+  // return this.lobbies[lobbyID]
+
   const poll = this.polls[pollID];
   console.log(poll, "hallå från getplayers",pollID)
 

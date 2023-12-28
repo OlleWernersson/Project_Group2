@@ -14,7 +14,11 @@ function sockets(io, socket, data) {
   });
 
   socket.on('addQuestion', function(d) {
-    data.addQuestion(d.pollId, {q: d.q, a: d.a, c:d.c});
+    console.log(d)
+    //jag har ändrat vad variablerna heter för frågorna här i createrouteview
+    //problem här c kommer ut som undefined kanske kommer från något tidigare oklart var utskriften sker
+    data.addQuestion(d.pollId, {q: d.questionPart.question, a: d.questionPart.answers, c: d.questionPart.c, city: d.city} );
+
     socket.emit('dataUpdate', data.getAnswers(d.pollId));
   });
 
@@ -34,6 +38,12 @@ function sockets(io, socket, data) {
 /*     socket.emit('newQuestion', data.getQuestion(pollId))
     socket.emit('dataUpdate', data.getAnswers(pollId)); */
   });
+  socket.on('beginSetup',function(pollId){
+    io.to(pollId).emit("setupComplete")
+    console.log("setup complete")
+  }); 
+
+  
 
   socket.on('runQuestion', function(d) {
     io.to(d.pollId).emit('newQuestion', data.getQuestion(d.pollId, d.questionNumber));
