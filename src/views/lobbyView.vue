@@ -5,7 +5,7 @@
 
 <div class = "bigWrapper">
   <div class = "editPlayerWrapper">
-    <h2> Enter player details here: </h2>
+    <h2> {{ uiLabels.enterPlayer }} </h2>
     <label>
         <input type="text" v-model="playerName" placeholder="Your Name" @input="handleNameInput" autocomplete="off">
       </label>
@@ -21,7 +21,7 @@
       <button class = "main-button" @click = "joinLobby"> Submit </button>
   </div>
   <div class = playerWrapper>
-    <h1> Waiting for players to join... </h1>
+    <h1> {{ uiLabels.waitPlayers }} </h1>
     <PlayerList :players="playerList" />
   </div>
 </div>

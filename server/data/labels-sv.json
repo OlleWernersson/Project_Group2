@@ -11,17 +11,17 @@
 	"help": "Hjälp",
 	"lobby": "Lobby",
 	"startGame": "Starta Spelet",
-  "joinLobby": "Joina",
-  "yourName": "Ditt Namn",
-  "gameId": "Spel ID",
-  "createLobby": "Skapa Lobby",
-  "chooseRoute": "Välj rutt",
-  "createNewRoute": "Skapa Ny Rutt",
-  "rules": "Hej och välkommen till MapQuiz Har du svårt att komma igång med spelet? Här har du reglerna! Bläddra ner för att komma till vanliga frågor från våra användare.Välj antingen Gå med i Spel eller Skapa spel för att komma igång Om du väljer “Skapa Spel” får du skapa en egen rutt för dig och dina spelare annars finns också alternativet att välja en rutt utav de färdiga som finns. Därefter hamnar du i lobbyn med ett Spel-ID. Det är detta Spel-ID som andra spelare kan skriva in efter att de har klickat på Gå med i spel. I lobbyn kan du se alla spelare som har gått med i ditt spel och vad de har valt för spelnamn. När alla som vill vara med och spela har gått med så trycker du på Starta Spel. Målet med spelet är att först avsluta en resa. Varje resa har olika stopp och för att komma vidare till nästa stopp måste spelaren svara rätt på en fråga. Den som snabbast har svarat rätt på frågorna och gjort klart rutten vinner På kartan till vänster kan du se vilket stopp som dina medspelare befinner sig på Om man svarar fel på en fråga får man tidsavdrag och sedan en ny fråga och chans att ta sig vidare.",
-  "ruleheader": "Spelregler",
-  "choosecolor": "Välj din spelfärg!",
-  "enterGameID": "Skriv in  spelID ",
-  "helpText": "Beskriv hur du skapar ett spel bla bla bla"
-
-
+	"joinLobby": "Joina",
+	"yourName": "Ditt Namn",
+	"gameId": "Spel ID",
+	"createLobby": "Skapa Lobby",
+	"chooseRoute": "Välj rutt",
+	"createNewRoute": "Skapa Ny Rutt",
+	"rules": "Hej och välkommen till MapQuiz Har du svårt att komma igång med spelet? Här har du reglerna! Bläddra ner för att komma till vanliga frågor från våra användare.Välj antingen Gå med i Spel eller Skapa spel för att komma igång Om du väljer “Skapa Spel” får du skapa en egen rutt för dig och dina spelare annars finns också alternativet att välja en rutt utav de färdiga som finns. Därefter hamnar du i lobbyn med ett Spel-ID. Det är detta Spel-ID som andra spelare kan skriva in efter att de har klickat på Gå med i spel. I lobbyn kan du se alla spelare som har gått med i ditt spel och vad de har valt för spelnamn. När alla som vill vara med och spela har gått med så trycker du på Starta Spel. Målet med spelet är att först avsluta en resa. Varje resa har olika stopp och för att komma vidare till nästa stopp måste spelaren svara rätt på en fråga. Den som snabbast har svarat rätt på frågorna och gjort klart rutten vinner På kartan till vänster kan du se vilket stopp som dina medspelare befinner sig på Om man svarar fel på en fråga får man tidsavdrag och sedan en ny fråga och chans att ta sig vidare.",
+	"ruleheader": "Spelregler",
+	"choosecolor": "Välj din spelfärg!",
+	"enterGameID": "Skriv in spelID: ",
+	"helpText": "Beskriv hur du skapar ett spel bla bla bla",
+	"enterPlayer": "Redigera spelardetaljer här: ",
+	"waitPlayers": "Vänta på de andra spelarna..."
 }
