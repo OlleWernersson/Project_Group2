@@ -107,7 +107,7 @@ display:flex;
   }
 
 .stylish {
-    border-color: red;
+    border-color: rgb(57, 221, 36);
     
 
 }
