@@ -9,6 +9,13 @@ const router = createRouter({
       name: 'Start',
       component: StartView
     },
+
+    {
+      path: '/random',
+      name: 'RandomView',
+      component: () => import('../views/randomView.vue')
+    },
+    
       {
       path: '/gameID/',
       name: 'GameIDView',
