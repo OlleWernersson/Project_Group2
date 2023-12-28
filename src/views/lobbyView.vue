@@ -5,6 +5,7 @@
 
 <div class = "bigWrapper">
   <div class = "editPlayerWrapper">
+    <h2> Enter player details here: </h2>
     <label>
         <input type="text" v-model="playerName" placeholder="Your Name" @input="handleNameInput" autocomplete="off">
       </label>
@@ -20,6 +21,7 @@
       <button class = "main-button" @click = "joinLobby"> Submit </button>
   </div>
   <div class = playerWrapper>
+    <h1> Waiting for players to join... </h1>
     <PlayerList :players="playerList" />
   </div>
 </div>
@@ -94,18 +96,11 @@ export default {
 h1 {
   margin-top: 20px;
 }
+
 #start-game-button {
   position: absolute;
   bottom: 0;
   right: 0;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; /* Utan denna så kan man klicka på input bredvid var det faktiskt är */
-  height: 100vh;
 }
 .bigWrapper {
   display: grid;
@@ -122,8 +117,15 @@ input {
   background-color:floralwhite;
   outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
 }
+
 input:focus {
   background-color: white;
+}
+.editPlayerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .player-pieces-box {
