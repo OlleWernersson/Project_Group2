@@ -38,13 +38,25 @@
     {
        "top": 380,
        "left": 430,
-       "name": "Kairo",
-       "first_letter": "K"
+       "name": "Cairo",
+       "first_letter": "C"
     },
     {
        "top": 330,
        "left": 370,
        "name": "Paris",
        "first_letter": "P"
-    }
+    },
+    {
+      "top": 295,
+      "left": 455,
+      "name": "Moskva",
+      "first_letter": "M"
+   },
+   {
+      "top": 410,
+      "left": 555,
+      "name": "Bangkok",
+      "first_letter": "B"
+   }
 ]

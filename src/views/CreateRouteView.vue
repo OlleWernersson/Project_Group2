@@ -31,10 +31,8 @@
   </button>
   <label for="options"></label>
     <select name="rcp" id="options" v-model="selectedCity">
-        <option>Sheffield</option>
-        <option>birmingham</option>
-        <option>london</option>
-    </select>
+        <option v-for="city in cities" v-bind:key="city.name"> {{ city.name }} </option>
+    </select> 
 
   <CreateComponent v-for="(_, i) in questions" type="text" v-bind:key="'questions'+i" :i="Question" @addThisQuestion="addcreatechild">
   </CreateComponent>
@@ -122,7 +120,7 @@
   },
   addQuestion: function () {
     console.log("nu är du här", this.questionsreal[0])
-  //socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers, c:this.c} )
+  socket.emit("addQuestion", {pollId: this.pollId, questionsreal: this.questionsreal} )
   },
   addAnswer: function () {
   this.answers.push("");
