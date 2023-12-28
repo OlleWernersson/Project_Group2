@@ -17,7 +17,7 @@ function sockets(io, socket, data) {
     console.log(d)
     //jag har ändrat vad variablerna heter för frågorna här i createrouteview
     //problem här c kommer ut som undefined kanske kommer från något tidigare oklart var utskriften sker
-    data.addQuestion(d.pollId, {q: d.questionPart.question, a: d.questionPart.answers, c: d.questionPart.c, city: d.city} );
+    data.addQuestion(d.pollId, {q: d.questionPart, a: d.answers, c: d.c, city: d.city} );
 
     socket.emit('dataUpdate', data.getAnswers(d.pollId));
   });

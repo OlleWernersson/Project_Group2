@@ -83,6 +83,7 @@
   name: 'CreateRouteView',
   data: function () {
   return {
+  isError: false,
   lang: localStorage.getItem("lang") || "en",
   gameID:"",
   question: "",
@@ -124,9 +125,27 @@
     socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
   },
   addAllQuestions: function () {
-    for (let i = 0; i <3 ; i++) { 
-    var createRef = this.$refs[`createComponentRef${i}`];
-    createRef.addQuestion();}
+    this.isError= false;
+    if(this.selectedCity !== ""){
+      for (let i = 0; i <3 ; i++) { 
+      var createRef = this.$refs[`createComponentRef${i}`];
+      
+        createRef.addQuestion();
+        console.log("inne i forloopen")
+      if(this.isError){
+        this.questionsreal = []
+      }
+      }
+      if(!this.isError){
+          console.log("nu är vi här")
+          socket.emit("addQuestion", {pollId: this.pollId,  questionPart: this.questionsreal[0].question,answers:this.questionsreal[0].answers, c:this.questionsreal[0].correctIndex, city: this.selectedCity})
+          socket.emit("addQuestion", {pollId: this.pollId,  questionPart: this.questionsreal[1].question,answers:this.questionsreal[1].answers, c:this.questionsreal[1].correctIndex, city: this.selectedCity})
+          socket.emit("addQuestion", {pollId: this.pollId,  questionPart: this.questionsreal[2].question,answers:this.questionsreal[2].answers, c:this.questionsreal[2].correctIndex, city: this.selectedCity})
+        }
+    }
+    else{
+      window.alert("please select a city")
+    }
   },
 
   addAnswer: function () {
@@ -138,14 +157,30 @@
 
   addcreatechild: function(childquestion, childanswers, childc){
     console.log(childanswers,childquestion,childc)
-    if (childc > -1){
-      console.log("message from child is here", childquestion,childanswers,childc);
-      this.questionsreal.push({question: childquestion,answers:childanswers,correctIndex:childc, city: this.selectedCity});
+    if(childquestion !== ""){
+      console.log(childanswers[0],childanswers[1])
+      if(childanswers[0] !== "" || childanswers[1] !== ""){
+      if (childc > -1){
+        console.log("message from child is here", childquestion,childanswers,childc);
+        this.questionsreal.push({question: childquestion,answers:childanswers,correctIndex:childc, city: this.selectedCity});
       
-      socket.emit("addQuestion", {pollId: this.pollId,  questionPart: childquestion,answers:childanswers, c:childc, city: this.selectedCity})
+        //socket.emit("addQuestion", {pollId: this.pollId,  questionPart: childquestion,answers:childanswers, c:childc, city: this.selectedCity})
+      }
+      else{
+        window.alert("add a correct answer");
+      }
     }
     else{
-      window.alert("add a correct answer");
+      window.alert("you forgot to fill in an answer field")
+      this.isError= true;
+    }
+  }
+    else{
+      window.alert("you forgot to fill a question field please try again")
+      this.isError= true;
+      throw new Error("you forgot to fill in a question field ")
+      
+
     }
 
   },
