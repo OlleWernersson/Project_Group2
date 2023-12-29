@@ -1,19 +1,20 @@
 <template>
   <main>
-    <h1> {{ uiLabels.enterGameID }}</h1>
-    <label class = "wrapper">
-    
-      <input type="text" v-model="gameID" :placeholder="uiLabels.gameId" @input="handleGameIDInput" autocomplete="off">
-    
-      <router-link
-      id="join-lobby-button"
-      class="main-button"
-      :to="'/lobby/' + gameID"
-      tag="button"
-    >
-      {{ uiLabels.joinLobby }}
-    </router-link>
-</label>
+    <h1>{{ uiLabels.enterGameID }}</h1>
+    <label class="wrapper">
+      <input
+        type="text"
+        v-model="gameID"
+        :placeholder="uiLabels.gameId"
+        @input="handleGameIDInput"
+        :class="{ 'invalid-gameID': joinError }"
+        autocomplete="off"
+      />
+
+      <button id="join-lobby-button" class="main-button" @click="joinLobby">
+        {{ uiLabels.joinLobby }}
+      </button>
+    </label>
   </main>
 </template>
 
@@ -28,6 +29,7 @@ export default {
     return {
       uiLabels: {},
       gameID: "",
+      joinError: false,
       lang: localStorage.getItem("lang") || "en",
     };
   },
@@ -43,10 +45,27 @@ export default {
       //this.gameID = this.gameID.replace(/\D/g, '');
       // bestämmer hur lång ID är
       this.gameID = this.gameID.slice(0, 4);
+      this.joinError = false;
     },
     joinLobby() {
-      socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName });
+      if (this.gameID.length !== 4) {
+        this.joinError = true;
+      } 
+      else {
+        /* socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName }); */
+        this.$router.push({ path: `/lobby/${this.gameID}` });
+      }
     },
+  },
+  beforeRouteEnter(to, from, next) {
+    // This is called before entering the route
+    // You can access the component instance with `this`
+    next(vm => {
+      if (vm.gameID.length !== 4) {
+        // If the gameID is not valid, prevent entering the route
+        next(false);
+      }
+    });
   },
 };
 </script>
@@ -73,6 +92,9 @@ input {
 }
 input:focus {
   background-color: white;
+}
+input.invalid-gameID {
+  border-color: red;
 }
 
 #join-lobby-button {
