@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
-      <Map ref = "mapRef" :cities = "cities" :poll = "poll">
-        <City v-for="city in cities" :key="city.name" :city = "city"> 
+      <Map ref = "mapRef" :poll = "poll">
+        <City v-for="city in poll.cities" :key="city.name" :city = "city"> 
          </City> <!-- city läggs i slot i mapcomponent -->
       </Map> 
     <Question @correctAnswerClick = "getNextQuestion" id = "buttonWrapper" :question = "question"/> 
@@ -11,7 +11,7 @@
 
   </div>
 
-  <City :cities = "cities" > </City>
+  <!-- <City :cities = "cities" > </City> -->
   {{ pollId }}
   {{ poll }}
 </template>
@@ -20,7 +20,7 @@
 import Question from '@/components/QuestionComponent.vue';
 import Map from '../components/MapComponent.vue';
 import City from '../components/CityComponent.vue';
-import cities from '../../server/data/cities.json';
+/* import cities from '../../server/data/cities.json'; */
 
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
@@ -34,10 +34,9 @@ export default {
         a: [],       
         c: null,      
       },
-      cities: cities,
       index:null,
       pollId:"",
-      poll: {}
+      poll: {},
       };
 
   },
