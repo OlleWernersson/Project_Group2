@@ -76,6 +76,14 @@ function sockets(io, socket, data) {
   socket.on('getPoll', function(pollId) {
     io.to(pollId).emit('thisPoll', data.getPoll(pollId))
   })
+  socket.on('getQuestionForCity', function(d){
+    console.log(d)
+    data.getCityQuestions(d.pollID, d.city)
+  }) 
+  socket.on('saveCurrentCity', function(d){
+    console.log("nu är vi save current city sockets", d)
+    //data.currentCity(d)
+  })
 
   
  

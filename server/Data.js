@@ -40,8 +40,6 @@ function Data() {
     answers: [],
     currentQuestion: 0,
     participants:[],
-    c:null,
-    city: undefined
   }
   this.lobbies = {}
 }
@@ -62,6 +60,7 @@ Data.prototype.createPoll = function(pollID, lang="en", route=null) {
   if (typeof this.polls[pollID] === "undefined") {
     let poll = {};
     poll.cities = this.getRouteCities(route);
+    poll.currentcity = {};
     poll.route = route;
     poll.lang = lang;  
     poll.questions = [];
@@ -90,28 +89,28 @@ Data.prototype.getRouteCities = function(route) {
     return JSON.parse(cities)
   }
   else {
-    return null
+    return []
   }
 }
 
-Data.prototype.addQuestion = function(pollId, q,city) {
-  const poll = this.polls[pollId];
-  console.log("question added to", pollId, q);
+Data.prototype.addQuestion = function(pollID, q) {
+  const poll = this.polls[pollID];
+  console.log("question added to", pollID, q);
   if (typeof poll !== 'undefined') {
     poll.questions.push(q);
   }
 }
 
-Data.prototype.editQuestion = function(pollId, index, newQuestion) {
-  const poll = this.polls[pollId];
+Data.prototype.editQuestion = function(pollID, index, newQuestion) {
+  const poll = this.polls[pollID];
   if (typeof poll !== 'undefined') {
     poll.questions[index] = newQuestion;
   }
 }
 
-Data.prototype.getQuestion = function(pollId, qId=null) {
-  const poll = this.polls[pollId];
-  console.log("question requested for ", pollId, qId);
+Data.prototype.getQuestion = function(pollID, qId=null) {
+  const poll = this.polls[pollID];
+  console.log("question requested for ", pollID, qId);
   if (typeof poll !== 'undefined') {
     if (qId !== null) {
       poll.currentQuestion = qId;
@@ -121,9 +120,9 @@ Data.prototype.getQuestion = function(pollId, qId=null) {
   return []
 }
 
-Data.prototype.submitAnswer = function(pollId, answer) {
-  const poll = this.polls[pollId];
-  console.log("answer submitted for ", pollId, answer);
+Data.prototype.submitAnswer = function(pollID, answer) {
+  const poll = this.polls[pollID];
+  console.log("answer submitted for ", pollID, answer);
   if (typeof poll !== 'undefined') {
     let answers = poll.answers[poll.currentQuestion];
     if (typeof answers !== 'object') {
@@ -139,8 +138,8 @@ Data.prototype.submitAnswer = function(pollId, answer) {
   }
 }
 
-Data.prototype.getAnswers = function(pollId) {
-  const poll = this.polls[pollId];
+Data.prototype.getAnswers = function(pollID) {
+  const poll = this.polls[pollID];
   if (typeof poll !== 'undefined') {
     const answers = poll.answers[poll.currentQuestion];
     if (typeof poll.questions[poll.currentQuestion] !== 'undefined') {
@@ -197,6 +196,14 @@ Data.prototype.getPlayers = function(pollID) {
 }
 Data.prototype.getPoll = function(pollID){
   return this.polls[pollID]
+}
+Data.prototype.getCityQuestions = function(pollID, City){
+  const poll = this.polls[pollID];
+  for(let i = 0; i < poll?.questions.length; i++){
+    if(poll.questions[i].city === City){
+      console.log(poll.questions[i])
+    }
+  }
 }
 
 export { Data };

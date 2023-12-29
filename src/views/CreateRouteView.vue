@@ -51,6 +51,8 @@
   <button v-on:click="runQuestion">
   Run question
   </button>
+  {{ selectedCities }}
+  <button @click="loadPreviousQuestions">Load previous question</button>
   </div>
   
   
@@ -100,13 +102,16 @@
   questionsreal: [],
   c:null,
   selectedCity: "",
-  helpOpen: false
+  helpOpen: false,
+  selectedCities: [],
+  amountButtonPressed: 1
   }
   },
   created: function () {
   this.gameID = this.$route.params.id
   socket.emit("pageLoaded", this.lang);
   socket.emit("loadcities");
+  socket.emit("joinPoll", this.gameID)
   socket.on("init", (labels) => {
   this.uiLabels = labels
   })
@@ -121,9 +126,6 @@
   this.data = data)
   },
   methods: {
-  createPoll: function () {
-    socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
-  },
   addAllQuestions: function () {
     this.isError= false;
     if(this.selectedCity !== ""){
@@ -137,10 +139,17 @@
       }
       }
       if(!this.isError){
-          console.log("nu är vi här")
-          socket.emit("addQuestion", {pollId: this.pollId,  questionPart: this.questionsreal[0].question,answers:this.questionsreal[0].answers, c:this.questionsreal[0].correctIndex, city: this.selectedCity})
-          socket.emit("addQuestion", {pollId: this.pollId,  questionPart: this.questionsreal[1].question,answers:this.questionsreal[1].answers, c:this.questionsreal[1].correctIndex, city: this.selectedCity})
-          socket.emit("addQuestion", {pollId: this.pollId,  questionPart: this.questionsreal[2].question,answers:this.questionsreal[2].answers, c:this.questionsreal[2].correctIndex, city: this.selectedCity})
+          console.log("nu är vi här", this.gameID)
+          socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[0].question,answers:this.questionsreal[0].answers, c:this.questionsreal[0].correctIndex, city: this.selectedCity})
+          socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[1].question,answers:this.questionsreal[1].answers, c:this.questionsreal[1].correctIndex, city: this.selectedCity})
+          socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[2].question,answers:this.questionsreal[2].answers, c:this.questionsreal[2].correctIndex, city: this.selectedCity})
+          console.log(this.cities)
+          for(let i = 0; i < this.cities.length; i++){
+            if(this.cities[i].name === this.selectedCity){
+              socket.emit("saveCurrentCity", {top: this.cities[i].top, left: this.cities[i].left, name: this.cities[i].name, first_letter: this.cities[i].first_letter})
+            }
+          }
+          this.selectedCities.push(this.selectedCity)
         }
     }
     else{
@@ -159,7 +168,7 @@
     console.log(childanswers,childquestion,childc)
     if(childquestion !== ""){
       console.log(childanswers[0],childanswers[1])
-      if(childanswers[0] !== "" || childanswers[1] !== ""){
+      if(childanswers[0] !== "" && childanswers[1] !== ""){
       if (childc > -1){
         console.log("message from child is here", childquestion,childanswers,childc);
         this.questionsreal.push({question: childquestion,answers:childanswers,correctIndex:childc, city: this.selectedCity});
@@ -184,8 +193,17 @@
     }
 
   },
-  startGame: function(){
-    socket.emit("beginSetup", {pollId: this.pollId})
+  loadPreviousQuestions: function(){
+    let City = this.selectedCities[this.selectedCities.length -this.amountButtonPressed]
+    console.log(City)
+    this.amountButtonPressed++
+    console.log(this.amountButtonPressed)
+    if(typeof City !== undefined){
+    socket.emit("getQuestionForCity", {pollID: this.gameID, city: City})
+    }
+    else{
+      throw new Error("Unable to get city")
+    }
   },  
   
   
