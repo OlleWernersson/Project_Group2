@@ -1,7 +1,7 @@
 [
   {
-      "top":500,
-      "left":500,
+      "top":660,
+      "left":150,
       "name":"lisbon",
       "first_letter": "l",
       "questions":[{"q": "who lives in lisbon?", 
@@ -19,8 +19,8 @@
 
   },
   {
-     "top": 500,
-     "left": 200,
+     "top": 640,
+     "left": 210,
      "name": "madrid",
      "first_letter": "m",
      "questions":[{"q": "who lives in madrid?", 
@@ -37,8 +37,8 @@
                   }]
   },
   {
-      "top":200,
-      "left": 500,
+      "top":520,
+      "left": 280,
       "name": "paris",
       "first_letter": "p",
       "questions":[{"q": "who lives in paris?", 

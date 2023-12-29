@@ -1,7 +1,7 @@
 [
   {
-      "top":500,
-      "left":500,
+      "top":400,
+      "left":590,
       "name":"nairobi",
       "first_letter": "n",
       "questions":[{"q": "who lives in nairobi?", 
@@ -19,8 +19,8 @@
 
   },
   {
-     "top": 500,
-     "left": 200,
+     "top": 385,
+     "left": 540,
      "name": "kampala",
      "first_letter": "k",
      "questions":[{"q": "who lives in kampala?", 
@@ -37,19 +37,19 @@
                   }]
   },
   {
-      "top":200,
-      "left": 500,
-      "name": "juba",
-      "first_letter": "j",
-      "questions":[{"q": "who lives in juba?", 
+      "top":100,
+      "left": 530,
+      "name": "Kairo",
+      "first_letter": "k",
+      "questions":[{"q": "who lives in kairo?", 
                     "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
                     "c":1
                   },
-                  {"q": "when did juba exist?", 
+                  {"q": "when did kairo exist?", 
                    "a": ["1", "2", "3", "4", "5"],
                    "c": 2
                   }, 
-                  {"q": "why is juba?",
+                  {"q": "why is kairo?",
                    "a": ["wrong answer", "right answer", "wrong answer"],
                    "c":1
                   }]

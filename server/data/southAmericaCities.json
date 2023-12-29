@@ -1,7 +1,7 @@
 [
   {
-      "top":500,
-      "left":500,
+      "top":350,
+      "left":595,
       "name":"sao paulo",
       "first_letter": "s",
       "questions":[{"q": "who lives in sao paulo?", 
@@ -19,8 +19,8 @@
 
   },
   {
-     "top": 500,
-     "left": 200,
+     "top": 465,
+     "left": 475,
      "name": "buenos aires",
      "first_letter": "b",
      "questions":[{"q": "who lives in buenos aires?", 
@@ -37,8 +37,8 @@
                   }]
   },
   {
-      "top":200,
-      "left": 500,
+      "top":230,
+      "left": 280,
       "name": "lima",
       "first_letter": "l",
       "questions":[{"q": "who lives in lima?", 
