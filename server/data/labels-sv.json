@@ -13,7 +13,7 @@
 	"startGame": "Starta Spelet",
 	"joinLobby": "Joina",
 	"yourName": "Ditt Namn",
-	"gameId": "Spel ID",
+	"gameId": "0123",
 	"createLobby": "Skapa Lobby",
 	"chooseRoute": "Välj rutt",
 	"createNewRoute": "Skapa Ny Rutt",
@@ -23,5 +23,8 @@
 	"enterGameID": "Skriv in spelID: ",
 	"helpText": "Beskriv hur du skapar ett spel bla bla bla",
 	"enterPlayer": "Välj namn och färg här ",
-	"waitPlayers": "Vänta på de andra spelarna..."
+	"waitPlayers": "Vänta på de andra spelarna...",
+  "gameIdErrorMessage": "Game ID måste vara 4 siffror långt",
+  "gameIdValidMessage": "Denna lobby kan du Joina!",
+  "gameIdInvalidLobbyMessage": "Denna lobby finns inte :("
 }

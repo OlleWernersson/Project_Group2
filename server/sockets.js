@@ -84,6 +84,9 @@ function sockets(io, socket, data) {
     console.log("nu är vi save current city sockets", d)
     //data.currentCity(d)
   })
+  socket.on('CheckGameID', function(pollID) {
+    socket.emit('isGameIDValid', data.doesPollIDExist(pollID))
+  })
 
   
  

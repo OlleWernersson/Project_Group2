@@ -205,6 +205,15 @@ Data.prototype.getCityQuestions = function(pollID, City){
     }
   }
 }
+Data.prototype.doesPollIDExist = function(pollID) {
+  const poll = this.polls[pollID];
+  if (typeof poll !== 'undefined'){
+    return true
+  }
+  else {
+    return false
+  }
+}
 
 export { Data };
 

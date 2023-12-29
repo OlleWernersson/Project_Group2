@@ -13,7 +13,7 @@
 	"startGame": "Start Game",
 	"joinLobby": "Join",
 	"yourName": "Your Name",
-	"gameId": "Game ID",
+	"gameId": "0123",
 	"createLobby": "Create Lobby",
 	"chooseRoute": "Choose Route",
 	"createNewRoute": "Create New Route",
@@ -23,5 +23,8 @@
 	"enterGameID": "Enter the game ID for the game you wish to join",
 	"helpText": "Description of making the game bla bla bla",
 	"enterPlayer": "Choose your name and color",
-	"waitPlayers": "Waiting for players to join..."
+	"waitPlayers": "Waiting for players to join...",
+  "gameIdErrorMessage": "Game ID must be 4 digits long",
+  "gameIdValidMessage": "You can join this Lobby!",
+  "gameIdInvalidLobbyMessage": "This lobby doesn't exist :("
 }

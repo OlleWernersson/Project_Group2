@@ -7,7 +7,7 @@
         v-model="gameID"
         :placeholder="uiLabels.gameId"
         @input="handleGameIDInput"
-        :class="{ 'invalid-gameID': joinError }"
+        :class="{ 'invalid-gameID': joinError, 'valid-gameID':valid, 'invalid-lobbyID': invalidLobby }"
         autocomplete="off"
       />
 
@@ -15,6 +15,10 @@
         {{ uiLabels.joinLobby }}
       </button>
     </label>
+
+    <p v-if="joinError" class="error-message">{{ uiLabels.gameIdErrorMessage }}</p>
+    <p v-if="valid" class="valid-message">{{ uiLabels.gameIdValidMessage }}</p>
+    <p v-if="invalidLobby" class="invalidLobby-message">{{ uiLabels.gameIdInvalidLobbyMessage }}</p>
   </main>
 </template>
 
@@ -31,6 +35,8 @@ export default {
       gameID: "",
       joinError: false,
       lang: localStorage.getItem("lang") || "en",
+      valid: false,
+      invalidLobby: false
     };
   },
   created: function () {
@@ -38,20 +44,32 @@ export default {
     socket.on("init", (labels) => {
       this.uiLabels = labels;
     });
+    socket.on("isGameIDValid", (boolean) => {
+      this.valid = boolean;
+      this.invalidLobby = !boolean
+    });
   },
   methods: {
     handleGameIDInput() {
       // tar bort icke siffror
-      //this.gameID = this.gameID.replace(/\D/g, '');
+      this.gameID = this.gameID.replace(/\D/g, '');
       // bestämmer hur lång ID är
       this.gameID = this.gameID.slice(0, 4);
-      this.joinError = false;
+      this.invalidLobby=false
+      if (this.gameID.length === 4) {
+        this.joinError = false;
+        socket.emit("CheckGameID", this.gameID)
+      }
+      else {
+        this.valid = false
+      }
+      
     },
     joinLobby() {
       if (this.gameID.length !== 4) {
         this.joinError = true;
       } 
-      else {
+      else if(this.valid){
         /* socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName }); */
         this.$router.push({ path: `/lobby/${this.gameID}` });
       }
@@ -96,12 +114,30 @@ input:focus {
 input.invalid-gameID {
   border-color: red;
 }
-
-#join-lobby-button {
+input.invalid-lobbyID {
+  border-color: red;
 }
-
+input.valid-gameID {
+  border-color: green;
+}
 .wrapper {
   display: flex; 
   flex-direction: row;
 }
+.error-message {
+  color: red;
+  position: absolute;
+  margin-left: -50px;
+}
+.valid-message {
+  color: green;
+  position: absolute;
+  margin-left: -50px;
+}
+.invalidLobby-message{
+  color: red;
+  position: absolute;
+  margin-left: -50px;
+}
+
 </style>
