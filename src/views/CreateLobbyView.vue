@@ -52,9 +52,8 @@
       <router-link
         id="create-route-button"
         class="create-route-button"
-        :to="'/create/' + gameID"
+        :to="'/route/'"
         tag="button"
-        @click="createPoll()"
       >
         +
       </router-link>

@@ -26,6 +26,13 @@ const router = createRouter({
       name: 'CreateRouteView',
       component: () => import('../views/CreateRouteView.vue')
     },
+
+    {
+      path: '/route/',
+      name: 'ChooseMapView',
+      component: () => import('../views/ChooseMapView.vue')
+    },
+
     {
       path: '/result/',
       name: 'ResultView',

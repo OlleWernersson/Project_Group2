@@ -1,7 +1,7 @@
 <template>
   <div id = "bigWrapper">
   <div id = "mapWrapper">
-  <Map>
+  <Map :poll = "poll">
   <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
   </Map>
   </div>
@@ -109,12 +109,19 @@
   },
   created: function () {
   this.gameID = this.$route.params.id
+  socket.emit("joinPoll", this.gameID)
+  socket.emit('getPoll', this.gameID)
+
+  socket.on('thisPoll', poll =>
+  this.poll = poll
+  )
   socket.emit("pageLoaded", this.lang);
   socket.emit("loadcities");
-  socket.emit("joinPoll", this.gameID)
+
   socket.on("init", (labels) => {
   this.uiLabels = labels
   })
+
   socket.on("citiesLoaded", (cities) => {
   this.cities = cities;
   console.log(cities)
