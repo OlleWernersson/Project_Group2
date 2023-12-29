@@ -14,12 +14,11 @@
       <label class="player-pieces-box">
         <p class="choose-color-text">{{ uiLabels.choosecolor }}</p>
         <div class="player-pieces">
-          <div class="player-piece" v-for="(color, index) in playerColors" :key="index" @click="selectPlayerColor(color)">
-            <div class="piece-circle" :style="{ backgroundColor: color }"></div>
+          <div class="player-piece" v-for="(colorObj, index) in playerColorsObjs" :key="index" @click="selectPlayerColor(colorObj)">
+            <div class="piece-circle" :style="{ backgroundColor: colorObj.color }"></div>
           </div>
         </div>
       </label>
-      <button class = "main-button" @click = "submitUser()"> Submit </button>
   </div>
 
   <main>
@@ -86,7 +85,10 @@ export default {
       uiLabels: {},
       gameID: "",
       playerName: "",
-      playerColorObj: {},
+
+      playerColorsObjs: [],
+      selectedColorObj: {},
+
       lang: localStorage.getItem("lang") || "en",
       selectedRoute: null,
       images: [
@@ -103,25 +105,28 @@ export default {
     });
     const randomNumber = Math.floor(Math.random() * 9000 + 1000);
     this.gameID = randomNumber;
+    
+    socket.emit("loadcolors", this.gameID)
+    socket.on("getColors", (colors) => {
+      this.playerColorsObjs = colors;
+    });
+
   },
   methods: {
+    selectPlayerColor(color) {
+      colorObj.isSelected = true;
+      this.selectedColorObj = colorObj; 
+    },
+
     selectRoute(routeId) {
       this.selectedRoute = routeId;
     },
 
-    submitUser(name, colorObj){
-      this.playerName = name; 
-      this.colorObj = colorObj;
+    createPoll: function () {
+      socket.emit("createPoll", { pollId: this.gameID, lang: this.lang, route: this.selectedRoute })
+      socket.emit('joinLobby',  { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: true});
     },
-    createPoll: function (playerName, playerColorObj) {
-      playerName = this.playerName;
-      playerColorObj = this.playerColorObj;
-      socket.emit("createPoll", {pollId: this.gameID, lang: this.lang, route: this.selectedRoute })
-    },
-    selectPlayerColor(color) {
-    // Hanterar valet av spelpjäs
-      this.playerColorObj = color; 
-    },
+
   },
 };
 </script>

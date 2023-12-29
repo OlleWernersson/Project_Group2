@@ -25,7 +25,7 @@ function sockets(io, socket, data) {
   socket.on('getNextQuestion', function(d) {
     let nextIndex=d.index+1;
     socket.emit('sendNextQuestion', data.polls[d.pollId].questions[nextIndex])
-      });
+  });
 
   socket.on('editQuestion', function(d) {
     data.editQuestion(d.pollId, d.index, {q: d.q, a: d.a});
@@ -38,12 +38,11 @@ function sockets(io, socket, data) {
 /*     socket.emit('newQuestion', data.getQuestion(pollId))
     socket.emit('dataUpdate', data.getAnswers(pollId)); */
   });
+
   socket.on('beginSetup',function(pollId){
     io.to(pollId).emit("setupComplete")
     console.log("setup complete")
   }); 
-
-  
 
   socket.on('runQuestion', function(d) {
     io.to(d.pollId).emit('newQuestion', data.getQuestion(d.pollId, d.questionNumber));
@@ -59,16 +58,19 @@ function sockets(io, socket, data) {
     data = new Data();
     data.initializeData();
   });
+
   socket.on('loadcities', function() {
     socket.emit('citiesLoaded',  data.getCities())
     console.log("citiesLoaded")
   });
+
   socket.on('joinLobby', function (d) {
-    data.addPlayerToLobby(d.gameID, d.playerName, d.playerColor);
+    data.addPlayerToLobby(d.gameID, d.playerName, d.playerColorObj, d.isHost);
     let players = data.getPlayers(d.gameID)
     console.log(players, "hallå från socket")
     io.to(d.gameID).emit('updatePlayerList', players);
   });
+
   socket.on('enterlobby', function(gameID){
     let players = data.getPlayers(gameID)
     io.to(gameID).emit('updatePlayerList', players);
@@ -88,8 +90,11 @@ function sockets(io, socket, data) {
     socket.emit('isGameIDValid', data.doesPollIDExist(pollID))
   })
 
-  
- 
+  socket.on("loadColors", function(gameID) {
+    let colors = data.getColors(gameID);
+    console.log("loadcolors printar data.getColors: ", colors)
+    socket.emit("getColors", colors)
+  })
 }
 
 export { sockets };

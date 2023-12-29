@@ -13,8 +13,8 @@
       <label class="player-pieces-box">
         <p class="choose-color-text">{{ uiLabels.choosecolor }}</p>
         <div class="player-pieces">
-          <div class="player-piece" v-for="(color, index) in playerColors" :key="index" @click="selectPlayerColor(color)">
-            <div class="piece-circle" :style="{ backgroundColor: color }"></div>
+          <div class="player-piece" v-for="(colorObj, index) in playerColorsObjs" :key="index" @click="selectPlayerColor(colorObj)">
+            <div class="piece-circle" :style="{ backgroundColor: colorObj.color }"></div>
           </div>
         </div>
       </label>
@@ -60,8 +60,8 @@ export default {
       gameID:"",
       playerName: "",
 
-      playerColors: ["#e84a5f", "#3baea0", "#085f63", "#facf5a", "#ff8b00", "#ff847c", "#7481cf"],
-      selectedPlayerColor: "#e84a5f",
+      playerColorsObjs: [],
+      selectedColorObj: {},
 
     };
   },
@@ -77,16 +77,23 @@ export default {
     socket.on("updatePlayerList", (players) => {
       this.playerList = players;
     });
+    
+    socket.emit("loadcolors", this.gameID)
+    socket.on("getColors", (colors) => {
+      this.playerColorsObjs = colors;
+    });
+
+
     socket.emit("enterlobby",this.gameID)
     console.log("playerList Updated! nu är vi tillbaks i lobbyview")
   },
   methods: {
-    joinLobby() {
-      socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName, playerColor: this.selectedPlayerColor});
+    selectPlayerColor(colorObj) {
+      colorObj.isSelected = true;
+      this.selectedColorObj = colorObj; 
     },
-    selectPlayerColor(color) {
-    // Hanterar valet av spelpjäs
-      this.selectedPlayerColor = color; 
+    joinLobby() {
+      socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: false});
     },
   },
 };

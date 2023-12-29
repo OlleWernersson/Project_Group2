@@ -41,7 +41,23 @@ function Data() {
     currentQuestion: 0,
     participants:[],
   }
-  this.lobbies = {}
+  this.lobbies = {};
+
+  this.colorObjs = [{color: "#e84a5f",
+                    isSelected: false},
+                    {color: "#3baea0", 
+                    isSelected: false},
+                    {color: "#085f63", 
+                    isSelected: false},
+                    {color: "#facf5a", 
+                    isSelected: false},
+                    {color: "#ff8b00", 
+                    isSelected: false},
+                    {color: "#ff847c", 
+                    isSelected: false},
+                    {color: "#7481cf", 
+                    isSelected: false},
+                  ];
 }
  //Constructor initializes empty object with poll property 
 
@@ -66,7 +82,8 @@ Data.prototype.createPoll = function(pollID, lang="en", route=null) {
     poll.questions = [];
     poll.answers = [];
     poll.currentQuestion = 0;
-    poll.participants = [];              
+    poll.participants = [];
+    poll.colorObjs = this.colorObjs;              
     this.polls[pollID] = poll;
     console.log("poll created", pollID, poll);
   }
@@ -152,44 +169,21 @@ Data.prototype.getCities = function(){
   const cities = readFileSync("server/data/cities.json")
   return JSON.parse(cities)
 }
-Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColor) {
-  // if (!this.lobbies[lobbyID]) {
-  //   this.lobbies[lobbyID] = [];
-  //   let player = {
-  //     name: playerName,
-  //     answers: []
-  //   }
-  //   this.lobbies[lobbyID].push(player);
-  //   console.log(playerName + " joined lobby " + lobbyID)
-  // }
-  // else {
-  //   let player = {
-  //     name: playerName,
-  //     answers: []
-  //   }
-  //   this.lobbies[lobbyID].push(player);
-  //   console.log(playerName + " joined lobby " + lobbyID)
-  // }
-
+Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColorObj, isHost) {
   const poll = this.polls[gameID];
   console.log ("new user added to ", gameID, playerName)
   if (typeof poll !== 'undefined') {
     let participant = {
       name: playerName,
-      color: playerColor,
+      colorObj: playerColorObj,
+      isHost: isHost,
     }
   poll.participants.push(participant)
   }
 }
 Data.prototype.getPlayers = function(pollID) {
-  // console.log(this.lobbies[lobbyID])
-  // return this.lobbies[lobbyID]
-
   const poll = this.polls[pollID];
-  console.log(poll, "hallå från getplayers",pollID)
-
   if (typeof poll !== 'undefined') {
-    console.log(poll.participants, "hallå")
     return poll.participants
   }
   return []
@@ -197,6 +191,15 @@ Data.prototype.getPlayers = function(pollID) {
 Data.prototype.getPoll = function(pollID){
   return this.polls[pollID]
 }
+
+Data.prototype.getColors = function(gameID){
+  const game = this.polls[gameID];
+  if (typeof game !== 'undefined') {
+    return this.colorObjs;
+  }
+  return game.colorObjs;
+}
+
 Data.prototype.getCityQuestions = function(pollID, City){
   const poll = this.polls[pollID];
   for(let i = 0; i < poll?.questions.length; i++){
