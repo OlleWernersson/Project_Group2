@@ -7,18 +7,30 @@
   <div class = "editPlayerWrapper" v-if="!hasJoinedLobby">
     <h2> {{ uiLabels.enterPlayer }} </h2>
     <label>
-        <input type="text" v-model="playerName" :placeholder="uiLabels.yourName" @input="handleNameInput" autocomplete="off">
-      </label>
+      <input 
+      type="text" 
+      v-model="playerName" 
+      :placeholder="uiLabels.yourName" 
+      @input="handleNameInput" 
+      :class="{ 'invalid-name': playerNameEmpty}"
+      autocomplete="off">
+    </label>
 
-      <label class="player-pieces-box">
-        <p class="choose-color-text">{{ uiLabels.choosecolor }}</p>
-        <div class="player-pieces">
-          <div class="player-piece" v-for="(colorObj, index) in playerColorsObjs" :key="index" @click="selectPlayerColor(colorObj)">
-            <div class="piece-circle" :style="{ backgroundColor: colorObj.color }"></div>
-          </div>
+    <label class="player-pieces-box" :class="{'noColorSelected':!colorIsSelected}">
+      <p class="choose-color-text">{{ uiLabels.choosecolor }}</p>
+      <div class="player-pieces">
+        <div 
+        class="player-piece" 
+        v-for="(colorObj, index) in playerColorsObjs" 
+        :key="index" 
+        @click="selectPlayerColor(colorObj)"
+        :class="{ 'selected-color': colorObj.isSelected }">
+
+          <div class="piece-circle" :style="{ backgroundColor: colorObj.color }"></div>
         </div>
-      </label>
-      <button class = "main-button" @click = "joinLobby"> {{ uiLabels.joinLobby }} </button>
+      </div>
+    </label>
+    <button class = "main-button" @click = "joinLobby"> {{ uiLabels.joinLobby }} </button>
   </div>
   <div class = playerWrapper>
     <h1> {{ uiLabels.waitPlayers }} </h1>
@@ -62,11 +74,13 @@ export default {
       gameIDPlayerlist: [],
       gameID:"",
       playerName: "",
+      playerNameEmpty: false,
       hasJoinedLobby: false,
       isHost: false,
 
       playerColorsObjs: [],
       selectedColorObj: {},
+      colorIsSelected: true,
 
     };
   },
@@ -102,20 +116,39 @@ export default {
     })
   },
   methods: {
+    handleNameInput() {
+      this.playerName = this.playerName.slice(0, 20);
+      this.playerNameEmpty = false;
+    },
     selectPlayerColor(colorObj) {
-      colorObj.isSelected = true;
-      this.selectedColorObj = colorObj; 
+    // Deselect the previously selected color
+    if (this.selectedColorObj) {
+      this.selectedColorObj.isSelected = false;
+    }
+
+    // Select the new color
+    colorObj.isSelected = true;
+    this.colorIsSelected = true;
+    this.selectedColorObj = colorObj;
     },
     joinLobby() {
-      this.hasJoinedLobby = true;
-      socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: false});
+      if(this.playerName === "") {
+        this.playerNameEmpty = true
+      }
+      if(!this.selectedColorObj.isSelected) {
+        this.colorIsSelected = false
+      }
+      if(!this.playerNameEmpty && this.colorIsSelected) {
+        this.hasJoinedLobby = true;
+        socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: false});
+      }
     },
     startGame() {
       if(this.gameIDPlayerlist.length === 1) {
         socket.emit("startGame", this.gameID)
       }
       else{
-        
+
       }
     }
 
@@ -180,16 +213,29 @@ input:focus {
   display: flex;
   margin-top: 2px;
   margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .player-piece {
   margin-right: 10px;
   cursor: pointer;
+  border: 2px solid rgb(155, 155, 155);
+  border-radius: 50%;
 }
-
 .piece-circle {
   width: 30px;
   height: 30px;
   border-radius: 50%;
 }
+.selected-color {
+  border: 2px solid rgb(88, 234, 59);
+  border-radius: 50%;
+}
+.invalid-name {
+  border-color: red;
+}
+.noColorSelected{
+  border-color: red;
+} 
+
 </style>

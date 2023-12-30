@@ -20,9 +20,11 @@ Kommer vi att använda RandomView och GameIDView?
 - [x] När man startar spelet så ska alla som är i lobbyn joina spelet
 - [x] Man ska bara kunna starta spelet om alla som är i lobbyView har joinat lobbyn?
 - [] Man ska inte kunna välja samma färg
-- [] Border runt player pieces i lobbyView
+- [x] Border runt player pieces i lobbyView
 - [] Ska man kunna lämna lobbyn?
 - [] Man ska inte kunna heta samma sak som någon annan?
+
+Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
 ## GameView
 
@@ -33,5 +35,5 @@ Kommer vi att använda RandomView och GameIDView?
 ## Grundkrav (kolla av innan vi lämnar in)
 
 - [] Allting är responsive?
-- [] UI är dynamiskt uppdaterad beroende på språk med rutterna behöver inte vara det
+- [] UI är dynamiskt uppdaterad beroende på språk men rutterna behöver inte vara det
 - [] Vi kan skapa en rutt och det fungerar som de förbestämda 
