@@ -105,15 +105,15 @@ export default {
     });
     const randomNumber = Math.floor(Math.random() * 9000 + 1000);
     this.gameID = randomNumber;
-    
-    socket.emit("loadcolors", this.gameID)
+
+    socket.emit("loadColors", this.gameID)
     socket.on("getColors", (colors) => {
       this.playerColorsObjs = colors;
     });
 
   },
   methods: {
-    selectPlayerColor(color) {
+    selectPlayerColor(colorObj) {
       colorObj.isSelected = true;
       this.selectedColorObj = colorObj; 
     },

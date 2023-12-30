@@ -1,7 +1,8 @@
 <template>
 
-    <div v-for="player in players" :key="player.id" class="playerBox" :style="{ backgroundColor: player.color }" >
+    <div v-for="player in players" :key="player.id" class="playerBox" :style="{ backgroundColor: player.colorObj.color }" >
       {{ player.name }}
+      Is host: {{ player.isHost }}
     </div>
 </template>
 

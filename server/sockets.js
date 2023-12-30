@@ -91,8 +91,9 @@ function sockets(io, socket, data) {
   })
 
   socket.on("loadColors", function(gameID) {
+    console.log("loadcolors printar data.getColors: ", data.getColors(gameID))
+
     let colors = data.getColors(gameID);
-    console.log("loadcolors printar data.getColors: ", colors)
     socket.emit("getColors", colors)
   })
 }

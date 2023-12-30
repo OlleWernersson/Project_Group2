@@ -78,7 +78,7 @@ export default {
       this.playerList = players;
     });
     
-    socket.emit("loadcolors", this.gameID)
+    socket.emit("loadColors", this.gameID)
     socket.on("getColors", (colors) => {
       this.playerColorsObjs = colors;
     });

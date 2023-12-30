@@ -197,7 +197,9 @@ Data.prototype.getColors = function(gameID){
   if (typeof game !== 'undefined') {
     return this.colorObjs;
   }
-  return game.colorObjs;
+  return this.colorObjs;
+  //OBS i längden måste colorObjs bli specifikt för varje poll så man kan uppdatera isSelected och ta bort färgen 
+  // men just nu är detta nödlösning (this.colorObjs är global och inte pollID specifik)
 }
 
 Data.prototype.getCityQuestions = function(pollID, City){
