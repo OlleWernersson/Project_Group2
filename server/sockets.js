@@ -80,11 +80,12 @@ function sockets(io, socket, data) {
   })
   socket.on('getQuestionForCity', function(d){
     console.log(d)
-    data.getCityQuestions(d.pollID, d.city)
+    let cityQuestions = data.getCityQuestions(d.pollID, d.city)
+    socket.emit('loadNewQuestions')
   }) 
   socket.on('saveCurrentCity', function(d){
     console.log("nu är vi save current city sockets", d)
-    //data.currentCity(d)
+    data.addCurrentCity(d.name,d.first_letter,d.top,d.left,d.pollId)
   })
   socket.on('CheckGameID', function(pollID) {
     socket.emit('isGameIDValid', data.doesPollIDExist(pollID))

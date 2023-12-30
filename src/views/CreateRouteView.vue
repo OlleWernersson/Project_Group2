@@ -41,6 +41,7 @@
   <button @click="startGame">Start game!</button>
   {{ selectedCity }}
   {{ questionsreal}}
+  {{ questions }}
   
   
 
@@ -126,12 +127,14 @@
   this.cities = cities;
   console.log(cities)
   })
+  socket.on()
   socket.on("dataUpdate", (data) =>
   this.data = data
   )
   socket.on("pollCreated", (data) =>
   this.data = data)
   },
+  
   methods: {
   addAllQuestions: function () {
     this.isError= false;
@@ -153,7 +156,7 @@
           console.log(this.cities)
           for(let i = 0; i < this.cities.length; i++){
             if(this.cities[i].name === this.selectedCity){
-              socket.emit("saveCurrentCity", {top: this.cities[i].top, left: this.cities[i].left, name: this.cities[i].name, first_letter: this.cities[i].first_letter})
+              socket.emit("saveCurrentCity", {top: this.cities[i].top, left: this.cities[i].left, name: this.cities[i].name, first_letter: this.cities[i].first_letter, pollId:this.gameID})
             }
           }
           this.selectedCities.push(this.selectedCity)

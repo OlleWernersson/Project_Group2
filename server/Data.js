@@ -11,30 +11,29 @@ function Data() {
       {q: "How old are you?", 
        a: ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
        c:1,
-       city: "vancouver"
+       
       },
       {q: "How much do you enjoy coding?", 
        a: ["1", "2", "3", "4", "5"],
        c: 2,
-       city: "vancouver"
+       
       }, 
 
       {q: "How angry are you?",
       a: ["wrong answer", "right answer", "wrong answer"],
       c:1,
-      city: "vancouver"
+      
       },
 
      {q: "How many people live in Uppsala?",
      a: ["1", "2", "3", "4"],
      c:3,
-     city: "vancouver"
       },
 
       {q: "Vem är sveriges monark?",
       a: ["Emma", "Pappa", "Mamma", "Mormor"],
       c:2,
-      city: "vancouver"
+    
        }
     ],
     answers: [],
@@ -189,6 +188,7 @@ Data.prototype.getPlayers = function(pollID) {
   return []
 }
 Data.prototype.getPoll = function(pollID){
+  console.log(this.polls[pollID].cities)
   return this.polls[pollID]
 }
 
@@ -203,12 +203,21 @@ Data.prototype.getColors = function(gameID){
 }
 
 Data.prototype.getCityQuestions = function(pollID, City){
+  console.log("nu är vi i get city questions")
   const poll = this.polls[pollID];
-  for(let i = 0; i < poll?.questions.length; i++){
-    if(poll.questions[i].city === City){
-      console.log(poll.questions[i])
+  for(let i = 0; i < poll.cities.length; i++){
+    if(poll.cities[i].name === City){
+      return poll.cities[i].questions
     }
   }
+}
+Data.prototype.addCurrentCity = function(cityName,first_letter,top,left,pollID){
+  const poll = this.polls[pollID];
+  console.log(cityName,first_letter,top,left, pollID)
+  console.log(poll.questions)
+  poll.cities.push({top:top,left:left,name:cityName,first_letter:first_letter,questions:poll.questions})
+  poll.questions = []
+  console.log(poll.cities, poll.cities.questions)
 }
 Data.prototype.doesPollIDExist = function(pollID) {
   const poll = this.polls[pollID];

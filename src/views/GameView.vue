@@ -8,7 +8,7 @@
     <!-- <Question @correctAnswerClick = "sendButtonClicktoMap" id = "buttonWrapper" :question = "question"/> -->
     <!-- När Question  emittar ett correctAnswerClick (custom event) anropas metoden sendButtonClciktoMap
     i GameView -->
-
+      <button @click="print"></button>
   </div>
 
   <!-- <City :cities = "cities" > </City> -->
@@ -48,6 +48,7 @@ export default {
 
     socket.on('thisPoll', poll =>
     this.poll = poll
+    
     )
     socket.on("newQuestion", q =>
     this.question = q
@@ -74,6 +75,9 @@ export default {
     getNextQuestion: function(index) {    
       this.index++
       socket.emit("getNextQuestion",{pollId: this.pollId, index: this.index})
+    },
+    print: function(){
+      console.log(this.poll.cities)
     }
   }
   };
