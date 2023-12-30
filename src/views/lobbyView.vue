@@ -4,10 +4,10 @@
   </header>
 
 <div class = "bigWrapper">
-  <div class = "editPlayerWrapper">
+  <div class = "editPlayerWrapper" v-if="!hasJoinedLobby">
     <h2> {{ uiLabels.enterPlayer }} </h2>
     <label>
-        <input type="text" v-model="playerName" placeholder="Your Name" @input="handleNameInput" autocomplete="off">
+        <input type="text" v-model="playerName" :placeholder="uiLabels.yourName" @input="handleNameInput" autocomplete="off">
       </label>
 
       <label class="player-pieces-box">
@@ -18,7 +18,7 @@
           </div>
         </div>
       </label>
-      <button class = "main-button" @click = "joinLobby"> Submit </button>
+      <button class = "main-button" @click = "joinLobby"> {{ uiLabels.joinLobby }} </button>
   </div>
   <div class = playerWrapper>
     <h1> {{ uiLabels.waitPlayers }} </h1>
@@ -56,9 +56,11 @@ export default {
       uiLabels: {},
       lang: localStorage.getItem("lang") || "en",
 
+
       playerList: {},
       gameID:"",
       playerName: "",
+      hasJoinedLobby: false,
 
       playerColorsObjs: [],
       selectedColorObj: {},
@@ -86,6 +88,10 @@ export default {
 
     socket.emit("enterlobby",this.gameID)
     console.log("playerList Updated! nu är vi tillbaks i lobbyview")
+    socket.emit("checkIfHost", this.gameID)
+    socket.on("isHost", (boolean) => {
+      this.hasJoinedLobby = boolean;
+    })
   },
   methods: {
     selectPlayerColor(colorObj) {
@@ -93,6 +99,7 @@ export default {
       this.selectedColorObj = colorObj; 
     },
     joinLobby() {
+      this.hasJoinedLobby = true;
       socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: false});
     },
   },

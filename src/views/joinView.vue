@@ -12,7 +12,7 @@
       />
 
       <button id="join-lobby-button" class="main-button" @click="joinLobby">
-        {{ uiLabels.joinLobby }}
+        {{ uiLabels.join }}
       </button>
     </label>
 

@@ -72,6 +72,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('enterlobby', function(gameID){
+    data.addPlayerToGameID(gameID)
     let players = data.getPlayers(gameID)
     io.to(gameID).emit('updatePlayerList', players);
   })
@@ -96,6 +97,9 @@ function sockets(io, socket, data) {
 
     let colors = data.getColors(gameID);
     socket.emit("getColors", colors)
+  })
+  socket.on("checkIfHost", function(gameID) {
+    socket.emit("isHost", data.isHost(gameID))
   })
 }
 

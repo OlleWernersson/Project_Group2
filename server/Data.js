@@ -40,7 +40,6 @@ function Data() {
     currentQuestion: 0,
     participants:[],
   }
-  this.lobbies = {};
 
   this.colorObjs = [{color: "#e84a5f",
                     isSelected: false},
@@ -82,6 +81,7 @@ Data.prototype.createPoll = function(pollID, lang="en", route=null) {
     poll.answers = [];
     poll.currentQuestion = 0;
     poll.participants = [];
+    poll.gameIDParticipants = [];
     poll.colorObjs = this.colorObjs;              
     this.polls[pollID] = poll;
     console.log("poll created", pollID, poll);
@@ -227,6 +227,22 @@ Data.prototype.doesPollIDExist = function(pollID) {
   else {
     return false
   }
+}
+Data.prototype.addPlayerToGameID = function(gameID) {
+  const poll = this.polls[gameID];
+  poll.gameIDParticipants.push("Counter")
+}
+Data.prototype.isHost = function(gameID) {
+  const poll = this.polls[gameID];
+  console.log(poll.participants.length)
+  console.log(poll.gameIDParticipants.length)
+  if(poll.participants.length === 1 && poll.gameIDParticipants.length === 1) {
+    return true
+  }
+  else {
+    return false
+  }
+
 }
 
 export { Data };
