@@ -12,13 +12,19 @@
       </label>
 
       <label class="player-pieces-box">
-        <p class="choose-color-text">{{ uiLabels.choosecolor }}</p>
-        <div class="player-pieces">
-          <div class="player-piece" v-for="(colorObj, index) in playerColorsObjs" :key="index" @click="selectPlayerColor(colorObj)">
-            <div class="piece-circle" :style="{ backgroundColor: colorObj.color }"></div>
-          </div>
-        </div>
-      </label>
+    <p class="choose-color-text">{{ uiLabels.choosecolor }}</p>
+    <div class="player-pieces">
+      <div
+        class="player-piece"
+        v-for="(colorObj, index) in playerColorsObjs"
+        :key="index"
+        @click="selectPlayerColor(colorObj)"
+        :class="{ 'selected-color': colorObj.isSelected }"
+      >
+        <div class="piece-circle" :style="{ backgroundColor: colorObj.color }"></div>
+      </div>
+    </div>
+  </label>
   </div>
 
   <main>
@@ -114,9 +120,15 @@ export default {
   },
   methods: {
     selectPlayerColor(colorObj) {
-      colorObj.isSelected = true;
-      this.selectedColorObj = colorObj; 
-    },
+    // Deselect the previously selected color
+    if (this.selectedColorObj) {
+      this.selectedColorObj.isSelected = false;
+    }
+
+    // Select the new color
+    colorObj.isSelected = true;
+    this.selectedColorObj = colorObj;
+  },
 
     selectRoute(routeId) {
       this.selectedRoute = routeId;
@@ -222,11 +234,18 @@ input:focus {
   display: flex;
   margin-top: 2px;
   margin-bottom: 20px;
+  
 }
 
 .player-piece {
   margin-right: 10px;
   cursor: pointer;
+  border: 2px solid rgb(155, 155, 155);
+  border-radius: 20px;
+}
+.selected-color {
+  border: 2px solid rgb(88, 234, 59);
+  border-radius: 20px;
 }
 
 .piece-circle {
