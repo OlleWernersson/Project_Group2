@@ -101,6 +101,9 @@ function sockets(io, socket, data) {
   socket.on("checkIfHost", function(gameID) {
     socket.emit("isHost", data.isHost(gameID))
   })
+  socket.on('startGame', function(gameID) {
+    io.to(gameID).emit('navigateToGame', gameID)
+  })
 }
 
 export { sockets };

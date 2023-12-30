@@ -27,14 +27,14 @@
 </div>
 
 
-  <router-link
+  <button
+    v-if="isHost"
     id="start-game-button"
     class="main-button"
-    :to="'/game/' + gameID"
-    tag="button"
+    @click="startGame()"
   >
     {{ uiLabels.startGame }}
-  </router-link>
+</button>
 
 </template>
 
@@ -61,6 +61,7 @@ export default {
       gameID:"",
       playerName: "",
       hasJoinedLobby: false,
+      isHost: false,
 
       playerColorsObjs: [],
       selectedColorObj: {},
@@ -91,6 +92,10 @@ export default {
     socket.emit("checkIfHost", this.gameID)
     socket.on("isHost", (boolean) => {
       this.hasJoinedLobby = boolean;
+      this.isHost = boolean;
+    })
+    socket.on("navigateToGame", (gameID) => {
+      this.$router.push({ path: `/game/${this.gameID}` });
     })
   },
   methods: {
@@ -102,6 +107,10 @@ export default {
       this.hasJoinedLobby = true;
       socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: false});
     },
+    startGame() {
+      socket.emit("startGame", this.gameID)
+    }
+
   },
 };
 </script>

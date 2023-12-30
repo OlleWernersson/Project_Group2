@@ -15,13 +15,14 @@ Kommer vi att använda RandomView och GameIDView?
 
 ## LobbyView - Olle Arbetar med denna nu
 
-- [] Man ska bara kunna joina en lobby en gång
-- [] Bara den som skapade lobbyn ska kunna starta spelet
-- [] När man startar spelet så ska alla som är i lobbyn joina spelet
+- [x] Man ska bara kunna joina en lobby en gång
+- [x] Bara den som skapade lobbyn ska kunna starta spelet
+- [x] När man startar spelet så ska alla som är i lobbyn joina spelet
 - [] Man ska bara kunna starta spelet om alla som är i lobbyView har joinat lobbyn?
 - [] Man ska inte kunna välja samma färg
 - [] Border runt player pieces i lobbyView
 - [] Ska man kunna lämna lobbyn?
+- [] Man ska inte kunna heta samma sak som någon annan?
 
 ## GameView
 
