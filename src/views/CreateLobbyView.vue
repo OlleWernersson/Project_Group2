@@ -8,10 +8,14 @@
   <div class = "editPlayerWrapper">
     <h2> {{ uiLabels.enterPlayer }} </h2>
       <label>
-        <input type="text" v-model = "playerName" placeholder="Your Name" autocomplete="off">
+        <input type="text" v-model = "playerName" 
+        @input="handleNameInput" 
+        placeholder="Your Name" 
+        :class="{ 'invalid-name': playerNameEmpty}"
+        autocomplete="off">
       </label>
 
-      <label class="player-pieces-box">
+      <label class="player-pieces-box" :class="{'noColorSelected':!colorIsSelected}">
     <p class="choose-color-text">{{ uiLabels.choosecolor }}</p>
     <div class="player-pieces">
       <div
@@ -29,7 +33,7 @@
 
   <main>
     <section class="Choose-Route">
-      <h2>
+      <h2 :class="{'noRouteSelected': !routeIsSelected}">
         {{uiLabels.chooseRoute}}
       </h2>
       <div class="button-grid">
@@ -66,15 +70,13 @@
 
   </main>
 
-  <router-link
+  <button
     id="create-lobby-button"
     class="main-button"
-    :to="'/lobby/' + gameID"
-    tag="button"
     @click="createPoll()"
   >
     {{ uiLabels.createLobby }}
-  </router-link>
+</button>
 </template>
 
 <script>
@@ -91,12 +93,15 @@ export default {
       uiLabels: {},
       gameID: "",
       playerName: "",
+      playerNameEmpty: false,
 
       playerColorsObjs: [],
       selectedColorObj: {},
+      colorIsSelected: true,
 
       lang: localStorage.getItem("lang") || "en",
       selectedRoute: null,
+      routeIsSelected: true,
       images: [
       "../../public/img/1.jpg",
       "../../public/img/2.jpg",
@@ -119,6 +124,11 @@ export default {
 
   },
   methods: {
+    handleNameInput() {
+      this.playerName = this.playerName.slice(0, 20);
+      this.playerNameEmpty = false;
+    },
+
     selectPlayerColor(colorObj) {
     // Deselect the previously selected color
     if (this.selectedColorObj) {
@@ -127,16 +137,30 @@ export default {
 
     // Select the new color
     colorObj.isSelected = true;
+    this.colorIsSelected = true;
     this.selectedColorObj = colorObj;
-  },
+    },
 
     selectRoute(routeId) {
       this.selectedRoute = routeId;
+      this.routeIsSelected = true;
     },
 
     createPoll: function () {
-      socket.emit("createPoll", { pollId: this.gameID, lang: this.lang, route: this.selectedRoute })
-      socket.emit('joinLobby',  { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: true});
+      if(this.playerName === "") {
+        this.playerNameEmpty = true
+      }
+      if(!this.selectedColorObj.isSelected) {
+        this.colorIsSelected = false
+      }
+      if(this.selectedRoute === null) {
+        this.routeIsSelected = false
+      }
+      if(!this.playerNameEmpty && this.colorIsSelected && this.routeIsSelected) {
+        this.$router.push({ path: `/lobby/${this.gameID}` });
+        socket.emit("createPoll", { pollId: this.gameID, lang: this.lang, route: this.selectedRoute })
+        socket.emit('joinLobby',  { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: true});
+      }
     },
 
   },
@@ -202,6 +226,9 @@ input {
   background-color:floralwhite;
   outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
 }
+.invalid-name {
+  border-color: red;
+}
 
 input:focus {
   background-color: white;
@@ -226,6 +253,10 @@ input:focus {
   background-color:floralwhite;
   outline: none; 
 }
+.noColorSelected {
+  border-color: red;
+}
+
 
 .choose-color-text {
   color: rgb(164, 161, 161);
@@ -234,23 +265,26 @@ input:focus {
   display: flex;
   margin-top: 2px;
   margin-bottom: 20px;
-  
+  margin-left: 10px;
 }
 
 .player-piece {
   margin-right: 10px;
   cursor: pointer;
   border: 2px solid rgb(155, 155, 155);
-  border-radius: 20px;
+  border-radius: 50%;
 }
 .selected-color {
   border: 2px solid rgb(88, 234, 59);
-  border-radius: 20px;
+  border-radius: 50%;
 }
 
 .piece-circle {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+}
+.noRouteSelected {
+  color:red;
 }
 </style>
