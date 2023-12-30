@@ -18,7 +18,7 @@ Kommer vi att använda RandomView och GameIDView?
 - [x] Man ska bara kunna joina en lobby en gång
 - [x] Bara den som skapade lobbyn ska kunna starta spelet
 - [x] När man startar spelet så ska alla som är i lobbyn joina spelet
-- [] Man ska bara kunna starta spelet om alla som är i lobbyView har joinat lobbyn?
+- [x] Man ska bara kunna starta spelet om alla som är i lobbyView har joinat lobbyn?
 - [] Man ska inte kunna välja samma färg
 - [] Border runt player pieces i lobbyView
 - [] Ska man kunna lämna lobbyn?
@@ -29,3 +29,9 @@ Kommer vi att använda RandomView och GameIDView?
 - [] När alla spelare joinar gameView så ska alla spelare placeras i samma stad och det ska synas för alla
 - [] Alla ska få en av de tre frågor relaterade till den staden slumpmässigt.
 - []
+
+## Grundkrav (kolla av innan vi lämnar in)
+
+- [] Allting är responsive?
+- [] UI är dynamiskt uppdaterad beroende på språk med rutterna behöver inte vara det
+- [] Vi kan skapa en rutt och det fungerar som de förbestämda 

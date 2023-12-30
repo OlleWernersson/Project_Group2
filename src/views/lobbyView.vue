@@ -35,6 +35,7 @@
   >
     {{ uiLabels.startGame }}
 </button>
+{{ gameIDPlayerlist }}
 
 </template>
 
@@ -58,6 +59,7 @@ export default {
 
 
       playerList: {},
+      gameIDPlayerlist: [],
       gameID:"",
       playerName: "",
       hasJoinedLobby: false,
@@ -77,8 +79,9 @@ export default {
       this.uiLabels = labels;
     });
     
-    socket.on("updatePlayerList", (players) => {
+    socket.on("updatePlayerList", (players, gameIDPlayers) => {
       this.playerList = players;
+      this.gameIDPlayerlist = gameIDPlayers;
     });
     
     socket.emit("loadColors", this.gameID)
@@ -108,7 +111,12 @@ export default {
       socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: false});
     },
     startGame() {
-      socket.emit("startGame", this.gameID)
+      if(this.gameIDPlayerlist.length === 1) {
+        socket.emit("startGame", this.gameID)
+      }
+      else{
+        
+      }
     }
 
   },

@@ -187,6 +187,13 @@ Data.prototype.getPlayers = function(pollID) {
   }
   return []
 }
+Data.prototype.getGameIDPlayers = function(pollID) {
+  const poll = this.polls[pollID];
+  if (typeof poll !== 'undefined') {
+    return poll.gameIDParticipants
+  }
+  return []
+}
 Data.prototype.getPoll = function(pollID){
   console.log(this.polls[pollID].cities)
   return this.polls[pollID]
@@ -231,6 +238,10 @@ Data.prototype.doesPollIDExist = function(pollID) {
 Data.prototype.addPlayerToGameID = function(gameID) {
   const poll = this.polls[gameID];
   poll.gameIDParticipants.push("Counter")
+}
+Data.prototype.removePlayerFromGameID = function(gameID) {
+  const poll = this.polls[gameID];
+  poll.gameIDParticipants.pop("Counter")
 }
 Data.prototype.isHost = function(gameID) {
   const poll = this.polls[gameID];
