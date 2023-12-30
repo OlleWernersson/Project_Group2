@@ -10,7 +10,7 @@
       <label>
         <input type="text" v-model = "playerName" 
         @input="handleNameInput" 
-        placeholder="Your Name" 
+        :placeholder="uiLabels.yourName"
         :class="{ 'invalid-name': playerNameEmpty}"
         autocomplete="off">
       </label>
