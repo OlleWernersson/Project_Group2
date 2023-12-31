@@ -91,17 +91,14 @@ Data.prototype.createPoll = function(pollID, lang="en", route=null) {
 Data.prototype.getRouteCities = function(route) {
   if (route === 1) {
     const cities = readFileSync("server/data/europeCities.json")
-    console.log(cities)
     return JSON.parse(cities)
   }
   if (route === 2) {
     const cities = readFileSync("server/data/africaCities.json")
-    console.log(cities)
     return JSON.parse(cities)
   }
   if (route === 3) {
     const cities = readFileSync("server/data/southAmericaCities.json")
-    console.log(cities)
     return JSON.parse(cities)
   }
   else {

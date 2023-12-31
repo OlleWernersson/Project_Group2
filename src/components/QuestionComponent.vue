@@ -1,26 +1,20 @@
 <template>
   <div id = wrapper>
-  <div id = question> {{question.q}} </div>
-  {{wrongOrRight}}
-  <div id = buttonWrapper>
-  <button v-for="(a,index) in question.a" v-bind:key="index" @click="checkCorrectAnswer(index)"> 
-   {{a}} </button>
-
-    <!-- Vill väl eventuellt skapa en for loop här, där lika många knappar som det finns svar lagrade 
-    i frågan skapas, och ge dem texten av svarsalternativet. Kan man ge svaren true/false 
-    för att signalera om dem är rätt eller fel? och välja clickevent baserat på det? Koden finns nedan -->
-  </div>
+    <div id = question> {{question.q}} </div>
+    {{wrongOrRight}}
+    <div id = buttonWrapper>
+      <button v-for="(a,index) in question.a" v-bind:key="index" @click="checkCorrectAnswer(index)"> 
+      {{a}} </button>
+    </div>
   </div>
 </template>
 
 <script>
-import { Socket } from 'socket.io-client'
 export default {
   name: 'QuestionComponent',
   props: {
     question: Object,
-    answers: Object
-  }, 
+  },
 
     data: function () {  
      return {    
@@ -53,26 +47,30 @@ export default {
 <style scoped> 
 
 #wrapper {
-  display: grid; 
-  grid-template-rows: repeat(2 1fr);
+  display: grid;
+  grid-template-rows: 20% 1fr 1fr;
+  height: 20vh;
+  width: 100vw;
 }
 
 #question {
   margin: 0;
-  grid-row-gap: 10px;
-  height: 500px;
-  line-height: 500px;
   font-size: 1.7em;
+  text-align: center;
+  line-height: 1.5em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #buttonWrapper {
-  display: grid; 
-  grid-template-rows: repeat(3 1fr);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  justify-content: center;
 }
 
 button {
-  display: grid, inline-block;
-  grid-template-columns: 10%;
   padding: 1em 2em;
   font-size: 1.2em;
   background-color: plum;

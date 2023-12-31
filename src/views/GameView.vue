@@ -1,28 +1,18 @@
 <template>
   <div id="wrapper">
-      <Map ref = "mapRef" :poll = "poll">
-        <City v-for="(city,index) in poll.cities" :key="city.name" :city = "city" :players="getPlayersInCity(index)"> 
-         </City> <!-- city läggs i slot i mapcomponent -->
-      </Map> 
-    <Question @correctAnswerClick = "getNextQuestion" id = "buttonWrapper" :question = "question"/> 
-    <!-- <Question @correctAnswerClick = "sendButtonClicktoMap" id = "buttonWrapper" :question = "question"/> -->
-    <!-- När Question  emittar ett correctAnswerClick (custom event) anropas metoden sendButtonClciktoMap
-    i GameView -->
-      <button @click="print"></button>
+    <Map ref = "mapRef" :poll = "poll">
+      <City v-for="(city,index) in poll.cities" :key="city.name" :city = "city" :players="getPlayersInCity(index)"> 
+        </City> <!-- city läggs i slot i mapcomponent -->
+    </Map> 
+    <Question :question="getQuestion(playerName)">
+    </Question>
   </div>
-
-  <!-- <City :cities = "cities" > </City> -->
-  <!-- {{ pollId }}
-  {{ poll }} -->
-  {{ poll.cities[0] }}
-  {{ playerName }}
 </template>
 
 <script>
 import Question from '@/components/QuestionComponent.vue';
 import Map from '../components/MapComponent.vue';
 import City from '../components/CityComponent.vue';
-/* import cities from '../../server/data/cities.json'; */
 
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
@@ -76,19 +66,24 @@ export default {
       const myMap = this.$refs.mapRef;
       myMap.moveMeForward(); 
     },
-
     getNextQuestion: function(index) {    
       this.index++
       socket.emit("getNextQuestion",{pollId: this.pollId, index: this.index})
     },
-    print: function(){
-      console.log(this.poll.cities)
-    },
     getPlayersInCity(cityIndex) {
-      console.log(cityIndex)
-      console.log(this.poll.participants.filter(player => player.city === cityIndex))
-      // Assuming poll.participants is an array of player objects with 'city' property
       return this.poll.participants.filter(player => player.city === cityIndex);
+    },
+    getQuestion: function(playerName) {
+      const participant = this.poll.participants.find(participant => participant.name === playerName);
+
+      if (participant) {
+        let cityIndex = participant.city;
+        const randomNumber = Math.floor(Math.random() * 3);
+        return this.poll.cities[cityIndex].questions[randomNumber]
+      } 
+      else {
+        return null; 
+      }
     },
   }
   };
@@ -97,7 +92,7 @@ export default {
 <style>
 #wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 50%;
+  grid-template-rows: 80% 20%;
+  height: 100vh;
 }
   </style>
