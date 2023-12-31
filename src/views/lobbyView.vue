@@ -48,6 +48,7 @@
     {{ uiLabels.startGame }}
 </button>
 {{ gameIDPlayerlist }}
+{{ playerName }}
 
 </template>
 
@@ -73,7 +74,7 @@ export default {
       playerList: {},
       gameIDPlayerlist: [],
       gameID:"",
-      playerName: "hej",
+      playerName: "",
       playerNameEmpty: false,
       hasJoinedLobby: false,
       isHost: false,
@@ -110,9 +111,15 @@ export default {
     socket.on("isHost", (boolean) => {
       this.hasJoinedLobby = boolean;
       this.isHost = boolean;
+      if(boolean) {
+        socket.emit("whatIsHostName",this.gameID)
+      }
     })
     socket.on("navigateToGame", (gameID) => {
       this.$router.push({ path: `/game/${gameID}`, query: { playerName: this.playerName} });
+    })
+    socket.on("hostName", (hostName) => {
+      this.playerName = hostName;
     })
   },
   methods: {

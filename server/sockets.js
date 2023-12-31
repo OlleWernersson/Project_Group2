@@ -107,6 +107,9 @@ function sockets(io, socket, data) {
   socket.on('startGame', function(gameID) {
     io.to(gameID).emit('navigateToGame', gameID)
   })
+  socket.on('whatIsHostName', function(gameID) {
+    socket.emit('hostName', data.getHostName(gameID))
+  })
 }
 
 export { sockets };

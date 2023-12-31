@@ -255,6 +255,10 @@ Data.prototype.isHost = function(gameID) {
   }
 
 }
+Data.prototype.getHostName = function(gameID) {
+  const poll = this.polls[gameID];
+  return poll.participants[0].name
+}
 
 export { Data };
 
