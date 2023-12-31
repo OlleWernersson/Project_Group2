@@ -23,12 +23,13 @@ Kommer vi att använda RandomView och GameIDView?
 - [x] Border runt player pieces i lobbyView
 - [] Ska man kunna lämna lobbyn?
 - [] Man ska inte kunna heta samma sak som någon annan?
+- [] Meddelande om att inte alla har joinat lobby än?
 
 Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
 ## GameView - Olle arbetar med denna nu
 
-- [] När alla spelare joinar gameView så ska alla spelare placeras i samma stad och det ska synas för alla
+- [x] När alla spelare joinar gameView så ska alla spelare placeras i samma stad och det ska synas för alla
 - [] Alla ska få en av de tre frågor relaterade till den staden slumpmässigt.
 - []
 
@@ -41,3 +42,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 ## CreateLobbyView
 
 - [] något som indikerar vilket språk den förvalda rutten är på
+
+## JoinView
+
+- [] Man ska inte kunna joina en lobby som har startat spelet

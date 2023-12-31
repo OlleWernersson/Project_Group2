@@ -176,6 +176,7 @@ Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColorObj, i
       name: playerName,
       colorObj: playerColorObj,
       isHost: isHost,
+      city:0,
     }
   poll.participants.push(participant)
   }

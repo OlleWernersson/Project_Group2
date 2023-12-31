@@ -1,29 +1,35 @@
-<template>    
-  <div class="city-circle" :style="{ left: city?.left + 'px', top: city?.top + 'px' }">
-    <p class="city-name">{{ city?.name }}</p>
+<template>
+  <div class="city-wrapper">
+    <div class="city-circle" :style="{ left: city?.left + 'px', top: city?.top + 'px' }">
+      <p class="city-name">{{ city?.name }}</p>
+      <div class="player-circles" v-if="city && players.length">
+        <div v-for="player in players" :key="player.id" class="player-circle" :style="{ backgroundColor: player.colorObj.color }"></div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    city: Object
+    city: Object,
+    players: Array,
   },
   data() {
     return {
-      isSelected: true,
 
     };
   },
   methods: {
-    select: function () {
-      this.isSelected = !this.isSelected;
-    },
+
   },
 }
 </script>
 
 <style>
+.city-wrapper {
+  position: relative;
+}
 
 .city-circle {
   position: absolute;
@@ -40,7 +46,20 @@ export default {
   transform: translate(-50%, -50%);
   margin-top: -20px;
   font-size: small;
-  
+
+}
+.player-circles {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+.player-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 </style>
 

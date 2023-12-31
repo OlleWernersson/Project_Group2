@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
       <Map ref = "mapRef" :poll = "poll">
-        <City v-for="city in poll.cities" :key="city.name" :city = "city"> 
+        <City v-for="(city,index) in poll.cities" :key="city.name" :city = "city" :players="getPlayersInCity(index)"> 
          </City> <!-- city läggs i slot i mapcomponent -->
       </Map> 
     <Question @correctAnswerClick = "getNextQuestion" id = "buttonWrapper" :question = "question"/> 
@@ -83,7 +83,13 @@ export default {
     },
     print: function(){
       console.log(this.poll.cities)
-    }
+    },
+    getPlayersInCity(cityIndex) {
+      console.log(cityIndex)
+      console.log(this.poll.participants.filter(player => player.city === cityIndex))
+      // Assuming poll.participants is an array of player objects with 'city' property
+      return this.poll.participants.filter(player => player.city === cityIndex);
+    },
   }
   };
 </script>
