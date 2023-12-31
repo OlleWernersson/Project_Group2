@@ -52,6 +52,9 @@ const router = createRouter({
       path: '/game/:id',
       name: 'GameView',
       component: () => import('../views/GameView.vue'),
+      props: (route) => ({
+        playerName: route.query.playerName,
+      }),
     },
     {
       path: '/createlobby/',

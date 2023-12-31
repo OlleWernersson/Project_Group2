@@ -9,7 +9,7 @@
 <script>
 export default {
   props: {
-    players: Array,
+    players: Object,
   },
 };
 </script>

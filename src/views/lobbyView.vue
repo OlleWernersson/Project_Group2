@@ -73,7 +73,7 @@ export default {
       playerList: {},
       gameIDPlayerlist: [],
       gameID:"",
-      playerName: "",
+      playerName: "hej",
       playerNameEmpty: false,
       hasJoinedLobby: false,
       isHost: false,
@@ -112,7 +112,7 @@ export default {
       this.isHost = boolean;
     })
     socket.on("navigateToGame", (gameID) => {
-      this.$router.push({ path: `/game/${this.gameID}` });
+      this.$router.push({ path: `/game/${gameID}`, query: { playerName: this.playerName} });
     })
   },
   methods: {

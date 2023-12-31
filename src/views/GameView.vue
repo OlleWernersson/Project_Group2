@@ -12,8 +12,10 @@
   </div>
 
   <!-- <City :cities = "cities" > </City> -->
-  {{ pollId }}
-  {{ poll }}
+  <!-- {{ pollId }}
+  {{ poll }} -->
+  {{ poll.cities[0] }}
+  {{ playerName }}
 </template>
 
 <script>
@@ -26,6 +28,9 @@ import io from 'socket.io-client';
 const socket = io("localhost:3000");
 
 export default {
+  props: {
+    playerName: String,
+  },
   components: {Map, Question, City},
   data() {
     return {

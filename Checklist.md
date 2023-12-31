@@ -13,7 +13,7 @@ Här rekommenderade Mikael att vi ska använda media queries och för kartorna s
 
 Kommer vi att använda RandomView och GameIDView?
 
-## LobbyView - Olle Arbetar med denna nu
+## LobbyView
 
 - [x] Man ska bara kunna joina en lobby en gång
 - [x] Bara den som skapade lobbyn ska kunna starta spelet
@@ -26,7 +26,7 @@ Kommer vi att använda RandomView och GameIDView?
 
 Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
-## GameView
+## GameView - Olle arbetar med denna nu
 
 - [] När alla spelare joinar gameView så ska alla spelare placeras i samma stad och det ska synas för alla
 - [] Alla ska få en av de tre frågor relaterade till den staden slumpmässigt.
@@ -37,3 +37,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [] Allting är responsive?
 - [] UI är dynamiskt uppdaterad beroende på språk men rutterna behöver inte vara det
 - [] Vi kan skapa en rutt och det fungerar som de förbestämda 
+
+## CreateLobbyView
+
+- [] något som indikerar vilket språk den förvalda rutten är på
