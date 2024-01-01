@@ -196,7 +196,6 @@ Data.prototype.getGameIDPlayers = function(pollID) {
   return []
 }
 Data.prototype.getPoll = function(pollID){
-  console.log(this.polls[pollID].cities)
   return this.polls[pollID]
 }
 

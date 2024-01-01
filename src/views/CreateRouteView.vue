@@ -1,7 +1,7 @@
 <template>
   <div id = "bigWrapper">
   <div id = "mapWrapper">
-  <Map :poll = "poll">
+  <Map :poll = "poll" :players=[]>
   <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
   </Map>
   </div>
@@ -62,7 +62,7 @@
   </div>
   <div id="cities-map">
   <div v-for="city in cities"> {{city.first_letter}}</div>
-  <City v-for="city in cities"
+  <City :players=[] v-for="city in cities"
   v-bind:city="city"
   v-bind:key="city.name"/>
   </div>
