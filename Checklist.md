@@ -25,6 +25,7 @@ Kommer vi att använda RandomView, ResultView och GameIDView?
 - [] Ska man kunna lämna lobbyn?
 - [] Man ska inte kunna heta samma sak som någon annan
 - [] Meddelande om att inte alla har joinat lobby än?
+- [] En countdown så att alla är redo för att spelet kommer starta?
 
 Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
@@ -57,4 +58,4 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
 ## GameResultView
 
-- [] Man ska kunna se vilken stad spelarna kom till och vem som vann
+- [/] Man ska kunna se vilken stad spelarna kom till och vem som vann
