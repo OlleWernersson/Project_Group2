@@ -61,6 +61,9 @@ export default {
 
     socket.on("sendNextQuestion", q =>
      this.question = q)
+    socket.on("navigateToGameResultView", (gameID) => {
+      this.$router.push({ path: `/gameResult/${gameID}`});
+    })
  },
 
   methods: {
@@ -83,11 +86,16 @@ export default {
 
       if (participant) {
         let cityIndex = participant.city;
-        const randomNumber = Math.floor(Math.random() * 3);
-        return this.poll.cities[cityIndex].questions[randomNumber]
+        if(this.poll.cities[cityIndex]) {
+          const randomNumber = Math.floor(Math.random() * 3);
+          return this.poll.cities[cityIndex].questions[randomNumber]
+        }
+        else {
+          return this.question
+        }
       } 
       else {
-        return null; 
+        return this.question; 
       }
     },
   }

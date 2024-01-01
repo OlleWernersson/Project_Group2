@@ -82,7 +82,10 @@ Data.prototype.createPoll = function(pollID, lang="en", route=null) {
     poll.currentQuestion = 0;
     poll.participants = [];
     poll.gameIDParticipants = [];
-    poll.colorObjs = this.colorObjs;              
+    poll.colorObjs = this.colorObjs; 
+    poll.gameStarted = false;
+    poll.gameFinished = false;
+    
     this.polls[pollID] = poll;
     console.log("poll created", pollID, poll);
   }
@@ -259,8 +262,13 @@ Data.prototype.getHostName = function(gameID) {
 }
 Data.prototype.goToNextCity = function(playerName,pollID) {
   const participant = this.polls[pollID].participants.find(participant => participant.name === playerName);
-  participant.city += 1;
+  participant.city += 1
 }
+Data.prototype.isGameFinished = function(pollId) {
+  const poll = this.polls[pollId];
+  const gameFinished = poll.participants.some(participant => participant.city >= poll.cities.length);
+  return gameFinished;
+};
 
 export { Data };
 

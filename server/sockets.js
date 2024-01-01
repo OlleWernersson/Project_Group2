@@ -112,7 +112,12 @@ function sockets(io, socket, data) {
   })
   socket.on('goToNextCity', function(playerName, pollId) {
     data.goToNextCity(playerName, pollId)
-    io.to(pollId).emit('thisPoll', data.getPoll(pollId))
+    if(data.isGameFinished(pollId)) {
+      io.to(pollId).emit('navigateToGameResultView', pollId)
+    }
+    else {
+      io.to(pollId).emit('thisPoll', data.getPoll(pollId))
+    }
   })
 }
 

@@ -60,6 +60,11 @@ const router = createRouter({
       path: '/createlobby/',
       name: 'CreateLobbyVeiw',
       component: () => import('../views/CreateLobbyView.vue')
+    },
+    {
+      path: '/gameResult/:id',
+      name: 'GameResultView',
+      component: () => import('../views/GameResultView.vue')
     }
   ]
 })
