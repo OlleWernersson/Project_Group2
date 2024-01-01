@@ -1,10 +1,19 @@
 <template>
-  <div id = wrapper>
-    <div id = question> {{question.q}} </div>
-    {{wrongOrRight}}
-    <div id = buttonWrapper>
-      <button v-for="(a,index) in question.a" v-bind:key="index" @click="checkCorrectAnswer(index)"> 
-      {{a}} </button>
+  <div id="wrapper">
+    <div id="question">{{ question.q }}</div>
+    {{ wrongOrRight }}
+    <div id="buttonWrapper">
+      <button
+        v-for="(a, index) in question.a"
+        :key="index"
+        @click="checkCorrectAnswer(index)"
+        :disabled="countdown > 0"
+      >
+        {{ a }}
+      </button>
+    </div>
+    <div v-if="countdown > 0" class="countdown-overlay">
+      <div class="countdown">{{ countdown }}</div>
     </div>
   </div>
 </template>
@@ -17,22 +26,37 @@ export default {
   },
 
     data: function () {  
-     return {    
-     wrongOrRight:"",
-     }
+      return {
+        wrongOrRight: '',
+        countdown: 0,
+    };
   },
 
   methods: {
-     checkCorrectAnswer(index) {
-       if (this.question.c === index) {
+    checkCorrectAnswer(index) {
+      if (this.question.c === index) {
           this.wrongOrRight="RÄTT SVAR"
           this.$emit('correctAnswerClick') 
 
-       }
-       else {this.wrongOrRight="FEL SVAR"}
-       }
-     }
-   }
+      }
+      else {
+        this.wrongOrRight = 'FEL SVAR';
+        this.startCountdown();
+      }
+      
+    },
+    startCountdown() {
+      this.countdown = 5;
+      const countdownInterval = setInterval(() => {
+        if (this.countdown > 0) {
+          this.countdown -= 1; 
+        } else {
+          clearInterval(countdownInterval);
+        }
+      }, 1000);
+    },
+  }
+}
 
 
   /*,
@@ -51,6 +75,7 @@ export default {
   grid-template-rows: 20% 1fr 1fr;
   height: 20vh;
   width: 100vw;
+  position: relative;
 }
 
 #question {
@@ -81,6 +106,21 @@ button {
   cursor: pointer;
   border-radius: 8px;
   border: 2px solid pink;
+}
+.countdown-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.countdown {
+  font-size: 2em;
+  color: white;
 }
 
 </style>

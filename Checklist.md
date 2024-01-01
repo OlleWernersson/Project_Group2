@@ -33,7 +33,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [x] När alla spelare joinar gameView så ska alla spelare placeras i samma stad och det ska synas för alla
 - [x] Alla ska få en av de tre frågor relaterade till den staden slumpmässigt.
 - [x] När man svarar rätt så ska man få gå till nästa stad och få en ny slumpmässig fråga där och alla ska se att man har kommit till nästa stad
-- [] När man svarar fel så ska man få vänta? ny fråga eller slumpmässig?
+- [/] När man svarar fel så ska man få vänta? ny fråga eller slumpmässig?
 - [] När man svarar rätt och är vid den sista staden så ska alla pushas till GameResultView
 - [] Använd Canvas för att kunna göra kartan responsive
 - [] Linjer mella städer så att det blir lättare att se ruttens struktur?
