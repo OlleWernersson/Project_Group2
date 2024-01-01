@@ -36,7 +36,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [x] När man svarar rätt så ska man få gå till nästa stad och få en ny slumpmässig fråga där och alla ska se att man har kommit till nästa stad
 - [/] När man svarar fel så ska man få vänta? ny fråga eller slumpmässig?
 - [x] När man svarar rätt och är vid den sista staden så ska alla pushas till GameResultView
-- [] Använd Canvas för att kunna göra kartan responsive
+- [/] Använd Canvas för att kunna göra kartan responsive
 - [] Linjer mella städer så att det blir lättare att se ruttens struktur?
 - [] Något som indikerar vilken av pluttarna som man är eftersom att det är svårt att komma ihåg vilken färg man valde?
 - []

@@ -13,7 +13,7 @@
 
 <script>
 import Question from '@/components/QuestionComponent.vue';
-import Map from '../components/MapComponent.vue';
+import Map from '../components/CanvasMapComponent.vue';
 import City from '../components/CityComponent.vue';
 
 import io from 'socket.io-client';
@@ -26,12 +26,12 @@ export default {
   components: {Map, Question, City},
   data() {
     return {
-        question: {       
-        q: "",       
-        a: [],       
-        c: null,      
+      question: {       
+      q: "",       
+      a: [],       
+      c: null,      
       },
-      index:null,
+      /* index:null, */
       pollId:"",
       poll: {},
       };
@@ -47,37 +47,38 @@ export default {
     this.poll = poll
     
     )
-    socket.on("newQuestion", q =>
+    /* socket.on("newQuestion", q =>
     this.question = q
-    )
+    ) */
 
-    socket.on("dataUpdate", answers =>
+    /* socket.on("dataUpdate", answers =>
      this.submittedAnswers = answers
-     )
+    ) */
 
-    socket.on("pollCreated", (data) =>
+    /* socket.on("pollCreated", (data) =>
      this.data = data
-     )
+    ) */
+    /* socket.on("sendNextQuestion", q =>
+     this.question = q
+    ) */
 
-    socket.on("sendNextQuestion", q =>
-     this.question = q)
     socket.on("navigateToGameResultView", (gameID) => {
       this.$router.push({ path: `/gameResult/${gameID}`});
     })
  },
 
   methods: {
-    sendButtonClicktoMap() {
+    /* sendButtonClicktoMap() {
       const myMap = this.$refs.mapRef;
       myMap.moveMeForward(); 
-    },
+    }, */
     handleCorrectAnswerClick() {
       socket.emit('goToNextCity', this.playerName, this.pollId)
     },
-    getNextQuestion: function(index) {    
+    /* getNextQuestion: function(index) {    
       this.index++
       socket.emit("getNextQuestion",{pollId: this.pollId, index: this.index})
-    },
+    }, */
     getPlayersInCity(cityIndex) {
       return this.poll.participants.filter(player => player.city === cityIndex);
     },
@@ -91,7 +92,7 @@ export default {
           return this.poll.cities[cityIndex].questions[randomNumber]
         }
         else {
-          return this.question
+          return this.question;
         }
       } 
       else {

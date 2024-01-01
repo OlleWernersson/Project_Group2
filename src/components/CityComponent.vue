@@ -1,6 +1,6 @@
 <template>
   <div class="city-wrapper">
-    <div class="city-circle" :style="{ left: city?.left + 'px', top: city?.top + 'px' }">
+    <div class="city-circle" :style="{ left: city?.left + 'px', top: city?.top + 'px'}">
       <p class="city-name">{{ city?.name }}</p>
       <div class="player-circles" v-if="city && players.length">
         <div v-for="player in players" :key="player.id" class="player-circle" :style="{ backgroundColor: player.colorObj.color }"></div>
