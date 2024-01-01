@@ -257,6 +257,10 @@ Data.prototype.getHostName = function(gameID) {
   const poll = this.polls[gameID];
   return poll.participants[0].name
 }
+Data.prototype.goToNextCity = function(playerName,pollID) {
+  const participant = this.polls[pollID].participants.find(participant => participant.name === playerName);
+  participant.city += 1;
+}
 
 export { Data };
 

@@ -9,9 +9,10 @@ Här rekommenderade Mikael att vi ska använda media queries och för kartorna s
 - [] ChooseMapView
 - [] LobbyView
 - [] GameView
-- [] ResultView
+- [] ResultView?
+- [] GameResultView
 
-Kommer vi att använda RandomView och GameIDView?
+Kommer vi att använda RandomView, ResultView och GameIDView?
 
 ## LobbyView
 
@@ -22,7 +23,7 @@ Kommer vi att använda RandomView och GameIDView?
 - [] Man ska inte kunna välja samma färg
 - [x] Border runt player pieces i lobbyView
 - [] Ska man kunna lämna lobbyn?
-- [] Man ska inte kunna heta samma sak som någon annan?
+- [] Man ska inte kunna heta samma sak som någon annan
 - [] Meddelande om att inte alla har joinat lobby än?
 
 Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
@@ -31,8 +32,13 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
 - [x] När alla spelare joinar gameView så ska alla spelare placeras i samma stad och det ska synas för alla
 - [x] Alla ska få en av de tre frågor relaterade till den staden slumpmässigt.
-- [] När man svarar rätt så ska man få gå till nästa stad och få en ny slumpmässig fråga där och alla ska se att man har kommit till nästa stad
+- [x] När man svarar rätt så ska man få gå till nästa stad och få en ny slumpmässig fråga där och alla ska se att man har kommit till nästa stad
 - [] När man svarar fel så ska man få vänta? ny fråga eller slumpmässig?
+- [] När man svarar rätt och är vid den sista staden så ska alla pushas till GameResultView
+- [] Använd Canvas för att kunna göra kartan responsive
+- [] Linjer mella städer så att det blir lättare att se ruttens struktur?
+- [] Något som indikerar vilken av pluttarna som man är eftersom att det är svårt att komma ihåg vilken färg man valde?
+- []
 
 ## Grundkrav (kolla av innan vi lämnar in)
 
@@ -47,3 +53,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 ## JoinView
 
 - [] Man ska inte kunna joina en lobby som har startat spelet
+
+## GameResultView
+
+- [] Man ska kunna se vilken stad spelarna kom till och vem som vann

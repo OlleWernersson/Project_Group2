@@ -4,7 +4,9 @@
       <City v-for="(city,index) in poll.cities" :key="city.name" :city = "city" :players="getPlayersInCity(index)"> 
         </City> <!-- city läggs i slot i mapcomponent -->
     </Map> 
-    <Question :question="getQuestion(playerName)">
+    <Question 
+    :question="getQuestion(playerName)"
+    @correctAnswerClick="handleCorrectAnswerClick">
     </Question>
   </div>
 </template>
@@ -65,6 +67,9 @@ export default {
     sendButtonClicktoMap() {
       const myMap = this.$refs.mapRef;
       myMap.moveMeForward(); 
+    },
+    handleCorrectAnswerClick() {
+      socket.emit('goToNextCity', this.playerName, this.pollId)
     },
     getNextQuestion: function(index) {    
       this.index++

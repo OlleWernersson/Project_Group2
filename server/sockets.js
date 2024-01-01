@@ -110,6 +110,10 @@ function sockets(io, socket, data) {
   socket.on('whatIsHostName', function(gameID) {
     socket.emit('hostName', data.getHostName(gameID))
   })
+  socket.on('goToNextCity', function(playerName, pollId) {
+    data.goToNextCity(playerName, pollId)
+    io.to(pollId).emit('thisPoll', data.getPoll(pollId))
+  })
 }
 
 export { sockets };
