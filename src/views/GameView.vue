@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
-    <Map ref = "mapRef" :poll = "poll">
-      <City v-for="(city,index) in poll.cities" :key="city.name" :city = "city" :players="getPlayersInCity(index)"> 
+    <Map ref = "mapRef" :poll = "poll" @mapSizeChanged="handleMapSizeChanged">
+      <City v-for="(city,index) in poll.cities" :key="city.name" :city = "city" :players="getPlayersInCity(index)" :mapSize="mapSize"> 
         </City> <!-- city läggs i slot i mapcomponent -->
     </Map> 
     <Question 
@@ -9,6 +9,7 @@
     @correctAnswerClick="handleCorrectAnswerClick">
     </Question>
   </div>
+  {{ mapSize }}
 </template>
 
 <script>
@@ -34,7 +35,12 @@ export default {
       /* index:null, */
       pollId:"",
       poll: {},
+      mapSize: {
+        width: 0,
+        height: 0,
+      },
       };
+      
 
   },
 
@@ -74,6 +80,9 @@ export default {
     }, */
     handleCorrectAnswerClick() {
       socket.emit('goToNextCity', this.playerName, this.pollId)
+    },
+    handleMapSizeChanged(size) {
+      this.mapSize = size;
     },
     /* getNextQuestion: function(index) {    
       this.index++

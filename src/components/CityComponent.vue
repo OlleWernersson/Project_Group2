@@ -1,6 +1,6 @@
 <template>
   <div class="city-wrapper">
-    <div class="city-circle" :style="{ left: city?.left + 'px', top: city?.top + 'px'}">
+    <div class="city-circle" :style="{ left: cityPosition.x + 'px', top: cityPosition.y + 'px'}">
       <p class="city-name">{{ city?.name }}</p>
       <div class="player-circles" v-if="city && players.length">
         <div v-for="player in players" :key="player.id" class="player-circle" :style="{ backgroundColor: player.colorObj.color }"></div>
@@ -14,10 +14,26 @@ export default {
   props: {
     city: Object,
     players: Array,
+    mapSize: Object,
+  },
+  computed: {
+    cityPosition() {
+      if (this.mapSize && this.city) {
+        // Calculate relative position based on map size
+        const relativeX = (this.city.left / 800) * this.mapSize.width;
+        const relativeY = (this.city.top / 760) * this.mapSize.height;
+
+        return {
+          x: relativeX,
+          y: relativeY,
+        };
+      } else {
+        return { x: 0, y: 0 }; // or any default values if needed
+      }
+    },
   },
   data() {
     return {
-
     };
   },
   methods: {
@@ -26,7 +42,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .city-wrapper {
   position: relative;
 }

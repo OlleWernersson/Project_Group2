@@ -44,6 +44,10 @@ export default {
       canvas.height = this.canvasHeight;
 
       this.drawMap();
+      this.$emit('mapSizeChanged', {
+        width: this.canvasWidth,
+        height: this.canvasHeight,
+      });
     },
     drawMap() {
       const canvas = this.$refs.mapContainer;
