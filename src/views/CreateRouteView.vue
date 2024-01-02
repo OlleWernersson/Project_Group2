@@ -11,7 +11,7 @@
   <div v-if="helpOpen">
       <div class="popup" @click.self = "help2">
         <div class="helpText">
-          <div > <p> {{ uiLabels.helpText }}</p> 
+          <div> <p> {{ uiLabels.helpText }}</p> 
         </div>
         </div>
       </div>
@@ -48,30 +48,13 @@
   <button v-on:click="addAllQuestions">
   Add question
   </button>
-  <input type="number" v-model="questionNumber">
-  <button v-on:click="runQuestion">
-  Run question
-  </button>
-  {{ selectedCities }}
-  <button @click="loadPreviousQuestions">Load previous question</button>
   </div>
-  
-  
-  {{data}}
-  <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
-  </div>
-  <div id="cities-map">
-  <div v-for="city in cities"> {{city.first_letter}}</div>
-  <City :players=[] v-for="city in cities"
-  v-bind:city="city"
-  v-bind:key="city.name"/>
-  </div>
+    </div>
   </template>
   
   
   <script>
   import io from 'socket.io-client';
-  import City from '../components/CityComponent.vue';
   import Map from '../components/MapComponent.vue';
   import CreateComponent from '../components/CreateComponent.vue';
   import IdBox from '@/components/id-box.vue';
@@ -82,7 +65,7 @@
   
   
   export default {
-  components: { Map, City, CreateComponent, IdBox },
+  components: { Map, CreateComponent, IdBox },
   name: 'CreateRouteView',
   data: function () {
   return {
