@@ -2,6 +2,7 @@
   <main>
     <section class="supportButtons">
       <button class="language-button" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+      <h1 id="Titel">Kartgruppens spel</h1>
       <button class="help-button" @click="help"> {{ uiLabels.help }}</button>
     </section>
     
@@ -10,6 +11,7 @@
       <div class="rules">
         <h3> {{uiLabels.ruleheader }}</h3>
         <div > <p> {{ uiLabels.rules }}</p> 
+        
         </div>
       </div>
     </div>
@@ -79,9 +81,11 @@ export default {
   width: 100%;
   margin-top: 1%;
 }
+#Titel{
+  margin-right: 7%;
+}
 
 .language-button {
-  order: 1;
   margin-left: 4%;
   padding: 1em 2em;
   font-size: 1.2em;
@@ -97,7 +101,6 @@ export default {
 }
 
 .help-button {
-  order: 2;
   margin-right: 4%;
   display: inline-block;
   padding: 1em 2em;
@@ -120,16 +123,14 @@ export default {
   align-items: center;
   height: 80vh;
 }
-.modal{
-  justify-content: center;
-  margin-top: 80vh;
-  align-content: center;
-}
+
+
+
 
 .rules{
     width: 400px;
     height: 500px;
-    padding: 20px;
+    padding: 2em;
     margin: 100px auto;
     background: rgb(244, 195, 195);
     border-radius: 10px;
@@ -141,4 +142,43 @@ export default {
     height: 100%;
     width: 100%;
   }
+  @media screen and (max-width: 768px){
+    #Titel{
+      margin-top: 6em;
+      margin-right: 4%;
+    }
+    .help-button{
+      border-radius: 2vw;
+      font-size: 1em;
+      padding: 1vh 3vw;
+      height: 12vh;
+      width: 22vw
+    }
+    .language-button{
+      border-radius: 2vw;
+      font-size: 1em;
+      padding: 1vh 3vw;
+      height: 12vh;
+      width: 22vw
+    }
+    .mainButtons{
+      font-size: 0.8em;
+      flex-direction: column;
+    }
+    .main-button{
+      display: block
+    }
+    .backdrop{
+      position:absolute;
+    }
+    .rules{
+      height: 65vw;
+      width: 85%;
+      margin: 100px auto;
+      font-size: 2.5vw;
+    }
+   
+    
+  }
+
 </style>

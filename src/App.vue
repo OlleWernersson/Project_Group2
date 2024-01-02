@@ -20,14 +20,12 @@ font-family: 'Varela Round', sans-serif;
 
 }
 .main-button { /* Alla Veiws kan använda denna knapp style*/
-  display: inline-block;
   padding: 1em 2em;
   font-size: 1.2em;
   background-color: plum;
   color: white;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   margin: 0.5em;
   cursor: pointer;
   border-radius: 8px;
