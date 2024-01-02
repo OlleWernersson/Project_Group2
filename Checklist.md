@@ -9,9 +9,9 @@
 
 Här rekommenderade Mikael att vi ska använda media queries och för kartorna så var canvas rekommenderat.
 
-- [] StartView
+- [/] StartView albin 
 - [] JoinView
-- [] CreateLobbyView
+- [] CreateLobbyView albin
 - [] CreateRouteView
 - [] ChooseMapView
 - [] LobbyView

@@ -142,7 +142,21 @@ export default {
     height: 100%;
     width: 100%;
   }
-  @media screen and (max-width: 768px){
+  @media screen and (max-height: 400px) and (max-width: 768px){
+    .mainButtons{
+      margin-top: 2em;
+      align-items: center;
+      justify-content: revert;
+      
+    }
+    #Title{
+      margin-top: 0px;
+      margin-right: 4%;
+    }
+
+    
+  }
+  @media  screen and (max-width: 768px){
     #Titel{
       margin-top: 6em;
       margin-right: 4%;
@@ -180,5 +194,24 @@ export default {
    
     
   }
+  @media screen and (max-height: 400px){
+    #Title{
+      margin-top: 0px;
+    }
+    .mainButtons{
+      margin-top: 2em;
+      align-items: end;
+      justify-content: revert;
+      
+    }
+    .rules{
+      height: 15vw;
+      width: 85%;
+      margin: 100px auto;
+      font-size: 4.5vh;
+    }
+
+  }
+  
 
 </style>
