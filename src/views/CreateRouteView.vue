@@ -38,7 +38,7 @@
   <CreateComponent ref="createComponentRef2"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
 
 
-  <button @click="startGame">Start game!</button>
+  <button @click="createLobby">Create lobby</button>
   {{ selectedCity }}
   {{ questionsreal}}
   {{ questions }}
@@ -48,22 +48,30 @@
   <button v-on:click="addAllQuestions">
   Add question
   </button>
-  <!-- <input type="number" v-model="questionNumber">
+  <input type="number" v-model="questionNumber">
   <button v-on:click="runQuestion">
   Run question
   </button>
   {{ selectedCities }}
-  <button @click="loadPreviousQuestions">Load previous question</button> -->
+  <button @click="loadPreviousQuestions">Load previous question</button>
   </div>
   
   
-  
+  {{data}}
+  <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
+  </div>
+  <div id="cities-map">
+  <div v-for="city in cities"> {{city.first_letter}}</div>
+  <City :players=[] v-for="city in cities"
+  v-bind:city="city"
+  v-bind:key="city.name"/>
   </div>
   </template>
   
   
   <script>
   import io from 'socket.io-client';
+  import City from '../components/CityComponent.vue';
   import Map from '../components/MapComponent.vue';
   import CreateComponent from '../components/CreateComponent.vue';
   import IdBox from '@/components/id-box.vue';
@@ -97,7 +105,9 @@
   selectedCity: "",
   helpOpen: false,
   selectedCities: [],
-  amountButtonPressed: 1
+  amountButtonPressed: 1, 
+  playerName:"noPlayerHost", 
+  selectedColorObj: {}
   }
   },
   created: function () {
@@ -159,6 +169,11 @@
     }
   },
 
+  createLobby: function () {
+    this.$router.push({ path: `/lobby/${this.gameID}` });
+    socket.emit('joinLobby',  { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: true});
+  },
+
   addAnswer: function () {
   this.answers.push("");
   },
@@ -195,29 +210,29 @@
     }
 
   },
-  //loadPreviousQuestions: function(){
-   // let City = this.selectedCities[this.selectedCities.length -this.amountButtonPressed]
-  //  console.log(City)
-  //  this.amountButtonPressed++
-   // console.log(this.amountButtonPressed)
-  //  if(typeof City !== undefined){
-  //  socket.emit("getQuestionForCity", {pollID: this.gameID, city: City})
-  //  }
-  //  else{
-   //   throw new Error("Unable to get city")
-  //  }
+  loadPreviousQuestions: function(){
+    let City = this.selectedCities[this.selectedCities.length -this.amountButtonPressed]
+    console.log(City)
+    this.amountButtonPressed++
+    console.log(this.amountButtonPressed)
+    if(typeof City !== undefined){
+    socket.emit("getQuestionForCity", {pollID: this.gameID, city: City})
+    }
+    else{
+      throw new Error("Unable to get city")
+    }
   },  
   
   
-  //runQuestion: function () {
- // socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
-  //},
+  runQuestion: function () {
+  socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
+  },
 
     help2: function(){
       this.helpOpen = ! this.helpOpen
     }
   }
-  
+  }
   </script>
   
   
@@ -307,4 +322,3 @@
   
   
   </style>
-  
