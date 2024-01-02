@@ -2,7 +2,7 @@
   <div id = "bigWrapper">
     <div id = "mapWrapper" v-on:click="setLocation">
       <Map :poll = "poll" :players=[]>
-        <div>Click somewhere on the map to choose where you want your city to be</div>
+        <label class = "infobox">Click somewhere on the map to choose where you want your city to be</label>
       <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
       <div id="dots" v-bind:style= "{ left: location.x + 'px', top: location.y + 'px' }">
         <div class="clickDot">  </div>
@@ -250,19 +250,11 @@
   width: 150px;
   font-size: 1em;
   margin-top: 10px;
-  
-  
   outline: none;
-  
-  
-
-  
   background-color: plum;
   color: white;
   text-align: center;
   text-decoration: none;
-  
-  
   margin: 0.5em;
   cursor: pointer;
   border-radius: 8px;
@@ -311,5 +303,22 @@
   border-radius: 50%; 
   width: 10px; 
   height: 10px;
+}
+
+#mapWrapper {
+  cursor: pointer; 
+}
+
+.infobox {
+  padding: 10px;
+  border: 2px solid pink;
+  border-radius: 8px;
+  width: 300px;
+  font-size: 0.5em;
+  margin-left: 30px;
+  text-align: center;
+  margin-top: 100px;
+  background-color:rgb(166, 230, 223);
+  outline: none;
 }
   </style>
