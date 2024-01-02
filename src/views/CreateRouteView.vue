@@ -265,6 +265,7 @@
   #bigWrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  
   }
 
   #helpButton{
@@ -310,15 +311,18 @@
 }
 
 .infobox {
+  position: absolute;
+  top: 1.5em;
+  left: 7.5em;
   padding: 10px;
   border: 2px solid pink;
   border-radius: 8px;
-  width: 300px;
+  width: 600px;
   font-size: 0.5em;
   margin-left: 30px;
   text-align: center;
-  margin-top: 100px;
-  background-color:rgb(166, 230, 223);
+ 
+  background-color:#53a8b6;
   outline: none;
 }
   </style>
