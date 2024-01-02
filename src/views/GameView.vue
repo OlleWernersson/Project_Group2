@@ -117,17 +117,15 @@ export default {
 <style scoped>
 #wrapper {
   display: grid;
-  grid-template-rows: 80% 20%;
-  height: 100vh;
-  width: 100%;
+  grid-template-rows: 80vh 20vh;
+  overflow: hidden;
 }
 #wrapper .question-container {
-  /* max-height: 20vh; */
 }
 
 @media screen and (min-aspect-ratio: 2/1) {
   #wrapper {
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 80% 20%; /* % för width men vh för height??*/
   }
   #wrapper .map-container, #wrapper .question-container {
     grid-row: 1 / span 2;
