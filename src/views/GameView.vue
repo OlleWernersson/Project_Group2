@@ -114,12 +114,17 @@ export default {
   };
 </script>
 
-<style>
+<style scoped>
 #wrapper {
   display: grid;
   grid-template-rows: 80% 20%;
   height: 100vh;
+  width: 100%;
 }
+#wrapper .question-container {
+  /* max-height: 20vh; */
+}
+
 @media screen and (min-aspect-ratio: 2/1) {
   #wrapper {
     grid-template-columns: 80% 20%;

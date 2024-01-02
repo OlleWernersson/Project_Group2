@@ -71,7 +71,7 @@ methods: {
 </script>
 
 
-<style>
+<style scoped>
 #questions  {
 display:flex;
   padding: 10px;

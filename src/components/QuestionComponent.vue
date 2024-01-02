@@ -1,17 +1,18 @@
 <template>
   <div id="wrapper">
-    <div id="question">{{ question.q }}</div>
-    <!-- {{ wrongOrRight }} -->
-    <div id="buttonWrapper">
-      <button
-        v-for="(a, index) in question.a"
-        :key="index"
-        @click="checkCorrectAnswer(index)"
-        :disabled="countdown > 0"
-        class="main-button"
-      >
-        {{ a }}
-      </button>
+    <div id="question-container">
+      <div id="question">{{ question.q }}</div>
+      <div id="buttonWrapper">
+        <button
+          v-for="(a, index) in question.a"
+          :key="index"
+          @click="checkCorrectAnswer(index)"
+          :disabled="countdown > 0"
+          class="main-button"
+        >
+          {{ a }}
+        </button>
+      </div>
     </div>
     <div v-if="countdown > 0" class="countdown-overlay">
       <div class="countdown">{{ countdown }}</div>
@@ -58,57 +59,24 @@ export default {
     },
   }
 }
-
-
-  /*,
-  emits: ["answer"],
-  methods: {
-    answer: function (answer) {
-      this.$emit("answer", answer);
-    } 
-  }*/
 </script>
 
 <style scoped> 
 
 #wrapper {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  height: 100%;
-  width: 100%;
   position: relative;
 }
-
+#question-container {
+  display: flex;
+  flex-direction: column;
+}
 #question {
-  margin: 0;
   font-size: 1.7em;
-  text-align: center;
   line-height: 1.5em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  justify-self: center;
 }
 
 #buttonWrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
-  gap: 10px;
-  justify-content: center;
 }
-
-/* button {
-  padding: 1em 2em;
-  font-size: 1.2em;
-  background-color: plum;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  margin: 0.5em;
-  cursor: pointer;
-  border-radius: 8px;
-  border: 2px solid pink;
-} */
 .countdown-overlay {
   position: absolute;
   top: 0;
@@ -156,16 +124,6 @@ export default {
   }
 }
 @media screen and (min-aspect-ratio: 2/1) {
-  #wrapper {
-    grid-template-rows: auto 1fr auto;
-  }
-  #question {
-    order: 1; /* Change order of question element */
-  }
-  #buttonWrapper {
-    order: 2;
-    grid-template-rows: repeat(auto-fit, minmax(1fr, 0px));
-}
 
 }
 </style>

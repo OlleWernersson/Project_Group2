@@ -8,11 +8,10 @@ Här rekommenderade Mikael att vi ska använda media queries och för kartorna s
 - [] CreateRouteView
 - [] ChooseMapView
 - [] LobbyView
-- [] GameView
-- [] ResultView?
+- [] GameView - Olle Arbetar med denna
 - [] GameResultView
 
-Kommer vi att använda RandomView, ResultView och GameIDView?
+Kommer vi att använda RandomView och GameIDView?
 
 ## LobbyView
 
@@ -51,6 +50,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 ## CreateLobbyView
 
 - [] något som indikerar vilket språk den förvalda rutten är på
+- [] Sepparera Create Lobby och Create new Route
 
 ## JoinView
 
@@ -59,3 +59,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 ## GameResultView
 
 - [/] Man ska kunna se vilken stad spelarna kom till och vem som vann
+
+## CreateRouteView
+
+- [] 
