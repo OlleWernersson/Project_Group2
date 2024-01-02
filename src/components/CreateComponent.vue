@@ -15,12 +15,14 @@
     
     </div>
     
+    <div buttonWrapper>
     <button v-on:click="addAnswer">
     Add answer 
     </button>
     <button v-on:click="removeAnswer">
     Remove answer 
     </button></div>
+  </div>
   
     
     </div>
@@ -79,7 +81,7 @@ display:flex;
 
   font-size: 1.5em;
   margin-top: 10px;
-  background-color:floralwhite;
+  background-color:#ebe4f7;
   outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
   }
 

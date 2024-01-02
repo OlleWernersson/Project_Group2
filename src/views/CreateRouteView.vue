@@ -48,30 +48,22 @@
   <button v-on:click="addAllQuestions">
   Add question
   </button>
-  <input type="number" v-model="questionNumber">
+  <!-- <input type="number" v-model="questionNumber">
   <button v-on:click="runQuestion">
   Run question
   </button>
   {{ selectedCities }}
-  <button @click="loadPreviousQuestions">Load previous question</button>
+  <button @click="loadPreviousQuestions">Load previous question</button> -->
   </div>
   
   
-  {{data}}
-  <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
-  </div>
-  <div id="cities-map">
-  <div v-for="city in cities"> {{city.first_letter}}</div>
-  <City :players=[] v-for="city in cities"
-  v-bind:city="city"
-  v-bind:key="city.name"/>
+  
   </div>
   </template>
   
   
   <script>
   import io from 'socket.io-client';
-  import City from '../components/CityComponent.vue';
   import Map from '../components/MapComponent.vue';
   import CreateComponent from '../components/CreateComponent.vue';
   import IdBox from '@/components/id-box.vue';
@@ -203,29 +195,29 @@
     }
 
   },
-  loadPreviousQuestions: function(){
-    let City = this.selectedCities[this.selectedCities.length -this.amountButtonPressed]
-    console.log(City)
-    this.amountButtonPressed++
-    console.log(this.amountButtonPressed)
-    if(typeof City !== undefined){
-    socket.emit("getQuestionForCity", {pollID: this.gameID, city: City})
-    }
-    else{
-      throw new Error("Unable to get city")
-    }
+  //loadPreviousQuestions: function(){
+   // let City = this.selectedCities[this.selectedCities.length -this.amountButtonPressed]
+  //  console.log(City)
+  //  this.amountButtonPressed++
+   // console.log(this.amountButtonPressed)
+  //  if(typeof City !== undefined){
+  //  socket.emit("getQuestionForCity", {pollID: this.gameID, city: City})
+  //  }
+  //  else{
+   //   throw new Error("Unable to get city")
+  //  }
   },  
   
   
-  runQuestion: function () {
-  socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
-  },
+  //runQuestion: function () {
+ // socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
+  //},
 
     help2: function(){
       this.helpOpen = ! this.helpOpen
     }
   }
-  }
+  
   </script>
   
   
