@@ -11,7 +11,7 @@ Här rekommenderade Mikael att vi ska använda media queries och för kartorna s
 
 - [/] StartView albin 
 - [] JoinView
-- [] CreateLobbyView albin
+- [/] CreateLobbyView - albin jag har samma problem med denna som med startview att knapparna sitter fast och åker uppåt + får inte max width + max height media queryn att funka 
 - [] CreateRouteView
 - [] ChooseMapView
 - [] LobbyView

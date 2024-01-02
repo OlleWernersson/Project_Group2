@@ -287,4 +287,29 @@ input:focus {
 .noRouteSelected {
   color:red;
 }
+@media screen and (max-width:768px) {
+  h2{
+      font-size: 1em
+    }
+  button{
+    border-radius: 2vw;
+      font-size: 1em;
+      padding: 1vh 3vw;
+      height: 12vh;
+      width: 22vw
+  }
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(3,100px);
+  }
+  .route-button{
+    width: 100px;
+    height: 100px;
+  }
+  .create-route-button{
+    height: 100px;
+    width: 100px;
+  }
+  
+}
 </style>
