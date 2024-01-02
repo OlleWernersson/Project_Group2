@@ -3,7 +3,12 @@
     <div class="city-circle" :style="{ left: cityPosition.x + 'px', top: cityPosition.y + 'px'}">
       <p class="city-name">{{ city?.name }}</p>
       <div class="player-circles" v-if="city && players.length">
-        <div v-for="player in players" :key="player.id" class="player-circle" :style="{ backgroundColor: player.colorObj.color }"></div>
+        <div
+          v-for="player in players"
+          :key="player.id"
+          :class="{ 'player-circle': true, 'golden-border': player.name === playerName, 'black-border': player.name !== playerName }"
+          :style="{ backgroundColor: player.colorObj.color }"
+        ></div>
       </div>
     </div>
   </div>
@@ -15,6 +20,7 @@ export default {
     city: Object,
     players: Array,
     mapSize: Object,
+    playerName: String,
   },
   computed: {
     cityPosition() {
@@ -77,6 +83,13 @@ export default {
   height: 10px;
   border-radius: 50%;
   margin-right: 5px;
+}
+.golden-border {
+  border: 2px solid white;
+}
+
+.black-border {
+  border: 1px solid black;
 }
 </style>
 

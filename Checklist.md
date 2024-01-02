@@ -1,3 +1,10 @@
+## Grundkrav (kolla av innan vi lämnar in)
+
+- [] Allting är responsive?
+- [] UI är dynamiskt uppdaterad beroende på språk men rutterna behöver inte vara det
+- [] Vi kan skapa en rutt och det fungerar som de förbestämda 
+- [] Inga varningar i consolen som gör att det inte funkar när vi ska sätta ut detta på internet?
+
 ## Responsive (alltså att man kan använda sidan med olika skärmstorlekar) 
 
 Här rekommenderade Mikael att vi ska använda media queries och för kartorna så var canvas rekommenderat.
@@ -12,6 +19,13 @@ Här rekommenderade Mikael att vi ska använda media queries och för kartorna s
 - [] GameResultView
 
 Kommer vi att använda RandomView och GameIDView?
+
+## Allmänt
+
+- [] Göra bilderna mindre färgglada?
+- [] Göra en rutt på svenska
+- [] Göra en rutt på engelska
+- [] HoverEffekt på mer buttons?
 
 ## LobbyView
 
@@ -37,16 +51,9 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [x] När man svarar rätt och är vid den sista staden så ska alla pushas till GameResultView
 - [/] Använd Canvas för att kunna göra kartan responsive
 - [x] Linjer mella städer så att det blir lättare att se ruttens struktur?
-- [] Något som indikerar vilken av pluttarna som man är eftersom att det är svårt att komma ihåg vilken färg man valde?
+- [/] Något som indikerar vilken av pluttarna som man är eftersom att det är svårt att komma ihåg vilken färg man valde?
 - [] ändra så att man får en fråga via serven så att den inte ändras när man laddar om eller ändrar skärmstorlek
 - [] Städers storlek och titel ändras med media quaries?
-
-## Grundkrav (kolla av innan vi lämnar in)
-
-- [] Allting är responsive?
-- [] UI är dynamiskt uppdaterad beroende på språk men rutterna behöver inte vara det
-- [] Vi kan skapa en rutt och det fungerar som de förbestämda 
-- [] Inga varningar i consolen som gör att det inte funkar när vi ska sätta ut detta på internet?
 
 ## CreateLobbyView
 

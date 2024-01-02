@@ -2,8 +2,17 @@
   <!-- {{ mapSize }} -->
   <div id="wrapper">
     <Map ref = "mapRef" :poll = "poll" @mapSizeChanged="handleMapSizeChanged" class="map-container">
-      <CityLine v-for="(city, index) in poll.cities" :key="index" :city="city" :nextCity="getNextCity(index)" :mapSize="mapSize" />
-      <City v-for="(city,index) in poll.cities" :key="city.name" :city = "city" :players="getPlayersInCity(index)" :mapSize="mapSize"> 
+      <CityLine 
+      v-for="(city, index) in poll.cities" 
+      :key="index" :city="city" 
+      :nextCity="getNextCity(index)" 
+      :mapSize="mapSize" />
+      <City 
+      v-for="(city,index) in poll.cities" 
+      :key="city.name" :city = "city" 
+      :players="getPlayersInCity(index)" 
+      :mapSize="mapSize"
+      :playerName="playerName"> 
       </City> <!-- city läggs i slot i mapcomponent -->
     </Map> 
     <Question 
