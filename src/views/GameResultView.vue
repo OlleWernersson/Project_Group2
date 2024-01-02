@@ -1,10 +1,8 @@
 <template>
   <div>
-    <h1>GameResultView!</h1>
+    <h1>Spelresultat: </h1>
     <ul>
-      <li v-for="(participant, index) in sortedParticipants" :key="index">
-        {{ participant.name }} - City: {{ participant.city }}
-      </li>
+      <PlayerList :players="sortedParticipants" result = "true"/>
     </ul>
   </div>
 </template>
@@ -12,16 +10,19 @@
 <script>
 
 import io from 'socket.io-client';
+import PlayerList from '@/components/PlayerList.vue';
 const socket = io("localhost:3000");
 
 export default {
   name: 'GameResultView',
+  components: {PlayerList},
   data: function () {
     return {
       uiLabels: {},
       lang: localStorage.getItem("lang") || "en",
       pollId:"",
       poll: {},
+      sortedParticipants: [],
     };
   },
   created: function () {
@@ -43,6 +44,7 @@ export default {
   },
   computed: {
     sortedParticipants() {
+      this.sortedParticipants = this.poll.participants.slice().sort((a, b) => b.city - a.city);
       return this.poll.participants.slice().sort((a, b) => b.city - a.city);
     },
   },

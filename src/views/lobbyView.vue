@@ -34,7 +34,7 @@
   </div>
   <div class = playerWrapper>
     <h1> {{ uiLabels.waitPlayers }} </h1>
-    <PlayerList :players="playerList" />
+    <PlayerList :players="playerList" :lobby = "true" />
   </div>
 </div>
 
