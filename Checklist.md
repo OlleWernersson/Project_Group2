@@ -8,7 +8,7 @@ Här rekommenderade Mikael att vi ska använda media queries och för kartorna s
 - [] CreateRouteView
 - [] ChooseMapView
 - [] LobbyView
-- [/] GameView - Olle Arbetar med denna 
+- [/] GameView - Vi kan göra klart hur QuestionComponent ser ut när vi har gjort en rutt med vanliga frågor
 - [] GameResultView
 
 Kommer vi att använda RandomView och GameIDView?
@@ -36,9 +36,10 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [/] När man svarar fel så ska man få vänta? ny fråga eller slumpmässig?
 - [x] När man svarar rätt och är vid den sista staden så ska alla pushas till GameResultView
 - [/] Använd Canvas för att kunna göra kartan responsive
-- [] Linjer mella städer så att det blir lättare att se ruttens struktur?
+- [x] Linjer mella städer så att det blir lättare att se ruttens struktur?
 - [] Något som indikerar vilken av pluttarna som man är eftersom att det är svårt att komma ihåg vilken färg man valde?
 - [] ändra så att man får en fråga via serven så att den inte ändras när man laddar om eller ändrar skärmstorlek
+- [] Städers storlek och titel ändras med media quaries?
 
 ## Grundkrav (kolla av innan vi lämnar in)
 

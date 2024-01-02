@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <div id="question-container">
+    <div id="question-container"> <!-- Av någon anledning behöver vi denna -->
       <div id="question">{{ question.q }}</div>
       <div id="buttonWrapper">
         <button
@@ -66,17 +66,17 @@ export default {
 #wrapper {
   position: relative;
 }
-#question-container {
+/* #question-container { 
   display: flex;
   flex-direction: column;
-}
+} */
 #question {
   font-size: 1.7em;
   line-height: 1.5em;
 }
 
-#buttonWrapper {
-}
+/* #buttonWrapper {
+} */
 .countdown-overlay {
   position: absolute;
   top: 0;

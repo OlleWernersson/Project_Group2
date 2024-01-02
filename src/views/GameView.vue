@@ -2,8 +2,9 @@
   <!-- {{ mapSize }} -->
   <div id="wrapper">
     <Map ref = "mapRef" :poll = "poll" @mapSizeChanged="handleMapSizeChanged" class="map-container">
+      <CityLine v-for="(city, index) in poll.cities" :key="index" :city="city" :nextCity="getNextCity(index)" :mapSize="mapSize" />
       <City v-for="(city,index) in poll.cities" :key="city.name" :city = "city" :players="getPlayersInCity(index)" :mapSize="mapSize"> 
-        </City> <!-- city läggs i slot i mapcomponent -->
+      </City> <!-- city läggs i slot i mapcomponent -->
     </Map> 
     <Question 
     class="question-container"
@@ -18,6 +19,7 @@
 import Question from '@/components/QuestionComponent.vue';
 import Map from '../components/CanvasMapComponent.vue';
 import City from '../components/CityComponent.vue';
+import CityLine from "../components/CityLine.vue";
 
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
@@ -26,7 +28,7 @@ export default {
   props: {
     playerName: String,
   },
-  components: {Map, Question, City},
+  components: {Map, Question, City, CityLine},
   data() {
     return {
       question: {       
@@ -110,6 +112,15 @@ export default {
         return this.question; 
       }
     },
+    getNextCity(currentIndex) {
+      const nextIndex = (currentIndex + 1) % this.poll.cities.length;
+      if(nextIndex === 0) {
+        return null
+      }
+      else {
+        return this.poll.cities[nextIndex];
+      }
+    },
   }
   };
 </script>
@@ -120,8 +131,8 @@ export default {
   grid-template-rows: 80vh 20vh;
   overflow: hidden;
 }
-#wrapper .question-container {
-}
+/* #wrapper .question-container {
+} */
 
 @media screen and (min-aspect-ratio: 2/1) {
   #wrapper {

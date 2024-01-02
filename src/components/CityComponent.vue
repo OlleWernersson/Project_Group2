@@ -20,8 +20,8 @@ export default {
     cityPosition() {
       if (this.mapSize && this.city) {
         // Calculate relative position based on map size
-        const relativeX = (this.city.left / 800) * this.mapSize.width;
-        const relativeY = (this.city.top / 760) * this.mapSize.height;
+        const relativeX = (this.city.left / 800) * this.mapSize.width - this.cityRadius;
+        const relativeY = (this.city.top / 760) * this.mapSize.height - this.cityRadius;
 
         return {
           x: relativeX,
@@ -34,6 +34,7 @@ export default {
   },
   data() {
     return {
+      cityRadius:10,
     };
   },
   methods: {
