@@ -11,12 +11,15 @@
       <div class="rules">
         <h3> {{uiLabels.ruleheader }}</h3>
         <div > <p> {{ uiLabels.rules }}</p> 
-        
         </div>
       </div>
     </div>
     </div>
+
     <section class="mainButtons">
+      <div class = "train"> 
+        HEJ
+       </div>
       <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
       <router-link class="main-button" to="/createLobby/">{{uiLabels.createGame}}</router-link>
     </section>
@@ -85,6 +88,9 @@ export default {
   margin-right: 7%;
 }
 
+.train {
+  background-image: url('../../public/img/train[75].png');
+}
 .language-button {
   margin-left: 4%;
   padding: 1em 2em;
@@ -116,17 +122,12 @@ export default {
   border: 2px solid rgb(228, 63, 118);
 
 }
-
 .mainButtons {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80vh;
 }
-
-
-
-
 .rules{
     width: 400px;
     height: 500px;
@@ -176,9 +177,7 @@ export default {
       width: 85%;
       margin: 100px auto;
       font-size: 2.5vw;
-    }
-   
-    
+    } 
   }
 
 </style>

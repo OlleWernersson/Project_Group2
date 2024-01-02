@@ -1,8 +1,9 @@
 <template>
-
     <div v-for="player in players" :key="player.id" class="playerBox" :style="{ backgroundColor: player.colorObj.color }" >
-      {{ player.name }}
-      Is host: {{ player.isHost }}
+      <label>{{ player.name }}</label>, 
+      <label v-if="lobby"> Is host: {{ player.isHost }}</label>
+      <label v-if="result">cities finished: {{ player.city }}
+      </label>
     </div>
 </template>
 
@@ -10,6 +11,8 @@
 export default {
   props: {
     players: Object,
+    lobby: false,
+    result: false, 
   },
 };
 </script>
