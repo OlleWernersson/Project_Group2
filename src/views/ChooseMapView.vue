@@ -26,10 +26,7 @@
         </button>
       </router-link>
     </section>
-
     </template> 
-
-
     <script>
 import io from 'socket.io-client';
 
@@ -50,6 +47,7 @@ export default {
       "../../public/img/3.jpg",
       "../../public/img/4.jpg"
       ],
+      mapImage: "", 
     };
   },
   created: function () {
@@ -62,13 +60,13 @@ export default {
   },
   methods: {
     selectRoute(routeId) {
-      this.selectedRoute = routeId;
-      console.log("här är rutten", this.selectedRoute)
-      this.createPoll();
+      this.mapImage = routeId;
+      console.log("här är rutten", this.mapImage)
+      this.createPoll()
     }, 
 
     createPoll: function () {
-      socket.emit("createPoll", {pollId: this.gameID, lang: this.lang, route: this.selectedRoute })
+      socket.emit("createPoll", {pollId: this.gameID, lang: this.lang, route: null, mapImage: this.mapImage })
     }
   }
 };

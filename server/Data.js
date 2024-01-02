@@ -70,12 +70,20 @@ Data.prototype.getUILabels = function (lang = "en") {
   return JSON.parse(labels);
 }
 
-Data.prototype.createPoll = function(pollID, lang="en", route=null) {
+Data.prototype.createPoll = function(pollID, lang="en", route=null, mapImage = null) {
   if (typeof this.polls[pollID] === "undefined") {
     let poll = {};
     poll.cities = this.getRouteCities(route);
     poll.currentcity = {};
-    poll.route = route;
+    console.log("create poll printar route: ", route)
+    console.log("create poll printar mapimage: ", mapImage)
+
+    if (route === null) {
+      poll.route = mapImage;
+    }
+    else {
+      poll.route = route;
+    }
     poll.lang = lang;  
     poll.questions = [];
     poll.answers = [];
@@ -93,6 +101,7 @@ Data.prototype.createPoll = function(pollID, lang="en", route=null) {
 }
 Data.prototype.getRouteCities = function(route) {
   if (route === 1) {
+
     const cities = readFileSync("server/data/europeCities.json")
     return JSON.parse(cities)
   }
@@ -104,6 +113,7 @@ Data.prototype.getRouteCities = function(route) {
     const cities = readFileSync("server/data/southAmericaCities.json")
     return JSON.parse(cities)
   }
+
   else {
     return []
   }

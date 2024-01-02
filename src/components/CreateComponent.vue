@@ -32,18 +32,15 @@
 
 <script>
 export default {
-
     props:{
-        Question:Object
+        Question: Object
     },
 
-
  data: function () {
-    
     return {
-   question: "",
-   answers: ["", ""],
-   c: -1,
+      question: "",
+      answers: ["", ""],
+      c: -1,
   }
 },
 
@@ -58,8 +55,11 @@ methods: {
   this.c=i
   },
   addQuestion: function(){
-    console.log(this.c)
-    this.$emit('addThisQuestion', this.question,this.answers, this.c)
+    console.log(this.c);
+    this.$emit('addThisQuestion', this.question, this.answers, this.c);
+    this.question = "";
+    this.answers = ["", ""];
+    this.c = -1;
   }
 
 }

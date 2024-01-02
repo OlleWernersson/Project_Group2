@@ -45,14 +45,13 @@
 
 
   <button @click="createLobby">Create lobby</button>
-  {{ selectedCity }}
-  {{ questionsreal}}
-  {{ questions }}
+  {{ questionsreal }}
+
   
   
 
-  <button v-on:click="addAllQuestions">
-      Add question
+      <button v-on:click="addAllQuestions">
+          New city 
       </button>
     </div>
     </div>
@@ -65,10 +64,7 @@
   import CreateComponent from '../components/CreateComponent.vue';
   import IdBox from '@/components/id-box.vue';
 
-  
-  
   const socket = io("localhost:3000");
-  
   
   export default {
   components: { Map, CreateComponent, IdBox },
@@ -81,6 +77,9 @@
   question: "",
   cityChosen: false, 
   answers: ["", ""],
+  playerName: "Host",
+  playerColorObj: {color: "#ff8b00",
+                   isSelected: true},
   questionNumber: 0,
   data: {},
   location: { top: 10,
@@ -94,7 +93,7 @@
    question3: {  }
   },
   questionsreal: [],
-  c:null,
+  c: null,
   selectedCity: "",
   helpOpen: false,
   selectedCities: [],
@@ -137,7 +136,6 @@
       for (let i = 0; i <3 ; i++) { 
       var createRef = this.$refs[`createComponentRef${i}`];
         createRef.addQuestion();
-        console.log("inne i forloopen")
       
         if(this.isError){
         this.questionsreal = []
@@ -151,18 +149,19 @@
           console.log(this.cities)
           socket.emit("saveCurrentCity", {top: this.location.y, left: this.location.x, name: this.selectedCity, first_letter: this.selectedCity.slice(0, 1), pollId:this.gameID})
           this.selectedCities.push(this.selectedCity)
-          console.log("CURRENT CITY SAVE HIHI", {top: this.location.y, left: this.location.x, name: this.selectedCity, first_letter: this.selectedCity.slice(0, 1), pollId:this.gameID})
+          this.selectedCity = ""
         }
     }
     else{
       window.alert("please select a city")
     }
   },
-
+  
   createLobby: function () {
-    this.$router.push({ path: `/lobby/${this.gameID}` });
-    socket.emit('joinLobby',  { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: true});
-  },
+        this.$router.push({ path: `/lobby/${this.gameID}` });
+        socket.emit("createPoll", { pollId: this.gameID, lang: this.lang, route: this.selectedRoute })
+        socket.emit('joinLobby',  { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: true});
+      },
 
   addAnswer: function () {
   this.answers.push("");
@@ -178,7 +177,7 @@
       if(childanswers[0] !== "" && childanswers[1] !== ""){
       if (childc > -1){
         console.log("message from child is here", childquestion,childanswers,childc);
-        this.questionsreal.push({question: childquestion,answers:childanswers,correctIndex:childc, city: this.selectedCity});
+        this.questionsreal.push({question: childquestion, answers: childanswers, correctIndex: childc});
       
         //socket.emit("addQuestion", {pollId: this.pollId,  questionPart: childquestion,answers:childanswers, c:childc, city: this.selectedCity})
       }
@@ -195,8 +194,6 @@
       window.alert("you forgot to fill a question field please try again")
       this.isError= true;
       throw new Error("you forgot to fill in a question field ")
-      
-
     }
 
   },

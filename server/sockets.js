@@ -10,7 +10,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('createPoll', function(d) {
-    socket.emit('pollCreated', data.createPoll(d.pollId, d.lang, d.route));
+    socket.emit('pollCreated', data.createPoll(d.pollId, d.lang, d.route, d.mapImage));
   });
 
   socket.on('addQuestion', function(d) {
