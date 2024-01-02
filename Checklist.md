@@ -39,7 +39,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [/] Använd Canvas för att kunna göra kartan responsive
 - [] Linjer mella städer så att det blir lättare att se ruttens struktur?
 - [] Något som indikerar vilken av pluttarna som man är eftersom att det är svårt att komma ihåg vilken färg man valde?
-- []
+- [] ändra så att man får en fråga via serven så att den inte ändras när man laddar om eller ändrar skärmstorlek
 
 ## Grundkrav (kolla av innan vi lämnar in)
 

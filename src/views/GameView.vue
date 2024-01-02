@@ -1,15 +1,17 @@
 <template>
+  <!-- {{ mapSize }} -->
   <div id="wrapper">
-    <Map ref = "mapRef" :poll = "poll" @mapSizeChanged="handleMapSizeChanged">
+    <Map ref = "mapRef" :poll = "poll" @mapSizeChanged="handleMapSizeChanged" class="map-container">
       <City v-for="(city,index) in poll.cities" :key="city.name" :city = "city" :players="getPlayersInCity(index)" :mapSize="mapSize"> 
         </City> <!-- city läggs i slot i mapcomponent -->
     </Map> 
     <Question 
+    class="question-container"
     :question="getQuestion(playerName)"
     @correctAnswerClick="handleCorrectAnswerClick">
     </Question>
   </div>
-  {{ mapSize }}
+  <!-- {{ mapSize }} -->
 </template>
 
 <script>
@@ -117,5 +119,13 @@ export default {
   display: grid;
   grid-template-rows: 80% 20%;
   height: 100vh;
+}
+@media screen and (min-aspect-ratio: 2/1) {
+  #wrapper {
+    grid-template-columns: 80% 20%;
+  }
+  #wrapper .map-container, #wrapper .question-container {
+    grid-row: 1 / span 2;
+  }
 }
   </style>

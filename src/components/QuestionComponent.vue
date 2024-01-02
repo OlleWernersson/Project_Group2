@@ -1,13 +1,14 @@
 <template>
   <div id="wrapper">
     <div id="question">{{ question.q }}</div>
-    {{ wrongOrRight }}
+    <!-- {{ wrongOrRight }} -->
     <div id="buttonWrapper">
       <button
         v-for="(a, index) in question.a"
         :key="index"
         @click="checkCorrectAnswer(index)"
         :disabled="countdown > 0"
+        class="main-button"
       >
         {{ a }}
       </button>
@@ -72,9 +73,9 @@ export default {
 
 #wrapper {
   display: grid;
-  grid-template-rows: 20% 1fr 1fr;
-  height: 20vh;
-  width: 100vw;
+  grid-template-rows: 1fr 1fr;
+  height: 100%;
+  width: 100%;
   position: relative;
 }
 
@@ -86,16 +87,17 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  justify-self: center;
 }
 
 #buttonWrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
   gap: 10px;
   justify-content: center;
 }
 
-button {
+/* button {
   padding: 1em 2em;
   font-size: 1.2em;
   background-color: plum;
@@ -106,7 +108,7 @@ button {
   cursor: pointer;
   border-radius: 8px;
   border: 2px solid pink;
-}
+} */
 .countdown-overlay {
   position: absolute;
   top: 0;
@@ -122,5 +124,48 @@ button {
   font-size: 2em;
   color: white;
 }
+@media screen and (max-width: 768px), (max-height: 700px) {
+  #question {
+    font-size: 1.2em;
+  }
 
+  button {
+    font-size: 1em;
+    padding: 0.8em 1.5em;
+  }
+}
+
+@media screen and (max-width: 480px), (max-height: 500px) {
+  #question {
+    font-size: 1em;
+  }
+
+  button {
+    font-size: 0.8em;
+    padding: 0.6em 1.2em;
+  }
+}
+@media screen and (max-height: 400px) {
+  #question {
+    font-size: 0.8em;
+  }
+
+  button {
+    font-size: 0.6em;
+    padding: 0em 0.6em;
+  }
+}
+@media screen and (min-aspect-ratio: 2/1) {
+  #wrapper {
+    grid-template-rows: auto 1fr auto;
+  }
+  #question {
+    order: 1; /* Change order of question element */
+  }
+  #buttonWrapper {
+    order: 2;
+    grid-template-rows: repeat(auto-fit, minmax(1fr, 0px));
+}
+
+}
 </style>
