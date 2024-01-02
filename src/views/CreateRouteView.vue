@@ -1,14 +1,18 @@
 <template>
   <div id = "bigWrapper">
-  <div id = "mapWrapper">
-  <Map :poll = "poll" :players=[]>
-  <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
-  </Map>
-  </div>
+    <div id = "mapWrapper" v-on:click="setLocation">
+      <Map :poll = "poll" :players=[]>
+        <div>Click somewhere on the map to choose where you want your city to be</div>
+      <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
+      <div id="dots" v-bind:style= "{ left: location.x + 'px', top: location.y + 'px' }">
+        <div class="clickDot">  </div>
+        </div>
+      </Map>
+    </div>
   <div id = "questionWrapper">
   <button id="helpButton" @click="help2" >{{ uiLabels.help }} </button> 
 
-  <div v-if="helpOpen">
+    <div v-if="helpOpen">
       <div class="popup" @click.self = "help2">
         <div class="helpText">
           <div> <p> {{ uiLabels.helpText }}</p> 
@@ -27,10 +31,12 @@
   <!-- <button v-on:click="createPoll">
   Create poll
   </button> -->
+  <input  class="writeCity" v-model="selectedCity"  placeholder= "Write city name">
+
   <label for="options"></label>
-    <select name="rcp" id="options" v-model="selectedCity">
+    <!-- <select name="rcp" id="options" v-model="selectedCity">
         <option v-for="city in cities" v-bind:key="city.name"> {{ city.name }} </option>
-    </select> 
+    </select>  -->
 
 
   <CreateComponent ref="createComponentRef0"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
@@ -46,9 +52,9 @@
   
 
   <button v-on:click="addAllQuestions">
-  Add question
-  </button>
-  </div>
+      Add question
+      </button>
+    </div>
     </div>
   </template>
   
@@ -73,9 +79,13 @@
   lang: localStorage.getItem("lang") || "en",
   gameID:"",
   question: "",
+  cityChosen: false, 
   answers: ["", ""],
   questionNumber: 0,
   data: {},
+  location: { top: 10,
+            y: 10
+          },
   uiLabels: {},
   cities: {},
   questions: {
@@ -126,10 +136,10 @@
     if(this.selectedCity !== ""){
       for (let i = 0; i <3 ; i++) { 
       var createRef = this.$refs[`createComponentRef${i}`];
-      
         createRef.addQuestion();
         console.log("inne i forloopen")
-      if(this.isError){
+      
+        if(this.isError){
         this.questionsreal = []
       }
       }
@@ -139,12 +149,9 @@
           socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[1].question,answers:this.questionsreal[1].answers, c:this.questionsreal[1].correctIndex, city: this.selectedCity})
           socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[2].question,answers:this.questionsreal[2].answers, c:this.questionsreal[2].correctIndex, city: this.selectedCity})
           console.log(this.cities)
-          for(let i = 0; i < this.cities.length; i++){
-            if(this.cities[i].name === this.selectedCity){
-              socket.emit("saveCurrentCity", {top: this.cities[i].top, left: this.cities[i].left, name: this.cities[i].name, first_letter: this.cities[i].first_letter, pollId:this.gameID})
-            }
-          }
+          socket.emit("saveCurrentCity", {top: this.location.y, left: this.location.x, name: this.selectedCity, first_letter: this.selectedCity.slice(0, 1), pollId:this.gameID})
           this.selectedCities.push(this.selectedCity)
+          console.log("CURRENT CITY SAVE HIHI", {top: this.location.y, left: this.location.x, name: this.selectedCity, first_letter: this.selectedCity.slice(0, 1), pollId:this.gameID})
         }
     }
     else{
@@ -193,27 +200,19 @@
     }
 
   },
-  loadPreviousQuestions: function(){
-    let City = this.selectedCities[this.selectedCities.length -this.amountButtonPressed]
-    console.log(City)
-    this.amountButtonPressed++
-    console.log(this.amountButtonPressed)
-    if(typeof City !== undefined){
-    socket.emit("getQuestionForCity", {pollID: this.gameID, city: City})
-    }
-    else{
-      throw new Error("Unable to get city")
-    }
-  },  
-  
-  
-  runQuestion: function () {
-  socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
+
+  help2: function(){
+    this.helpOpen = ! this.helpOpen
   },
 
-    help2: function(){
-      this.helpOpen = ! this.helpOpen
-    }
+  setLocation: function (event) {
+    var offset = {x: event.currentTarget.getBoundingClientRect().left,
+                  y: event.currentTarget.getBoundingClientRect().top};
+    this.location = {x: event.clientX - 10 - offset.x,
+                      y: event.clientY - 10 - offset.y}
+
+      console.log(this.location)
+  },
   }
   }
   </script>
@@ -290,7 +289,6 @@
     background: rgba(0, 0, 0, 0.8);
     height: 100%;
     width: 100%;
-  
   }
 
   .helpText {
@@ -303,5 +301,15 @@
     margin-top:7em;
   }
   
-  
+  #dots {
+  position: absolute;
+}
+
+#dots div {
+  position: absolute;
+  background: rgb(0, 0, 0); 
+  border-radius: 50%; 
+  width: 10px; 
+  height: 10px;
+}
   </style>
