@@ -2,24 +2,26 @@
 
 - [] Allting är responsive?
 - [] UI är dynamiskt uppdaterad beroende på språk men rutterna behöver inte vara det
-- [] Vi kan skapa en rutt och det fungerar som de förbestämda 
+- [x] Vi kan skapa en rutt och det fungerar som de förbestämda 
 - [] Inga varningar i consolen som gör att det inte funkar när vi ska sätta ut detta på internet?
 
-## Responsive (alltså att man kan använda sidan med olika skärmstorlekar) 
+## Responsive (alltså att man kan använda sidan med olika skärmstorlekar) Brädden är det viktiga
 
 Här rekommenderade Mikael att vi ska använda media queries och för kartorna så var canvas rekommenderat.
 
-- [/] StartView  
-- [x] JoinView
+- [x] StartView - Viktig - nu funkar det bra på mobiler!
+- [x] JoinView - Viktig
 - [/] CreateLobbyView - 
 - [] CreateRouteView
 - [] ChooseMapView
 - [] LobbyView
-- [/] GameView - Vi kan göra klart hur QuestionComponent ser ut när vi har gjort en rutt med vanliga frågor
+- [/] GameView - Viktig
 - [] GameResultView
-- [] JoinLobbyView
+- [] JoinLobbyView - Viktig
 
 Kommer vi att använda RandomView och GameIDView?
+
+Det viktigaste är att man kan joina spelet och spela lätt med olika typer av skärmar
 
 ## Allmänt
 
@@ -59,7 +61,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [] göra kartan minde färgglad och få städerna att "poppa" med shadow osv finns i css!
 
 
-## CreateLobbyView
+## CreateLobbyView - Planen är att man får först välja mellan att välja rutt eller skapa rutt. Om man väljer att välja rutt så ska man få upp under det där man kan sätta sitt namn och färg.
 
 - [] något som indikerar vilket språk den förvalda rutten är på
 - [] Sepparera Create Lobby och Create new Route

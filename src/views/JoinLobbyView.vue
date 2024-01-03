@@ -72,12 +72,10 @@ export default {
       this.playerNameEmpty = false;
     },
     selectPlayerColor(colorObj) {
-    // Deselect the previously selected color
     if (this.selectedColorObj) {
       this.selectedColorObj.isSelected = false;
     }
 
-    // Select the new color
     colorObj.isSelected = true;
     this.colorIsSelected = true;
     this.selectedColorObj = colorObj;
@@ -110,7 +108,7 @@ input {
   font-size: 1.5em;
   margin-top: 10px;
   background-color:floralwhite;
-  outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
+  outline: none;
 }
 
 input:focus {
