@@ -22,7 +22,7 @@
 	"ruleheader": "Spelregler",
 	"choosecolor": "Välj din spelfärg!",
 	"enterGameID": "Skriv in spelID: ",
-	"helpText": "Beskriv hur du skapar ett spel bla bla bla",
+	"helpText": "Osäker på hur du skapar ditt eget spel? Här kommer instruktioner! Börja med att klicka i kartan för att välja vilken plats dina frågor ska tillhöra. Skriv därefter in stadens namn i den översta rutan. Nu är det dags att skapa tre stycken frågor med tillhörande svar! Du kan lägga till och ta bort svarsalternativ efter egna preferenser. Klicka därefter på “Ny stad” för att lägga till ytterligare städer till ditt spel. När du känner dig nöjd med ditt spel är det dags att “Skapa lobby” och bjuda in andra spelare!",
 	"enterPlayer": "Välj namn och färg här ",
 	"waitPlayers": "Vänta på de andra spelarna...",
   "gameIdErrorMessage": "Game ID måste vara 4 siffror långt",

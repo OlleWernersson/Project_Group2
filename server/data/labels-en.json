@@ -22,7 +22,7 @@
 	"ruleheader": "Game rules",
 	"choosecolor": "Choose your player color!",
 	"enterGameID": "Enter the game ID for the game you wish to join",
-	"helpText": "Description of making the game bla bla bla",
+	"helpText": "Uncertain about how to create your own game? Here are instructions! Start by clicking on the map to choose the location for your questions. Then, enter the city's name in the top box. Now it's time to create three questions with corresponding answers! You can add and remove answer options according to your preferences. Afterward, click on “New city” to add more cities to your game. When you're satisfied with your game, it's time to “Create lobby” and invite other players!",
 	"enterPlayer": "Choose your name and color",
 	"waitPlayers": "Waiting for players to join...",
   "gameIdErrorMessage": "Game ID must be 4 digits long",

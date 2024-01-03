@@ -2,7 +2,7 @@
   <div>
     <h1>Spelresultat: </h1>
     <ul>
-      <PlayerList :players="sortedParticipants" result = "true"/>
+      <PlayerList :players="sortedParticipants" :result = "true"/>
     </ul>
   </div>
 </template>
@@ -23,6 +23,7 @@ export default {
       pollId:"",
       poll: {},
       sortedParticipants: [],
+      // pollCities: poll.cities,
     };
   },
   created: function () {

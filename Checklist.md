@@ -10,13 +10,14 @@
 Här rekommenderade Mikael att vi ska använda media queries och för kartorna så var canvas rekommenderat.
 
 - [/] StartView albin 
-- [] JoinView
+- [x] JoinView
 - [/] CreateLobbyView - albin jag har samma problem med denna som med startview att knapparna sitter fast och åker uppåt + får inte max width + max height media queryn att funka 
 - [] CreateRouteView
 - [] ChooseMapView
 - [] LobbyView
 - [/] GameView - Vi kan göra klart hur QuestionComponent ser ut när vi har gjort en rutt med vanliga frågor
 - [] GameResultView
+- [] JoinLobbyView
 
 Kommer vi att använda RandomView och GameIDView?
 
@@ -39,6 +40,7 @@ Kommer vi att använda RandomView och GameIDView?
 - [] Man ska inte kunna heta samma sak som någon annan
 - [] Meddelande om att inte alla har joinat lobby än?
 - [] En countdown så att alla är redo för att spelet kommer starta?
+- [] Så att man kan ladda om
 
 Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
@@ -54,6 +56,8 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [/] Något som indikerar vilken av pluttarna som man är eftersom att det är svårt att komma ihåg vilken färg man valde?
 - [] ändra så att man får en fråga via serven så att den inte ändras när man laddar om eller ändrar skärmstorlek
 - [] Städers storlek och titel ändras med media quaries?
+- [] göra kartan minde färgglad och få städerna att "poppa" med shadow osv finns i css!
+
 
 ## CreateLobbyView
 
@@ -70,5 +74,4 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [/] Man ska kunna se vilken stad spelarna kom till och vem som vann
 
 ## CreateRouteView
-
 - [] 

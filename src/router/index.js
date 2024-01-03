@@ -47,6 +47,9 @@ const router = createRouter({
       path: '/lobby/:id',
       name: 'lobbyView',
       component: () => import('../views/lobbyView.vue'),
+      props: (route) => ({
+        playerName: route.query.playerName,
+      }),
     },
     {
       path: '/game/:id',
@@ -65,6 +68,11 @@ const router = createRouter({
       path: '/gameResult/:id',
       name: 'GameResultView',
       component: () => import('../views/GameResultView.vue')
+    },
+    {
+      path: '/joinLobby/:id',
+      name: 'JoinLobbyView',
+      component: () => import('../views/JoinLobbyView.vue')
     }
   ]
 })

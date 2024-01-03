@@ -71,7 +71,7 @@ export default {
       } 
       else if(this.valid){
         /* socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName }); */
-        this.$router.push({ path: `/lobby/${this.gameID}` });
+        this.$router.push({ path: `/joinLobby/${this.gameID}` });
       }
     },
   },

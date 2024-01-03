@@ -75,9 +75,6 @@ Data.prototype.createPoll = function(pollID, lang="en", route=null, mapImage = n
     let poll = {};
     poll.cities = this.getRouteCities(route);
     poll.currentcity = {};
-    console.log("create poll printar route: ", route)
-    console.log("create poll printar mapimage: ", mapImage)
-
     if (route === null) {
       poll.route = mapImage;
     }
@@ -93,6 +90,7 @@ Data.prototype.createPoll = function(pollID, lang="en", route=null, mapImage = n
     poll.colorObjs = this.colorObjs; 
     poll.gameStarted = false;
     poll.gameFinished = false;
+    poll.hostName = "";
     
     this.polls[pollID] = poll;
     console.log("poll created", pollID, poll);
@@ -186,7 +184,7 @@ Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColorObj, i
       name: playerName,
       colorObj: playerColorObj,
       isHost: isHost,
-      city:0,
+      city: 0,
     }
   poll.participants.push(participant)
   }
@@ -253,16 +251,10 @@ Data.prototype.removePlayerFromGameID = function(gameID) {
   const poll = this.polls[gameID];
   poll.gameIDParticipants.pop("Counter")
 }
-Data.prototype.isHost = function(gameID) {
+Data.prototype.isHost = function(gameID, playerName) {
   const poll = this.polls[gameID];
-  console.log(poll.participants.length)
-  console.log(poll.gameIDParticipants.length)
-  if(poll.participants.length === 1 && poll.gameIDParticipants.length === 1) {
-    return true
-  }
-  else {
-    return false
-  }
+  const participant = poll.participants.find(participant => participant.name === playerName);
+  return participant.isHost
 
 }
 Data.prototype.getHostName = function(gameID) {
