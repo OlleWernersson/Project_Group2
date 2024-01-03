@@ -101,8 +101,8 @@ function sockets(io, socket, data) {
     let colors = data.getColors(gameID);
     socket.emit("getColors", colors)
   })
-  socket.on("checkIfHost", function(gameID) {
-    socket.emit("isHost", data.isHost(gameID))
+  socket.on("checkIfHost", function(gameID, playerName) {
+    socket.emit("isHost", data.isHost(gameID, playerName))
   })
   socket.on('startGame', function(gameID) {
     io.to(gameID).emit('navigateToGame', gameID)

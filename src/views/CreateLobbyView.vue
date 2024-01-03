@@ -157,7 +157,7 @@ export default {
         this.routeIsSelected = false
       }
       if(!this.playerNameEmpty && this.colorIsSelected && this.routeIsSelected) {
-        this.$router.push({ path: `/lobby/${this.gameID}` });
+        this.$router.push({ path: `/lobby/${this.gameID}`, query: { playerName: this.playerName} });
         socket.emit("createPoll", { pollId: this.gameID, lang: this.lang, route: this.selectedRoute })
         socket.emit('joinLobby',  { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: true});
       }
