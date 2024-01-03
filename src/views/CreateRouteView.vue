@@ -1,60 +1,61 @@
 <template>
-  <div id = "bigWrapper">
-    <div id = "mapWrapper" v-on:click="setLocation">
-      <Map :poll = "poll" :players=[]>
-        <label class = "infobox">Click somewhere on the map to choose where you want your city to be</label>
-      <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
-      <div id="dots" v-bind:style= "{ left: location.x + 'px', top: location.y + 'px' }">
-        <div class="clickDot">  </div>
-        </div>
-      </Map>
-    </div>
-  <div id = "questionWrapper">
-  <button id="helpButton" @click="help2" >{{ uiLabels.help }} </button> 
-
+  <main>
     <div v-if="helpOpen">
-      <div class="popup" @click.self = "help2">
-        <div class="helpText">
-          <div> <p> {{ uiLabels.helpText }}</p> 
-        </div>
+        <div class="popup" @click.self = "help2">
+          <div class="helpText">
+             <p> {{ uiLabels.helpText }}</p> 
+          </div>
         </div>
       </div>
-    </div>
 
-    <Id-box :id="gameID"></Id-box>
-
-    
-
-  <h1>Create your questions here </h1>
-  <!-- Poll link:
-  <input type="text" v-model="pollId"> -->
-  <!-- <button v-on:click="createPoll">
-  Create poll
-  </button> -->
-  <input  class="writeCity" v-model="selectedCity"  placeholder= "Write city name">
-
-  <label for="options"></label>
-    <!-- <select name="rcp" id="options" v-model="selectedCity">
-        <option v-for="city in cities" v-bind:key="city.name"> {{ city.name }} </option>
-    </select>  -->
-
-
-  <CreateComponent ref="createComponentRef0"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
-  <CreateComponent ref="createComponentRef1"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
-  <CreateComponent ref="createComponentRef2"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
-
-
-  <button @click="createLobby">Create lobby</button>
-  {{ questionsreal }}
-
+    <header> 
+      <button class="supportButtons" @click="help2" >{{ uiLabels.help }} </button> 
+      <h1> Skapa ditt eget MapQuiz</h1>
+    </header>
   
-  
+    <section class = "container">
+      <div id = "mapWrapper" v-on:click="setLocation">
+        <Map :poll = "poll" :players=[]>
+          <h2 class = "infobox">
+            Click somewhere on the map to choose where you want your city to be
+          </h2>
+            <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
+            <div id="dots" v-bind:style= "{ left: location.x + 'px', top: location.y + 'px' }">
+              <div class="city-style">   
+              </div>
+          </div>
+        </Map>
+      </div>
 
-      <button v-on:click="addAllQuestions">
-          New city 
-      </button>
+    <div id = "question-container">
+      <h2>Create your questions here </h2>
+
+      <div class = "editor-container">
+      <input class="writeCity" v-model="selectedCity"  placeholder= "City name">
+
+      <CreateComponent ref="createComponentRef0"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
+      <CreateComponent ref="createComponentRef1"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
+      <CreateComponent ref="createComponentRef2"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
+
+      <div class = "button-container">
+        <button v-on:click="addAllQuestions" class = "edit-button">
+            Save city 
+        </button>
+
+        <button v-on:click="createNewCity" class = "edit-button">
+            Create new city 
+        </button>
+      </div>
+      </div>
     </div>
-    </div>
+    </section>
+
+      <section class = bottom-container>
+        <button @click="createLobby" class = "main-button">
+        Create MapQuiz
+        </button>
+      </section>
+    </main>
   </template>
   
   
@@ -216,69 +217,52 @@
   
   
   <style scoped>
-  main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; /* Utan denna så kan man klicka på input bredvid var det faktiskt är */
-  height: 100vh;
-  }
-  
-  
-  input {
-  padding: 10px;
-  border: 2px solid pink;
-  border-radius: 8px;
-  width: 300px;
-  font-size: 1.5em;
-  margin-top: 10px;
-  background-color:floralwhite;
-  outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
-  }
-  input:focus {
-  background-color: white;
-  }
-  
-  
-  button {
-  padding: 10px;
-  border: 2px solid pink;
-  border-radius: 8px;
-  width: 150px;
-  font-size: 1em;
-  margin-top: 10px;
-  outline: none;
-  background-color: plum;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  margin: 0.5em;
-  cursor: pointer;
-  border-radius: 8px;
-  border: 2px solid pink;
-  }
-  
-  
-  #bigWrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  
+  header {
+    height: 75px; 
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
-  #helpButton{
-    position:absolute;
-    left: 1em;
-    top: 1em;
-    padding: 0.5em 0em;
-    width: 105px;
-    height: 45px;
+  h1 {
+    margin: 0 auto;
+  }
+  
+  input {
+    padding: 10px;
+    border: 2px solid pink;
+    border-radius: 8px;
+    width: 300px;
+    font-size: 1.5em;
+    margin-top: 10px;
+    background-color:floralwhite;
+    outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
+  }
+
+  input:focus {
+    background-color: white;
+  }
+  
+  button {
+    margin: 0.5em;
+    margin-top: 10px;
+  }
+  
+  
+  .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px;
   }
 
   .popup{
-    position: fixed; 
     background: rgba(0, 0, 0, 0.8);
-    height: 100%;
-    width: 100%;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
   }
 
   .helpText {
@@ -291,20 +275,34 @@
     margin-top:7em;
   }
   
-  #dots {
+#dots {
   position: absolute;
 }
 
-#dots div {
+.city-style {
   position: absolute;
-  background: rgb(0, 0, 0); 
-  border-radius: 50%; 
-  width: 10px; 
-  height: 10px;
+  background: radial-gradient(pink 0%, red 90%, black 10%);
+  border-radius: 150px; 
+  width: 20px; 
+  height: 20px;
+  box-shadow: -9px 14px 28px rgba(0, 0, 0, 0.2);
 }
 
 #mapWrapper {
   cursor: pointer; 
+  /* border: solid black;
+  border-radius: 10px; */
+}
+
+#question-container {
+  /* border: solid black;
+  border-radius: 10px; */
+  margin-left: 7px;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .infobox {
@@ -312,14 +310,15 @@
   top: 1.5em;
   left: 7.5em;
   padding: 10px;
-  border: 2px solid pink;
-  border-radius: 8px;
   width: 600px;
   font-size: 0.5em;
   margin-left: 30px;
   text-align: center;
- 
-  background-color:#53a8b6;
-  outline: none;
+  background: rgb(239, 180, 239);
+  border-radius: 10px;
+}
+.bottom-container {
+  display: flex;
+  justify-content: flex-end;
 }
   </style>

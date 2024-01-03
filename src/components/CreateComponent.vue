@@ -1,32 +1,22 @@
 <template>
-
-<div id="citySelector">
-    
-
     <div id="questions">
-    <!--{{ uiLabels.question }}-->
+     
+      <input class="write" v-model="question"  placeholder= "Write your question">
 
-
-   <input  class="write" v-model="question"  placeholder= "Write your question">
-   <div class="froggy" v-for="(_, i) in answers">
-       
+      <div class="froggy" v-for="(_, i) in answers">
         <input class="write" v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" placeholder="svar">
-        <div ><input class="rightanswerbutton" type = "radio"  v-bind:key="i" name="check" @change="selectedAnswerIndex(i)"></div>
-    
+        <input class="rightanswerbutton" type = "radio"  v-bind:key="i" name="check" @change="selectedAnswerIndex(i)">
+      </div>
+      
+      <div class = "buttonWrapper">
+          <button v-on:click="addAnswer" class = "edit-button">
+            Add answer 
+          </button>
+          <button v-on:click="removeAnswer" class = "edit-button">
+            Remove answer 
+          </button>
+        </div>
     </div>
-    
-    <div buttonWrapper>
-    <button v-on:click="addAnswer">
-    Add answer 
-    </button>
-    <button v-on:click="removeAnswer">
-    Remove answer 
-    </button></div>
-  </div>
-  
-    
-    </div>
-  
 
 </template>
 
@@ -64,79 +54,63 @@ methods: {
 
 }
 }
-
-  
-
-
 </script>
 
-
 <style scoped>
-#questions  {
-display:flex;
-  padding: 10px;
-  border: 2px solid pink;
-  border-radius: 8px;
-  flex-direction: column;
-
-  font-size: 1.5em;
-  margin-top: 10px;
-  background-color:#ebe4f7;
-  outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
+  #questions {
+    display:flex;
+    padding: 10px;
+    border: 2px solid pink;
+    border-radius: 8px;
+    flex-direction: column;
+    font-size: 1.5em;
+    margin-top: 10px;
+    background-color:#ebe4f7;
+    outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
   }
 
-  button{
-  padding: 7px;
-  border: 2px solid pink;
-  border-radius: 8px;
-  font-size: 0.6em;
-  margin-top: 1px;
-  
-  
-  outline: none;
-
-  
-  background-color: plum;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  
-  
-  margin: 0.5em;
-  cursor: pointer;
-  border-radius: 8px;
-  border: 2px solid pink;
+  button {
+    padding: 7px;
+    border-radius: 8px;
+    font-size: 0.6em;
+    margin-top: 1px;
+    outline: none;
+    margin: 0.5em;
+    cursor: pointer;
+    border-radius: 8px;
   }
 
-.stylish {
+  .stylish {
     border-color: rgb(57, 221, 36);
-    
+  }
+  .froggy{
+      display: flex;
+      flex-direction: row;
+  }
 
-}
-.froggy{
-    display: flex;
-    flex-direction: row;
-
-}
-
-#rightanswerbutton {
+  #rightanswerbutton {
     display:flex;
     flex-direction: column;
-    
-}
-
-input {
-  padding: 5px;
-  border: 2px solid pink;
-  border-radius: 8px;
-  background-color:floralwhite;
-  outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
-  margin: 0.5em;
-  border: 2px solid pink;
-  font-size: 0.6em;
-  margin-top: 1px;
   }
+
+  input {
+    padding: 5px;
+    border: 2px solid pink;
+    border-radius: 8px;
+    background-color:floralwhite;
+    outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
+    margin: 0.5em;
+    border: 2px solid pink;
+    font-size: 0.6em;
+    margin-top: 1px;
+  }
+
   input:focus {
-  background-color: white;
+    background-color: white;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    justify-content: flex-end;
   }
 </style>
