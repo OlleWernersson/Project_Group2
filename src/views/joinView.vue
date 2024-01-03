@@ -56,7 +56,6 @@ export default {
     });
     socket.on('isGameIDStarted', (boolean) => {
       this.started = boolean;
-      console.log(boolean, this.valid)
     })
   },
   methods: {
@@ -80,7 +79,7 @@ export default {
       if (this.gameID.length !== 4) {
         this.joinError = true;
       } 
-      else if(this.valid){
+      else if(this.valid && !this.started){
         this.$router.push({ path: `/joinLobby/${this.gameID}` });
       }
     },
