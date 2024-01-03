@@ -9,9 +9,9 @@
 
 Här rekommenderade Mikael att vi ska använda media queries och för kartorna så var canvas rekommenderat.
 
-- [/] StartView albin 
+- [/] StartView  
 - [x] JoinView
-- [/] CreateLobbyView - albin jag har samma problem med denna som med startview att knapparna sitter fast och åker uppåt + får inte max width + max height media queryn att funka 
+- [/] CreateLobbyView - 
 - [] CreateRouteView
 - [] ChooseMapView
 - [] LobbyView
@@ -64,6 +64,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [] något som indikerar vilket språk den förvalda rutten är på
 - [] Sepparera Create Lobby och Create new Route
 - [] Man ska inte kunna få ett GameID som redan finns
+- [x] röd border runt förvalda spelknappar när man inte har valt karta 
 
 ## JoinView
 
