@@ -7,7 +7,11 @@
         v-model="gameID"
         :placeholder="uiLabels.gameId"
         @input="handleGameIDInput"
-        :class="{ 'invalid-gameID': joinError, 'valid-gameID':valid, 'invalid-lobbyID': invalidLobby }"
+        :class="{ 
+          'invalid-gameID': joinError,
+          'valid-gameID':valid && !started,
+          'invalid-lobbyID': invalidLobby,
+          'started-gameID': valid && started}"
         autocomplete="off"
       />
 
@@ -17,8 +21,9 @@
     </label>
 
     <p v-if="joinError" class="error-message">{{ uiLabels.gameIdErrorMessage }}</p>
-    <p v-if="valid" class="valid-message">{{ uiLabels.gameIdValidMessage }}</p>
+    <p v-if="valid && !started" class="valid-message">{{ uiLabels.gameIdValidMessage }}</p>
     <p v-if="invalidLobby" class="invalidLobby-message">{{ uiLabels.gameIdInvalidLobbyMessage }}</p>
+    <p v-if="valid && started" class="gameStarted-message">{{ uiLabels.gameIdStartedMessage }}</p>
   </main>
 </template>
 
@@ -36,7 +41,8 @@ export default {
       joinError: false,
       lang: localStorage.getItem("lang") || "en",
       valid: false,
-      invalidLobby: false
+      invalidLobby: false,
+      started: false,
     };
   },
   created: function () {
@@ -48,6 +54,10 @@ export default {
       this.valid = boolean;
       this.invalidLobby = !boolean
     });
+    socket.on('isGameIDStarted', (boolean) => {
+      this.started = boolean;
+      console.log(boolean, this.valid)
+    })
   },
   methods: {
     handleGameIDInput() {
@@ -61,7 +71,8 @@ export default {
         socket.emit("CheckGameID", this.gameID)
       }
       else {
-        this.valid = false
+        this.valid = false;
+        /* this.started = false; */
       }
       
     },
@@ -70,17 +81,13 @@ export default {
         this.joinError = true;
       } 
       else if(this.valid){
-        /* socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName }); */
         this.$router.push({ path: `/joinLobby/${this.gameID}` });
       }
     },
   },
   beforeRouteEnter(to, from, next) {
-    // This is called before entering the route
-    // You can access the component instance with `this`
     next(vm => {
       if (vm.gameID.length !== 4) {
-        // If the gameID is not valid, prevent entering the route
         next(false);
       }
     });
@@ -93,7 +100,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* Utan denna så kan man klicka på input bredvid var det faktiskt är */
+  align-items: center;
   height: 100vh;
 }
 
@@ -106,7 +113,7 @@ input {
   font-size: 1.5em;
   margin-top: 10px;
   background-color:floralwhite;
-  outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
+  outline: none;
 }
 input:focus {
   background-color: white;
@@ -119,6 +126,9 @@ input.invalid-lobbyID {
 }
 input.valid-gameID {
   border-color: green;
+}
+input.started-gameID {
+  border-color: red;
 }
 .wrapper {
   display: flex; 
@@ -139,11 +149,16 @@ input.valid-gameID {
   position: absolute;
   margin-left: -50px;
 }
+.gameStarted-message{
+  color: red;
+  position: absolute;
+  margin-left: -50px;
+}
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 1.2em;
   }
-  .error-message, .valid-message, .invalidLobby-message {
+  .error-message, .valid-message, .invalidLobby-message, .gameStarted-message {
     margin-top: -20px;
   }
 
@@ -152,7 +167,7 @@ input.valid-gameID {
   h1 {
     font-size: 0.8em;
   }
-  .error-message, .valid-message, .invalidLobby-message {
+  .error-message, .valid-message, .invalidLobby-message, .gameStarted-message {
     margin-top: -20px;
     font-size: 0.8em;
     margin-left: -80px;

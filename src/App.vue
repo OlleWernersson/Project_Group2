@@ -18,7 +18,7 @@ main, label {
 font-family: 'Varela Round', sans-serif;
 }
 
-.main-button { /* Alla Veiws kan använda denna knapp style*/
+.main-button {
   padding: 1em 2em;
   font-size: 1.2em;
   background-color: plum;

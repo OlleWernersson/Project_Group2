@@ -27,5 +27,6 @@
 	"waitPlayers": "Waiting for players to join...",
   "gameIdErrorMessage": "Game ID must be 4 digits long",
   "gameIdValidMessage": "You can join this Lobby!",
-  "gameIdInvalidLobbyMessage": "This lobby doesn't exist :("
+  "gameIdInvalidLobbyMessage": "This lobby doesn't exist :(",
+  "gameIdStartedMessage": "This lobby has already started the game"
 }

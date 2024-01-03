@@ -279,7 +279,19 @@ Data.prototype.isNameTaken = function(pollId, playerName) {
   else {
     return false
   }
-
+}
+Data.prototype.gameStarted = function(pollId) {
+  const poll = this.polls[pollId];
+  poll.gameStarted = true;
+}
+Data.prototype.isGameIDStarted = function(pollId) {
+  const poll = this.polls[pollId];
+  if(poll) {
+    return poll.gameStarted
+  }
+  else {
+    return false
+  }
 }
 
 export { Data };

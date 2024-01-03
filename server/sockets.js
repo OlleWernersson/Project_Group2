@@ -92,6 +92,7 @@ function sockets(io, socket, data) {
     data.addCurrentCity(d.name,d.first_letter,d.top,d.left,d.pollId)
   })
   socket.on('CheckGameID', function(pollID) {
+    socket.emit('isGameIDStarted', data.isGameIDStarted(pollID))
     socket.emit('isGameIDValid', data.doesPollIDExist(pollID))
   })
 
@@ -105,6 +106,7 @@ function sockets(io, socket, data) {
     socket.emit("isHost", data.isHost(gameID, playerName))
   })
   socket.on('startGame', function(gameID) {
+    data.gameStarted(gameID)
     io.to(gameID).emit('navigateToGame', gameID)
   })
   socket.on('whatIsHostName', function(gameID) {

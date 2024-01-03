@@ -27,5 +27,6 @@
 	"waitPlayers": "Vänta på de andra spelarna...",
   "gameIdErrorMessage": "Game ID måste vara 4 siffror långt",
   "gameIdValidMessage": "Denna lobby kan du Joina!",
-  "gameIdInvalidLobbyMessage": "Denna lobby finns inte :("
+  "gameIdInvalidLobbyMessage": "Denna lobby finns inte :(",
+  "gameIdStartedMessage": "Denna lobby har redan startat spelet"
 }
