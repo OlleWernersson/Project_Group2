@@ -31,6 +31,9 @@ font-family: 'Varela Round', sans-serif;
   border-radius: 8px;
   border: 2px solid pink;
 }
+.main-button:hover {
+  background-color: mediumorchid;
+}
 
 html {
   margin: 0;

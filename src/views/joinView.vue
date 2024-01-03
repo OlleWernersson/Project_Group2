@@ -139,5 +139,34 @@ input.valid-gameID {
   position: absolute;
   margin-left: -50px;
 }
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.2em;
+  }
+  .error-message, .valid-message, .invalidLobby-message {
+    margin-top: -20px;
+  }
+
+}
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 0.8em;
+  }
+  .error-message, .valid-message, .invalidLobby-message {
+    margin-top: -20px;
+    font-size: 0.8em;
+    margin-left: -80px;
+  }
+  input {
+  width: 200px;
+  height: 30px;
+  font-size: 1em;
+}
+.main-button {
+  font-size: 1em;
+}
+
+
+}
 
 </style>

@@ -42,7 +42,7 @@ Kommer vi att använda RandomView och GameIDView?
 
 Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
-## GameView - Olle arbetar med denna nu
+## GameView
 
 - [x] När alla spelare joinar gameView så ska alla spelare placeras i samma stad och det ska synas för alla
 - [x] Alla ska få en av de tre frågor relaterade till den staden slumpmässigt.
