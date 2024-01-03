@@ -10,7 +10,7 @@
       v-model="playerName" 
       :placeholder="uiLabels.yourName" 
       @input="handleNameInput" 
-      :class="{ 'invalid-name': playerNameEmpty}"
+      :class="{ 'invalid-name': playerNameEmpty, 'name-taken': playerNameTaken, 'valid-name': playerNameValid}"
       autocomplete="off">
     </label>
 
@@ -50,6 +50,8 @@ export default {
       gameID:"",
       playerName: "",
       playerNameEmpty: false,
+      playerNameTaken: false,
+      playerNameValid: false,
 
       playerColorsObjs: [],
       selectedColorObj: {},
@@ -65,11 +67,21 @@ export default {
     socket.on("getColors", (colors) => {
       this.playerColorsObjs = colors;
     });
+    socket.on('isNameTaken', (boolean) => {
+      this.playerNameTaken = boolean;
+      if(this.playerName.length) {
+        this.playerNameValid = !boolean;
+      }
+    })
   },
   methods: {
     handleNameInput() {
       this.playerName = this.playerName.slice(0, 20);
       this.playerNameEmpty = false;
+      if(this.playerName === "") {
+        this.playerNameValid = false;
+      }
+      socket.emit('isThisNameTaken',this.gameID,this.playerName)
     },
     selectPlayerColor(colorObj) {
     if (this.selectedColorObj) {
@@ -87,7 +99,7 @@ export default {
       if(!this.selectedColorObj.isSelected) {
         this.colorIsSelected = false
       }
-      if(!this.playerNameEmpty && this.colorIsSelected) {
+      if(!this.playerNameEmpty && this.colorIsSelected && this.playerNameValid) {
         this.hasJoinedLobby = true;
         socket.emit('joinLobby', { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: false});
         this.$router.push({ path: `/lobby/${this.gameID}`, query: { playerName: this.playerName} });
@@ -160,8 +172,11 @@ input:focus {
   border: 2px solid rgb(88, 234, 59);
   border-radius: 50%;
 }
-.invalid-name {
+.invalid-name, .name-taken {
   border-color: red;
+}
+.valid-name {
+  border-color: green;
 }
 .noColorSelected{
   border-color: red;

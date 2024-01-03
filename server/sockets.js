@@ -119,6 +119,9 @@ function sockets(io, socket, data) {
       io.to(pollId).emit('thisPoll', data.getPoll(pollId))
     }
   })
+  socket.on('isThisNameTaken', function(gameID, playerName) {
+    socket.emit('isNameTaken', data.isNameTaken(gameID,playerName))
+  })
 }
 
 export { sockets };

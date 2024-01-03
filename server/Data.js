@@ -269,7 +269,18 @@ Data.prototype.isGameFinished = function(pollId) {
   const poll = this.polls[pollId];
   const gameFinished = poll.participants.some(participant => participant.city >= poll.cities.length);
   return gameFinished;
-};
+}
+Data.prototype.isNameTaken = function(pollId, playerName) {
+  const poll = this.polls[pollId];
+  const participant = poll.participants.find(participant => participant.name === playerName);
+  if(participant) {
+    return true
+  }
+  else {
+    return false
+  }
+
+}
 
 export { Data };
 

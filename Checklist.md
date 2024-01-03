@@ -4,20 +4,22 @@
 - [] UI är dynamiskt uppdaterad beroende på språk men rutterna behöver inte vara det
 - [x] Vi kan skapa en rutt och det fungerar som de förbestämda 
 - [] Inga varningar i consolen som gör att det inte funkar när vi ska sätta ut detta på internet?
+- [] Testa hur andra använder sidan för första gånger när de vill joina ett spel och spela (med dator + mobil?)
+- [] Testa hur andra använder sidan för första gånger när de vill skapa en rutt på datorn
 
 ## Responsive (alltså att man kan använda sidan med olika skärmstorlekar) Brädden är det viktiga
 
 Här rekommenderade Mikael att vi ska använda media queries och för kartorna så var canvas rekommenderat.
 
 - [x] StartView - Viktig - nu funkar det bra på mobiler!
-- [x] JoinView - Viktig
-- [/] CreateLobbyView - 
+- [x] JoinView - Viktig - verkar också funka på mobiler!
+- [/] CreateLobbyView
 - [] CreateRouteView
 - [] ChooseMapView
-- [] LobbyView
+- [/] LobbyView - Viktig - funkar nästan på mobiler det är bara IdBox som blockerar
 - [/] GameView - Viktig
 - [] GameResultView
-- [] JoinLobbyView - Viktig
+- [/] JoinLobbyView - Viktig - funker nästan på mobiler det är bara IdBox som blockerar
 
 Kommer vi att använda RandomView och GameIDView?
 
@@ -39,10 +41,10 @@ Det viktigaste är att man kan joina spelet och spela lätt med olika typer av s
 - [] Man ska inte kunna välja samma färg
 - [x] Border runt player pieces i lobbyView
 - [] Ska man kunna lämna lobbyn?
-- [] Man ska inte kunna heta samma sak som någon annan
+- [x] Man ska inte kunna heta samma sak som någon annan
 - [] Meddelande om att inte alla har joinat lobby än?
 - [] En countdown så att alla är redo för att spelet kommer starta?
-- [] Så att man kan ladda om
+- [x] Så att man kan ladda om
 
 Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
@@ -59,6 +61,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [] ändra så att man får en fråga via serven så att den inte ändras när man laddar om eller ändrar skärmstorlek
 - [] Städers storlek och titel ändras med media quaries?
 - [] göra kartan minde färgglad och få städerna att "poppa" med shadow osv finns i css!
+- [] Göra så att kartan aldrig strechas ut så att Mikael blir glad?
 
 
 ## CreateLobbyView - Planen är att man får först välja mellan att välja rutt eller skapa rutt. Om man väljer att välja rutt så ska man få upp under det där man kan sätta sitt namn och färg.
