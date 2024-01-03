@@ -75,9 +75,6 @@ Data.prototype.createPoll = function(pollID, lang="en", route=null, mapImage = n
     let poll = {};
     poll.cities = this.getRouteCities(route);
     poll.currentcity = {};
-    console.log("create poll printar route: ", route)
-    console.log("create poll printar mapimage: ", mapImage)
-
     if (route === null) {
       poll.route = mapImage;
     }
@@ -186,7 +183,7 @@ Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColorObj, i
       name: playerName,
       colorObj: playerColorObj,
       isHost: isHost,
-      city:0,
+      city: 0,
     }
   poll.participants.push(participant)
   }

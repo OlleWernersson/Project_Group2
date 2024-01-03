@@ -54,6 +54,8 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [/] Något som indikerar vilken av pluttarna som man är eftersom att det är svårt att komma ihåg vilken färg man valde?
 - [] ändra så att man får en fråga via serven så att den inte ändras när man laddar om eller ändrar skärmstorlek
 - [] Städers storlek och titel ändras med media quaries?
+- [] göra kartan minde färgglad och få städerna att "poppa" med shadow osv finns i css!
+
 
 ## CreateLobbyView
 
@@ -70,5 +72,4 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [/] Man ska kunna se vilken stad spelarna kom till och vem som vann
 
 ## CreateRouteView
-
 - [] 

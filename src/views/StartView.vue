@@ -1,9 +1,9 @@
 <template>
   <main>
-    <section class="supportButtons">
-      <button class="language-button" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
+    <section class="buttonWrapper">
+      <button class="supportButtons" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
       <h1 id="Titel">Kartgruppens spel</h1>
-      <button class="help-button" @click="help"> {{ uiLabels.help }}</button>
+      <button class="supportButtons" @click="help"> {{ uiLabels.help }}</button>
     </section>
     
     <div v-if="helpOpen">
@@ -18,7 +18,6 @@
 
     <section class="mainButtons">
       <div class = "train"> 
-        HEJ
        </div>
       <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
       <router-link class="main-button" to="/createLobby/">{{uiLabels.createGame}}</router-link>
@@ -76,7 +75,7 @@ export default {
 
 
 <style scoped>
-.supportButtons {
+.buttonWrapper {
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -91,37 +90,8 @@ export default {
 .train {
   background-image: url('../../public/img/train[75].png');
 }
-.language-button {
-  margin-left: 4%;
-  padding: 1em 2em;
-  font-size: 1.2em;
-  background-color: rgb(138, 211, 233);
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0.5em;
-  cursor: pointer;
-  border-radius: 8px;
-  border: 2px solid rgb(228, 63, 118);
-}
 
-.help-button {
-  margin-right: 4%;
-  display: inline-block;
-  padding: 1em 2em;
-  font-size: 1.2em;
-  background-color: rgb(138, 211, 233);
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0.5em;
-  cursor: pointer;
-  border-radius: 8px;
-  border: 2px solid rgb(228, 63, 118);
 
-}
 .mainButtons {
   display: flex;
   justify-content: center;
