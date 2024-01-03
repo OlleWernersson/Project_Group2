@@ -287,6 +287,27 @@ input:focus {
 .noRouteSelected {
   color:red;
 }
+@media screen and (max-width:768px) and (max-height:600px){
+  h2{
+    font-size: 1em;
+  }
+  #create-lobby-button{
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 3em;
+    width: 6em;
+  }
+  input {
+    padding: 5px;
+    border: 2px solid pink;
+    border-radius: 8px;
+    width: 150px;
+    font-size: 1em;
+    margin-top: 5px;
+  }
+  
+}
 @media screen and (max-width:768px) {
   h2{
       font-size: 1em
@@ -311,5 +332,38 @@ input:focus {
     width: 100px;
   }
   
+}
+@media screen and (max-height:600px){
+  h1{
+    font-size: 1em;
+    margin: 8px;
+  }
+  h2{
+    font-size: 0.5em;
+    margin: 4px
+  }
+  button{
+    border-radius: 2vw;
+      font-size: 1em;
+      padding: 1vh 3vw;
+      height: 12vh;
+      width: 1em;
+  }
+  #create-lobby-button{
+    height: 3em;
+    width: 6em;
+  }
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(3,100px);
+  }
+  .route-button{
+    width: 100px;
+    height: 100px;
+  }
+  .create-route-button{
+    height: 100px;
+    width: 100px;
+  }
 }
 </style>

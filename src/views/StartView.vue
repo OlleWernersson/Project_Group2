@@ -114,10 +114,6 @@ export default {
     width: 100%;
   }
   @media screen and (max-height: 400px) and (max-width: 768px){
-    .mainButtons{
-      top: 50px;
-      left: 50px;
-    }
     #Title{
       margin-top: 0px;
       margin-right: 6%;
@@ -174,8 +170,9 @@ export default {
       margin-top: 0px;
     }
     .mainButtons{
-      top: 50px;
-      left: 50px;
+      bottom: 0;
+      right: 0;
+      position: absolute;
       
     }
     .rules{
