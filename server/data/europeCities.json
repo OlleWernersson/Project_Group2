@@ -1,57 +1,76 @@
 [
   {
-      "top":660,
-      "left":150,
-      "name":"lisbon",
+      "top":320,
+      "left":450,
+      "name":"Stockholm",
       "first_letter": "l",
-      "questions":[{"q": "who lives in lisbon?", 
-                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
-                    "c":1
+      "questions":[{"q": "Vad heter Sveriges statschef?", 
+                    "a": ["Kung Carl XVI Gustaf ", "Gustav Vasa", "Drottning Elizabeth II", "Ulf Kristersson"],
+                    "c":0
                   },
-                  {"q": "when did lisbon exist?", 
-                   "a": ["1", "2", "3", "4", "5"],
+                  {"q": "När dog den kända artisten Avicii? ", 
+                   "a": ["2014", "2016", "2018", "2020"],
                    "c": 2
                   }, 
-                  {"q": "why is lisbon?",
-                   "a": ["wrong answer", "right answer", "wrong answer"],
+                  {"q": "Hur många gånger i rad vann Charlotte Kalla guld i OS? ",
+                   "a": ["2", "3", "4", "5"],
                    "c":1
                   }]
 
   },
   {
-     "top": 640,
-     "left": 210,
-     "name": "madrid",
+     "top": 480,
+     "left": 380,
+     "name": "Berlin",
      "first_letter": "m",
-     "questions":[{"q": "who lives in madrid?", 
-                   "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
-                   "c":1
+     "questions":[{"q": "När revs Berlinmuren?", 
+                   "a": ["1973", "1985", "1989", "1991"],
+                   "c":2
                   },
-                  {"q": "when did madrid exist?", 
-                   "a": ["1", "2", "3", "4", "5"],
-                   "c": 2
+                  {"q": "Hur många kebab äts varje år i Berlin?", 
+                   "a": ["34 miljoner", "72 miljoner", "117 miljoner", "146 miljoner"],
+                   "c": 3
                   }, 
-                  {"q": "why is madrid?",
-                   "a": ["wrong answer", "right answer", "wrong answer"],
-                   "c":1
+                  {"q": "Vilken är den berömda nattklubben i Berlin som är känd för sin strikta dörrpolicy och legendariska techno-evenemang?",
+                   "a": ["Berghain", "KitKatClub", "Reichstag", "Brandenburger Tor"],
+                   "c":0
                   }]
   },
   {
-      "top":520,
-      "left": 280,
-      "name": "paris",
+      "top":540,
+      "left": 290,
+      "name": "Paris",
       "first_letter": "p",
-      "questions":[{"q": "who lives in paris?", 
-                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+      "questions":[{"q": "Hur högt är Eiffeltornet?", 
+                    "a": ["238m", "324m", "447m", "641m"],
                     "c":1
                   },
-                  {"q": "when did paris exist?", 
-                   "a": ["1", "2", "3", "4", "5"],
-                   "c": 2
+                  {"q": "Vad heter den kända franska rätten som innehåller sniglar?", 
+                   "a": ["Escargot", "Snail au Normandie", "Cassoulet", "Ratatouille"],
+                   "c": 0
                   }, 
-                  {"q": "why is paris?",
-                   "a": ["wrong answer", "right answer", "wrong answer"],
-                   "c":1
+                  {"q": "Vilket känt modeföretag har sitt ursprung i Paris?",
+                   "a": ["Fjällräven", "Prada", "Chanel", "Gucci"],
+                   "c":2
                   }]
-  }
+  },
+  {
+    "top":630,
+    "left": 390,
+    "name": "Rom",
+    "first_letter": "p",
+    "questions":[{"q": "Vilken flod rinner genom Rom?", 
+                  "a": ["Tibern", "Donau", "Fyrisån", "Seine"],
+                  "c":0
+                },
+                {"q": "Vad var gladiatorernas huvudsakliga syfte i det antika Rom?", 
+                 "a": ["Underhålla publik", "Straffa dömda brottslingar", "Lära ut kunskap", "Baka pizzor"],
+                 "c": 0
+                }, 
+                {"q": "Vad är det berömda monumentet i Rom som är känt för att vara en antik amfiteater och en symbol för staden?",
+                 "a": ["Big ben", "Colosseum", "Partenon", "Kaknästornet"],
+                 "c":1
+                }]
+}
+
 ]
