@@ -48,8 +48,7 @@ export default {
         width: 0,
         height: 0,
       },
-      randomNumber: -1,
-      truthiness: false,
+
       };
       
 
@@ -90,15 +89,8 @@ export default {
       myMap.moveMeForward(); 
     }, */
     getNewQuestion(){
-      let truth = true;
-      let Newness = Math.floor(Math.random * 3)
-      while(truth){
-        if(Newness !== this.randomNumber)
-        console.log("nu är vi i wronganswersclick filen")
-          truth = false;
-          this.randomNumber = Newness
-          this.truthiness = true;
-      }
+      socket.emit("updateQuestionIndex",this.playerName, this.pollId)
+     
       this.getQuestion(this.playerName)
 
     },
@@ -116,14 +108,20 @@ export default {
       return this.poll.participants.filter(player => player.city === cityIndex);
     },
     getQuestion: function(playerName) {
-      console.log("tillbaks i get question", this.truthiness)
+      console.log("tillbaks i get question")
       const participant = this.poll.participants?.find(participant => participant.name === playerName);
-      if(!this.truthiness){
+  
       if (participant) {
+        console.log(participant)
         let cityIndex = participant.city;
+        let qIndex = participant.questionIndex;
         if(this.poll.cities[cityIndex]) {
-          this.randomNumber = Math.floor(Math.random() * 3);
-          return this.poll.cities[cityIndex].questions[this.randomNumber]
+          if(qIndex <= 2){
+          return this.poll.cities[cityIndex].questions[qIndex]
+          }
+          else{
+            this.handleCorrectAnswerClick()
+          }
         }
         else {
           return this.question;
@@ -132,13 +130,6 @@ export default {
       else {
         return this.question; 
       }
-    }
-    else{
-        console.log("tillbaks i get question nu sätts nya frågan")
-        let cityIndex = participant.city;
-        this.truthiness = false;
-        return this.poll.cities[cityIndex].questions[this.randomNumber]
-    }
     },
     getNextCity(currentIndex) {
       const nextIndex = (currentIndex + 1) % this.poll.cities.length;

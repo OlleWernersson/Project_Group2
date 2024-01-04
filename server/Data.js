@@ -184,9 +184,12 @@ Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColorObj, i
       name: playerName,
       colorObj: playerColorObj,
       isHost: isHost,
+      questionIndex: 0,
       city: 0,
+      
     }
   poll.participants.push(participant)
+  console.log(poll.participants)
   }
 }
 Data.prototype.getPlayers = function(pollID) {
@@ -264,6 +267,12 @@ Data.prototype.getHostName = function(gameID) {
 Data.prototype.goToNextCity = function(playerName,pollID) {
   const participant = this.polls[pollID].participants.find(participant => participant.name === playerName);
   participant.city += 1
+  participant.questionIndex = 0
+}
+Data.prototype.updatePlayerQuestion = function(playerName,pollID){
+  const participant = this.polls[pollID].participants.find(participant => participant.name === playerName);
+  participant.questionIndex += 1
+  console.log(participant)
 }
 Data.prototype.isGameFinished = function(pollId) {
   const poll = this.polls[pollId];

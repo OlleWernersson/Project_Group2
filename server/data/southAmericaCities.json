@@ -1,38 +1,76 @@
 [
   {
+    "top": 465,
+    "left": 475,
+    "name": "buenos aires",
+    "first_letter": "b",
+    "questions":[{"q": "which of these famous dances come from buenos aires?", 
+                  "a": ["samba", "tango", "foxtrot", "konga"],
+                  "c":1
+                 },
+                 {"q": "who of these famous people was born in buenos aires?", 
+                  "a": ["Pablo Escobar", "Cristiano Ronaldo", "Lionel Messi", "Pope Francsi"],
+                  "c": 3
+                 }, 
+                 {"q": "what is the national sport of argentina?",
+                  "a": ["Basketball", "Pato", "Football"],
+                  "c":1
+                 }]
+ },
+  {
       "top":350,
       "left":595,
       "name":"sao paulo",
       "first_letter": "s",
-      "questions":[{"q": "who lives in sao paulo?", 
-                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
-                    "c":1
+      "questions":[{"q": "Who is the president of brazil?", 
+                    "a": ["Luiz Inácio Lula da Silva", "Jair bolsanaro", "Joe biden", "fidel castro"],
+                    "c":0
                   },
-                  {"q": "when did sao paulo exist?", 
-                   "a": ["1", "2", "3", "4", "5"],
+                  {"q": "when did brazil gain independence?", 
+                   "a": ["1560", "1972", "1822", "1776", "1917"],
                    "c": 2
                   }, 
-                  {"q": "why is sao paulo?",
-                   "a": ["wrong answer", "right answer", "wrong answer"],
+                  {"q": "which of these is a famous dish from brazil?",
+                   "a": ["Peri Peri Chicken", "Feijoada", "Ärtsoppa"],
                    "c":1
                   }]
 
   },
   {
-     "top": 465,
-     "left": 475,
-     "name": "buenos aires",
-     "first_letter": "b",
-     "questions":[{"q": "who lives in buenos aires?", 
-                   "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
-                   "c":1
+    "top":100,
+    "left":480,
+    "name": "Caracas",
+    "first_letter":"c",
+    "questions":
+    [{"q": "Who is the president of Venezuela?", 
+                    "a": ["Luiz Inácio Lula da Silva", "Jair bolsanaro", "Joe biden", "Nicolas maduro"],
+                    "c":3
                   },
-                  {"q": "when did buenos aires exist?", 
-                   "a": ["1", "2", "3", "4", "5"],
+                  {"q": "what river flows through Caracas?", 
+                   "a": ["Amazon", "Nile", "Guaire", "Missisipi", "¨dedo largo"],
                    "c": 2
                   }, 
-                  {"q": "why is buenos aires?",
-                   "a": ["wrong answer", "right answer", "wrong answer"],
+                  {"q": "Which of these is a famous dish from venezuela?",
+                   "a": ["Peri Peri beef", "Arepa", "Ceviche"],
+                   "c":1
+                  }]
+  },
+  {
+    "top":150,
+    "left":230,
+    "name": "Bogota",
+    "first_letter":"b",
+    "questions":
+    [{"q": "What is Colombias biggest export?", 
+                    "a": ["Potatos", "Petroleum", "Timber", "Medical products"],
+                    "c":1
+                  },
+                  {"q": "What is the traditional Colombian dish made from mashed green plantains and typically served with various toppings like meat cheese and avocado?", 
+                   "a": ["Ceviche", "Ajaico", "Patacon", "Bandeja paisa"],
+                   "c": 2
+                  }, 
+                  {"q": "Who wrote the book 'one hundred years in solitude'?",
+                   "a": ["Pablo Escobar", "Jair bolsanaro", "Gabriel Garcia Marquez"],
                    "c":1
                   }]
   },
@@ -41,16 +79,16 @@
       "left": 280,
       "name": "lima",
       "first_letter": "l",
-      "questions":[{"q": "who lives in lima?", 
-                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
+      "questions":[{"q": " What ancient civilization once thrived in Peru?", 
+                    "a": ["aztec", "inca", "Maya", "Mocha"],
                     "c":1
                   },
-                  {"q": "when did lima exist?", 
-                   "a": ["1", "2", "3", "4", "5"],
+                  {"q": "which famous grain originates in Peru?", 
+                   "a": ["Rice", "Barley", "Quinoa", "Millet"],
                    "c": 2
                   }, 
-                  {"q": "why is lima?",
-                   "a": ["wrong answer", "right answer", "wrong answer"],
+                  {"q": "When did Machu Picchu become a UNESCO World Heritage Site",
+                   "a": ["1880", "1983", "2000"],
                    "c":1
                   }]
   }
