@@ -36,21 +36,26 @@
       <h2 :class="{'noRouteSelected': !routeIsSelected}">
         {{uiLabels.chooseRoute}}
       </h2>
-      <div class="button-grid">
-        <button
-          v-for="buttonId in 3"
-          :key="buttonId"
-          class="route-button"
-          @click="selectRoute(buttonId)"
-          :class="{ 'selected': selectedRoute === buttonId }"
-        >
-        <img
-          :src="images[buttonId - 1]"
-          alt="Route Image"
-          style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
-          />
-        </button>
+      <div :class="{'noRouteSelectedBorder': !routeIsSelected}">
+        <div class="button-grid">
+          <button
+            v-for="buttonId in 3"
+            :key="buttonId"
+            class="route-button"
+            @click="selectRoute(buttonId)"
+            :class="{ 'selected': selectedRoute === buttonId }"
+          >
+          
+          <img
+            :src="images[buttonId - 1]"
+            alt="Route Image"
+            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
+            />
+          </button>
+        </div>
       </div>
+
+      
 
 
     </section>
@@ -286,6 +291,14 @@ input:focus {
 }
 .noRouteSelected {
   color:red;
+}
+.noRouteSelectedBorder{
+  border: 2px solid red;
+  border-radius: 8px;
+}
+.noRouteSelectedBorder:hover{
+  border: 0px;
+  border-radius: 0px;
 }
 @media screen and (max-width:768px) and (max-height:600px){
   h2{
