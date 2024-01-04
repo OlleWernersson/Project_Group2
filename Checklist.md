@@ -29,7 +29,7 @@ Det viktigaste är att man kan joina spelet och spela lätt med olika typer av s
 
 - [] Göra bilderna mindre färgglada?
 - [X] Göra en rutt på svenska
-- [] Göra en rutt på engelska
+- [x] Göra en rutt på engelska
 - [X] HoverEffekt på mer buttons?
 
 ## LobbyView
@@ -53,12 +53,12 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [x] När alla spelare joinar gameView så ska alla spelare placeras i samma stad och det ska synas för alla
 - [x] Alla ska få en av de tre frågor relaterade till den staden slumpmässigt.
 - [x] När man svarar rätt så ska man få gå till nästa stad och få en ny slumpmässig fråga där och alla ska se att man har kommit till nästa stad
-- [/] När man svarar fel så ska man få vänta? ny fråga eller slumpmässig?
+- [x] När man svarar fel så ska man få vänta? ny fråga eller slumpmässig?
 - [x] När man svarar rätt och är vid den sista staden så ska alla pushas till GameResultView
 - [/] Använd Canvas för att kunna göra kartan responsive
 - [x] Linjer mella städer så att det blir lättare att se ruttens struktur?
 - [/] Något som indikerar vilken av pluttarna som man är eftersom att det är svårt att komma ihåg vilken färg man valde?
-- [] ändra så att man får en fråga via serven så att den inte ändras när man laddar om eller ändrar skärmstorlek
+- [x] ändra så att man får en fråga via serven så att den inte ändras när man laddar om eller ändrar skärmstorlek
 - [] Städers storlek och titel ändras med media quaries?
 - [] göra kartan minde färgglad och få städerna att "poppa" med shadow osv finns i css!
 - [x] Göra så att kartan aldrig strechas ut så att Mikael blir glad?
