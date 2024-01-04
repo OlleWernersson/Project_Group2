@@ -54,7 +54,6 @@ font-family: 'Varela Round', sans-serif;
 .supportButtons:hover {
   background-color: rgb(138, 211, 233);
 }
-
 .edit-button{
   padding: 1em 2em;
   font-size: 1.2em;
@@ -64,7 +63,7 @@ font-family: 'Varela Round', sans-serif;
   margin: 0.5em;
   cursor: pointer;
   border-radius: 8px;
-  border: 2px solid rgb(241, 234, 234);
+  border: 2px solid rgb(223, 217, 217);
   font-family: 'Varela Round', sans-serif;
 }
 

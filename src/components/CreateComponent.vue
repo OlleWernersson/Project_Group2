@@ -1,23 +1,22 @@
 <template>
     <div id="questions">
-     
-      <input class="write" v-model="question"  :placeholder="uiLabels.questionInput">
+      <input v-bind:disabled="componentDisabled" class="write" v-model="question"  :placeholder="uiLabels.questionInput">
 
       <div class="froggy" v-for="(_, i) in answers">
-        <input class="write" v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" :placeholder="uiLabels.answer">
-        <input class="rightanswerbutton" type = "radio"  v-bind:key="i" :name="radioName" @change="selectedAnswerIndex(i)">
+        <input class="write" v-bind:disabled="componentDisabled" v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" :placeholder="uiLabels.answer">
+        <input class="rightanswerbutton" v-bind:disabled="componentDisabled" type = "radio"  v-bind:key="i" :name="radioName" @change="selectedAnswerIndex(i)">
       </div>
       
       <div class = "buttonWrapper">
-          <button v-on:click="addAnswer" class = "edit-button">
+          <button v-on:click="addAnswer" class = "edit-button" v-bind:disabled="componentDisabled">
             {{uiLabels.addAnswer}}
           </button>
-          <button v-on:click="removeAnswer" class = "edit-button">
+          <button v-on:click="removeAnswer" class = "edit-button" v-bind:disabled="componentDisabled">
             {{uiLabels.removeAnswer}}
           </button>
         </div>
-    </div>
 
+    </div>
 </template>
 
 <script>
@@ -26,7 +25,8 @@ export default {
     props:{
         Question: Object,
         uiLabels: Object,
-        radioName: Object
+        radioName: Object,
+        componentDisabled: Object
     },
 
  data: function () {
@@ -51,16 +51,18 @@ methods: {
   addQuestion: function(){
     console.log("Fråga added", this.question);
     this.$emit('addThisQuestion', this.question, this.answers, this.c);
-    this.question = "";
-    this.answers = ["", ""];
-    this.c = -1;
+    // let q = this.questiom;
+    // let a = this.answers;
+    // let ci = this.c;
   },
 
   createNewCity: function() {
+    console.log("NU I CREATECOMPONENT ")
     this.question = "";
     this.answers = ["", ""];
     this.c = -1;
-  },
+
+},
 
   loadCity: function(city, question) {
     console.log(city,"FRÅGA" ,city.questions[question].q)
@@ -76,6 +78,14 @@ methods: {
 </script>
 
 <style scoped>
+.edit-button:disabled {
+  cursor: auto;
+}
+
+.edit-button:disabled:hover {
+  background-color: floralwhite; /* Set the background color when disabled and hovered */
+}
+
   #questions {
     display:flex;
     padding: 10px;
@@ -103,12 +113,12 @@ methods: {
     border-color: rgb(57, 221, 36);
   }
   .froggy{
-      display: flex;
-      flex-direction: row;
+    display: flex;
+    flex-direction: row;
   }
 
   #rightanswerbutton {
-    display:flex;
+    display: flex;
     flex-direction: column;
   }
 
@@ -123,6 +133,12 @@ methods: {
     font-size: 0.6em;
     margin-top: 1px;
   }
+
+  input:disabled {
+  cursor: auto;
+  border: 2px solid rgb(247, 226, 230);
+  color: rgb(175, 174, 174);
+}
 
   input:focus {
     background-color: white;

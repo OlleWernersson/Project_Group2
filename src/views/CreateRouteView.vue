@@ -21,11 +21,11 @@
           </h2>
             <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
             <div id="dots" v-bind:style= "{ left: location.x + 'px', top: location.y + 'px' }">
-              <div class="city-style">   
+              <div v-if = "mapClicked" class="city-chooser">   
               </div>
           </div>
           <div>
-            <City v-for="(city) in cities" :key="city.name" :city = "city" :hasPlayers="false" :mapSize="mapSize" @click = "loadCity(city)" class="city-hover">
+            <City v-for="city in cities" :key="city.name" :city = "city" :hasPlayers="false" :mapSize="mapSize" @click = "loadCity(city)" class="city-hover">
             </City>
           </div>
         </Map>
@@ -35,18 +35,18 @@
       <h2>{{ uiLabels.createQuestions }}</h2>
 
       <div class = "editor-container">
-      <input class="writeCity" v-model="selectedCity"  :placeholder= "uiLabels.cityName">
+      <input v-bind:disabled="isComponentDisabled" class="writeCity" v-model="selectedCity"  :placeholder= "uiLabels.cityName">
 
-      <CreateComponent ref="createComponentRef0"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels" radioName = "first"></CreateComponent>
-      <CreateComponent ref="createComponentRef1"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels" radioName = "second"></CreateComponent>
-      <CreateComponent ref="createComponentRef2"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels" radioName = "third"></CreateComponent>
+      <CreateComponent ref="createComponentRef0"  @addThisQuestion="addcreatechild" :componentDisabled = "isComponentDisabled" :uiLabels = "uiLabels" radioName = "first"></CreateComponent>
+      <CreateComponent ref="createComponentRef1"  @addThisQuestion="addcreatechild" :componentDisabled = "isComponentDisabled" :uiLabels = "uiLabels" radioName = "second"></CreateComponent>
+      <CreateComponent ref="createComponentRef2"  @addThisQuestion="addcreatechild" :componentDisabled = "isComponentDisabled" :uiLabels = "uiLabels" radioName = "third"></CreateComponent>
 
       <div class = "button-container">
-        <button v-on:click="addCity" class = "edit-button">
+        <button v-on:click="addCity" class = "edit-button" v-bind:disabled="isButtonDisabled">
             {{ uiLabels.saveCity }}
         </button>
 
-        <button v-on:click="createNewCity" class = "edit-button">
+        <button v-on:click="createNewCity" :class = "['edit-button', {'edit-button' : !isDisabled}]" v-bind:disabled="!isButtonDisabled">
             {{uiLabels.createCIty}}
         </button>
       </div>
@@ -108,7 +108,11 @@
       selectedCities: [],
       amountButtonPressed: 1, 
       playerName:"noPlayerHost", 
-      selectedColorObj: {}
+      selectedColorObj: {},
+      isComponentDisabled: false,
+      isButtonDisabled: false,
+      mapClicked: false
+
     }
   },
   created: function () {
@@ -140,6 +144,9 @@
   
   methods: {
     addCity: function () {
+      this.isButtonDisabled = true; 
+      this.isComponentDisabled = true
+      this.mapClicked = false;
       this.isError= false;
       if(this.selectedCity !== ""){
         for (let i = 0; i <3 ; i++) { 
@@ -157,7 +164,6 @@
             socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[2].question,answers:this.questionsreal[2].answers, c:this.questionsreal[2].correctIndex, city: this.selectedCity})
             socket.emit("saveCurrentCity", {top: this.location.y, left: this.location.x, name: this.selectedCity, first_letter: this.selectedCity.slice(0, 1), pollId: this.gameID})
             this.selectedCities.push(this.selectedCity)
-            this.selectedCity = "",
             socket.emit("loadcities", this.gameID);
             socket.on("citiesLoaded", (cities) => {
             this.cities = cities;
@@ -215,6 +221,7 @@
     },
 
     setLocation: function (event) {
+      this.mapClicked = true; 
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
       this.location = {x: event.clientX - 10 - offset.x,
@@ -235,7 +242,22 @@
           }
        }
 
+    },
+
+    createNewCity: function() {
+      this.isButtonDisabled = false
+      this.isComponentDisabled = false
+      this.selectedCity = ""
+      for (let i = 0; i <3 ; i++) {
+        var createRef = this.$refs[`createComponentRef${i}`];
+        createRef.createNewCity();
+         if(this.isError){
+          this.questionsreal = []
+          }
+       }
+
     }
+
   }
   }
   </script>
@@ -268,11 +290,44 @@
   input:focus {
     background-color: white;
   }
+
+
+  .edit-button{
+  padding: 1em 2em;
+  font-size: 1.2em;
+  background-color: floralwhite;
+  text-align: center;
+  text-decoration: none;
+  margin: 0.5em;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid rgb(223, 217, 217);
+  font-family: 'Varela Round', sans-serif;
+}
+
+.edit-button:hover {
+  background-color: rgb(239, 234, 225);
+}
+
+.edit-button:disabled {
+  cursor: auto;
+  border: 2px solid rgb(241, 234, 234);
+}
+
+.edit-button:disabled:hover {
+  background-color: floralwhite; /* Set the background color when disabled and hovered */
+}
+
+input:disabled {
+  cursor: auto;
+  border: 2px solid rgb(247, 226, 230);
+  color: rgb(175, 174, 174);
+}
   
-  button {
-    margin: 0.5em;
-    margin-top: 10px;
-  }
+button {
+  margin: 0.5em;
+  margin-top: 10px;
+}
   
   
   .container {
@@ -315,14 +370,15 @@
   position: absolute;
 }
 
-.city-style {
+.city-chooser {
   position: absolute;
-  background: radial-gradient(pink 0%, red 90%, black 10%);
-  border-radius: 150px; 
-  width: 20px; 
+  width: 20px;
   height: 20px;
-  box-shadow: -9px 14px 28px rgba(0, 0, 0, 0.2);
+  background-color: aqua;
+  border-radius: 50%;
+  box-shadow: -2px 7px 14px rgba(0, 0, 0, 0.7);
 }
+
 
 #mapWrapper {
   cursor: pointer; 
@@ -347,6 +403,8 @@
   display: flex;
   flex-direction: column;
 }
+
+
 
 .infobox {
   position: absolute;
