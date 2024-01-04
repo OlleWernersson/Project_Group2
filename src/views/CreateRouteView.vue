@@ -24,8 +24,8 @@
               <div class="city-style">   
               </div>
           </div>
-          <div v-if = "cityChosen">
-            <City v-for="(city) in cities" :key="city.name" :city = "city" :hasPlayers="false" :mapSize="mapSize" @click = "cityClicked" class="city-hover">
+          <div>
+            <City v-for="(city) in cities" :key="city.name" :city = "city" :hasPlayers="false" :mapSize="mapSize" @click = "loadCity(city)" class="city-hover">
             </City>
           </div>
         </Map>
@@ -42,7 +42,7 @@
       <CreateComponent ref="createComponentRef2"  type="text"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels"></CreateComponent>
 
       <div class = "button-container">
-        <button v-on:click="addAllQuestions" class = "edit-button">
+        <button v-on:click="addCity" class = "edit-button">
             {{ uiLabels.saveCity }}
         </button>
 
@@ -139,7 +139,7 @@
   },
   
   methods: {
-    addAllQuestions: function () {
+    addCity: function () {
       this.isError= false;
       if(this.selectedCity !== ""){
         for (let i = 0; i <3 ; i++) { 
@@ -224,8 +224,18 @@
         console.log(this.location)
     },
 
-    cityClicked: function () {
-      console.log("you clicked me!!!")
+    loadCity: function (city) {
+      console.log("you clicked a city!")
+      this.selectedCity = city.name
+      for (let i = 0; i <3 ; i++) {
+        var createRef = this.$refs[`createComponentRef${i}`];
+        createRef.loadCity(city, i);
+    
+         if(this.isError){
+          this.questionsreal = []
+          }
+       }
+
     }
   }
   }
@@ -325,7 +335,6 @@
 
 #mapWrapper .city-hover {
   cursor: auto; /* or any other cursor value you want for the infobox */
-  border: solid rgb(79, 172, 79);
   border-width: 10px;
 }
 
