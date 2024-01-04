@@ -1,10 +1,12 @@
 <template>
   <div id="wrapper">
     <Map 
-    ref="mapRef" 
-    :poll="poll" 
-    @mapSizeChanged="handleMapSizeChanged" 
-    class="map-container" >
+      v-if="poll && poll.cities"
+      ref="mapRef" 
+      :poll="poll" 
+      @mapSizeChanged="handleMapSizeChanged" 
+      class="map-container"
+    >
     <template v-slot:city-lines>
       <CityLine v-for="(city, index) in poll.cities" :key="index" :city="city" :nextCity="getNextCity(index)" :mapSize="mapSize" />
     </template>
@@ -13,10 +15,12 @@
     </template>
     </Map> 
     <Question 
-    class="question-container"
-    :question="getQuestion(playerName)"
-    @correctAnswerClick="handleCorrectAnswerClick"
-    @wrongAnswerClick="getNewQuestion">
+      v-if="poll"
+      class="question-container"
+      :question="getQuestion(playerName)"
+      @correctAnswerClick="handleCorrectAnswerClick"
+      @wrongAnswerClick="getNewQuestion"
+    >
     </Question>
   </div>
 </template>
@@ -52,6 +56,16 @@ export default {
       };
       
 
+  },
+  mounted() {
+    if (this.poll && this.poll.cities) {
+      this.updateMapData();
+    } else {
+      socket.on('thisPoll', poll => {
+        this.poll = poll;
+        this.updateMapData();
+      });
+    }
   },
 
   created: function() {
@@ -139,6 +153,11 @@ export default {
         return this.poll.cities[nextIndex];
       }
     },
+    updateMapData() {
+      if (this.$refs.mapRef && typeof this.$refs.mapRef.drawMap === 'function') {
+        this.$refs.mapRef.drawMap();
+      }
+    },
   }
   };
 </script>
@@ -162,20 +181,4 @@ border-radius: 8px;
 max-width: 80vw; /* Justera max-bredden efter behov */
 margin: 0 auto;
 }
-
-
-/* #wrapper {
-  display: grid;
-  grid-template-rows: 80vh 20vh;
-  overflow: hidden;
-}
-
-@media screen and (min-aspect-ratio: 2/1) {
-  #wrapper {
-    grid-template-columns: 80% 20%;
-  }
-  #wrapper .map-container, #wrapper .question-container {
-    grid-row: 1 / span 2;
-  }
-} */
   </style>

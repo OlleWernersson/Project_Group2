@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     cityPosition() {
-      if (this.mapSize && this.city) {
+      if (this.mapSize && this.city && this.mapSize.offset) {
         const relativeX = (this.city.left / 800) * this.mapSize.width + this.mapSize.offset.x;
         const relativeY = (this.city.top / 760) * this.mapSize.height + this.mapSize.offset.y;
 
@@ -34,7 +34,7 @@ export default {
       }
     },
     nextCityPosition() {
-      if (this.mapSize && this.nextCity) {
+      if (this.mapSize && this.nextCity && this.mapSize.offset) {
         const relativeX = (this.nextCity.left / 800) * this.mapSize.width + this.mapSize.offset.x;
         const relativeY = (this.nextCity.top / 760) * this.mapSize.height + this.mapSize.offset.y;
 
@@ -48,7 +48,9 @@ export default {
     },
   },
   mounted() {
-    this.$parent.$el.addEventListener('scroll', this.updateScrollPosition);
+    if (this.$parent.$el) {
+      this.$parent.$el.addEventListener('scroll', this.updateScrollPosition);
+    }
   },
   beforeDestroy() {
     this.$parent.$el.removeEventListener('scroll', this.updateScrollPosition);
@@ -61,10 +63,17 @@ export default {
       this.scrollY = 0
     },
     getCurvedLinePath() {
-      const startX = this.cityPosition.x;
-      const startY = this.cityPosition.y;
-      const endX = this.nextCityPosition.x;
-      const endY = this.nextCityPosition.y;
+      const cityPosition = this.cityPosition;
+      const nextCityPosition = this.nextCityPosition;
+
+      if (!cityPosition || !nextCityPosition) {
+        return '';
+      }
+
+      const startX = cityPosition.x;
+      const startY = cityPosition.y;
+      const endX = nextCityPosition.x;
+      const endY = nextCityPosition.y;
 
       const controlX = (startX + endX) / 2;
       const controlY = startY;
@@ -76,11 +85,6 @@ export default {
 </script>
 
 <style scoped>
-.cityLine-wrapper {
-  /* position: relative; */
-/*   width: 100%;
-  height: 100%; */
-}
 .city-line {
   position: absolute;
   width: 100%;
@@ -88,7 +92,4 @@ export default {
   top: 0;
   left: 0;
 }
-/* path {
-  position: absolute;
-} */
 </style>
