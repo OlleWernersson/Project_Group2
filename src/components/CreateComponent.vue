@@ -59,20 +59,12 @@ methods: {
   },
 
   loadCity: function(city, question) {
-    console.log("Laddar fråga:", city.questions[question].q, "i city:", city)
-    console.log("laddar svar 1", city.questions[question].a[0], "för frågan i city: ", city )
-    console.log("svar 2", city.questions[question].a[1])
-    console.log("svar 3", city.questions[question].a[2])
-    console.log("laddar correct index:", city.questions[question].c)
-
     this.question = city.questions[question].q;
     this.c = city.questions[question].c
-
     //for each answer to this specific question 
-    for (let i = 0; i<city.questions[question].a; i++) {
-      this.answers[answer] = city.questions[question].a[answer]
+    for (let i = 0; i<city.questions[question].a.length; i++) {
+      this.answers[i] = city.questions[question].a[i]
     }
-   console.log("answers in createcomponent after adding loaded answers: ", this.answers)
   },
   }
 }
