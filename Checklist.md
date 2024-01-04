@@ -62,6 +62,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [] Städers storlek och titel ändras med media quaries?
 - [] göra kartan minde färgglad och få städerna att "poppa" med shadow osv finns i css!
 - [x] Göra så att kartan aldrig strechas ut så att Mikael blir glad?
+- [] Ändra så att man alltid ser sig själv i mitten på kartan om man inte scrollar
 
 
 ## CreateLobbyView - Planen är att man får först välja mellan att välja rutt eller skapa rutt. Om man väljer att välja rutt så ska man få upp under det där man kan sätta sitt namn och färg.

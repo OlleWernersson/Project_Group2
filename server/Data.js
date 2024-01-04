@@ -178,7 +178,6 @@ Data.prototype.getCities = function(gameID){
 }
 Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColorObj, isHost) {
   const poll = this.polls[gameID];
-  console.log ("new user added to ", gameID, playerName)
   if (typeof poll !== 'undefined') {
     let participant = {
       name: playerName,
@@ -186,10 +185,15 @@ Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColorObj, i
       isHost: isHost,
       questionIndex: 0,
       city: 0,
-      
     }
-  poll.participants.push(participant)
-  console.log(poll.participants)
+    poll.participants.push(participant)
+    for (const colorObj of poll.colorObjs) {
+      if (colorObj.color === playerColorObj.color) {
+        colorObj.isSelected = true;
+      } else {
+        colorObj.isSelected = false;
+      }
+    }
   }
 }
 Data.prototype.getPlayers = function(pollID) {
@@ -210,15 +214,17 @@ Data.prototype.getPoll = function(pollID){
   return this.polls[pollID]
 }
 
-Data.prototype.getColors = function(gameID){
-  const game = this.polls[gameID];
-  if (typeof game !== 'undefined') {
-    return this.colorObjs;
+Data.prototype.getColors = function(gameID) {
+  const poll = this.polls[gameID];
+  if (typeof poll !== 'undefined') {
+    const assignedColors = poll.participants.map(participant => participant.colorObj.color);
+
+    const remainingColors = poll.colorObjs.filter(colorObj => !assignedColors.includes(colorObj.color) && !colorObj.isSelected);
+
+    return remainingColors;
   }
   return this.colorObjs;
-  //OBS i längden måste colorObjs bli specifikt för varje poll så man kan uppdatera isSelected och ta bort färgen 
-  // men just nu är detta nödlösning (this.colorObjs är global och inte pollID specifik)
-}
+};
 
 Data.prototype.getCityQuestions = function(pollID, City){
   console.log("nu är vi i get city questions")
