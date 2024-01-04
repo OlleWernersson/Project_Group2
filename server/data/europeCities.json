@@ -19,6 +19,42 @@
 
   },
   {
+    "top": 290,
+    "left": 200,
+    "name": "Reykjavik",
+    "first_letter": "r",
+    "questions":[{"q": "Vilken är Reykjaviks mest kända geotermiska spa?", 
+                  "a": ["Nature Baths", "Fontana Geothermal Baths", "The Secret Lagoon", "Blue Lagoon"],
+                  "c":3
+                 },
+                 {"q": "Vad är det isländska parlamentet i Reykjavik kallat?", 
+                  "a": ["Parlamentariet", "Althing", "Stortinget", "Sejmen"],
+                  "c": 1
+                 }, 
+                 {"q": "Vad är Reykjaviks genomsnittliga temperatur på vintern?",
+                  "a": ["-9°C", "-4°C", "0°C", "5°C"],
+                  "c":2
+                 }]
+ },
+ {
+  "top": 370,
+  "left": 270,
+  "name": "Dublin",
+  "first_letter": "d",
+  "questions":[{"q": "Vilket historiskt slott ligger i utkanten av Dublin och är känt för sina vackra trädgårdar?", 
+                "a": ["Malahide Castle", "Dublin Castle", "Secret Castle", "Kilmainham Gaol"],
+                "c":0
+               },
+               {"q": "Vilket är det mest kända och äldsta pubområdet i Dublin?", 
+                "a": ["Pink Street", "Smithfield", "Temple Bar", "Sture P"],
+                "c": 2
+               }, 
+               {"q": "Vilken flod rinner genom Dublin?",
+                "a": ["Donau", "Liffey", "Thames", "Wisla"],
+                "c":1
+               }]
+},
+  {
      "top": 480,
      "left": 380,
      "name": "Berlin",
@@ -91,6 +127,24 @@
                 }]
 },
 {
+  "top":440,
+  "left": 480,
+  "name": "Warszawa",
+  "first_letter": "w",
+  "questions":[{"q": "Hur säger man SKÅL! på polska?", 
+                "a": ["Na szczęście!", "Na zdrowie!", "Życie!", "Una cerveza!"],
+                "c":1
+              },
+              {"q": "Under vilket uppror kämpade invånarna i Warszawa mot den tyska ockupationsmakten under andra världskriget?", 
+               "a": ["Warszawaupproret", "Wolaupproret", "Solidaritetsupproret", "Frihetsupproret"],
+               "c": 0
+              }, 
+              {"q": "Vad är en traditionell maträtt i Warszawa?",
+               "a": ["Köttbullar", "Naleśniki", "Bigos", "Paella"],
+               "c":1
+              }]
+},
+{
   "top":585,
   "left": 535,
   "name": "Bukarest",
@@ -123,6 +177,42 @@
               }, 
               {"q": "Vilket monument på Röda torget är en staty av en framstående politisk ledare och ligger nära Kremls murar?",
                "a": ["Statyn av Lenin", "Monumentet över Peter den Store", "Statyn av Karl Marx", "Monumentet över Ivan den förskräcklige"],
+               "c":0
+              }]
+},
+{
+  "top":280,
+  "left": 550,
+  "name": "Helsingfors",
+  "first_letter": "h",
+  "questions":[{"q": "Vilket musikfestival i Helsingfors är känt för att vara ett av Europas största gratisfestivaler?", 
+                "a": ["Lollapalooza", "Coachella", "Flow Festival", "Ruisrock"],
+                "c":2
+              },
+              {"q": "Vilken ö i Helsingfors skärgård är känd för sitt historiska fästning och utmärkta utsikt över staden?", 
+               "a": ["Kaisaniemenpuisto", "Lidingö", "Alppipuisto", "Saari"],
+               "c": 0
+              }, 
+              {"q": "Vilket ishockeylag från Helsingfors är känt som Storhjortarna och spelar sina hemmamatcher i Hartwall Arena?",
+               "a": ["Jokerit", "HIFK", "Buffalo Sabres", "Leksands IF"],
+               "c":1
+              }]
+},
+{
+  "top":170,
+  "left": 410,
+  "name": "Lofoten",
+  "first_letter": "l",
+  "questions":[{"q": "Vilket berg i Lofoten är känt för sina branta klippor och är en populär vandringsdestination?", 
+                "a": ["Blanca Peak", "Kebnekaise", "Mount Everest", "Olstind"],
+                "c":3
+              },
+              {"q": "Vilken är den karakteristiska fiskemetoden som används för att torka och bevara fisk, särskilt torsk, i Lofoten?", 
+               "a": ["Saltning", "Metning", "Torkning på hjell", "Trålning"],
+               "c": 2
+              }, 
+              {"q": "Vilken stad är störst i Lofoten?",
+               "a": ["Svolvær", "Henningsvær", "Trondheim", "Tromsö"],
                "c":0
               }]
 }
