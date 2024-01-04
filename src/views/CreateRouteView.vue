@@ -37,9 +37,9 @@
       <div class = "editor-container">
       <input class="writeCity" v-model="selectedCity"  :placeholder= "uiLabels.cityName">
 
-      <CreateComponent ref="createComponentRef0"  type="text"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels"></CreateComponent>
-      <CreateComponent ref="createComponentRef1"  type="text"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels"></CreateComponent>
-      <CreateComponent ref="createComponentRef2"  type="text"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels"></CreateComponent>
+      <CreateComponent ref="createComponentRef0"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels" radioName = "first"></CreateComponent>
+      <CreateComponent ref="createComponentRef1"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels" radioName = "second"></CreateComponent>
+      <CreateComponent ref="createComponentRef2"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels" radioName = "third"></CreateComponent>
 
       <div class = "button-container">
         <button v-on:click="addCity" class = "edit-button">
@@ -189,9 +189,8 @@
         console.log(childanswers[0],childanswers[1])
         if(childanswers[0] !== "" && childanswers[1] !== ""){
         if (childc > -1){
-          console.log("message from child is here", childquestion,childanswers,childc);
           this.questionsreal.push({question: childquestion, answers: childanswers, correctIndex: childc});
-        
+
           //socket.emit("addQuestion", {pollId: this.pollId,  questionPart: childquestion,answers:childanswers, c:childc, city: this.selectedCity})
         }
         else{

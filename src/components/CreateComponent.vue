@@ -5,7 +5,7 @@
 
       <div class="froggy" v-for="(_, i) in answers">
         <input class="write" v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" :placeholder="uiLabels.answer">
-        <input class="rightanswerbutton" type = "radio"  v-bind:key="i" name="check" @change="selectedAnswerIndex(i)">
+        <input class="rightanswerbutton" type = "radio"  v-bind:key="i" :name="radioName" @change="selectedAnswerIndex(i)">
       </div>
       
       <div class = "buttonWrapper">
@@ -25,7 +25,8 @@
 export default {
     props:{
         Question: Object,
-        uiLabels: Object
+        uiLabels: Object,
+        radioName: Object
     },
 
  data: function () {
@@ -48,7 +49,7 @@ methods: {
   },
 
   addQuestion: function(){
-    console.log(this.c);
+    console.log("Fråga added", this.question);
     this.$emit('addThisQuestion', this.question, this.answers, this.c);
     this.question = "";
     this.answers = ["", ""];
