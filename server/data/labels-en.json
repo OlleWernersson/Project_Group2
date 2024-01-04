@@ -28,5 +28,30 @@
   "gameIdErrorMessage": "Game ID must be 4 digits long",
   "gameIdValidMessage": "You can join this Lobby!",
   "gameIdInvalidLobbyMessage": "This lobby doesn't exist :(",
-  "gameIdStartedMessage": "This lobby has already started the game"
+  "gameIdStartedMessage": "This lobby has already started the game",
+  "createHeader": "Create your own MapRacer",
+  "cityChoserInfo": "Click somewhere on the map to choose the location of your city",
+  "createQuestions": "Create your questions here",
+  "saveCity": "Save city",
+  "createCIty": "Create new city",
+  "createMapRacer": "Create MapRacer",
+  "addAnswer": "Add answer",
+  "removeAnswer": "Remove answer",
+  "cityName": "Choose city name"
+
+  
+
+  
+
+
+  
+
+  
+
+
+  
+
+
+
+
 }

@@ -10,14 +10,14 @@
 
     <header> 
       <button class="supportButtons" @click="help2" >{{ uiLabels.help }} </button> 
-      <h1> Skapa ditt eget MapQuiz</h1>
+      <h1> {{uiLabels.createHeader}}</h1>
     </header>
   
     <section class = "container">
       <div id = "mapWrapper" v-on:click="setLocation">
         <Map :poll = "poll" :players=[]>
           <h2 class = "infobox">
-            Click somewhere on the map to choose where you want your city to be
+            {{ uiLabels.cityChoserInfo }}
           </h2>
             <area shape="rect" coords="0, 0, 100, 100"> <!-- obs chat gpt lösning denna rad-->
             <div id="dots" v-bind:style= "{ left: location.x + 'px', top: location.y + 'px' }">
@@ -28,10 +28,10 @@
       </div>
 
     <div id = "question-container">
-      <h2>Create your questions here </h2>
+      <h2>{{ uiLabels.createQuestions }}</h2>
 
       <div class = "editor-container">
-      <input class="writeCity" v-model="selectedCity"  placeholder= "City name">
+      <input class="writeCity" v-model="selectedCity"  :placeholder= "uiLabels.cityName">
 
       <CreateComponent ref="createComponentRef0"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
       <CreateComponent ref="createComponentRef1"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
@@ -39,11 +39,11 @@
 
       <div class = "button-container">
         <button v-on:click="addAllQuestions" class = "edit-button">
-            Save city 
+            {{ uiLabels.saveCity }}
         </button>
 
         <button v-on:click="createNewCity" class = "edit-button">
-            Create new city 
+            {{uiLabels.createCIty}}
         </button>
       </div>
       </div>
@@ -52,7 +52,7 @@
 
       <section class = bottom-container>
         <button @click="createLobby" class = "main-button">
-        Create MapQuiz
+         {{ uiLabels.createMapRacer }}
         </button>
       </section>
     </main>
@@ -263,7 +263,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.8);
-    z-index: 999; /* Ensure the popup is on top of other elements */
+    z-index: 999;
     display: flex;
     align-items: center;
     justify-content: center;

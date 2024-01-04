@@ -10,10 +10,12 @@
       
       <div class = "buttonWrapper">
           <button v-on:click="addAnswer" class = "edit-button">
-            Add answer 
+            Add answer
+            <!-- {{uiLabels.addAnswer}} -->
           </button>
           <button v-on:click="removeAnswer" class = "edit-button">
-            Remove answer 
+            Remove Answer
+            <!-- {{uiLabels.removeAnswer}} -->
           </button>
         </div>
     </div>
@@ -21,6 +23,8 @@
 </template>
 
 <script>
+// import io from 'socket.io-client';
+
 export default {
     props:{
         Question: Object
@@ -31,8 +35,17 @@ export default {
       question: "",
       answers: ["", ""],
       c: -1,
+      // lang: localStorage.getItem("lang") || "en",
+      // uiLabels: {},
+
   }
 },
+
+// created: function() {
+//   socket.on("init", (labels) => {
+//   this.uiLabels = labels
+//   })
+// },
 
 methods: {
   addAnswer: function () {

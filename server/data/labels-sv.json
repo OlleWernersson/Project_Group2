@@ -28,5 +28,24 @@
   "gameIdErrorMessage": "Game ID måste vara 4 siffror långt",
   "gameIdValidMessage": "Denna lobby kan du Joina!",
   "gameIdInvalidLobbyMessage": "Denna lobby finns inte :(",
-  "gameIdStartedMessage": "Denna lobby har redan startat spelet"
+  "gameIdStartedMessage": "Denna lobby har redan startat spelet",
+  "createHeader": "Skapa ditt eget MapRacer",
+  "cityChoserInfo": "Klicka någonstans på kartan för att välja var din stad ska ligga",
+  "createQuestions": "Skapa dina frågor här",
+  "saveCity": "Spara stad",
+  "createCIty": "Skapa ny stad",
+  "createMapRacer": "Skapa MapRacer",
+  "addAnswer": "Lägg till svar",
+  "removeAnswer": "Ta bort svar",
+  "cityName": "Stadens namn"
+
+
+
+
+
+
+
+
+
+
 }
