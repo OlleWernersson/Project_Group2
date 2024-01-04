@@ -2,13 +2,16 @@
   <div class="city-wrapper">
     <div class="city-circle" :style="{ left: cityPosition.x + 'px', top: cityPosition.y + 'px'}">
       <p class="city-name">{{ city?.name }}</p>
-      <div class="player-circles" v-if="city && players.length">
+      
+      <div v-if="hasPlayers">
+        <div class="player-circles" v-if="city && players.length">
         <div
           v-for="player in filteredPlayers"
           :key="player.id"
           :class="{ 'player-circle': true, 'golden-border': player.name === playerName, 'black-border': player.name !== playerName }"
           :style="{ backgroundColor: player.colorObj.color }"
         ></div>
+      </div>
       </div>
     </div>
   </div>
@@ -22,6 +25,7 @@ export default {
     players: Array,
     mapSize: Object,
     playerName: String,
+    hasPlayers: Boolean
   },
   computed: {
     filteredPlayers() {

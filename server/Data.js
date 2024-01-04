@@ -172,9 +172,9 @@ Data.prototype.getAnswers = function(pollID) {
   }
   return {}
 }
-Data.prototype.getCities = function(){
-  const cities = readFileSync("server/data/cities.json")
-  return JSON.parse(cities)
+Data.prototype.getCities = function(gameID){
+  const poll = this.polls[gameID]
+  return poll.cities
 }
 Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColorObj, isHost) {
   const poll = this.polls[gameID];

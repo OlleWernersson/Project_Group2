@@ -24,6 +24,10 @@
               <div class="city-style">   
               </div>
           </div>
+          <div v-if = "cityChosen">
+            <City v-for="(city) in cities" :key="city.name" :city = "city" :hasPlayers="false" :mapSize="mapSize" @click = "cityClicked" class="city-hover">
+            </City>
+          </div>
         </Map>
       </div>
 
@@ -64,153 +68,165 @@
   import Map from '../components/MapComponent.vue';
   import CreateComponent from '../components/CreateComponent.vue';
   import IdBox from '@/components/id-box.vue';
+  import City from '../components/CityComponent.vue';
 
   const socket = io("localhost:3000");
   
   export default {
-  components: { Map, CreateComponent, IdBox },
+  components: { Map, CreateComponent, IdBox, City },
   name: 'CreateRouteView',
   data: function () {
-  return {
-  isError: false,
-  lang: localStorage.getItem("lang") || "en",
-  gameID:"",
-  question: "",
-  cityChosen: false, 
-  answers: ["", ""],
-  playerName: "Host",
-  playerColorObj: {color: "#ff8b00",
-                   isSelected: true},
-  questionNumber: 0,
-  data: {},
-  location: { top: 10,
-            y: 10
+    return {
+      isError: false,
+      lang: localStorage.getItem("lang") || "en",
+      gameID:"",
+      question: "",
+      cityChosen: false, 
+      answers: ["", ""],
+      playerColorObj: {color: "#ff8b00",
+                      isSelected: true},
+      questionNumber: 0,
+      data: {},
+      location: { top: 10,
+                y: 10
+              },
+      uiLabels: {},
+      cities: {},
+      mapSize: {
+            width: 800,
+            height: 750,
           },
-  uiLabels: {},
-  cities: {},
-  questions: {
-   question1: {  },
-   question2: {  },
-   question3: {  }
-  },
-  questionsreal: [],
-  c: null,
-  selectedCity: "",
-  helpOpen: false,
-  selectedCities: [],
-  amountButtonPressed: 1, 
-  playerName:"noPlayerHost", 
-  selectedColorObj: {}
-  }
+      questions: {
+            question1: {  },
+            question2: {  },
+            question3: {  }
+          },
+      questionsreal: [],
+      c: null,
+      selectedCity: "",
+      helpOpen: false,
+      selectedCities: [],
+      amountButtonPressed: 1, 
+      playerName:"noPlayerHost", 
+      selectedColorObj: {}
+    }
   },
   created: function () {
-  this.gameID = this.$route.params.id
-  socket.emit("joinPoll", this.gameID)
-  socket.emit('getPoll', this.gameID)
+    this.gameID = this.$route.params.id
+    socket.emit("joinPoll", this.gameID)
+    socket.emit('getPoll', this.gameID)
 
-  socket.on('thisPoll', poll =>
-  this.poll = poll
-  )
-  socket.emit("pageLoaded", this.lang);
-  socket.emit("loadcities");
+    socket.on('thisPoll', poll =>
+      this.poll = poll
+    )
+    socket.emit("pageLoaded", this.lang);
+    socket.emit("loadcities", this.gameID);
 
-  socket.on("init", (labels) => {
-  this.uiLabels = labels
-  })
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
 
-  socket.on("citiesLoaded", (cities) => {
-  this.cities = cities;
-  console.log(cities)
-  })
-  socket.on()
-  socket.on("dataUpdate", (data) =>
-  this.data = data
-  )
-  socket.on("pollCreated", (data) =>
-  this.data = data)
+    socket.on("citiesLoaded", (cities) => {
+      this.cities = cities;
+    })
+
+    socket.on("dataUpdate", (data) =>
+      this.data = data
+    )
+    socket.on("pollCreated", (data) =>
+      this.data = data
+    )
   },
   
   methods: {
-  addAllQuestions: function () {
-    this.isError= false;
-    if(this.selectedCity !== ""){
-      for (let i = 0; i <3 ; i++) { 
-      var createRef = this.$refs[`createComponentRef${i}`];
-        createRef.addQuestion();
-      
-        if(this.isError){
-        this.questionsreal = []
-      }
-      }
-      if(!this.isError){
-          console.log("nu är vi här", this.gameID)
-          socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[0].question,answers:this.questionsreal[0].answers, c:this.questionsreal[0].correctIndex, city: this.selectedCity})
-          socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[1].question,answers:this.questionsreal[1].answers, c:this.questionsreal[1].correctIndex, city: this.selectedCity})
-          socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[2].question,answers:this.questionsreal[2].answers, c:this.questionsreal[2].correctIndex, city: this.selectedCity})
-          console.log(this.cities)
-          socket.emit("saveCurrentCity", {top: this.location.y, left: this.location.x, name: this.selectedCity, first_letter: this.selectedCity.slice(0, 1), pollId:this.gameID})
-          this.selectedCities.push(this.selectedCity)
-          this.selectedCity = ""
+    addAllQuestions: function () {
+      this.isError= false;
+      if(this.selectedCity !== ""){
+        for (let i = 0; i <3 ; i++) { 
+        var createRef = this.$refs[`createComponentRef${i}`];
+          createRef.addQuestion();
+        
+          if(this.isError){
+          this.questionsreal = []
         }
-    }
-    else{
-      window.alert("please select a city")
-    }
-  },
-  
-  createLobby: function () {
-    this.$router.push({ path: `/lobby/${this.gameID}`, query: { playerName: this.playerName} });
-    socket.emit("createPoll", { pollId: this.gameID, lang: this.lang, route: this.selectedRoute })
-    socket.emit('joinLobby',  { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: true});
-  },
-
-  addAnswer: function () {
-  this.answers.push("");
-  },
-  removeAnswer: function() {
-  this.answers.pop("")
-  },
-
-  addcreatechild: function(childquestion, childanswers, childc){
-    console.log(childanswers,childquestion,childc)
-    if(childquestion !== ""){
-      console.log(childanswers[0],childanswers[1])
-      if(childanswers[0] !== "" && childanswers[1] !== ""){
-      if (childc > -1){
-        console.log("message from child is here", childquestion,childanswers,childc);
-        this.questionsreal.push({question: childquestion, answers: childanswers, correctIndex: childc});
-      
-        //socket.emit("addQuestion", {pollId: this.pollId,  questionPart: childquestion,answers:childanswers, c:childc, city: this.selectedCity})
+        }
+        if(!this.isError){
+            console.log("nu är vi här", this.gameID)
+            socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[0].question,answers:this.questionsreal[0].answers, c:this.questionsreal[0].correctIndex, city: this.selectedCity})
+            socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[1].question,answers:this.questionsreal[1].answers, c:this.questionsreal[1].correctIndex, city: this.selectedCity})
+            socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[2].question,answers:this.questionsreal[2].answers, c:this.questionsreal[2].correctIndex, city: this.selectedCity})
+            socket.emit("saveCurrentCity", {top: this.location.y, left: this.location.x, name: this.selectedCity, first_letter: this.selectedCity.slice(0, 1), pollId: this.gameID})
+            this.selectedCities.push(this.selectedCity)
+            this.selectedCity = "",
+            socket.emit("loadcities", this.gameID);
+            socket.on("citiesLoaded", (cities) => {
+            this.cities = cities;
+            })
+            this.cityChosen = true; 
+          }
       }
       else{
-        window.alert("add a correct answer");
+        window.alert("please select a city")
+      }
+    },
+    
+    createLobby: function () {
+      this.$router.push({ path: `/lobby/${this.gameID}`, query: { playerName: this.playerName} });
+      socket.emit("createPoll", { pollId: this.gameID, lang: this.lang, route: this.selectedRoute })
+      socket.emit('joinLobby',  { gameID: this.gameID, playerName: this.playerName, playerColorObj: this.selectedColorObj, isHost: true});
+    },
+
+    addAnswer: function () {
+      this.answers.push("");
+    },
+    removeAnswer: function() {
+      this.answers.pop("")
+    },
+
+    addcreatechild: function(childquestion, childanswers, childc){
+      console.log(childanswers,childquestion,childc)
+      if(childquestion !== ""){
+        console.log(childanswers[0],childanswers[1])
+        if(childanswers[0] !== "" && childanswers[1] !== ""){
+        if (childc > -1){
+          console.log("message from child is here", childquestion,childanswers,childc);
+          this.questionsreal.push({question: childquestion, answers: childanswers, correctIndex: childc});
+        
+          //socket.emit("addQuestion", {pollId: this.pollId,  questionPart: childquestion,answers:childanswers, c:childc, city: this.selectedCity})
+        }
+        else{
+          window.alert("add a correct answer");
+        }
+      }
+      else{
+        window.alert("you forgot to fill in an answer field")
+        this.isError= true;
       }
     }
-    else{
-      window.alert("you forgot to fill in an answer field")
-      this.isError= true;
+      else{
+        window.alert("you forgot to fill a question field please try again")
+        this.isError= true;
+        throw new Error("you forgot to fill in a question field ")
+      }
+
+    },
+
+    help2: function(){
+      this.helpOpen = ! this.helpOpen
+    },
+
+    setLocation: function (event) {
+      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+                    y: event.currentTarget.getBoundingClientRect().top};
+      this.location = {x: event.clientX - 10 - offset.x,
+                        y: event.clientY - 10 - offset.y}
+
+        console.log(this.location)
+    },
+
+    cityClicked: function () {
+      console.log("you clicked me!!!")
     }
-  }
-    else{
-      window.alert("you forgot to fill a question field please try again")
-      this.isError= true;
-      throw new Error("you forgot to fill in a question field ")
-    }
-
-  },
-
-  help2: function(){
-    this.helpOpen = ! this.helpOpen
-  },
-
-  setLocation: function (event) {
-    var offset = {x: event.currentTarget.getBoundingClientRect().left,
-                  y: event.currentTarget.getBoundingClientRect().top};
-    this.location = {x: event.clientX - 10 - offset.x,
-                      y: event.clientY - 10 - offset.y}
-
-      console.log(this.location)
-  },
   }
   }
   </script>
@@ -301,8 +317,16 @@
 
 #mapWrapper {
   cursor: pointer; 
-  /* border: solid black;
-  border-radius: 10px; */
+}
+
+#mapWrapper .infobox {
+  cursor: auto; /* or any other cursor value you want for the infobox */
+}
+
+#mapWrapper .city-hover {
+  cursor: auto; /* or any other cursor value you want for the infobox */
+  border: solid rgb(79, 172, 79);
+  border-width: 10px;
 }
 
 #question-container {

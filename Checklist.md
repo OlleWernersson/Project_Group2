@@ -28,9 +28,9 @@ Det viktigaste är att man kan joina spelet och spela lätt med olika typer av s
 ## Allmänt
 
 - [] Göra bilderna mindre färgglada?
-- [] Göra en rutt på svenska
+- [X] Göra en rutt på svenska
 - [] Göra en rutt på engelska
-- [] HoverEffekt på mer buttons?
+- [X] HoverEffekt på mer buttons?
 
 ## LobbyView
 
@@ -81,4 +81,4 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [/] Man ska kunna se vilken stad spelarna kom till och vem som vann
 
 ## CreateRouteView
-- [] 
+- [] blädderfunktion

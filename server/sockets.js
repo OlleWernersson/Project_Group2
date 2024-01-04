@@ -59,9 +59,8 @@ function sockets(io, socket, data) {
     data.initializeData();
   });
 
-  socket.on('loadcities', function() {
-    socket.emit('citiesLoaded',  data.getCities())
-    console.log("citiesLoaded")
+  socket.on('loadcities', function(gameID) {
+    socket.emit('citiesLoaded',  data.getCities(gameID))
   });
 
   socket.on('joinLobby', function (d) {

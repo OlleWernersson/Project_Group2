@@ -10,7 +10,7 @@
       <CityLine v-for="(city, index) in poll.cities" :key="index" :city="city" :nextCity="getNextCity(index)" :mapSize="mapSize" />
     </template>
     <template v-slot:cities>
-      <City v-for="(city,index) in poll.cities" :key="city.name" :city="city" :players="getPlayersInCity(index)" :mapSize="mapSize" :playerName="playerName"></City>
+      <City v-for="(city,index) in poll.cities" :key="city.name" :city="city" :hasPlayers="true" :players="getPlayersInCity(index)" :mapSize="mapSize" :playerName="playerName"></City>
     </template>
     </Map> 
     <Question 
@@ -161,9 +161,6 @@ export default {
   height: 80vh;
   overflow: scroll;
 }
-
-
-
 
 /* #wrapper {
   display: grid;
