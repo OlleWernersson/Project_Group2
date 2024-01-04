@@ -1,5 +1,4 @@
 <template>
-  <!-- {{ mapSize }} -->
   <div id="wrapper">
     <Map 
     ref="mapRef" 
@@ -20,7 +19,6 @@
     @wrongAnswerClick="getNewQuestion">
     </Question>
   </div>
-  <!-- {{ mapSize }} -->
 </template>
 
 <script>
@@ -44,7 +42,6 @@ export default {
       a: [],       
       c: null,      
       },
-      /* index:null, */
       pollId:"",
       poll: {},
       mapSize: {
@@ -159,8 +156,15 @@ export default {
 <style scoped>
 #wrapper .map-container{
   height: 80vh;
-  overflow: scroll;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
 }
+#wrapper .question-container{
+  height: 20vh;
+  overflow: hidden;
+}
+
 
 /* #wrapper {
   display: grid;

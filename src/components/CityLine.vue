@@ -1,7 +1,9 @@
 <template>
-  <svg class="city-line" :style="{ transform: `translate(${scrollX}px, ${scrollY}px)` }">
-    <path v-if="nextCity" :d="getCurvedLinePath()" fill="transparent" stroke="black" stroke-width="2" stroke-dasharray="5,5" />
-  </svg>
+  <div class="cityLine-wrapper">
+    <svg class="city-line" :style="{ transform: `translate(${scrollX}px, ${scrollY}px)` }">
+      <path v-if="nextCity" :d="getCurvedLinePath()" fill="transparent" stroke="black" stroke-width="2" stroke-dasharray="5,5" />
+    </svg>
+  </div>
 </template>
 
 <script>
@@ -53,8 +55,10 @@ export default {
   },
   methods: {
     updateScrollPosition() {
-      this.scrollX = -this.$parent.$el.scrollLeft;
-      this.scrollY = -this.$parent.$el.scrollTop;
+/*       this.scrollX = -this.$parent.$el.scrollLeft;
+      this.scrollY = -this.$parent.$el.scrollTop; */
+      this.scrollX = 0
+      this.scrollY = 0
     },
     getCurvedLinePath() {
       const startX = this.cityPosition.x;
@@ -72,11 +76,15 @@ export default {
 </script>
 
 <style scoped>
+/* .cityLine-wrapper {
+  position: relative;
+} */
 .city-line {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
 }
+/* path {
+  position: absolute;
+} */
 </style>

@@ -34,7 +34,6 @@ export default {
 
     cityPosition() {
       if (this.mapSize && this.city) {
-        // Calculate relative position based on map size
         const relativeX = (this.city.left / 800) * this.mapSize.width - this.cityRadius;
         const relativeY = (this.city.top / 760) * this.mapSize.height - this.cityRadius;
 
@@ -43,7 +42,7 @@ export default {
           y: relativeY,
         };
       } else {
-        return { x: 0, y: 0 }; // or any default values if needed
+        return { x: 0, y: 0 }; 
       }
     },
   },
@@ -78,7 +77,6 @@ export default {
   transform: translate(-50%, -50%);
   margin-top: -20px;
   font-size: small;
-
 }
 .player-circles {
   position: absolute;

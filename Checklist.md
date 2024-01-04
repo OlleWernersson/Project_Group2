@@ -45,7 +45,6 @@ Det viktigaste är att man kan joina spelet och spela lätt med olika typer av s
 - [] Meddelande om att inte alla har joinat lobby än?
 - [] En countdown så att alla är redo för att spelet kommer starta?
 - [x] Så att man kan ladda om
-- [x] man kan inte joina en lobby som har started spelet
 
 Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
@@ -74,7 +73,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
 ## JoinView
 
-- [] Man ska inte kunna joina en lobby som har startat spelet
+- [x] Man ska inte kunna joina en lobby som har startat spelet
 
 ## GameResultView
 

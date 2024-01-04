@@ -1,8 +1,11 @@
 <template>
   <div id="map-container">
-    <slot name="city-lines"></slot>
-    <slot name="cities"></slot>
+
+    <slot name="city-lines" class="city-lines"></slot>
+    <slot name="cities" class="cities"></slot>
+
     <canvas ref="mapContainer"></canvas>
+    
   </div>
 </template>
 
@@ -66,14 +69,21 @@ export default {
 </script>
 
 <style scoped>
-/* #map-container {
+#map-container {
   position: relative;
-  width: 100%;
-} */
+  /* width: 100%; */
+}
 
 canvas {
-  display: block;
-  /* width: 100%; */
-  height: 100%;
+/*   display: block; */
+/*   width: 100%; */
+  /* height: 100%; */
+/*   z-index: 2; */
+}
+.city-lines {
+  /* z-index: 2; */
+}
+.cities {
+  /* z-index: 1; */
 }
 </style>

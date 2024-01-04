@@ -3,7 +3,7 @@
     <div id="question-container"> <!-- Av någon anledning behöver vi denna -->
       <div id="question">{{ question.q }}</div>
       <div id="buttonWrapper">
-        <textarea v-model="question.q"></textarea>
+        <!-- <textarea v-model="question.q"></textarea> -->
         <button
           v-for="(a, index) in question.a"
           :key="index"
