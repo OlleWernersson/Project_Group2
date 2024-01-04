@@ -13,7 +13,7 @@ Här rekommenderade Mikael att vi ska använda media queries och för kartorna s
 
 - [x] StartView - Viktig - nu funkar det bra på mobiler!
 - [x] JoinView - Viktig - verkar också funka på mobiler!
-- [/] CreateLobbyView
+- [x] CreateLobbyView - verkar funka på mobilen!
 - [] CreateRouteView
 - [] ChooseMapView
 - [/] LobbyView - Viktig - funkar nästan på mobiler det är bara IdBox som blockerar
@@ -67,7 +67,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 ## CreateLobbyView - Planen är att man får först välja mellan att välja rutt eller skapa rutt. Om man väljer att välja rutt så ska man få upp under det där man kan sätta sitt namn och färg.
 
 - [] något som indikerar vilket språk den förvalda rutten är på
-- [] Sepparera Create Lobby och Create new Route
+- [x] Sepparera Create Lobby och Create new Route
 - [] Man ska inte kunna få ett GameID som redan finns
 - [x] röd border runt förvalda spelknappar när man inte har valt karta 
 

@@ -5,7 +5,54 @@
     </h1>
   </header>
 
-  <div class = "editPlayerWrapper">
+  <main>
+    <section class="Choose-Route">
+      <h2 :class="{'noRouteSelected': !routeIsSelected}">
+        {{uiLabels.chooseRoute}}
+      </h2>
+      <div :class="{'noRouteSelectedBorder': !routeIsSelected}">
+        <div class="button-grid">
+          <button
+            v-for="buttonId in 3"
+            :key="buttonId"
+            class="route-button"
+            @click="selectRoute(buttonId)"
+            :class="{ 'selected': selectedRoute === buttonId }"
+          >
+          
+          <img
+            :src="images[buttonId - 1]"
+            alt="Route Image"
+            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
+            />
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div v-if="!selectedRoute" class="orMessage">
+      <h2>{{ uiLabels.orMessage }}</h2>
+    </div>
+
+    <section 
+    class="Create-Route"
+    v-if="!selectedRoute">
+      <h2>
+        {{uiLabels.createNewRoute}}
+      </h2>
+      <router-link
+        id="create-route-button"
+        class="create-route-button"
+        :to="'/route/'"
+        tag="button"
+      >
+        +
+      </router-link>
+    </section>
+
+  </main>
+
+  <div class = "editPlayerWrapper" v-if="selectedRoute">
     <h2> {{ uiLabels.enterPlayer }} </h2>
       <label>
         <input type="text" v-model = "playerName" 
@@ -31,51 +78,8 @@
   </label>
   </div>
 
-  <main>
-    <section class="Choose-Route">
-      <h2 :class="{'noRouteSelected': !routeIsSelected}">
-        {{uiLabels.chooseRoute}}
-      </h2>
-      <div :class="{'noRouteSelectedBorder': !routeIsSelected}">
-        <div class="button-grid">
-          <button
-            v-for="buttonId in 3"
-            :key="buttonId"
-            class="route-button"
-            @click="selectRoute(buttonId)"
-            :class="{ 'selected': selectedRoute === buttonId }"
-          >
-          
-          <img
-            :src="images[buttonId - 1]"
-            alt="Route Image"
-            style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
-            />
-          </button>
-        </div>
-      </div>
-
-      
-
-
-    </section>
-    <section class="Create-Route">
-      <h2>
-        {{uiLabels.createNewRoute}}
-      </h2>
-      <router-link
-        id="create-route-button"
-        class="create-route-button"
-        :to="'/route/'"
-        tag="button"
-      >
-        +
-      </router-link>
-    </section>
-
-  </main>
-
   <button
+    v-if="selectedRoute"
     id="create-lobby-button"
     class="main-button"
     @click="createPoll()"
@@ -135,12 +139,10 @@ export default {
     },
 
     selectPlayerColor(colorObj) {
-    // Deselect the previously selected color
     if (this.selectedColorObj) {
       this.selectedColorObj.isSelected = false;
     }
 
-    // Select the new color
     colorObj.isSelected = true;
     this.colorIsSelected = true;
     this.selectedColorObj = colorObj;
@@ -182,6 +184,11 @@ main {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+.orMessage {
+  margin-top: 125px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .create-route-button {
   background-color: #ccc;
@@ -229,7 +236,7 @@ input {
   font-size: 1.5em;
   margin-top: 10px;
   background-color:floralwhite;
-  outline: none; /* Detta tar bort den svarta bordern som kommer när i focus*/
+  outline: none;
 }
 .invalid-name {
   border-color: red;
@@ -261,8 +268,6 @@ input:focus {
 .noColorSelected {
   border-color: red;
 }
-
-
 .choose-color-text {
   color: rgb(164, 161, 161);
 }
@@ -300,71 +305,60 @@ input:focus {
   border: 0px;
   border-radius: 0px;
 }
-@media screen and (max-width:768px) and (max-height:600px){
-  h2{
-    font-size: 1em;
-  }
-  #create-lobby-button{
-    top: 0;
-    left: 0;
-    position: absolute;
-    height: 3em;
-    width: 6em;
-  }
-  input {
-    padding: 5px;
-    border: 2px solid pink;
-    border-radius: 8px;
-    width: 150px;
-    font-size: 1em;
-    margin-top: 5px;
-  }
-  
-}
-@media screen and (max-width:768px) {
-  h2{
-      font-size: 1em
-    }
-  button{
-    border-radius: 2vw;
-      font-size: 1em;
-      padding: 1vh 3vw;
-      height: 12vh;
-      width: 22vw
-  }
+@media screen and (max-width:950px) {
   .button-grid {
     display: grid;
-    grid-template-columns: repeat(3,100px);
+    grid-template-columns: repeat(3,120px);
   }
   .route-button{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
   .create-route-button{
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
+  }
+  .orMessage {
+    margin-top: 95px;
   }
   
 }
-@media screen and (max-height:600px){
+@media screen and (max-width:650px) {
+  main {
+    flex-direction: column;
+  }
+  .orMessage {
+    margin-top: 0px;
+  }
+  .button-grid {
+    display: flex;
+    justify-content: center;
+  }
+  
+}
+@media screen and (max-width:360px) {
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(3,80px);
+  }
+  .route-button{
+    width: 80px;
+    height: 80px;
+  }
+  .create-route-button{
+    height: 80px;
+    width: 80px;
+  }
+  
+}
+@media screen and (max-height:650px){
   h1{
-    font-size: 1em;
+    font-size: 2em;
     margin: 8px;
   }
   h2{
-    font-size: 0.5em;
+    font-size: 1em;
     margin: 4px
-  }
-  button{
-    border-radius: 2vw;
-      font-size: 1em;
-      padding: 1vh 3vw;
-      height: 12vh;
-      width: 1em;
-  }
-  #create-lobby-button{
-    height: 3em;
-    width: 6em;
   }
   .button-grid {
     display: grid;

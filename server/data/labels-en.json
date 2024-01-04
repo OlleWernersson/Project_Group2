@@ -39,7 +39,8 @@
   "removeAnswer": "Remove answer",
   "cityName": "Choose city name",
   "answer": "Answer",
-  "questionInput": "Write your question..."
+  "questionInput": "Write your question...",
+  "orMessage": "Or..."
 
   
 

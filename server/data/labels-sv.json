@@ -39,7 +39,8 @@
   "removeAnswer": "Ta bort svar",
   "cityName": "Stadens namn",
   "answer": "Svar",
-  "questionInput": "Skriv din fråga här..."
+  "questionInput": "Skriv din fråga här...",
+  "orMessage": "Eller..."
 
 
 
