@@ -117,7 +117,7 @@ export default {
     },
     getQuestion: function(playerName) {
       console.log("tillbaks i get question", this.truthiness)
-      const participant = this.poll.participants.find(participant => participant.name === playerName);
+      const participant = this.poll.participants?.find(participant => participant.name === playerName);
       if(!this.truthiness){
       if (participant) {
         let cityIndex = participant.city;

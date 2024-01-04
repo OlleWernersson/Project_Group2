@@ -22,8 +22,8 @@ export default {
   computed: {
     cityPosition() {
       if (this.mapSize && this.city) {
-        const relativeX = (this.city.left / 800) * this.mapSize.width;
-        const relativeY = (this.city.top / 760) * this.mapSize.height;
+        const relativeX = (this.city.left / 800) * this.mapSize.width + this.mapSize.offset.x;
+        const relativeY = (this.city.top / 760) * this.mapSize.height + this.mapSize.offset.y;
 
         return {
           x: relativeX,
@@ -35,8 +35,8 @@ export default {
     },
     nextCityPosition() {
       if (this.mapSize && this.nextCity) {
-        const relativeX = (this.nextCity.left / 800) * this.mapSize.width;
-        const relativeY = (this.nextCity.top / 760) * this.mapSize.height;
+        const relativeX = (this.nextCity.left / 800) * this.mapSize.width + this.mapSize.offset.x;
+        const relativeY = (this.nextCity.top / 760) * this.mapSize.height + this.mapSize.offset.y;
 
         return {
           x: relativeX,
@@ -76,13 +76,17 @@ export default {
 </script>
 
 <style scoped>
-/* .cityLine-wrapper {
-  position: relative;
-} */
+.cityLine-wrapper {
+  /* position: relative; */
+/*   width: 100%;
+  height: 100%; */
+}
 .city-line {
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 }
 /* path {
   position: absolute;
