@@ -3,7 +3,7 @@
       "top":320,
       "left":450,
       "name":"Stockholm",
-      "first_letter": "l",
+      "first_letter": "s",
       "questions":[{"q": "Vad heter Sveriges statschef?", 
                     "a": ["Kung Carl XVI Gustaf ", "Gustav Vasa", "Drottning Elizabeth II", "Ulf Kristersson"],
                     "c":0
@@ -22,7 +22,7 @@
      "top": 480,
      "left": 380,
      "name": "Berlin",
-     "first_letter": "m",
+     "first_letter": "b",
      "questions":[{"q": "När revs Berlinmuren?", 
                    "a": ["1973", "1985", "1989", "1991"],
                    "c":2
@@ -55,10 +55,28 @@
                   }]
   },
   {
-    "top":630,
+    "top":660,
+    "left": 240,
+    "name": "Madrid",
+    "first_letter": "m",
+    "questions":[{"q": "Vilket monument är en symbol för Madrid och erbjuder en fantastisk utsikt över staden?", 
+                  "a": ["Faro de Moncloa", "Almudena katedralen", "Plaza Mayor", "Templo de Debod"],
+                  "c":0
+                },
+                {"q": "Vad kallas det traditionella spanska bullerinstrumentet som ofta används under festivaler och parader i Madrid?", 
+                 "a": ["Castanets", "Maracas", "Tambourine", "Castells"],
+                 "c": 0
+                }, 
+                {"q": "Vilket museum i Madrid är känt för sin imponerande konstsamling, inklusive målningen Guernica av Pablo Picasso?",
+                 "a": ["Prado museet", "Reina Sofia museet", "Thyssen Bornemisza museet", "Louvren"],
+                 "c":1
+                }]
+},
+  {
+    "top":650,
     "left": 390,
     "name": "Rom",
-    "first_letter": "p",
+    "first_letter": "r",
     "questions":[{"q": "Vilken flod rinner genom Rom?", 
                   "a": ["Tibern", "Donau", "Fyrisån", "Seine"],
                   "c":0
@@ -71,6 +89,24 @@
                  "a": ["Big ben", "Colosseum", "Partenon", "Kaknästornet"],
                  "c":1
                 }]
+},
+{
+  "top":585,
+  "left": 535,
+  "name": "Bukarest",
+  "first_letter": "bu",
+  "questions":[{"q": "Bukarest hade en viktig roll i 1989 års revolution i Rumänien och fick därefter ett smeknamn, vilket?", 
+                "a": ["Nya staden", "Revolution Retreat", "Uprising Oasis", "Frihetsstaden"],
+                "c":3
+              },
+              {"q": "Vilket berömt slott finns nära Bukarest och anses vara hemvist för den fiktiva karaktären Dracula?", 
+               "a": ["Peles Castle", "Corvin Castle", "Bran Castle", "Hunyad Castle"],
+               "c": 2
+              }, 
+              {"q": "Vilken flod rinner genom Bukarest?",
+               "a": ["Tisza", "Donau", "Dnipo", "Prut"],
+               "c":1
+              }]
 }
 
 ]
