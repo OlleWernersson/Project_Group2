@@ -50,6 +50,9 @@ methods: {
   addQuestion: function(){
     console.log(this.c);
     this.$emit('addThisQuestion', this.question, this.answers, this.c);
+    this.question = "";
+    this.answers = ["", ""];
+    this.c = -1;
   },
 
   createNewCity: function() {
@@ -59,6 +62,7 @@ methods: {
   },
 
   loadCity: function(city, question) {
+    console.log(city,"FRÅGA" ,city.questions[question].q)
     this.question = city.questions[question].q;
     this.c = city.questions[question].c
     //for each answer to this specific question 
