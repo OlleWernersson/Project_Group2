@@ -85,8 +85,15 @@ export default {
       }
     })
     socket.on("navigateToGame", (gameID) => {
-      this.$router.push({ path: `/game/${gameID}`, query: { playerName: this.playerName} });
+      if (this.playerName==="noPlayerHost") {
+        this.$router.push({ path: `/game/${gameID}`});
+        socket.emit("removeNoPlayerHost", this.gameID)
+      }
+      else {
+        this.$router.push({ path: `/game/${gameID}`, query: { playerName: this.playerName} });
+      }
     })
+
     socket.on("hostName", (hostName) => {
       this.playerName = hostName;
     })
