@@ -37,7 +37,11 @@
   "createMapRacer": "Skapa MapRacer",
   "addAnswer": "Lägg till svar",
   "removeAnswer": "Ta bort svar",
-  "cityName": "Stadens namn"
+  "cityName": "Stadens namn",
+  "answer": "Svar",
+  "questionInput": "Skriv din fråga här..."
+
+
 
 
 

@@ -33,9 +33,9 @@
       <div class = "editor-container">
       <input class="writeCity" v-model="selectedCity"  :placeholder= "uiLabels.cityName">
 
-      <CreateComponent ref="createComponentRef0"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
-      <CreateComponent ref="createComponentRef1"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
-      <CreateComponent ref="createComponentRef2"  type="text"  @addThisQuestion="addcreatechild"></CreateComponent>
+      <CreateComponent ref="createComponentRef0"  type="text"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels"></CreateComponent>
+      <CreateComponent ref="createComponentRef1"  type="text"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels"></CreateComponent>
+      <CreateComponent ref="createComponentRef2"  type="text"  @addThisQuestion="addcreatechild" :uiLabels = "uiLabels"></CreateComponent>
 
       <div class = "button-container">
         <button v-on:click="addAllQuestions" class = "edit-button">

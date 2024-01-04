@@ -1,21 +1,19 @@
 <template>
     <div id="questions">
      
-      <input class="write" v-model="question"  placeholder= "Write your question">
+      <input class="write" v-model="question"  :placeholder="uiLabels.questionInput">
 
       <div class="froggy" v-for="(_, i) in answers">
-        <input class="write" v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" placeholder="svar">
+        <input class="write" v-model="answers[i]" v-bind:key="'answer'+i" :class="{stylish: c===i}" :placeholder="uiLabels.answer">
         <input class="rightanswerbutton" type = "radio"  v-bind:key="i" name="check" @change="selectedAnswerIndex(i)">
       </div>
       
       <div class = "buttonWrapper">
           <button v-on:click="addAnswer" class = "edit-button">
-            Add answer
-            <!-- {{uiLabels.addAnswer}} -->
+            {{uiLabels.addAnswer}}
           </button>
           <button v-on:click="removeAnswer" class = "edit-button">
-            Remove Answer
-            <!-- {{uiLabels.removeAnswer}} -->
+            {{uiLabels.removeAnswer}}
           </button>
         </div>
     </div>
@@ -23,11 +21,11 @@
 </template>
 
 <script>
-// import io from 'socket.io-client';
 
 export default {
     props:{
-        Question: Object
+        Question: Object,
+        uiLabels: Object
     },
 
  data: function () {
@@ -35,17 +33,8 @@ export default {
       question: "",
       answers: ["", ""],
       c: -1,
-      // lang: localStorage.getItem("lang") || "en",
-      // uiLabels: {},
-
   }
 },
-
-// created: function() {
-//   socket.on("init", (labels) => {
-//   this.uiLabels = labels
-//   })
-// },
 
 methods: {
   addAnswer: function () {

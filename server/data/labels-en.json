@@ -37,7 +37,13 @@
   "createMapRacer": "Create MapRacer",
   "addAnswer": "Add answer",
   "removeAnswer": "Remove answer",
-  "cityName": "Choose city name"
+  "cityName": "Choose city name",
+  "answer": "Answer",
+  "questionInput": "Write your question..."
+
+  
+
+  
 
   
 
