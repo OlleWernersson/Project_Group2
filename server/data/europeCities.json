@@ -107,6 +107,24 @@
                "a": ["Tisza", "Donau", "Dnipo", "Prut"],
                "c":1
               }]
+},
+{
+  "top":400,
+  "left": 680,
+  "name": "Moskva",
+  "first_letter": "mo",
+  "questions":[{"q": "Vilket berömt museum och konstgalleri ligger i Moskva och rymmer konstverk av kända konstnärer som Rembrandt och Van Gogh?", 
+                "a": ["Eremitaget", "Konstmuseet Tretyakov", "Pusjkinmuseet", "Vinterpalatset"],
+                "c":2
+              },
+              {"q": "Vad kännetecknar Röda torget i Moskva?", 
+               "a": ["En stor park", "En stor marknad", "Historiska byggnader och monument", "En teater"],
+               "c": 2
+              }, 
+              {"q": "Vilket monument på Röda torget är en staty av en framstående politisk ledare och ligger nära Kremls murar?",
+               "a": ["Statyn av Lenin", "Monumentet över Peter den Store", "Statyn av Karl Marx", "Monumentet över Ivan den förskräcklige"],
+               "c":0
+              }]
 }
 
 ]
