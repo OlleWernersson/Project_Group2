@@ -38,7 +38,6 @@ Det viktigaste är att man kan joina spelet och spela lätt med olika typer av s
 - [x] Bara den som skapade lobbyn ska kunna starta spelet
 - [x] När man startar spelet så ska alla som är i lobbyn joina spelet
 - [x] Man ska bara kunna starta spelet om alla som är i lobbyView har joinat lobbyn?
-- [] Man ska inte kunna välja samma färg
 - [x] Border runt player pieces i lobbyView
 - [] Ska man kunna lämna lobbyn?
 - [x] Man ska inte kunna heta samma sak som någon annan
@@ -59,10 +58,11 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [x] Linjer mella städer så att det blir lättare att se ruttens struktur?
 - [/] Något som indikerar vilken av pluttarna som man är eftersom att det är svårt att komma ihåg vilken färg man valde?
 - [x] ändra så att man får en fråga via serven så att den inte ändras när man laddar om eller ändrar skärmstorlek
-- [] Städers storlek och titel ändras med media quaries?
+- [] Städers storlek och titel ändras med media quaries? - Inte om vi ska ha knappnål
 - [] göra kartan minde färgglad och få städerna att "poppa" med shadow osv finns i css!
 - [x] Göra så att kartan aldrig strechas ut så att Mikael blir glad?
 - [] Ändra så att man alltid ser sig själv i mitten på kartan om man inte scrollar
+- [] 
 
 
 ## CreateLobbyView - Planen är att man får först välja mellan att välja rutt eller skapa rutt. Om man väljer att välja rutt så ska man få upp under det där man kan sätta sitt namn och färg.
@@ -85,4 +85,5 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
 ## JoinLobbyView
 
-- [] Så att man bara kan se de tillgängliga färgerna
+- [x] Så att man bara kan se de tillgängliga färgerna
+- [] Så att man inte behöver välja färg om det inte finns några kvar?

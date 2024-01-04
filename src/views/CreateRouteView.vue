@@ -70,7 +70,7 @@
   import IdBox from '@/components/id-box.vue';
   import City from '../components/CityComponent.vue';
 
-  const socket = io("localhost:3000");
+  const socket = io(sessionStorage.getItem("dataServer"));
   
   export default {
   components: { Map, CreateComponent, IdBox, City },

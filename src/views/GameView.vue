@@ -28,7 +28,7 @@ import City from '../components/CityComponent.vue';
 import CityLine from "../components/CityLine.vue";
 
 import io from 'socket.io-client';
-const socket = io("localhost:3000");
+const socket = io(sessionStorage.getItem("dataServer"));
 
 export default {
   props: {

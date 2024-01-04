@@ -11,7 +11,7 @@
 
 import io from 'socket.io-client';
 import PlayerList from '@/components/PlayerList.vue';
-const socket = io("localhost:3000");
+const socket = io(sessionStorage.getItem("dataServer"));
 
 export default {
   name: 'GameResultView',
