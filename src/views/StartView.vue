@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1 id="Titel">MapRacer</h1>
+    <h1 id="Titel">MapRace</h1>
     <section class="buttonWrapper">
       <button class="supportButtons" v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
       <button class="supportButtons" @click="help"> {{ uiLabels.help }}</button>
