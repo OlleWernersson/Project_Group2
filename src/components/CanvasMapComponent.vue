@@ -1,8 +1,8 @@
 <template>
   <div id="map-container">
-    <slot></slot>
-    <canvas ref="mapContainer">
-    </canvas>
+    <slot name="city-lines"></slot>
+    <slot name="cities"></slot>
+    <canvas ref="mapContainer"></canvas>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
     return {
       canvasWidth: 0,
       canvasHeight: 0,
+      imageAspectRatio: 1,
     };
   },
   computed: {
@@ -36,8 +37,8 @@ export default {
   methods: {
     updateCanvasSize() {
       const mapContainer = this.$refs.mapContainer;
-      this.canvasWidth = mapContainer.clientWidth;
       this.canvasHeight = mapContainer.clientHeight;
+      this.canvasWidth = this.canvasHeight / this.imageAspectRatio;
 
       const canvas = this.$refs.mapContainer;
       canvas.width = this.canvasWidth;
@@ -56,6 +57,7 @@ export default {
       const img = new Image();
       img.src = this.mapBackground;
       img.onload = () => {
+        this.imageAspectRatio = img.width / img.height;
         ctx.drawImage(img, 0, 0, this.canvasWidth, this.canvasHeight);
       };
     },
@@ -64,14 +66,14 @@ export default {
 </script>
 
 <style scoped>
-#map-container {
+/* #map-container {
   position: relative;
   width: 100%;
-}
+} */
 
 canvas {
   display: block;
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
 }
 </style>

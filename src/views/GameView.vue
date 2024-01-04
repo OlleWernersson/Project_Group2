@@ -1,19 +1,17 @@
 <template>
   <!-- {{ mapSize }} -->
   <div id="wrapper">
-    <Map ref = "mapRef" :poll = "poll" @mapSizeChanged="handleMapSizeChanged" class="map-container">
-      <CityLine 
-      v-for="(city, index) in poll.cities" 
-      :key="index" :city="city" 
-      :nextCity="getNextCity(index)" 
-      :mapSize="mapSize" />
-      <City 
-      v-for="(city,index) in poll.cities" 
-      :key="city.name" :city = "city" 
-      :players="getPlayersInCity(index)" 
-      :mapSize="mapSize"
-      :playerName="playerName"> 
-      </City> <!-- city läggs i slot i mapcomponent -->
+    <Map 
+    ref="mapRef" 
+    :poll="poll" 
+    @mapSizeChanged="handleMapSizeChanged" 
+    class="map-container" >
+    <template v-slot:city-lines>
+      <CityLine v-for="(city, index) in poll.cities" :key="index" :city="city" :nextCity="getNextCity(index)" :mapSize="mapSize" />
+    </template>
+    <template v-slot:cities>
+      <City v-for="(city,index) in poll.cities" :key="city.name" :city="city" :players="getPlayersInCity(index)" :mapSize="mapSize" :playerName="playerName"></City>
+    </template>
     </Map> 
     <Question 
     class="question-container"
@@ -159,20 +157,26 @@ export default {
 </script>
 
 <style scoped>
-#wrapper {
+#wrapper .map-container{
+  height: 80vh;
+  overflow: scroll;
+}
+
+
+
+
+/* #wrapper {
   display: grid;
   grid-template-rows: 80vh 20vh;
   overflow: hidden;
 }
-/* #wrapper .question-container {
-} */
 
 @media screen and (min-aspect-ratio: 2/1) {
   #wrapper {
-    grid-template-columns: 80% 20%; /* % för width men vh för height??*/
+    grid-template-columns: 80% 20%;
   }
   #wrapper .map-container, #wrapper .question-container {
     grid-row: 1 / span 2;
   }
-}
+} */
   </style>

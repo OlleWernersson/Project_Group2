@@ -1,5 +1,5 @@
 <template>
-  <svg class="city-line">
+  <svg class="city-line" :style="{ transform: `translate(${scrollX}px, ${scrollY}px)` }">
     <path v-if="nextCity" :d="getCurvedLinePath()" fill="transparent" stroke="black" stroke-width="2" stroke-dasharray="5,5" />
   </svg>
 </template>
@@ -10,6 +10,12 @@ export default {
     city: Object,
     nextCity: Object,
     mapSize: Object,
+  },
+  data() {
+    return {
+      scrollX: 0,
+      scrollY: 0,
+    };
   },
   computed: {
     cityPosition() {
@@ -39,14 +45,23 @@ export default {
       }
     },
   },
+  mounted() {
+    this.$parent.$el.addEventListener('scroll', this.updateScrollPosition);
+  },
+  beforeDestroy() {
+    this.$parent.$el.removeEventListener('scroll', this.updateScrollPosition);
+  },
   methods: {
+    updateScrollPosition() {
+      this.scrollX = -this.$parent.$el.scrollLeft;
+      this.scrollY = -this.$parent.$el.scrollTop;
+    },
     getCurvedLinePath() {
       const startX = this.cityPosition.x;
       const startY = this.cityPosition.y;
       const endX = this.nextCityPosition.x;
       const endY = this.nextCityPosition.y;
 
-      // Control point for the quadratic Bezier curve
       const controlX = (startX + endX) / 2;
       const controlY = startY;
 
