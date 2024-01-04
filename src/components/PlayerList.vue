@@ -1,7 +1,6 @@
 <template>
         <div v-if="result === true">
-
-            <div v-for="(player, index ) in players" :key="player.id" class = "playerWrapper" >
+            <div v-for="(player, index ) in filteredPlayers" :key="player.id" class = "playerWrapper" >
               <label :class="getPlayerColorClass(index + 1)"> {{ index + 1 }}. </label>
               <div class="playerBox" :style="{ backgroundColor: player.colorObj.color }" > 
                 <label>{{ player.name }}, </label>
@@ -10,7 +9,7 @@
         </div>
 
         <div v-if = "lobby === true">
-          <div v-for="player in players" :key="player.id" class="playerBox" :style="{ backgroundColor: player.colorObj.color }" >
+          <div v-for="player in filteredPlayers" :key="player.id" class="playerBox" :style="{ backgroundColor: player.colorObj.color }" >
           <label>{{ player.name }}</label>, 
           <label> Is host: {{ player.isHost }}</label>
           </div>
@@ -25,6 +24,12 @@ export default {
     result: false, 
     cities: [],
   },
+  computed: {
+    filteredPlayers() {
+      return this.players.filter(player => player.name !== 'noPlayerHost');
+   }
+  },
+  
   methods: {
     getPlayerColorClass(place) {
       switch (place) {

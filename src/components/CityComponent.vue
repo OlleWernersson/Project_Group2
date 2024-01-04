@@ -4,7 +4,7 @@
       <p class="city-name">{{ city?.name }}</p>
       <div class="player-circles" v-if="city && players.length">
         <div
-          v-for="player in players"
+          v-for="player in filteredPlayers"
           :key="player.id"
           :class="{ 'player-circle': true, 'golden-border': player.name === playerName, 'black-border': player.name !== playerName }"
           :style="{ backgroundColor: player.colorObj.color }"
@@ -13,6 +13,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -23,6 +24,10 @@ export default {
     playerName: String,
   },
   computed: {
+    filteredPlayers() {
+     return this.players.filter(player => player.name !== 'noPlayerHost');
+    },
+
     cityPosition() {
       if (this.mapSize && this.city) {
         // Calculate relative position based on map size
