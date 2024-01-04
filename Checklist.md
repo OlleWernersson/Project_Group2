@@ -61,7 +61,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [] ändra så att man får en fråga via serven så att den inte ändras när man laddar om eller ändrar skärmstorlek
 - [] Städers storlek och titel ändras med media quaries?
 - [] göra kartan minde färgglad och få städerna att "poppa" med shadow osv finns i css!
-- [] Göra så att kartan aldrig strechas ut så att Mikael blir glad?
+- [x] Göra så att kartan aldrig strechas ut så att Mikael blir glad?
 
 
 ## CreateLobbyView - Planen är att man får först välja mellan att välja rutt eller skapa rutt. Om man väljer att välja rutt så ska man få upp under det där man kan sätta sitt namn och färg.
@@ -81,3 +81,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
 ## CreateRouteView
 - [] blädderfunktion
+
+## JoinLobbyView
+
+- [] Så att man bara kan se de tillgängliga färgerna

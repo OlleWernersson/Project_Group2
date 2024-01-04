@@ -26,8 +26,15 @@ export default {
   },
   computed: {
     filteredPlayers() {
+    if (Array.isArray(this.players)) {
       return this.players.filter(player => player.name !== 'noPlayerHost');
-   }
+    } else if (typeof this.players === 'object' && this.players !== null) {
+      const playerArray = Object.values(this.players);
+      return playerArray.filter(player => player.name !== 'noPlayerHost');
+    } else {
+      return [];
+    }
+  },
   },
   
   methods: {
