@@ -151,9 +151,17 @@ export default {
   display: flex;
   justify-content: center;
 }
-#wrapper .question-container{
-  height: 20vh;
-  overflow: hidden;
+#wrapper .question-container {
+flex: 20vh;
+overflow: hidden;
+background-color: #e9defa;
+display: flex;
+justify-content: center;
+align-items: center;
+border: 2px solid pink;
+border-radius: 8px;
+max-width: 80vw; /* Justera max-bredden efter behov */
+margin: 0 auto;
 }
 
 
