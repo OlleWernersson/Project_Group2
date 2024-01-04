@@ -23,6 +23,7 @@ export default {
   },
   computed: {
     mapBackground() {
+      console.log(this.poll, this.poll.route)
       if (this.poll && this.poll.route) {
         return `../../public/img/${this.poll.route}.jpg`;
       } else {

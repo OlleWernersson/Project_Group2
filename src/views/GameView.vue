@@ -112,7 +112,6 @@ export default {
       const participant = this.poll.participants?.find(participant => participant.name === playerName);
   
       if (participant) {
-        console.log(participant)
         let cityIndex = participant.city;
         let qIndex = participant.questionIndex;
         if(this.poll.cities[cityIndex]) {
