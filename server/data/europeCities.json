@@ -24,7 +24,7 @@
   "first_letter": "s",
   "questions":[{"q": "Vad heter Sveriges statschef?",
   "a": ["Kung Carl XVI Gustaf ", "Gustav Vasa", "Alfred Nobel", "Ulf Kristersson"],
-  "c":0
+  "c":3
   },
   {"q": "När dog den kända artisten Avicii? ",
   "a": ["2014", "2016", "2018", "2020"],
