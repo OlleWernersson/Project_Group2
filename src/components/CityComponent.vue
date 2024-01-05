@@ -1,6 +1,7 @@
 <template>
   <div class="city-wrapper">
     <div class="city-circle" :style="{ left: cityPosition.x + 'px', top: cityPosition.y + 'px'}">
+      <img :src="cityImage" alt="City Circle" class="city-image">
       <p class="city-name">{{ city?.name }}</p>
       
       <div v-if="hasPlayers">
@@ -45,6 +46,10 @@ export default {
         return { x: 0, y: 0 }; 
       }
     },
+    cityImage() {
+      // Replace 'path/to/your/image.png' with the actual path to your PNG image
+      return '../../public/img/kartnal.png';
+    },
   },
   data() {
     return {
@@ -64,10 +69,15 @@ export default {
 
 .city-circle {
   position: absolute;
-  width: 20px;
+/*   width: 20px;
   height: 20px;
   background-color: aqua;
-  border-radius: 50%;
+  border-radius: 50%; */
+}
+.city-image {
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
 }
 
 .city-name {
@@ -75,7 +85,7 @@ export default {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  margin-top: -20px;
+  margin-top: -30px;
   font-size: small;
 }
 .player-circles {
