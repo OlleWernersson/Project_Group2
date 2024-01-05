@@ -154,7 +154,10 @@ export default {
   align-items: center;
   border: 2px solid pink;
   border-radius: 8px;
-  max-width: 80vw; /* Justera max-bredden efter behov */
+  max-width: 90vw; /* Justera max-bredden efter behov */
   margin: 0 auto;
+  padding: 0.3em;
 }
+
+
   </style>

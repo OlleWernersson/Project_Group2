@@ -1,5 +1,23 @@
 [
   {
+    "top":110,
+    "left": 410,
+    "name": "Lofoten",
+    "first_letter": "l",
+    "questions":[{"q": "Vilket berg i Lofoten är känt för sina branta klippor och populära vandringsled?",
+    "a": ["Blanca Peak", "Kebnekaise", "Mount Everest", "Olstind"],
+    "c":3
+    },
+    {"q": "Vilken karakteristisk fiskemetod används för att torka och bevara fisk i Lofoten?",
+    "a": ["Saltning", "Metning", "Torkning på hjell", "Trålning"],
+    "c": 2
+    },
+    {"q": "Vilken stad är störst i Lofoten?",
+    "a": ["Svolvær", "Henningsvær", "Trondheim", "Tromsö"],
+    "c":0
+    }]
+    },
+  {
   "top":320,
   "left":450,
   "name":"Stockholm",
@@ -20,8 +38,8 @@
   
   },
   {
-  "top": 290,
-  "left": 200,
+  "top": 225,
+  "left": 70,
   "name": "Reykjavik",
   "first_letter": "r",
   "questions":[{"q": "Vilken är Reykjaviks mest kända geotermiska spa?",
@@ -38,11 +56,11 @@
   }]
   },
   {
-  "top": 370,
-  "left": 270,
+  "top": 460,
+  "left": 190,
   "name": "Dublin",
   "first_letter": "d",
-  "questions":[{"q": "Vilket historiskt slott ligger i utkanten av Dublin och är känt för sina vackra trädgårdar?",
+  "questions":[{"q": "Vilket historiskt slott ligger i Dublins utkant och är känt för vackra trädgårdar?",
   "a": ["Malahide Castle", "Dublin Castle", "Secret Castle", "Kilmainham"],
   "c":0
   },
@@ -68,7 +86,7 @@
   "a": ["34 miljoner", "72 miljoner", "117 miljoner", "146 miljoner"],
   "c": 3
   },
-  {"q": "Vilken är den berömda nattklubben i Berlin som är känd för sin strikta dörrpolicy och legendariska techno-evenemang?",
+  {"q": "Vilken är den berömda nattklubben som är känd för strikt dörrpolicy och legendariska techno-evenemang?",
   "a": ["Berghain", "KitKatClub", "Reichstag", "Brandenburger Tor"],
   "c":0
   }]
@@ -122,14 +140,14 @@
   "a": ["Underhållning", "Straffa dömda", "Lära", "Baka pizzor"],
   "c": 0
   },
-  {"q": "Vad är det berömda monumentet i Rom som är känt för att vara en antik amfiteater och en symbol för staden?",
+  {"q": "Vad är det berömda monumentet i Rom som är känt för att vara en antik amfiteater och symbol för staden?",
   "a": ["Big ben", "Colosseum", "Partenon", "Kaknästornet"],
   "c":1
   }]
   },
   {
-  "top":440,
-  "left": 480,
+  "top":480,
+  "left": 470,
   "name": "Warszawa",
   "first_letter": "w",
   "questions":[{"q": "Hur säger man SKÅL! på polska?",
@@ -182,8 +200,8 @@
   }]
   },
   {
-  "top":280,
-  "left": 550,
+  "top":300,
+  "left": 520,
   "name": "Helsingfors",
   "first_letter": "h",
   "questions":[{"q": "Vilket musikfestival i Helsingfors är känt för att vara ett av Europas största gratisfestivaler?",
@@ -197,24 +215,6 @@
   {"q": "Vilket ishockeylag från Helsingfors är känt som Storhjortarna och spelar sina hemmamatcher i Hartwall Arena?",
   "a": ["Jokerit", "HIFK", "Buffalo Sabres", "Leksands IF"],
   "c":1
-  }]
-  },
-  {
-  "top":170,
-  "left": 410,
-  "name": "Lofoten",
-  "first_letter": "l",
-  "questions":[{"q": "Vilket berg i Lofoten är känt för sina branta klippor och är en populär vandringsdestination?",
-  "a": ["Blanca Peak", "Kebnekaise", "Mount Everest", "Olstind"],
-  "c":3
-  },
-  {"q": "Vilken är den karakteristiska fiskemetoden som används för att torka och bevara fisk, särskilt torsk, i Lofoten?",
-  "a": ["Saltning", "Metning", "Torkning på hjell", "Trålning"],
-  "c": 2
-  },
-  {"q": "Vilken stad är störst i Lofoten?",
-  "a": ["Svolvær", "Henningsvær", "Trondheim", "Tromsö"],
-  "c":0
   }]
   }
   
