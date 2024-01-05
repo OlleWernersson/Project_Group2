@@ -68,6 +68,8 @@ function sockets(io, socket, data) {
     let players = data.getPlayers(d.gameID)
     console.log(players, "hallå från socket")
     io.to(d.gameID).emit('updatePlayerList', players);
+    let colors = data.getColors(d.gameID);
+    io.to(d.gameID).emit("getColors", colors)
   });
 
   socket.on('enterlobby', function(gameID){

@@ -56,7 +56,7 @@ export default {
       this.countdown = 10;
       const countdownInterval = setInterval(() => {
         if (this.countdown > 0) {
-          this.countdown -= 1; 
+          this.countdown -= 1;
         } else {
           clearInterval(countdownInterval);
           this.countdown = -1
