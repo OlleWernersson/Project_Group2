@@ -21,9 +21,9 @@ export default {
   },
   computed: {
     cityPosition() {
-      if (this.mapSize && this.city && this.mapSize.offset) {
-        const relativeX = (this.city.left / 800) * this.mapSize.width + this.mapSize.offset.x;
-        const relativeY = (this.city.top / 760) * this.mapSize.height + this.mapSize.offset.y;
+      if (this.mapSize && this.city) {
+        const relativeX = (this.city.left / 800) * this.mapSize.width 
+        const relativeY = (this.city.top / 760) * this.mapSize.height 
 
         return {
           x: relativeX,
@@ -34,9 +34,9 @@ export default {
       }
     },
     nextCityPosition() {
-      if (this.mapSize && this.nextCity && this.mapSize.offset) {
-        const relativeX = (this.nextCity.left / 800) * this.mapSize.width + this.mapSize.offset.x;
-        const relativeY = (this.nextCity.top / 760) * this.mapSize.height + this.mapSize.offset.y;
+      if (this.mapSize && this.nextCity) {
+        const relativeX = (this.nextCity.left / 800) * this.mapSize.width
+        const relativeY = (this.nextCity.top / 760) * this.mapSize.height
 
         return {
           x: relativeX,

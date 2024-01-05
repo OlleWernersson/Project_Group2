@@ -93,6 +93,7 @@ export default {
     socket.on("hostName", (hostName) => {
       this.playerName = hostName;
     })
+    
   },
   methods: {
     startGame() {
