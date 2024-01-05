@@ -1,7 +1,14 @@
 
 
 <template> 
-  <div>
+<transition name="train">
+  <div v-if="showTrain"> 
+    <img :src="('../public/train.gif')" id="train">
+     </div> 
+    <!-- <img src="../public/train.gif" width="512" height="512" id="train"> -->
+</transition> 
+<button @click="showTrain=!showTrain"></button>
+  <!-- <div>
     <audio ref="audio" src="../public/buzzer.mp3"></audio>
     <button @click="playSound">Spela ljud</button>
   </div>
@@ -18,8 +25,11 @@
     </div>
     <div class = playerWrapper>
     <PlayerList :players="playerList" />
-  </div>
-</template>
+  </div> -->
+
+
+
+</template> 
 
 <script>
 import io from 'socket.io-client';
@@ -35,6 +45,7 @@ export default {
   },
   data: function () {
     return {
+      showTrain: false, 
         gameID: "",
         location: { x: 0,
                     y: 0
@@ -61,8 +72,8 @@ export default {
     updated:function() {
         socket.on("sendPlayerList", (players) => {
         this.playerList = players;
-        console.log("kommer vi till sendPlayerList i randomView???")
-        console.log("i updated i randomView så är players", players)
+        
+
         });
 
     },
@@ -101,8 +112,20 @@ export default {
 
 <style scoped>
 
+#trainID {
+width: 50%;
+}
 
+.train-enter-from{
+opacity: 0;
+}
 
+.train-enter-to {
+  opacity: 1;
+}
+.train-enter-active {
+  transition: all 2s ease;
+}
 
 .map {
   width: 1920px;

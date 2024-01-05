@@ -63,6 +63,11 @@ function sockets(io, socket, data) {
     socket.emit('citiesLoaded',  data.getCities(gameID))
   });
 
+  socket.on('removeCity', function(d) {
+    data.removeCity(d.gameID, d.selectedCity)
+    socket.emit('citiesLoaded',  data.getCities(d.gameID))
+  });
+
   socket.on('joinLobby', function (d) {
     data.addPlayerToLobby(d.gameID, d.playerName, d.playerColorObj, d.isHost);
     let players = data.getPlayers(d.gameID)

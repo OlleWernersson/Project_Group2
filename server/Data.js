@@ -238,6 +238,13 @@ Data.prototype.addCurrentCity = function(cityName,first_letter,top,left,pollID){
   console.log("checking for left behind questions", poll.questions)
   console.log(poll.cities, poll.cities.questions)
 }
+
+Data.prototype.removeCity = function (gameID, selectedCity) {
+  const poll = this.polls[gameID];
+  poll.cities = poll.cities.filter(city => city.name !== selectedCity);
+
+}
+
 Data.prototype.doesPollIDExist = function(pollID) {
   const poll = this.polls[pollID];
   if (typeof poll !== 'undefined'){

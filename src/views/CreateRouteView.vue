@@ -49,6 +49,10 @@
         <button v-on:click="createNewCity" :class = "['edit-button', {'edit-button' : !isDisabled}]" v-bind:disabled="!isButtonDisabled">
             {{uiLabels.createCIty}}
         </button>
+      
+        <button v-on:click="removeCity" :class = "['edit-button', {'edit-button' : isSelected}]" v-bind:disabled="!cityClicked">
+          Remove city
+        </button>
       </div>
       </div>
     </div>
@@ -112,6 +116,7 @@
       isComponentDisabled: false,
       isButtonDisabled: false,
       mapClicked: false,
+      cityClicked: false,
       selectedCityobj: {}
 
     }
@@ -190,6 +195,13 @@
       this.answers.pop("")
     },
 
+    removeCity: function () {
+      console.log("nu är vi i removecity och jag skriver ut selectedCity", this.selectedCity)
+      console.log("nu är vi i removecity och jag skriver ut selectedCityObj", this.selectedCityobj)
+      socket.emit("removeCity", {gameID: this.gameID, selectedCity: this.selectedCity})
+
+    },
+
     addcreatechild: function(childquestion, childanswers, childc){
       console.log(childanswers,childquestion,childc)
       if(childquestion !== ""){
@@ -234,6 +246,7 @@
 
     loadCity: function (city) {
       console.log("you clicked a city!")
+      this.cityClicked = true
       this.selectedCity = city.name
       this.selectedCityobj = city
       console.log(this.cities)
