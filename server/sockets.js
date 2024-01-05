@@ -65,18 +65,14 @@ function sockets(io, socket, data) {
 
   socket.on('joinLobby', function (d) {
     data.addPlayerToLobby(d.gameID, d.playerName, d.playerColorObj, d.isHost);
-    data.removePlayerFromGameID(d.gameID)
     let players = data.getPlayers(d.gameID)
-    let gameIDPlayers = data.getGameIDPlayers(d.gameID)
     console.log(players, "hallå från socket")
-    io.to(d.gameID).emit('updatePlayerList', players, gameIDPlayers);
+    io.to(d.gameID).emit('updatePlayerList', players);
   });
 
   socket.on('enterlobby', function(gameID){
-    data.addPlayerToGameID(gameID)
     let players = data.getPlayers(gameID)
-    let gameIDPlayers = data.getGameIDPlayers(gameID)
-    io.to(gameID).emit('updatePlayerList', players, gameIDPlayers);
+    io.to(gameID).emit('updatePlayerList', players);
   })
   socket.on('getPoll', function(pollId) {
     io.to(pollId).emit('thisPoll', data.getPoll(pollId))

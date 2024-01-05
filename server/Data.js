@@ -86,7 +86,7 @@ Data.prototype.createPoll = function(pollID, lang="en", route=null, mapImage = n
     poll.answers = [];
     poll.currentQuestion = 0;
     poll.participants = [];
-    poll.gameIDParticipants = [];
+/*     poll.gameIDParticipants = []; */
     poll.colorObjs = this.colorObjs; 
     poll.gameStarted = false;
     poll.gameFinished = false;
@@ -196,13 +196,13 @@ Data.prototype.getPlayers = function(pollID) {
   }
   return []
 }
-Data.prototype.getGameIDPlayers = function(pollID) {
+/* Data.prototype.getGameIDPlayers = function(pollID) {
   const poll = this.polls[pollID];
   if (typeof poll !== 'undefined') {
     return poll.gameIDParticipants
   }
   return []
-}
+} */
 Data.prototype.getPoll = function(pollID){
   return this.polls[pollID]
 }
@@ -244,14 +244,6 @@ Data.prototype.doesPollIDExist = function(pollID) {
   else {
     return false
   }
-}
-Data.prototype.addPlayerToGameID = function(gameID) {
-  const poll = this.polls[gameID];
-  poll.gameIDParticipants.push("Counter")
-}
-Data.prototype.removePlayerFromGameID = function(gameID) {
-  const poll = this.polls[gameID];
-  poll.gameIDParticipants.pop("Counter")
 }
 Data.prototype.isHost = function(gameID, playerName) {
   const poll = this.polls[gameID];

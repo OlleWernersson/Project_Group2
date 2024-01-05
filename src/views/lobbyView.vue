@@ -17,8 +17,6 @@
   >
     {{ uiLabels.startGame }}
 </button>
-{{ gameIDPlayerlist }}
-{{ playerName }}
 
 </template>
 
@@ -45,7 +43,6 @@ export default {
 
       playerName: this.initialPlayerName,
       playerList: {},
-      gameIDPlayerlist: [],
       gameID:"",
       isHost: false,
 
@@ -63,9 +60,8 @@ export default {
       this.uiLabels = labels;
     });
     
-    socket.on("updatePlayerList", (players, gameIDPlayers) => {
+    socket.on("updatePlayerList", (players) => {
       this.playerList = players;
-      this.gameIDPlayerlist = gameIDPlayers;
     });
     
     socket.emit("loadColors", this.gameID)
