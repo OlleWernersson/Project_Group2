@@ -29,6 +29,11 @@
       @setMaxCountdown="setCountdown"
     >
     </Question>
+    <div>
+      <audio ref="failAudio" src="../public/fail.mp3"></audio>
+      <audio ref="bonusAudio" src="../public/bonus.mp3"></audio>
+      <audio ref="backgroundAudio" src="../public/background.mp3" autoplay loop></audio>
+    </div>
 </div>
 </template>
 
@@ -73,6 +78,8 @@ export default {
         this.updateMapData();
       });
     }
+
+    this.playSound("background")
   },
 
   created: function() {
@@ -89,7 +96,29 @@ export default {
     })
   },
 
+
   methods: {
+    playBackgroundSound() {
+      const audio = this.$refs.backgroundAudio;
+      audio.play();    
+    },
+    playSound(sound) {
+      if(sound==="fail") {
+        const audio = this.$refs.failAudio;
+        audio.play();    
+
+      }
+      if(sound==="bonus") {
+        const audio = this.$refs.bonusAudio;
+        audio.play();    
+      }
+
+      if(sound=="background") {
+        const audio = this.$refs.backgroundAudio;
+        audio.play();    
+      }
+    },
+
     setCountdown(){
       socket.emit('setMaxCountdown', this.playerName, this.pollId)
     },
@@ -108,12 +137,13 @@ export default {
       socket.emit('resetCountdown', this.playerName, this.pollId)
     },
 
-    
     getNewQuestion(){
       socket.emit("updateQuestionIndex",this.playerName, this.pollId)
+      this.playSound("fail");
     },
     handleCorrectAnswerClick() {
       socket.emit('goToNextCity', this.playerName, this.pollId)
+      this.playSound("bonus");
     },
     handleMapSizeChanged(size) {
       this.mapSize = size;

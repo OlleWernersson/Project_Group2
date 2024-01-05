@@ -1,6 +1,14 @@
+
+
 <template> 
+  <div>
+    <audio ref="audio" src="../public/buzzer.mp3"></audio>
+    <button @click="playSound">Spela ljud</button>
+  </div>
+
 <button @click="getPlayerList"> get Players</button> 
 <button @click="drawPlayers"> draw players</button> 
+
 
 {{playerList}}
     <div class="map" v-on:click="setLocation">  
@@ -61,6 +69,10 @@ export default {
 
 
     methods: {
+        playSound() {
+              const audio = this.$refs.audio;
+              audio.play();
+        },
         setLocation: function (event){
             var offset = {x: event.currentTarget.getBoundingClientRect().left,
                         y: event.currentTarget.getBoundingClientRect().top};
@@ -88,6 +100,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 
 
 .map {
