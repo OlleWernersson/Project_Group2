@@ -10,8 +10,7 @@
 
         <div v-if = "lobby === true">
           <div v-for="player in filteredPlayers" :key="player.id" class="playerBox" :style="{ backgroundColor: player.colorObj.color }" >
-          <label>{{ player.name }}</label>, 
-          <label> Is host: {{ player.isHost }}</label>
+            <label>{{ player.name }}</label>
           </div>
         </div>
 </template>
@@ -94,7 +93,7 @@ export default {
 }
 
 .silver-color {
-  background: linear-gradient(to right, #bcbcbc, #d9d9d9, #efefef);
+  background: silver;
   padding: 10px;
   border: 2px solid pink;
   border-radius: 100%;
@@ -104,7 +103,7 @@ export default {
 }
 
 .bronze-color {
-  background-color: brown;
+  background-color: rgb(156, 104, 7);
   padding: 10px;
   border: 2px solid pink;
   border-radius: 100%;
@@ -114,7 +113,7 @@ export default {
 }
 
 .default-color {
-  background-color: rgb(223, 245, 220);
+  background-color: beige;
   padding: 10px;
   border: 2px solid pink;
   border-radius: 100%;

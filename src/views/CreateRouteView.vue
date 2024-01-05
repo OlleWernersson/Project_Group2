@@ -27,7 +27,7 @@
           <div>
             <City v-for="city in cities" :key="city.name" :city = "city" :hasPlayers="false" :mapSize="mapSize" @click = "loadCity(city)" class="city-hover">
             </City>
-          </div>≤
+          </div>
         </Map>
       </div>
 
