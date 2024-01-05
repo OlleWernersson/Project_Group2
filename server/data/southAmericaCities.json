@@ -38,7 +38,7 @@
   },
   {
     "top":100,
-    "left":480,
+    "left":440,
     "name": "Caracas",
     "first_letter":"c",
     "questions":
@@ -56,8 +56,8 @@
                   }]
   },
   {
-    "top":150,
-    "left":230,
+    "top":100,
+    "left":330,
     "name": "Bogota",
     "first_letter":"b",
     "questions":
@@ -94,7 +94,7 @@
   },
   {
     "top": 270,
-    "left":350,
+    "left":420,
     "name": "La Paz",
     "first_letter": "L",
     "questions":[

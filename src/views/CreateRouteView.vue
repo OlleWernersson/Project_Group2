@@ -169,6 +169,8 @@
             this.cities = cities;
             })
             this.cityChosen = true; 
+            window.alert("city added")
+            throw new Error("you forgot to fill in a question field ")
           }
       }
       else{

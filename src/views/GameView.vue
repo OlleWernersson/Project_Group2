@@ -19,8 +19,12 @@
       v-if="poll"
       class="question-container"
       :question="getQuestion(playerName)"
+      :participant="getParticipant(playerName)"
       @correctAnswerClick="handleCorrectAnswerClick"
       @wrongAnswerClick="getNewQuestion"
+      @minusOneCountdown="updateCountdown"
+      @resetCountdown="resetCountdown"
+      @setMaxCountdown="setCountdown"
     >
     </Question>
   </div>
@@ -85,6 +89,25 @@ export default {
   },
 
   methods: {
+    setCountdown(){
+      socket.emit('setMaxCountdown', this.playerName, this.pollId)
+    },
+    getParticipant(playerName){
+      if(this.poll.participants){
+      console.log(this.poll.participants)
+      const participant = this.poll.participants?.find(participant => participant.name === playerName);
+      console.log(participant)
+      return participant
+      }
+    },
+    updateCountdown(){
+      socket.emit('updateCountdown',this.playerName, this.pollId)
+    },
+    resetCountdown(){
+      socket.emit('resetCountdown', this.playerName, this.pollId)
+    },
+
+    
     getNewQuestion(){
       socket.emit("updateQuestionIndex",this.playerName, this.pollId)
     },

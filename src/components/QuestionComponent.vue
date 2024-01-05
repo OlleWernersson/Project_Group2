@@ -7,20 +7,27 @@
           v-for="(a, index) in question.a"
           :key="index"
           @click="checkCorrectAnswer(index)"
-          :disabled="countdown > 0"
+          :disabled="this.participant.countdown > 0"
           class="main-button"
         >
           {{ a }}
         </button>
       </div>
     </div>
-    <div v-if="countdown >= 0" class="countdown-overlay">
-      <div class="countdown">{{ countdown }}</div>
+    <div v-if="this.participant.countdown >= 0" class="countdown-overlay">
+      <div class="countdown">{{ this.participant.countdown }}</div>
     </div>
-  </div>
+  </div> 
+  {{ participant }}
+  {{ this.isInCountdown }}
+
 </template>
 
 <script>
+import { ssrContextKey } from 'vue';
+import { sockets } from '../../server/sockets';
+import { Socket } from 'socket.io-client';
+
 export default {
   name: 'QuestionComponent',
   props: {
@@ -28,15 +35,26 @@ export default {
       type: Object,
       default: () => ({ q: '', a: [], c: null }),
     },
+    participant: {
+      type: Object,
+      default: () => ({a:"", countdown: 0})
+    },
   },
 
     data: function () {  
       return {
         wrongOrRight: '',
-        countdown: -1,
+      isInCountdown: this.getCountdown()
     };
   },
-
+  watch:{
+  "participant.countdown": function(newvalue, oldvalue){
+    console.log(newvalue,oldvalue, "i watcher")
+    if(oldvalue === 0){
+    this.startCountdown()
+    }
+  }
+  },
   methods: {
     checkCorrectAnswer(index) {
       if (this.question.c === index) {
@@ -46,20 +64,40 @@ export default {
       }
       else {
         this.wrongOrRight = 'FEL SVAR';
-        this.startCountdown();
+        this.setCountdown();
         this.$emit('wrongAnswerClick')
       }
       
     },
+    setCountdown(){
+      this.$emit('setMaxCountdown')
+      this.startCountdown();
+    },
+    getCountdown(){
+      
+      if(this.participant.countdown > 0){
+        this.startCountdown()       
+        return true
+      }
+      else{
+        return false;
+        console.log("hejhej")
+      }
+      
+    },
     startCountdown() {
-
-      this.countdown = 10;
+      //this.$emit('setMaxCountdown')
+      console.log("från mounted till intervall")
       const countdownInterval = setInterval(() => {
-        if (this.countdown > 0) {
-          this.countdown -= 1;
+          if(this.participant.countdown > 0){
+        //socket.emit('updateCountdown',participant.name, pollId)
+        console.log(countdownInterval)
+        this.$emit('minusOneCountdown')
+         // this.countdown -= 1; 
         } else {
-          clearInterval(countdownInterval);
-          this.countdown = -1
+        clearInterval(countdownInterval);
+        //socket.emit('resetCountdown', participant.name, pollId)
+        this.$emit('resetCountdown')
         }
       }, 1000);
     },

@@ -125,6 +125,18 @@ function sockets(io, socket, data) {
   socket.on('isThisNameTaken', function(gameID, playerName) {
     socket.emit('isNameTaken', data.isNameTaken(gameID,playerName))
   })
+  socket.on('updateCountdown',function(playerName, gameID){
+      data.updatePlayerCountdown(playerName, gameID)
+      io.to(gameID).emit('thisPoll', data.getPoll(gameID))
+  } )
+  socket.on('resetCountdown', function(playerName,gameID){
+    data.resetPlayerCountdown(playerName,gameID)
+    io.to(gameID).emit('thisPoll', data.getPoll(gameID))
+  })
+  socket.on('setMaxCountdown', function(playerName, gameID){
+    data.setMaxCountdown(playerName,gameID)
+    io.to(gameID).emit('thisPoll', data.getPoll(gameID))
+  })
 }
 
 export { sockets };

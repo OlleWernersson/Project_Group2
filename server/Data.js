@@ -185,6 +185,7 @@ Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColorObj, i
       isHost: isHost,
       questionIndex: 0,
       city: 0,
+      countdown: -1,
     }
     poll.participants.push(participant)
   }
@@ -294,6 +295,18 @@ Data.prototype.isGameIDStarted = function(pollId) {
   else {
     return false
   }
+}
+Data.prototype.updatePlayerCountdown = function(playerName, pollId){
+  const participant = this.polls[pollId].participants.find(participant => participant.name === playerName);
+    participant.countdown -= 1;
+}
+Data.prototype.resetPlayerCountdown = function(playerName,pollId){
+  const participant = this.polls[pollId].participants.find(participant => participant.name === playerName);
+  participant.countdown = -1;
+}
+Data.prototype.setMaxCountdown = function(playerName,pollId){
+  const participant = this.polls[pollId].participants.find(participant => participant.name === playerName);
+  participant.countdown = 10
 }
 
 export { Data };
