@@ -53,7 +53,7 @@ export default {
     },
     startCountdown() {
 
-      this.countdown = 5;
+      this.countdown = 10;
       const countdownInterval = setInterval(() => {
         if (this.countdown > 0) {
           this.countdown -= 1; 
@@ -89,7 +89,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 1);
   display: flex;
   justify-content: center;
   align-items: center;

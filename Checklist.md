@@ -66,6 +66,7 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [] Ändra så att cityLines börjar vid kartan och är lika bredd som kartan för nu finns en visuell bugg
 - [] Grid i QuestionComponent så att det inte blir överflöd
 - [x] Fixa bugg med att Countdown går snabbare om man svara fel flera gånger på samma stad
+- [] Lägg till start och mål indikation?
 
 
 
