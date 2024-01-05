@@ -1,4 +1,5 @@
 <template>
+  <div class="background">
   <div id="wrapper">
     <Map 
       v-if="poll && poll.cities"
@@ -23,6 +24,7 @@
     >
     </Question>
   </div>
+</div>
 </template>
 
 <script>
@@ -159,5 +161,11 @@ export default {
   padding: 0.3em;
 }
 
+.background {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #5acce5ff; 
+}
 
   </style>
