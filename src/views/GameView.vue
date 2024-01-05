@@ -87,11 +87,6 @@ export default {
   methods: {
     getNewQuestion(){
       socket.emit("updateQuestionIndex",this.playerName, this.pollId)
-     
-      /* setTimeout(() => {
-        this.getQuestion(this.playerName);
-      }, 1000); */
-
     },
     handleCorrectAnswerClick() {
       socket.emit('goToNextCity', this.playerName, this.pollId)

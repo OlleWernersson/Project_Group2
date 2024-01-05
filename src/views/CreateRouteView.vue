@@ -27,7 +27,7 @@
           <div>
             <City v-for="city in cities" :key="city.name" :city = "city" :hasPlayers="false" :mapSize="mapSize" @click = "loadCity(city)" class="city-hover">
             </City>
-          </div>
+          </div>≤
         </Map>
       </div>
 
@@ -381,7 +381,7 @@ button {
 
 
 #mapWrapper {
-  cursor: pointer; 
+  cursor: crosshair; 
 }
 
 #mapWrapper .infobox {
@@ -389,8 +389,9 @@ button {
 }
 
 #mapWrapper .city-hover {
-  cursor: auto; /* or any other cursor value you want for the infobox */
+  cursor:pointer; /* or any other cursor value you want for the infobox */
   border-width: 10px;
+  background-color: brown;
 }
 
 #question-container {

@@ -67,6 +67,8 @@ export default {
     socket.emit("loadColors", this.gameID)
     socket.on("getColors", (colors) => {
       this.playerColorsObjs = colors;
+      this.checkIfColorIsSelected();
+
     });
     socket.on('isNameTaken', (boolean) => {
       this.playerNameTaken = boolean;
@@ -76,6 +78,14 @@ export default {
     })
   },
   methods: {
+    checkIfColorIsSelected() {
+      const selectedColor = this.selectedColorObj.color;
+
+      this.colorIsSelected = this.playerColorsObjs.some(obj => obj.color === selectedColor);
+      if (Object.keys(this.selectedColorObj).length === 0 && this.selectedColorObj.constructor === Object) {
+        this.colorIsSelected = true;
+      }
+    },
     handleNameInput() {
       this.playerName = this.playerName.slice(0, 20);
       this.playerNameEmpty = false;
