@@ -187,13 +187,6 @@ Data.prototype.addPlayerToLobby = function(gameID, playerName, playerColorObj, i
       city: 0,
     }
     poll.participants.push(participant)
-    for (const colorObj of poll.colorObjs) {
-      if (colorObj.color === playerColorObj.color) {
-        colorObj.isSelected = true;
-      } else {
-        colorObj.isSelected = false;
-      }
-    }
   }
 }
 Data.prototype.getPlayers = function(pollID) {
