@@ -76,6 +76,9 @@ export default {
         this.playerNameValid = !boolean;
       }
     })
+    socket.on('CheckIsNameTaken', () => {
+      socket.emit('isThisNameTaken',this.gameID,this.playerName)
+    })
   },
   methods: {
     checkIfColorIsSelected() {

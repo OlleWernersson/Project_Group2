@@ -70,6 +70,7 @@ function sockets(io, socket, data) {
     io.to(d.gameID).emit('updatePlayerList', players);
     let colors = data.getColors(d.gameID);
     io.to(d.gameID).emit("getColors", colors)
+    io.to(d.gameID).emit("CheckIsNameTaken")
   });
 
   socket.on('enterlobby', function(gameID){

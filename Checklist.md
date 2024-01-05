@@ -92,5 +92,5 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
 - [x] Så att man bara kan se de tillgängliga färgerna
 - [] Så att man inte behöver välja färg om det inte finns några kvar?
-- [] Fixa bugg med att man inte kan joina med samma namn och färg om man joinar spelet samtidigt
+- [x] Fixa bugg med att man inte kan joina med samma namn och färg om man joinar spelet samtidigt
 - [] Om spelet har startat så ska man komma till spelet?
