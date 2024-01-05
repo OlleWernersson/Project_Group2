@@ -90,7 +90,7 @@ export default {
 }
 .player-circles {
   position: absolute;
-  bottom: -12px;
+  bottom: -3px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

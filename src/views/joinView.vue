@@ -85,11 +85,11 @@ export default {
     },
   },
   beforeRouteEnter(to, from, next) {
-    next(vm => {
-      if (vm.gameID.length !== 4) {
-        next(false);
-      }
-    });
+    if (to.params.id && to.params.id.length !== 4) {
+      next(false);
+    } else {
+      next();
+    }
   },
 };
 </script>

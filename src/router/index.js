@@ -48,7 +48,7 @@ const router = createRouter({
       name: 'lobbyView',
       component: () => import('../views/lobbyView.vue'),
       props: (route) => ({
-        playerName: route.query.playerName,
+        initialPlayerName: route.query.playerName,
       }),
     },
     {

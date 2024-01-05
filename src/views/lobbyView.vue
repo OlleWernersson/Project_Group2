@@ -31,8 +31,8 @@ const socket = io(sessionStorage.getItem("dataServer"));
 
 export default {
   props: {
-    playerName: String,
-  },
+  initialPlayerName: String, 
+},
   name: 'lobbyView',
   components: {
     PlayerList,
@@ -43,7 +43,7 @@ export default {
       uiLabels: {},
       lang: localStorage.getItem("lang") || "en",
 
-
+      playerName: this.initialPlayerName,
       playerList: {},
       gameIDPlayerlist: [],
       gameID:"",
