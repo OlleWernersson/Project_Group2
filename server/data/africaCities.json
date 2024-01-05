@@ -1,57 +1,162 @@
 [
   {
-      "top":400,
-      "left":590,
-      "name":"nairobi",
+    "top":120,
+    "left": 540,
+    "name": "Kairo",
+    "first_letter": "k",
+    "questions":[{"q": "Hur många invånare hade Kairo år 2017?",
+                  "a": ["2,34 miljoner", "5,47 miljoner", "15,75 miljoner", "9.54 miljoner", "20 miljoner"],
+                  "c": 3
+                },
+                {"q": "Suezkanalen förbinder två hav, vilka?",
+                 "a": ["Medelhavet och röda havet", "Röda havet och svarta havet", "Svarta havet och medelhavet", "Röda havet och arabiska havet"],
+                 "c": 0
+                },
+                {"q": "När grundades Kairo?",
+                 "a": ["969", "500 f Kr", "3100 f Kr", "1100", "1920"],
+                 "c":0
+                }]
+  },
+ 
+ 
+  {
+      "top":415,
+      "left":600,
+      "name":"Nairobi",
       "first_letter": "n",
-      "questions":[{"q": "who lives in nairobi?", 
-                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
-                    "c":1
+      "questions":[{"q": "I vilket land är Nairobi huvudstad?",
+                    "a": ["Kenya", "Tanzania", "Uganda", "Somalia"],
+                    "c": 0
                   },
-                  {"q": "when did nairobi exist?", 
-                   "a": ["1", "2", "3", "4", "5"],
+                  {"q": "Hur många invånare hade Nairobi år 2019?",
+                   "a": ["1,332 miljoner", "10,347 miljoner", "4.397 miljoner", "2,566 miljoner"],
                    "c": 2
-                  }, 
-                  {"q": "why is nairobi?",
-                   "a": ["wrong answer", "right answer", "wrong answer"],
+                  },
+                  {"q": "Vilket år grundades Nairobi?",
+                   "a": ["1900", "1899", "1620", "1730"],
                    "c":1
                   }]
-
   },
   {
-     "top": 385,
-     "left": 540,
-     "name": "kampala",
+     "top": 400,
+     "left": 555,
+     "name": "Kampala",
      "first_letter": "k",
-     "questions":[{"q": "who lives in kampala?", 
-                   "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
-                   "c":1
+     "questions":[{"q": "Mellan Kampala och staden Jinja ligger en känd sjö, vad heter den?",
+                   "a": ["Niagarafallen","Kampalasjön","Victoriasjön"],
+                   "c":2
                   },
-                  {"q": "when did kampala exist?", 
-                   "a": ["1", "2", "3", "4", "5"],
-                   "c": 2
-                  }, 
-                  {"q": "why is kampala?",
-                   "a": ["wrong answer", "right answer", "wrong answer"],
-                   "c":1
+                  {"q": "I vilket land är Kampala huvudstad?",
+                   "a": ["Burundi", "Rwanda", "Somalia", "Kambodia", "Uganda"],
+                   "c": 4
+                  },
+                  {"q": "Vilket år blev Kampala självständigt?",
+                   "a": ["1962", "1899", "2003", "1934"],
+                   "c":0
                   }]
   },
+ 
+ 
   {
-      "top":100,
-      "left": 530,
-      "name": "Kairo",
-      "first_letter": "k",
-      "questions":[{"q": "who lives in kairo?", 
-                    "a": ["0-13", "14-18", "19-25", "26-35", "36-45","45-"],
-                    "c":1
-                  },
-                  {"q": "when did kairo exist?", 
-                   "a": ["1", "2", "3", "4", "5"],
-                   "c": 2
-                  }, 
-                  {"q": "why is kairo?",
-                   "a": ["wrong answer", "right answer", "wrong answer"],
-                   "c":1
-                  }]
-  }
-]
+    "top": 650,
+    "left": 510,
+    "name": "Johannesburg",
+    "first_letter": "k",
+    "questions":[{"q": "Sydafrika har tre officiella huvudstäder. Vilken av följande är inte en huvudstad?",
+                  "a": ["Bloemfontein", "Kapstaden", "Pretoria", "Johannesburg"],
+                  "c": 3
+                },
+                {"q": "Hur många invånare hade Johannesburg år 2019?",
+                 "a": ["3.22 miljoner", "10,92 miljoner", "12,22 miljoner", "5.635 miljoner"],
+                 "c": 3
+                },
+                {"q": "Johannesburg är belägen på den platå som finns i östra Sydafrika. Hur högt över havet är staden belägen?",
+                 "a": ["969 m", "600 m", "1753 m", "200 m", "2300 m"],
+                 "c": 2
+                }]
+ },
+ 
+ 
+ 
+ 
+ {
+  "top": 440,
+  "left": 390,
+  "name": "Kinshasa",
+  "first_letter": "k",
+  "questions":[{"q": "I vilket land är Kinshasa huvudstad?",
+                "a": ["Demokratiska republiken Kongo", "Kongo", "Centralafrikanska republiken"],
+                "c": 0
+              },
+              {"q": "Vem är president i Demokratiska republiken Kongo",
+               "a": ["Joseph Kabila", "Félix Tshisekedi", "Hassan Sheikh Mohamud", "Robert Mugabe"],
+               "c": 3
+              },
+              {"q": "Hur många procent av exportintäkterna står gruvindustrin för i Demokratiska republiken Kongo",
+               "a": ["90%", "89%", "89%", "70%", "60%"],
+               "c": 3
+              }]
+ },
+ 
+ 
+ {
+  "top": 295,
+  "left": 230,
+  "name": "Ouagadougou",
+  "first_letter": "o",
+  "questions":[{"q": "I vilket land är Ouagadougou huvudstad?",
+                "a": ["Niger", "Benin", "Ghana", "Burkina Faso"],
+                "c": 3
+              },
+              {"q": "Hur många invånare hade Ouagadougou år 2019",
+               "a": ["0.522 miljoner", "5,471 miljoner", "2.453 miljoner", "1,002 miljoner"],
+               "c": 2
+              },
+              {"q": "Vad hette Ouagadougou innan den franska erövringen 1896?",
+               "a": ["Wogodogo", "Ouaga", "Bogodogo", "Sig-Nonghin"],
+               "c": 0
+              }]
+ },
+ 
+ 
+ {
+  "top": 270,
+  "left": 110,
+  "name": "Dakar",
+  "first_letter": "d",
+  "questions":[{"q": "I vilket land är Dakar huvudstad?",
+                "a": ["Guinea", "Gambia", "Guinea-Bissau", "Senegal"],
+                "c": 3
+              },
+              {"q": "Hur många invånare hade Dakar år 2021",
+               "a": ["3.94 miljoner", "0.547 miljoner", "2.453 miljoner", "10.021 miljoner"],
+               "c": 0
+              },
+              {"q": "Vad hette Ouagadougou innan den franska erövringen 1896?",
+               "a": ["Wogodogo", "Ouaga", "Bogodogo", "Sig-Nonghin"],
+               "c": 0
+              }]
+ },
+ 
+ 
+ {
+  "top": 105,
+  "left": 170,
+  "name": "Rabat",
+  "first_letter": "r",
+  "questions":[{"q": "I vilket land är Rabat huvudstad?",
+                "a": ["Marocko", "Västsahara", "Algeriet", "Mauretanien"],
+                "c": 0
+              },
+              {"q": "När blev Rabat en huvudstad?",
+               "a": ["1912", "1577", "2010", "1988"],
+               "c": 0
+              },
+              {"q": "Vilka månader har landet högst medeltemperatur?",
+               "a": ["Juli/augusti", "December/januari", "Oktober/november", "Januari/februari"],
+               "c": 0
+              }]
+ }
+ 
+ ]
+ 
