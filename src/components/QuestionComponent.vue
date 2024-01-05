@@ -1,9 +1,8 @@
 <template>
   <div id="wrapper">
-    <div id="question-container"> <!-- Av någon anledning behöver vi denna -->
+    <div id="question-container" v-if="question">
       <div id="question">{{ question.q }}</div>
       <div id="buttonWrapper">
-        <!-- <textarea v-model="question.q"></textarea> -->
         <button
           v-for="(a, index) in question.a"
           :key="index"
@@ -25,7 +24,10 @@
 export default {
   name: 'QuestionComponent',
   props: {
-    question: Object,
+    question: {
+      type: Object,
+      default: () => ({ q: '', a: [], c: null }),
+    },
   },
 
     data: function () {  
@@ -50,6 +52,7 @@ export default {
       
     },
     startCountdown() {
+
       this.countdown = 5;
       const countdownInterval = setInterval(() => {
         if (this.countdown > 0) {

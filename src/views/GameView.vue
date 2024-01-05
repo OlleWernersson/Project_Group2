@@ -77,31 +77,13 @@ export default {
     this.poll = poll
     
     )
-    /* socket.on("newQuestion", q =>
-    this.question = q
-    ) */
-
-    /* socket.on("dataUpdate", answers =>
-     this.submittedAnswers = answers
-    ) */
-
-    /* socket.on("pollCreated", (data) =>
-     this.data = data
-    ) */
-    /* socket.on("sendNextQuestion", q =>
-     this.question = q
-    ) */
 
     socket.on("navigateToGameResultView", (gameID) => {
       this.$router.push({ path: `/gameResult/${gameID}`});
     })
- },
+  },
 
   methods: {
-    /* sendButtonClicktoMap() {
-      const myMap = this.$refs.mapRef;
-      myMap.moveMeForward(); 
-    }, */
     getNewQuestion(){
       socket.emit("updateQuestionIndex",this.playerName, this.pollId)
      
@@ -114,10 +96,6 @@ export default {
     handleMapSizeChanged(size) {
       this.mapSize = size;
     },
-    /* getNextQuestion: function(index) {    
-      this.index++
-      socket.emit("getNextQuestion",{pollId: this.pollId, index: this.index})
-    }, */
     getPlayersInCity(cityIndex) {
       return this.poll.participants.filter(player => player.city === cityIndex);
     },
@@ -170,15 +148,15 @@ export default {
   justify-content: center;
 }
 #wrapper .question-container {
-flex: 20vh;
-overflow: hidden;
-background-color: #e9defa;
-display: flex;
-justify-content: center;
-align-items: center;
-border: 2px solid pink;
-border-radius: 8px;
-max-width: 80vw; /* Justera max-bredden efter behov */
-margin: 0 auto;
+  flex: 20vh;
+  overflow: hidden;
+  background-color: #e9defa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid pink;
+  border-radius: 8px;
+  max-width: 80vw; /* Justera max-bredden efter behov */
+  margin: 0 auto;
 }
   </style>

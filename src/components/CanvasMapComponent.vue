@@ -77,15 +77,8 @@ export default {
 }
 
 canvas {
-/*   display: block; */
-/*   width: 100%; */
-  /* height: 100%; */
-/*   z-index: 2; */
-}
-.city-lines {
-  /* z-index: 2; */
-}
-.cities {
-  /* z-index: 1; */
+  /* display: block; */
+/*   width: 100%;
+  height: 100%; */
 }
 </style>

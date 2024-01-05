@@ -62,7 +62,11 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 - [] göra kartan minde färgglad och få städerna att "poppa" med shadow osv finns i css!
 - [x] Göra så att kartan aldrig strechas ut så att Mikael blir glad?
 - [] Ändra så att man alltid ser sig själv i mitten på kartan om man inte scrollar
-- [] 
+- [] Man kan inte scrolla till vänstra sidan av kartan?
+- [] Ändra så att cityLines börjar vid kartan och är lika bredd som kartan för nu finns en visuell bugg
+- [] Grid i QuestionComponent så att det inte blir överflöd
+- [] Fixa bugg med att Countdown går snabbare om man svara fel flera gånger på samma stad
+
 
 
 ## CreateLobbyView - Planen är att man får först välja mellan att välja rutt eller skapa rutt. Om man väljer att välja rutt så ska man få upp under det där man kan sätta sitt namn och färg.
@@ -87,3 +91,4 @@ Vad händer om en spelare bara stänger ner fönstret i lobbyn eller i GameView?
 
 - [x] Så att man bara kan se de tillgängliga färgerna
 - [] Så att man inte behöver välja färg om det inte finns några kvar?
+- [] Fixa bugg med att man inte kan joina med samma namn och färg om man joinar spelet samtidigt
