@@ -40,7 +40,8 @@
   "cityName": "Stadens namn",
   "answer": "Svar",
   "questionInput": "Skriv din fråga här...",
-  "orMessage": "Eller..."
+  "orMessage": "Eller...", 
+  "removeCity": "Ta bort stad"
 
 
 

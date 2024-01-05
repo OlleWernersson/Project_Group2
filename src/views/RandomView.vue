@@ -1,6 +1,10 @@
 
 
 <template> 
+<transition name="toast">
+  <Toast v-if="showToast"/>
+</transition>
+
 <transition name="train">
   <div v-if="showTrain"> 
     <img :src="('../public/train.gif')" id="train">
@@ -72,7 +76,7 @@ export default {
     updated:function() {
         socket.on("sendPlayerList", (players) => {
         this.playerList = players;
-        
+
 
         });
 
@@ -112,19 +116,50 @@ export default {
 
 <style scoped>
 
+.toast-enter-from{
+  opacity: 0;
+  transform:translateX(-60px)
+}
+
+.toast-enter-to{
+  opacity: 0;
+  transform:translateX(-60px)
+}
+
+.toast-enter-active {
+  transition: all 0.5s ease;
+}
+
+.toast-leave-to {
+  opacity: 0;
+  transform:translateX(-60px)
+}
+
+.toast-leave-active {
+  transition: all 0.5s ease;
+}
+
+
 #trainID {
 width: 50%;
 }
 
 .train-enter-from{
 opacity: 0;
+transform:translateX(-60px)
 }
 
-.train-enter-to {
-  opacity: 1;
-}
 .train-enter-active {
-  transition: all 2s ease;
+  transition: all 5s ease;
+}
+
+.train-leave-to {
+  opacity: 0;
+  transform:translateX(-60px)
+}
+
+.train-leave-active {
+  transition: all 5s ease;
 }
 
 .map {

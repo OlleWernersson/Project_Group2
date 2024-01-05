@@ -51,7 +51,7 @@
         </button>
       
         <button v-on:click="removeCity" :class = "['edit-button', {'edit-button' : isSelected}]" v-bind:disabled="!cityClicked">
-          Remove city
+            {{uiLabels.removeCity}}
         </button>
       </div>
       </div>
@@ -196,8 +196,7 @@
     },
 
     removeCity: function () {
-      console.log("nu är vi i removecity och jag skriver ut selectedCity", this.selectedCity)
-      console.log("nu är vi i removecity och jag skriver ut selectedCityObj", this.selectedCityobj)
+
       socket.emit("removeCity", {gameID: this.gameID, selectedCity: this.selectedCity})
 
     },
