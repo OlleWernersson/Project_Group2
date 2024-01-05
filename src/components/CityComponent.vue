@@ -87,6 +87,11 @@ export default {
   transform: translate(-50%, -50%);
   margin-top: -30px;
   font-size: small;
+  background: linear-gradient(-20deg, #e9defa 20%, #ffcbcb 80%);
+  border: 1.5px solid #5a082d;
+  border-radius: 4px;
+  padding-left: 1px;
+  padding-right: 1px;
 }
 .player-circles {
   position: absolute;
