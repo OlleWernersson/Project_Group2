@@ -24,7 +24,7 @@
   "first_letter": "s",
   "questions":[{"q": "Vad heter Sveriges statschef?",
   "a": ["Kung Carl XVI Gustaf ", "Gustav Vasa", "Alfred Nobel", "Ulf Kristersson"],
-  "c":0
+  "c":3
   },
   {"q": "När dog den kända artisten Avicii? ",
   "a": ["2014", "2016", "2018", "2020"],
@@ -118,7 +118,7 @@
   "a": ["Faro de Moncloa", "Almudena katedralen", "Plaza Mayor", "Templo de Debod"],
   "c":0
   },
-  {"q": "Vad kallas det traditionella spanska bullerinstrumentet som ofta används under festivaler och parader i Madrid?",
+  {"q": "Vad kallas traditionella spanska bullerinstrument som ofta används under festivaler och parader i Madrid?",
   "a": ["Castanets", "Maracas", "Tambourine", "Castells"],
   "c": 0
   },
@@ -154,7 +154,7 @@
   "a": ["Na szczęście!", "Na zdrowie!", "Życie!", "Una cerveza!"],
   "c":1
   },
-  {"q": "Under vilket uppror kämpade invånarna i Warszawa mot den tyska ockupationsmakten under andra världskriget?",
+  {"q": "Under vilket uppror kämpade invånarna i Warszawa mot tyska ockupationsmakten under andra världskriget?",
   "a": ["Warszawaupproret", "Wolaupproret", "Solidaritetsupproret", "Frihetsupproret"],
   "c": 0
   },
@@ -186,7 +186,7 @@
   "left": 680,
   "name": "Moskva",
   "first_letter": "mo",
-  "questions":[{"q": "Vilket berömt museum och konstgalleri ligger i Moskva och rymmer konstverk av kända konstnärer som Rembrandt och Van Gogh?",
+  "questions":[{"q": "Vilket berömt konstgalleri ligger i Moskva och rymmer konstverk av kända konstnärer som Rembrandt och Van Gogh?",
   "a": ["Eremitaget", "Tretyakov", "Pusjkinmuseet", "Vinterpalatset"],
   "c":2
   },
@@ -204,7 +204,7 @@
   "left": 520,
   "name": "Helsingfors",
   "first_letter": "h",
-  "questions":[{"q": "Vilket musikfestival i Helsingfors är känt för att vara ett av Europas största gratisfestivaler?",
+  "questions":[{"q": "Vilken musikfestival i Helsingfors är känd för att vara en av Europas största gratisfestivaler?",
   "a": ["Lollapalooza", "Coachella", "Flow Festival", "Ruisrock"],
   "c":2
   },

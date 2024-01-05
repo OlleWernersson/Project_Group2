@@ -93,6 +93,7 @@ export default {
     socket.on("hostName", (hostName) => {
       this.playerName = hostName;
     })
+
   },
   methods: {
     startGame() {
@@ -117,6 +118,12 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 50%;
+}
+@media screen and (max-width: 500px) {
+.bigWrapper {
+  margin-top: 50px;
+} 
+
 }
 
 </style>

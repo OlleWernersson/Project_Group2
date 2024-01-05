@@ -14,7 +14,7 @@ font-family: 'Fredoka', sans-serif;
 font-family: 'Varela Round', sans-serif;
 }
 
-main, label {
+main, label, p, div {
 font-family: 'Varela Round', sans-serif;
 }
 

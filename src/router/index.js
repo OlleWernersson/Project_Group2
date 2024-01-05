@@ -1,5 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import StartView from '../views/StartView.vue'
+import RandomView from '../views/randomView.vue'
+import GameIDView from '../views/GameIDView.vue'
+import CreateRouteView from '../views/CreateRouteView.vue'
+import ChooseMapView from '../views/ChooseMapView.vue'
+import ResultView from '../views/ResultView.vue'
+import joinView from '../views/joinView.vue'
+import lobbyView from '../views/lobbyView.vue'
+import GameView from '../views/GameView.vue'
+import CreateLobbyVeiw from '../views/CreateLobbyView.vue'
+import GameResultView from '../views/GameResultView.vue'
+import JoinLobbyView from '../views/JoinLobbyView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,40 +25,40 @@ const router = createRouter({
     {
       path: '/random',
       name: 'RandomView',
-      component: () => import('../views/randomView.vue')
+      component: RandomView
     },
     
       {
       path: '/gameID/',
       name: 'GameIDView',
-      component: () => import('../views/GameIDView.vue')
+      component: GameIDView
     },
     {
       path: '/create/:id',
       name: 'CreateRouteView',
-      component: () => import('../views/CreateRouteView.vue')
+      component: CreateRouteView
     },
 
     {
       path: '/route/',
       name: 'ChooseMapView',
-      component: () => import('../views/ChooseMapView.vue')
+      component: ChooseMapView
     },
 
     {
       path: '/result/',
       name: 'ResultView',
-      component: () => import('../views/ResultView.vue')
+      component: ResultView
     },
     {
       path: '/join/',
       name: 'joinView',
-      component: () => import('../views/joinView.vue')
+      component: joinView
     },
     {
       path: '/lobby/:id',
       name: 'lobbyView',
-      component: () => import('../views/lobbyView.vue'),
+      component: lobbyView,
       props: (route) => ({
         initialPlayerName: route.query.playerName,
       }),
@@ -54,7 +66,7 @@ const router = createRouter({
     {
       path: '/game/:id',
       name: 'GameView',
-      component: () => import('../views/GameView.vue'),
+      component: GameView,
       props: (route) => ({
         playerName: route.query.playerName,
       }),
@@ -62,17 +74,17 @@ const router = createRouter({
     {
       path: '/createlobby/',
       name: 'CreateLobbyVeiw',
-      component: () => import('../views/CreateLobbyView.vue')
+      component: CreateLobbyVeiw
     },
     {
       path: '/gameResult/:id',
       name: 'GameResultView',
-      component: () => import('../views/GameResultView.vue')
+      component: GameResultView
     },
     {
       path: '/joinLobby/:id',
       name: 'JoinLobbyView',
-      component: () => import('../views/JoinLobbyView.vue')
+      component: JoinLobbyView
     }
   ]
 })

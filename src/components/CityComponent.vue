@@ -47,7 +47,6 @@ export default {
       }
     },
     cityImage() {
-      // Replace 'path/to/your/image.png' with the actual path to your PNG image
       return '../../public/img/kartnal.png';
     },
   },
@@ -69,10 +68,6 @@ export default {
 
 .city-circle {
   position: absolute;
-/*   width: 20px;
-  height: 20px;
-  background-color: aqua;
-  border-radius: 50%; */
 }
 .city-image {
   width: 40px;

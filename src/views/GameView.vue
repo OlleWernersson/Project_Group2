@@ -7,6 +7,7 @@
       :poll="poll" 
       @mapSizeChanged="handleMapSizeChanged" 
       class="map-container"
+      :style="{width:mapSize.width + 'px'}"
     >
     <template v-slot:city-lines>
       <CityLine v-for="(city, index) in poll.cities" :key="index" :city="city" :nextCity="getNextCity(index)" :mapSize="mapSize" />
@@ -15,6 +16,7 @@
       <City v-for="(city,index) in poll.cities" :key="city.name" :city="city" :hasPlayers="true" :players="getPlayersInCity(index)" :mapSize="mapSize" :playerName="playerName"></City>
     </template>
     </Map> 
+  </div>
     <Question 
       v-if="poll"
       class="question-container"
@@ -27,7 +29,6 @@
       @setMaxCountdown="setCountdown"
     >
     </Question>
-  </div>
 </div>
 </template>
 
@@ -159,11 +160,18 @@ export default {
 </script>
 
 <style scoped>
+#wrapper {
+  overflow: auto;
+  max-width: 100vw;
+}
 #wrapper .map-container{
   height: 80vh;
-  overflow: auto;
+  /* overflow: scroll; */
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  /* width: 300px; */
+  margin: 0 auto
+
 }
 #wrapper .question-container {
   flex: 20vh;

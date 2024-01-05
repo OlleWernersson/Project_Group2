@@ -76,6 +76,9 @@ export default {
         this.playerNameValid = !boolean;
       }
     })
+    socket.on('CheckIsNameTaken', () => {
+      socket.emit('isThisNameTaken',this.gameID,this.playerName)
+    })
   },
   methods: {
     checkIfColorIsSelected() {
@@ -192,4 +195,10 @@ input:focus {
 .noColorSelected{
   border-color: red;
 } 
+@media screen and (max-width: 500px) {
+.editPlayerWrapper {
+  margin-top: 50px;
+} 
+
+}
 </style>

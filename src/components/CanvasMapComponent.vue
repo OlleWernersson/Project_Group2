@@ -52,7 +52,6 @@ export default {
       this.$emit('mapSizeChanged', {
         width: this.canvasWidth,
         height: this.canvasHeight,
-        offset: canvas.getBoundingClientRect(),
       });
     },
     drawMap() {
