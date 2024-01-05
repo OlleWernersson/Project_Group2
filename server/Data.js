@@ -278,7 +278,9 @@ Data.prototype.goToNextCity = function(playerName,pollID) {
 Data.prototype.updatePlayerQuestion = function(playerName,pollID){
   const participant = this.polls[pollID].participants.find(participant => participant.name === playerName);
   participant.questionIndex += 1
-  console.log(participant)
+  if(participant.questionIndex === 3) {
+    this.goToNextCity(playerName, pollID)
+  }
 }
 Data.prototype.isGameFinished = function(pollId) {
   const poll = this.polls[pollId];

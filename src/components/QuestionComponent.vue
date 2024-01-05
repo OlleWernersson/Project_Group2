@@ -14,7 +14,7 @@
         </button>
       </div>
     </div>
-    <div v-if="countdown > 0" class="countdown-overlay">
+    <div v-if="countdown >= 0" class="countdown-overlay">
       <div class="countdown">{{ countdown }}</div>
     </div>
   </div>
@@ -33,7 +33,7 @@ export default {
     data: function () {  
       return {
         wrongOrRight: '',
-        countdown: 0,
+        countdown: -1,
     };
   },
 
@@ -59,6 +59,7 @@ export default {
           this.countdown -= 1; 
         } else {
           clearInterval(countdownInterval);
+          this.countdown = -1
         }
       }, 1000);
     },

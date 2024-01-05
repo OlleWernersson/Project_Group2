@@ -77,7 +77,6 @@ export default {
     this.poll = poll
     
     )
-
     socket.on("navigateToGameResultView", (gameID) => {
       this.$router.push({ path: `/gameResult/${gameID}`});
     })
@@ -87,7 +86,9 @@ export default {
     getNewQuestion(){
       socket.emit("updateQuestionIndex",this.playerName, this.pollId)
      
-      this.getQuestion(this.playerName)
+      /* setTimeout(() => {
+        this.getQuestion(this.playerName);
+      }, 1000); */
 
     },
     handleCorrectAnswerClick() {
@@ -109,9 +110,6 @@ export default {
         if(this.poll.cities[cityIndex]) {
           if(qIndex <= 2){
           return this.poll.cities[cityIndex].questions[qIndex]
-          }
-          else{
-            this.handleCorrectAnswerClick()
           }
         }
         else {
