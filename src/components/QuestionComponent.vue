@@ -18,8 +18,6 @@
       <div class="countdown">{{ this.participant.countdown }}</div>
     </div>
   </div> 
-  {{ participant }}
-  {{ this.isInCountdown }}
 
 </template>
 
@@ -44,7 +42,6 @@ export default {
     data: function () {  
       return {
         wrongOrRight: '',
-      isInCountdown: this.getCountdown()
     };
   },
   watch:{
@@ -72,18 +69,6 @@ export default {
     setCountdown(){
       this.$emit('setMaxCountdown')
       this.startCountdown();
-    },
-    getCountdown(){
-      
-      if(this.participant.countdown > 0){
-        this.startCountdown()       
-        return true
-      }
-      else{
-        return false;
-        console.log("hejhej")
-      }
-      
     },
     startCountdown() {
       //this.$emit('setMaxCountdown')

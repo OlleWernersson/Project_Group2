@@ -232,9 +232,10 @@ Data.prototype.getCityQuestions = function(pollID, City){
 Data.prototype.addCurrentCity = function(cityName,first_letter,top,left,pollID){
   const poll = this.polls[pollID];
   console.log(cityName,first_letter,top,left, pollID)
-  console.log(poll.questions)
+  console.log(poll.questions, "questions that are added")
   poll.cities.push({top:top,left:left,name:cityName,first_letter:first_letter,questions:poll.questions})
   poll.questions = []
+  console.log("checking for left behind questions", poll.questions)
   console.log(poll.cities, poll.cities.questions)
 }
 Data.prototype.doesPollIDExist = function(pollID) {

@@ -3,7 +3,7 @@
             <div v-for="(player, index ) in filteredPlayers" :key="player.id" class = "playerWrapper" >
               <label :class="getPlayerColorClass(index + 1)"> {{ index + 1 }}. </label>
               <div class="playerBox" :style="{ backgroundColor: player.colorObj.color }" > 
-                <label>{{ player.name }}, </label>
+                <label>{{ player.name }} </label>
               </div>
           </div>
         </div>

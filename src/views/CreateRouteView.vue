@@ -111,7 +111,8 @@
       selectedColorObj: {},
       isComponentDisabled: false,
       isButtonDisabled: false,
-      mapClicked: false
+      mapClicked: false,
+      selectedCityobj: {}
 
     }
   },
@@ -148,6 +149,7 @@
       this.isComponentDisabled = true
       this.mapClicked = false;
       this.isError= false;
+      this.questionsreal = [];
       if(this.selectedCity !== ""){
         for (let i = 0; i <3 ; i++) { 
         var createRef = this.$refs[`createComponentRef${i}`];
@@ -165,9 +167,6 @@
             socket.emit("saveCurrentCity", {top: this.location.y, left: this.location.x, name: this.selectedCity, first_letter: this.selectedCity.slice(0, 1), pollId: this.gameID})
             this.selectedCities.push(this.selectedCity)
             socket.emit("loadcities", this.gameID);
-            socket.on("citiesLoaded", (cities) => {
-            this.cities = cities;
-            })
             this.cityChosen = true; 
             window.alert("city added")
             throw new Error("you forgot to fill in a question field ")
@@ -194,9 +193,10 @@
     addcreatechild: function(childquestion, childanswers, childc){
       console.log(childanswers,childquestion,childc)
       if(childquestion !== ""){
-        console.log(childanswers[0],childanswers[1])
+        console.log(childquestion,childanswers[0],childanswers[1], "se om de har ändrats")
         if(childanswers[0] !== "" && childanswers[1] !== ""){
         if (childc > -1){
+          console.log(this.questionsreal, "this should be empty otherwise big problem")
           this.questionsreal.push({question: childquestion, answers: childanswers, correctIndex: childc});
 
           //socket.emit("addQuestion", {pollId: this.pollId,  questionPart: childquestion,answers:childanswers, c:childc, city: this.selectedCity})
@@ -235,6 +235,9 @@
     loadCity: function (city) {
       console.log("you clicked a city!")
       this.selectedCity = city.name
+      this.selectedCityobj = city
+      console.log(this.cities)
+      console.log(this.selectedCityobj)
       for (let i = 0; i <3 ; i++) {
         var createRef = this.$refs[`createComponentRef${i}`];
         createRef.loadCity(city, i);

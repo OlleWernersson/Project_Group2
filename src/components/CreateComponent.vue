@@ -49,7 +49,7 @@ methods: {
   },
 
   addQuestion: function(){
-    console.log("Fråga added", this.question);
+    console.log("Fråga added", this.question, this.answers);
     this.$emit('addThisQuestion', this.question, this.answers, this.c);
     // let q = this.questiom;
     // let a = this.answers;
