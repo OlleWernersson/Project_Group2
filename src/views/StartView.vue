@@ -18,7 +18,6 @@
     </div>
 
     <section class="mainButtons">
-      <div class="train"></div>
       <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
       <router-link class="main-button" to="/createLobby/">{{uiLabels.createGame}}</router-link>
     </section>
@@ -99,7 +98,10 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100px;
+  width: 700px;
+  font-size: 1.7em;
+  font-weight: bolder;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -128,6 +130,7 @@ export default {
 #train {
   margin-top: 100px;
   height: 400px;
+  top: 100%;
 }
 
 @media  screen and (max-width: 768px){
