@@ -16,6 +16,7 @@
         </div>
       </div>
 
+
     <header> 
       <button class="supportButtons" @click="help2" >{{ uiLabels.help }} </button> 
       <h1> {{uiLabels.createHeader}}</h1>
@@ -117,7 +118,6 @@
       c: null,
       selectedCity: "",
       helpOpen: false,
-      selectedCities: [],
       amountButtonPressed: 1, 
       playerName:"noPlayerHost", 
       selectedColorObj: {},
@@ -125,7 +125,6 @@
       isButtonDisabled: false,
       mapClicked: false,
       cityClicked: false,
-      selectedCityobj: {}, 
       editOpen: false
 
     }
@@ -167,20 +166,17 @@
           createRef.addQuestion();
         
         if(this.isError){
-          console.log("hejhej")
           this.questionsreal = []
         }
         }
         if(!this.isError){
-            console.log("nu är vi här", this.gameID)
             this.isButtonDisabled = true; 
             this.mapClicked = false;
             this.isComponentDisabled = true;
-            socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[0].question,answers:this.questionsreal[0].answers, c:this.questionsreal[0].correctIndex, city: this.selectedCity})
-            socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[1].question,answers:this.questionsreal[1].answers, c:this.questionsreal[1].correctIndex, city: this.selectedCity})
-            socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[2].question,answers:this.questionsreal[2].answers, c:this.questionsreal[2].correctIndex, city: this.selectedCity})
+            for (let i = 0; i <3 ; i++) {
+               socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[i].question,answers:this.questionsreal[i].answers, c:this.questionsreal[i].correctIndex, city: this.selectedCity})
+            }
             socket.emit("saveCurrentCity", {top: this.location.y, left: this.location.x, name: this.selectedCity, first_letter: this.selectedCity.slice(0, 1), pollId: this.gameID})
-            this.selectedCities.push(this.selectedCity)
             socket.emit("loadcities", this.gameID);
             this.cityChosen = true; 
             window.alert("city added")
@@ -211,19 +207,14 @@
     removeCity: function () {
       this.isComponentDisabled = true;
       this.isButtonDisabled = true;
-      console.log(this.isComponentDisabled)
-
       socket.emit("removeCity", {gameID: this.gameID, selectedCity: this.selectedCity})
 
     },
 
     addcreatechild: function(childquestion, childanswers, childc){
-      console.log(childanswers,childquestion,childc)
       if(childquestion !== ""){
-        console.log(childquestion,childanswers[0],childanswers[1], "se om de har ändrats")
         if(childanswers[0] !== "" && childanswers[1] !== ""){
         if (childc > -1){
-          console.log(this.questionsreal, "this should be empty otherwise big problem")
           this.questionsreal.push({question: childquestion, answers: childanswers, correctIndex: childc});
 
           //socket.emit("addQuestion", {pollId: this.pollId,  questionPart: childquestion,answers:childanswers, c:childc, city: this.selectedCity})
@@ -260,14 +251,11 @@
                     y: event.currentTarget.getBoundingClientRect().top};
       this.location = {x: event.clientX - 10 - offset.x,
                         y: event.clientY - 10 - offset.y}
-
-        console.log(this.location)
     },
 
     loadCity: function (city) {
       this.cityClicked = true
       this.selectedCity = city.name
-      this.selectedCityobj = city
       this.isComponentDisabled = false
       this.isButtonDisabled = false
       for (let i = 0; i <3 ; i++) {
@@ -389,9 +377,6 @@ button {
   }
 
 
-
-
-
   .button-container {
     display: flex;
     align-items: center;
@@ -455,7 +440,6 @@ button {
   display: flex;
   flex-direction: column;
 }
-
 
 
 .infobox {
