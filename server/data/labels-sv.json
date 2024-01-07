@@ -41,7 +41,8 @@
   "answer": "Svar",
   "questionInput": "Skriv din fråga här...",
   "orMessage": "Eller...", 
-  "removeCity": "Ta bort stad"
+  "removeCity": "Ta bort stad", 
+  "editHelp": "Klicka på en stad på kartan för att redigera eller ta bort den!"
 
 
 

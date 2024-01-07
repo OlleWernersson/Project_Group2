@@ -8,6 +8,14 @@
         </div>
       </div>
 
+      <div v-if="editOpen">
+        <div class="popup" @click.self = "editHelp">
+          <div class="editText">
+             <p> {{uiLabels.editHelp }}</p> 
+          </div>
+        </div>
+      </div>
+
     <header> 
       <button class="supportButtons" @click="help2" >{{ uiLabels.help }} </button> 
       <h1> {{uiLabels.createHeader}}</h1>
@@ -117,7 +125,8 @@
       isButtonDisabled: false,
       mapClicked: false,
       cityClicked: false,
-      selectedCityobj: {}
+      selectedCityobj: {}, 
+      editOpen: false
 
     }
   },
@@ -175,6 +184,9 @@
             socket.emit("loadcities", this.gameID);
             this.cityChosen = true; 
             window.alert("city added")
+            if (this.cities.length === 0) {
+              this.editHelp();
+            }
             
           }
         }
@@ -238,6 +250,10 @@
       this.helpOpen = ! this.helpOpen
     },
 
+    editHelp: function(){
+      this.editOpen = ! this.editOpen
+    },
+
     setLocation: function (event) {
       this.mapClicked = true; 
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
@@ -249,12 +265,11 @@
     },
 
     loadCity: function (city) {
-      console.log("you clicked a city!")
       this.cityClicked = true
       this.selectedCity = city.name
       this.selectedCityobj = city
-      console.log(this.cities)
-      console.log(this.selectedCityobj)
+      this.isComponentDisabled = false
+      this.isButtonDisabled = false
       for (let i = 0; i <3 ; i++) {
         var createRef = this.$refs[`createComponentRef${i}`];
         createRef.loadCity(city, i);
@@ -373,6 +388,10 @@ button {
     height: 100vh;
   }
 
+
+
+
+
   .button-container {
     display: flex;
     align-items: center;
@@ -381,6 +400,16 @@ button {
   .helpText {
     width: 370px;
     height: 470px;
+    padding: 20px;
+    background: rgb(244, 195, 195);
+    border-radius: 10px;
+    margin-left: 7em;
+    margin-top:7em;
+  }
+
+    .editText {
+    width: 370px;
+    height: 70px;
     padding: 20px;
     background: rgb(244, 195, 195);
     border-radius: 10px;

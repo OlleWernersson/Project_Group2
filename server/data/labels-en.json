@@ -41,7 +41,9 @@
   "answer": "Answer",
   "questionInput": "Write your question...",
   "orMessage": "Or...", 
-  "removeCity": "Remove city"
+  "removeCity": "Remove city", 
+  "editHelp": "Click on a city on the map to edit or remove it!"
+
 
   
 
