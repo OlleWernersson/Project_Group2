@@ -45,7 +45,8 @@
   "answerAlert": "Fill all the answer fields", 
   "cityAlert": "Write the city name", 
   "indexAlert": "Choose a correct answer alternative" ,
-  "savedAlert": "The city has been saved to your route" 
+  "savedAlert": "The city has been saved to your route",
+  "createLobbyHelp": "Choose between running a pre-established route by clicking on one of the maps or click on 'create route' to select cities and their corresponding questions yourself. One thing to note is that you won't be able to participate in your own game if you choose to create it from scratch."
 
 
 

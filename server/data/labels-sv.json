@@ -47,7 +47,9 @@
   "answerAlert": "Fyll i alla svarsalternativ", 
   "cityAlert": "Skriv namn på staden", 
   "indexAlert": "Markera rätt svarsalternativ", 
-  "savedAlert": "Staden har lagts till i din rutt" 
+  "savedAlert": "Staden har lagts till i din rutt",
+  "createLobbyHelp": "Välj om du vill följa en förinställd rutt genom att klicka på någon av kartorna eller tryck på 'Skapa rutt' för att själv välja städer och tillhörande frågor. Observera att om du väljer att skapa ett spel från grunden kommer du inte att kunna delta i det själv"
+
 
 
 

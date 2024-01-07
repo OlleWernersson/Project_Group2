@@ -23,7 +23,9 @@
     </section>
 
     <div> 
-    <img :src="('../public/train.gif')" id="train">
+      <marquee behavior="" direction="">
+        <img :src="('../public/train.gif')" id="train">
+      </marquee>
      </div> 
 
   </main>
@@ -128,8 +130,8 @@ export default {
 }
 
 #train {
-  margin-top: 100px;
-  height: 400px;
+  margin-top: 17em;
+  height: 250px;
   top: 100%;
 }
 

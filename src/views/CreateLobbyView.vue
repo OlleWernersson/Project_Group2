@@ -1,5 +1,16 @@
 <template>
+  <div v-if="helpOpen">
+        <div class="popup" @click.self = "help2()">
+          <div class="helpText">
+             <p> {{ uiLabels.createLobbyHelp }}</p> 
+          </div>
+        </div>
+      </div>
+
+
   <header>
+    <button class="supportButtons" @click="help2()"> {{ uiLabels.help }}</button>
+
     <h1>
       {{ uiLabels.createLobby }}
     </h1>
@@ -107,6 +118,8 @@ export default {
       playerColorsObjs: [],
       selectedColorObj: {},
       colorIsSelected: true,
+      helpOpen: false,
+
 
       lang: localStorage.getItem("lang") || "en",
       selectedRoute: null,
@@ -136,6 +149,10 @@ export default {
     handleNameInput() {
       this.playerName = this.playerName.slice(0, 20);
       this.playerNameEmpty = false;
+    },
+
+    help2: function(){
+      this.helpOpen = ! this.helpOpen
     },
 
     selectPlayerColor(colorObj) {
@@ -179,6 +196,48 @@ main {
   display: flex;
   justify-content: center;
 }
+.popup{
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+    height: 75px; 
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  h1 {
+    margin: 0 auto;
+  }
+  
+button {
+  margin: 0.5em;
+  margin-top: 10px;
+}
+
+.helpText {
+  width: 370px;
+  height: 470px;
+  padding: 20px;
+  background: rgb(244, 195, 195);
+  border-radius: 10px;
+  margin-left: 7em;
+  margin-top:7em;
+}
+¨
 
 #create-lobby-button {
   position: absolute;
@@ -189,6 +248,11 @@ main {
   margin-top: 125px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.Choose-Route {
+  top: 50%;
+  left: 50%;
 }
 .create-route-button {
   background-color: #ccc;
@@ -222,6 +286,7 @@ main {
 
 .route-button:hover {
   border: 2px solid rgb(88, 234, 59);
+  cursor: pointer;
 }
 
 .selected {

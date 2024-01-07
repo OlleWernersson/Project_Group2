@@ -420,52 +420,52 @@ button {
 }
   
   
-  .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 10px;
-  }
+.container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+margin: 10px;
+}
 
-  .popup{
-    background: rgba(0, 0, 0, 0.8);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-  }
+.popup{
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
 
 
-  .button-container {
-    display: flex;
-    align-items: center;
-  }
+.button-container {
+  display: flex;
+  align-items: center;
+}
 
-  .helpText {
-    width: 370px;
-    height: 470px;
-    padding: 20px;
-    background: rgb(244, 195, 195);
-    border-radius: 10px;
-    margin-left: 7em;
-    margin-top:7em;
-  }
+.helpText {
+  width: 370px;
+  height: 470px;
+  padding: 20px;
+  background: rgb(244, 195, 195);
+  border-radius: 10px;
+  margin-left: 7em;
+  margin-top:7em;
+}
 
-    .editText {
-    width: 370px;
-    height: 70px;
-    padding: 20px;
-    background: rgb(244, 195, 195);
-    border-radius: 10px;
-    margin-left: 7em;
-    margin-top:7em;
-  }
+  .editText {
+  width: 370px;
+  height: 70px;
+  padding: 20px;
+  background: rgb(244, 195, 195);
+  border-radius: 10px;
+  margin-left: 7em;
+  margin-top:7em;
+}
   
 #dots {
   position: absolute;
@@ -480,17 +480,16 @@ button {
   box-shadow: -2px 7px 14px rgba(0, 0, 0, 0.7);
 }
 
-
 #mapWrapper {
   cursor: crosshair; 
 }
 
 #mapWrapper .infobox {
-  cursor: auto; /* or any other cursor value you want for the infobox */
+  cursor: auto; 
 }
 
 #mapWrapper .city-hover {
-  cursor:pointer; /* or any other cursor value you want for the infobox */
+  cursor:pointer; 
   border-width: 10px;
   background-color: brown;
 }
