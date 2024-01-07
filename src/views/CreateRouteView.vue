@@ -150,9 +150,6 @@
   
   methods: {
     addCity: function () {
-      this.isButtonDisabled = true; 
-      this.isComponentDisabled = true
-      this.mapClicked = false;
       this.isError= false;
       this.questionsreal = [];
       if(this.selectedCity !== ""){
@@ -160,12 +157,16 @@
         var createRef = this.$refs[`createComponentRef${i}`];
           createRef.addQuestion();
         
-          if(this.isError){
+        if(this.isError){
+          console.log("hejhej")
           this.questionsreal = []
         }
         }
         if(!this.isError){
             console.log("nu är vi här", this.gameID)
+            this.isButtonDisabled = true; 
+            this.mapClicked = false;
+            this.isComponentDisabled = true;
             socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[0].question,answers:this.questionsreal[0].answers, c:this.questionsreal[0].correctIndex, city: this.selectedCity})
             socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[1].question,answers:this.questionsreal[1].answers, c:this.questionsreal[1].correctIndex, city: this.selectedCity})
             socket.emit("addQuestion", {pollId: this.gameID,  questionPart: this.questionsreal[2].question,answers:this.questionsreal[2].answers, c:this.questionsreal[2].correctIndex, city: this.selectedCity})
@@ -174,13 +175,13 @@
             socket.emit("loadcities", this.gameID);
             this.cityChosen = true; 
             window.alert("city added")
-            throw new Error("you forgot to fill in a question field ")
+            
           }
-      }
-      else{
+        }
+        else{
         window.alert("please select a city")
-      }
-    },
+        }
+        },
     
     createLobby: function () {
       this.$router.push({ path: `/lobby/${this.gameID}`, query: { playerName: this.playerName} });
@@ -196,6 +197,9 @@
     },
 
     removeCity: function () {
+      this.isComponentDisabled = true;
+      this.isButtonDisabled = true;
+      console.log(this.isComponentDisabled)
 
       socket.emit("removeCity", {gameID: this.gameID, selectedCity: this.selectedCity})
 
@@ -214,6 +218,7 @@
         }
         else{
           window.alert("add a correct answer");
+          this.isError = true;
         }
       }
       else{

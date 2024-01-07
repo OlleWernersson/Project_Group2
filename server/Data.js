@@ -233,10 +233,33 @@ Data.prototype.addCurrentCity = function(cityName,first_letter,top,left,pollID){
   const poll = this.polls[pollID];
   console.log(cityName,first_letter,top,left, pollID)
   console.log(poll.questions, "questions that are added")
-  poll.cities.push({top:top,left:left,name:cityName,first_letter:first_letter,questions:poll.questions})
-  poll.questions = []
+  let cityFound = false;
+  if(poll.cities.length > 0){
+  let city = 0;
+  for(let i = 0; i < poll.cities.length; i++){
+    console.log("den går in i for loopen")
+    if((poll.cities[i].name === cityName) || ((Math.abs(poll.cities[i].left - left) <= 10) && Math.abs(poll.cities[i].top - top) <= 10)){
+      cityFound = true;
+      city = i
+    }
+  }
+  if(cityFound){
+    console.log("nu har vi editat en question")
+    poll.cities[city].questions = poll.questions
+    poll.cities[city].name = cityName
+    poll.cities[city].left = left
+    poll.cities[city].top = top
+    poll.questions = []
+  }
+}
+  if(!cityFound){
+    console.log("nu har vi lagt till en stad")
+    poll.cities.push({top:top,left:left,name:cityName,first_letter:first_letter,questions:poll.questions})
+    poll.questions = []
+  }
   console.log("checking for left behind questions", poll.questions)
   console.log(poll.cities, poll.cities.questions)
+
 }
 
 Data.prototype.removeCity = function (gameID, selectedCity) {
