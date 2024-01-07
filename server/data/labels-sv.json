@@ -42,7 +42,14 @@
   "questionInput": "Skriv din fråga här...",
   "orMessage": "Eller...", 
   "removeCity": "Ta bort stad", 
-  "editHelp": "Klicka på en stad på kartan för att redigera eller ta bort den!"
+  "editHelp": "Klicka på din stad på kartan för att redigera eller ta bort den!",
+  "questionAlert": "Fyll i alla frågefält", 
+  "answerAlert": "Fyll i alla svarsalternativ", 
+  "cityAlert": "Skriv namn på staden", 
+  "indexAlert": "Markera rätt svarsalternativ", 
+  "savedAlert": "Staden har lagts till i din rutt" 
+
+
 
 
 

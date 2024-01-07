@@ -1,6 +1,4 @@
 {
-	"sales-pitch": "Simply. Great. Polling.",
-	"subHeading": "A simple polling tool",
 	"invite": "Invite participants with this link:",
 	"createGame": "Create Game",
 	"participatePoll": "Participate in poll",
@@ -42,7 +40,13 @@
   "questionInput": "Write your question...",
   "orMessage": "Or...", 
   "removeCity": "Remove city", 
-  "editHelp": "Click on a city on the map to edit or remove it!"
+  "editHelp": "Click on your city on the map to edit or remove it!", 
+  "questionAlert": "Fill all the question fields", 
+  "answerAlert": "Fill all the answer fields", 
+  "cityAlert": "Write the city name", 
+  "indexAlert": "Choose a correct answer alternative" ,
+  "savedAlert": "The city has been saved to your route" 
+
 
 
   

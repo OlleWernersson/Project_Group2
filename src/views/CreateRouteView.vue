@@ -1,7 +1,7 @@
 <template>
   <main>
     <div v-if="helpOpen">
-        <div class="popup" @click.self = "help2">
+        <div class="popup" @click.self = "help2()">
           <div class="helpText">
              <p> {{ uiLabels.helpText }}</p> 
           </div>
@@ -9,9 +9,49 @@
       </div>
 
       <div v-if="editOpen">
-        <div class="popup" @click.self = "editHelp">
+        <div class="popup" @click.self = "editHelp()">
           <div class="editText">
              <p> {{uiLabels.editHelp }}</p> 
+          </div>
+        </div>
+      </div>
+
+      <div v-if="qAlert">
+        <div class="popup" @click.self = "questionAlert()">
+          <div class="editText">
+             <p> {{uiLabels.questionAlert}} </p> 
+          </div>
+        </div>
+      </div>
+
+      <div v-if="aAlert">
+        <div class="popup" @click.self = "answerAlert()">
+          <div class="editText">
+             <p> {{uiLabels.answerAlert}} </p> 
+          </div>
+        </div>
+      </div>
+
+      <div v-if="cAlert">
+        <div class="popup" @click.self = "cityAlert()">
+          <div class="editText">
+             <p> {{uiLabels.cityAlert}} </p> 
+          </div>
+        </div>
+      </div>
+
+      <div v-if="iAlert">
+        <div class="popup" @click.self = "indexAlert()">
+          <div class="editText">
+             <p> {{uiLabels.indexAlert}}</p> 
+          </div>
+        </div>
+      </div>
+
+      <div v-if="sAlert">
+        <div class="popup" @click.self = "savedAlert()">
+          <div class="editText">
+             <p> {{uiLabels.savedAlert}}</p> 
           </div>
         </div>
       </div>
@@ -125,7 +165,12 @@
       isButtonDisabled: false,
       mapClicked: false,
       cityClicked: false,
-      editOpen: false
+      editOpen: false, 
+      aAlert: false, 
+      qAlert: false, 
+      cAlert: false, 
+      iAlert: false,
+      sAlert: false
 
     }
   },
@@ -179,7 +224,7 @@
             socket.emit("saveCurrentCity", {top: this.location.y, left: this.location.x, name: this.selectedCity, first_letter: this.selectedCity.slice(0, 1), pollId: this.gameID})
             socket.emit("loadcities", this.gameID);
             this.cityChosen = true; 
-            window.alert("city added")
+            this.sAlert = true;
             if (this.cities.length === 0) {
               this.editHelp();
             }
@@ -187,7 +232,7 @@
           }
         }
         else{
-        window.alert("please select a city")
+        this.cAlert = true;
         }
         },
     
@@ -220,17 +265,17 @@
           //socket.emit("addQuestion", {pollId: this.pollId,  questionPart: childquestion,answers:childanswers, c:childc, city: this.selectedCity})
         }
         else{
-          window.alert("add a correct answer");
+          this.iAlert = true;
           this.isError = true;
         }
       }
       else{
-        window.alert("you forgot to fill in an answer field")
+        this.aAlert=true;
         this.isError= true;
       }
     }
       else{
-        window.alert("you forgot to fill a question field please try again")
+        this.qAlert=true;
         this.isError= true;
         throw new Error("you forgot to fill in a question field ")
       }
@@ -243,6 +288,26 @@
 
     editHelp: function(){
       this.editOpen = ! this.editOpen
+    },
+
+    questionAlert: function (){
+      this.qAlert = ! this.qAlert
+    },
+
+    answerAlert: function (){
+      this.aAlert = ! this.aAlert
+    },
+
+    cityAlert: function (){
+      this.cAlert = ! this.cAlert
+    },
+
+    indexAlert: function (){
+      this.iAlert = ! this.iAlert
+    },
+
+    savedAlert: function () {
+      this.sAlert = ! this.sAlert
     },
 
     setLocation: function (event) {
