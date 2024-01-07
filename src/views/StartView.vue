@@ -22,6 +22,11 @@
       <router-link class="main-button" to="/join/">{{uiLabels.joinGame}}</router-link>
       <router-link class="main-button" to="/createLobby/">{{uiLabels.createGame}}</router-link>
     </section>
+
+    <div> 
+    <img :src="('../public/train.gif')" id="train">
+     </div> 
+
   </main>
 </template>
 
@@ -87,9 +92,8 @@ export default {
 #Titel{
   margin-top: 20vh;
 }
-.train {
-  background-image: url('../../public/img/train[76].png');
-}
+
+
 .mainButtons {
   display: flex;
   flex-direction: row;
@@ -120,7 +124,17 @@ export default {
   left: 0;
   z-index: 2;
 }
+
+#train {
+  margin-top: 100px;
+  height: 400px;
+}
+
 @media  screen and (max-width: 768px){
+
+  #train {
+    width: 100%;
+  }
   .supportButtons{
     padding: 0.8em 1.5em;
     font-size: 0.8em;

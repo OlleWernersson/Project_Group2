@@ -337,7 +337,7 @@ Data.prototype.resetPlayerCountdown = function(playerName,pollId){
 }
 Data.prototype.setMaxCountdown = function(playerName,pollId){
   const participant = this.polls[pollId].participants.find(participant => participant.name === playerName);
-  participant.countdown = 10
+  participant.countdown = 5
 }
 
 export { Data };
