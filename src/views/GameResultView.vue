@@ -5,6 +5,9 @@
       <PlayerList :players="sortedParticipants" :result = "true"/>
     </ul>
   </div>
+  <div>
+    <audio ref="resultAudio" src="../public/mp3/result.mp3" autoplay loop></audio>
+  </div>
 </template>
 
 <script>
@@ -26,6 +29,11 @@ export default {
       // pollCities: poll.cities,
     };
   },
+
+    mounted() {
+    this.playSound()
+  },
+
   created: function () {
     this.pollId = this.$route.params.id
     socket.emit("pageLoaded", this.lang);
@@ -42,6 +50,11 @@ export default {
 
   },
   methods: {
+  playSound () {
+    const audio = this.$refs.resultAudio;
+    audio.play();    
+  }
+
   },
   computed: {
     sortedParticipants() {

@@ -29,10 +29,11 @@
       @setMaxCountdown="setCountdown"
     >
     </Question>
+    
     <div>
-      <audio ref="failAudio" src="../public/fail.mp3"></audio>
-      <audio ref="bonusAudio" src="../public/bonus.mp3"></audio>
-      <audio ref="backgroundAudio" src="../public/background.mp3" autoplay loop></audio>
+      <audio ref="failAudio" src="../public/mp3/fail.mp3"></audio>
+      <audio ref="bonusAudio" src="../public/mp3/bonus.mp3"></audio>
+      <audio ref="backgroundAudio" src="../public/mp3/background.mp3" autoplay loop></audio>
     </div>
 </div>
 </template>
