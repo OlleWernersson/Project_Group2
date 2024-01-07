@@ -475,7 +475,7 @@ margin: 10px;
   position: absolute;
   width: 20px;
   height: 20px;
-  background-color: aqua;
+  background: radial-gradient(rgb(232, 19, 19) 100%, black 0%);
   border-radius: 50%;
   box-shadow: -2px 7px 14px rgba(0, 0, 0, 0.7);
 }

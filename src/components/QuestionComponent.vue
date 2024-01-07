@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <div id="question-container" v-if="question">
-      <div id="question">{{ question.q }}</div>
+      <h1 id="question">{{ question.q }}</h1>
       <div id="buttonWrapper">
         <button
           v-for="(a, index) in question.a"
@@ -120,6 +120,10 @@ export default {
 .countdown {
   font-size: 2em;
   color: white;
+}
+
+#question {
+  text-shadow: -9px 5px 13px rgba(0, 0, 0, 0.3);
 }
 @media screen and (max-width: 768px), (max-height: 700px) {
   #question {

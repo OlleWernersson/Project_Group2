@@ -92,8 +92,8 @@ export default {
 }
 #Titel{
   margin-top: 20vh;
+  font-size: 4.5em;
 }
-
 
 .mainButtons {
   display: flex;
