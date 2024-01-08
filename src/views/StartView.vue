@@ -130,8 +130,8 @@ export default {
 }
 
 #train {
-  margin-top: 17em;
-  height: 250px;
+  margin-top: 16em;
+  height: 14em;
   top: 100%;
 }
 
