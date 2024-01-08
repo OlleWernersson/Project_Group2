@@ -24,7 +24,7 @@
   "first_letter": "s",
   "questions":[{"q": "Vad heter Sveriges statschef?",
   "a": ["Kung Carl XVI Gustaf ", "Gustav Vasa", "Alfred Nobel", "Ulf Kristersson"],
-  "c":3
+  "c": 0
   },
   {"q": "När dog den kända artisten Avicii? ",
   "a": ["2014", "2016", "2018", "2020"],
@@ -118,7 +118,7 @@
   "a": ["Faro de Moncloa", "Almudena katedralen", "Plaza Mayor", "Templo de Debod"],
   "c":0
   },
-  {"q": "Vad kallas traditionella spanska bullerinstrument som ofta används under festivaler och parader i Madrid?",
+  {"q": "Vad kallas traditionella spanska instrumentet som ofta används under festivaler och parader i Madrid?",
   "a": ["Castanets", "Maracas", "Tambourine", "Castells"],
   "c": 0
   },
