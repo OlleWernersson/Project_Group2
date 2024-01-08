@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import StartView from '../views/StartView.vue'
-import RandomView from '../views/randomView.vue'
 import GameIDView from '../views/GameIDView.vue'
 import CreateRouteView from '../views/CreateRouteView.vue'
 import ChooseMapView from '../views/ChooseMapView.vue'
