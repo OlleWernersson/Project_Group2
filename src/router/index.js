@@ -21,13 +21,6 @@ const router = createRouter({
       name: 'Start',
       component: StartView
     },
-
-    {
-      path: '/random',
-      name: 'RandomView',
-      component: RandomView
-    },
-    
       {
       path: '/gameID/',
       name: 'GameIDView',
